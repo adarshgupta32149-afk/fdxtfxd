@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=ac8a3344-265d-442a-9345-931fdf1dea3f
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0C1829" />
+  <meta name="description" content="Automech Hydraulic Solutions — manufacturer of hydraulic bottle jacks, cylinders & accessories. 15 to 120 ton. Support you can trust, safety you can feel." />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Automech Hydraulic Solutions — Hydraulic Jacks 15–120 Ton</title>
+  <link rel="canonical" href="https://automech-workshop.netlify.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Automech Hydraulic Solutions" />
+  <meta property="og:title" content="Automech Hydraulic Solutions — Hydraulic Jacks 15–120 Ton" />
+  <meta property="og:description" content="Lucknow-built hydraulic bottle jacks, cylinders & accessories. Five capacities from 15 to 120 ton — machined, sealed and pressure-tested in-house." />
+  <meta property="og:url" content="https://automech-workshop.netlify.app/" />
+  <meta property="og:image" content="https://automech-workshop.netlify.app/images/hero.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="assets/index-DVjhlEjO.js"></script>
+  <link rel="stylesheet" crossorigin href="assets/index-BBK6I-5j.css">
+  <style>
+    /* Full-bleed hero slideshow override — stack the hero, break the slider out
+       to full viewport width, remove the frame/bezel (border, radius, shadow,
+       corner brackets). */
+    html, body { overflow-x: hidden; }
+    .hero-in {
+      grid-template-columns: 1fr !important;
+      gap: 34px !important;
+      min-height: 0 !important;
+      align-items: start !important;
+    }
+    /* Slider banner pushed to the top; text sits below it. */
+    .hero        { padding-top: 0 !important; }
+    .hero-figure { order: -1 !important; gap: 20px; }
+    .hero-copy   { order: 1 !important; }
+    .hero-media {
+      width: 100vw !important;
+      margin-left: calc(50% - 50vw) !important;
+      margin-right: calc(50% - 50vw) !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      aspect-ratio: auto !important;
+      height: clamp(360px, 62vh, 640px) !important;
+    }
+    .hero-media .frame-corner { display: none !important; }
+    /* Remove the slider overlay controls: image counter, nav dots, and the
+       prev/next arrow buttons. */
+    .slide-hud,
+    .snav,
+    .snav.prev,
+    .snav.next { display: none !important; }
+
+    /* Logo slide only: show the whole logo card (no crop/zoom) on the dark
+       banner. The photographic hero slides keep their original full-bleed cover. */
+    .slide img[src*="logo"] {
+      object-fit: contain !important;
+      transform: none !important;
+      animation: none !important;
+      padding: 24px !important;
+      filter: drop-shadow(0 20px 36px rgba(0,0,0,.5));
+    }
+    /* Transparent jack photos on the product cards: float them on the dark
+       card with a soft shadow instead of a white frame. */
+    .detail-media img {
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      object-fit: contain !important;
+      filter: drop-shadow(0 26px 40px rgba(0,0,0,.6));
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Netlify Forms: static copy so the build-time bot registers the "enquiry" form.
+       The live form is rendered by React and posts to this. -->
+  <form name="enquiry" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="enquiry" />
+    <input type="text" name="name" />
+    <input type="text" name="phone" />
+    <input type="text" name="model" />
+    <input type="number" name="qty" />
+    <textarea name="message"></textarea>
+    <input type="text" name="bot-field" />
+  </form>
+
+</body>
+</html>
