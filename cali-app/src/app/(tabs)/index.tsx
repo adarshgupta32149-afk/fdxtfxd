@@ -114,7 +114,7 @@ export default function HomeScreen() {
 
       {next && (
         <Rise delay={350}>
-          <PressScale onPress={() => router.push('/skills')} scaleTo={0.98}>
+          <PressScale onPress={() => router.push({ pathname: '/skills', params: { id: next.skill.id } })} scaleTo={0.98}>
             <Card>
               <SectionHead label={state.focusSkills.includes(next.skill.id) ? 'Your focus' : 'Next skill'} />
               <View style={s.skillRow}>

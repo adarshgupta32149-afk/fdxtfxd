@@ -1,51 +1,64 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { TRIAL_DAYS } from '@/lib/trial';
 import { useAppState } from '@/state/AppStateProvider';
-import { colors, font, radius, space } from '@/theme';
-import { Pill, ProgressBar } from './ui';
+import { colors, display, font, frostGradient, radius } from '@/theme';
+import { PressScale } from './motion';
 
-/** One-line trial status for the top of a screen. */
-export function TrialPill() {
-  const { access } = useAppState();
-  if (access.status === 'pro') return <Pill label="Founder · Pro" dotColor={colors.gold} />;
-  if (access.status === 'expired') return <Pill label="Trial ended · history still here" dotColor={colors.danger} onPress={() => router.push('/paywall')} />;
-  return <Pill label={`Free trial · ${access.daysLeft} ${access.daysLeft === 1 ? 'day' : 'days'} left`} onPress={() => router.push('/paywall')} />;
-}
-
-/** Fuller trial card with a countdown bar, for Profile. */
+/** Plan card for Profile: a frosted panel with the trial countdown, or the Founder badge. */
 export function TrialBanner() {
   const { access } = useAppState();
 
   if (access.status === 'pro') {
     return (
-      <Pressable style={s.box}>
-        <Text style={[s.title, { color: colors.gold }]}>Founder · Pro</Text>
-        <Text style={s.text}>Unlimited logging. Thanks for backing us early.</Text>
-      </Pressable>
+      <LinearGradient colors={frostGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.frost}>
+        <View style={s.row}>
+          <Ionicons name="sparkles" size={16} color={colors.onFrost} />
+          <Text style={s.kicker}>Founder · Pro</Text>
+        </View>
+        <Text style={s.title}>Unlimited logging</Text>
+        <Text style={s.text}>Thanks for backing us early.</Text>
+      </LinearGradient>
     );
   }
 
   const expired = access.status === 'expired';
+  const used = 1 - access.daysLeft / TRIAL_DAYS;
   return (
-    <Pressable onPress={() => router.push('/paywall')} style={({ pressed }) => [s.box, pressed && { opacity: 0.85 }]}>
-      <Text style={[s.title, expired && { color: colors.danger }]}>
-        {expired ? 'Your free trial has ended' : `Free trial · ${access.daysLeft} ${access.daysLeft === 1 ? 'day' : 'days'} left`}
-      </Text>
-      {expired ? (
-        <Text style={s.text}>All your history is still here. Go Pro to keep logging and unlock rankings.</Text>
-      ) : (
-        <ProgressBar value={access.daysLeft / TRIAL_DAYS} />
-      )}
-      <Text style={s.link}>See the Founder Pass →</Text>
-    </Pressable>
+    <PressScale onPress={() => router.push('/paywall')} scaleTo={0.98} accessibilityLabel="See the Founder Pass">
+      <LinearGradient colors={frostGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.frost}>
+        <Text style={s.kicker}>{expired ? 'Trial ended' : 'Free trial'}</Text>
+        <View style={s.row}>
+          <Text style={s.big}>{expired ? '0' : access.daysLeft}</Text>
+          <Text style={s.bigUnit}>{access.daysLeft === 1 ? 'day left' : 'days left'}</Text>
+        </View>
+        <View style={s.track}>
+          <View style={[s.fill, { width: `${Math.max(0, Math.min(1, used)) * 100}%` }]} />
+        </View>
+        <Text style={s.text}>
+          {expired ? 'Your history is all still here. Go Pro to keep logging.' : 'Everything is unlocked until then. History stays yours after.'}
+        </Text>
+        <View style={s.row}>
+          <Text style={s.link}>See the Founder Pass</Text>
+          <Ionicons name="arrow-forward" size={14} color={colors.onFrost} />
+        </View>
+      </LinearGradient>
+    </PressScale>
   );
 }
 
 const s = StyleSheet.create({
-  box: { backgroundColor: colors.card, borderRadius: radius.md, padding: 18, gap: space.md, borderWidth: 1, borderColor: colors.border },
-  title: { fontFamily: font, color: colors.text, fontSize: 16, fontWeight: '600' },
-  text: { fontFamily: font, color: colors.muted, fontSize: 14, lineHeight: 20 },
-  link: { fontFamily: font, color: colors.text, fontSize: 13, fontWeight: '600' },
+  frost: { borderRadius: radius.lg, padding: 20, gap: 10 },
+  row: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  kicker: { fontFamily: font, color: colors.onFrostMuted, fontSize: 12, fontWeight: '800', letterSpacing: 0.6, textTransform: 'uppercase' },
+  title: { fontFamily: display, color: colors.onFrost, fontSize: 30, fontWeight: '700' },
+  big: { fontFamily: display, color: colors.onFrost, fontSize: 52, lineHeight: 54, fontWeight: '700', fontVariant: ['tabular-nums'] },
+  bigUnit: { fontFamily: font, color: colors.onFrostMuted, fontSize: 15, fontWeight: '700', marginTop: 14 },
+  track: { height: 6, borderRadius: 3, backgroundColor: 'rgba(11,19,36,0.12)', overflow: 'hidden' },
+  fill: { height: '100%', borderRadius: 3, backgroundColor: colors.onFrost },
+  text: { fontFamily: font, color: colors.onFrostMuted, fontSize: 13, lineHeight: 18, fontWeight: '600' },
+  link: { fontFamily: font, color: colors.onFrost, fontSize: 14, fontWeight: '800' },
 });

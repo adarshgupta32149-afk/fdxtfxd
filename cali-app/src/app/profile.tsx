@@ -1,11 +1,19 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
-import { useState } from 'react';
-import { StyleSheet, TextInput, View } from 'react-native';
+import { useMemo, useState, type ComponentProps } from 'react';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 
+import { PressScale, Rise } from '@/components/motion';
+import { skillIcon } from '@/components/skillIcons';
 import { TrialBanner } from '@/components/TrialBanner';
-import { Body, Button, Card, H1, H2, Muted, Screen } from '@/components/ui';
+import { Card, H1, Muted, Screen, SectionHead } from '@/components/ui';
+import { BRAND } from '@/lib/brand';
+import { completedStepIds } from '@/lib/records';
+import { SKILLS } from '@/lib/skills';
 import { useAppState, type SyncState } from '@/state/AppStateProvider';
-import { colors, font, radius, space } from '@/theme';
+import { colors, display, font, radius } from '@/theme';
+
+type IconName = ComponentProps<typeof Ionicons>['name'];
 
 function syncLabel(sync: SyncState): string {
   if (sync.status === 'syncing') return 'Syncing…';
@@ -14,145 +22,236 @@ function syncLabel(sync: SyncState): string {
   return 'Backed up';
 }
 
+/** One tappable settings row: icon, label, optional detail, chevron. */
+function Row({ icon, label, detail, onPress, tone }: { icon: IconName; label: string; detail?: string; onPress?: () => void; tone?: 'danger' }) {
+  const color = tone === 'danger' ? colors.danger : colors.text;
+  return (
+    <PressScale onPress={onPress} disabled={!onPress} scaleTo={0.98} style={s.row} accessibilityLabel={label}>
+      <View style={[s.rowIcon, tone === 'danger' && { backgroundColor: colors.dangerFill }]}>
+        <Ionicons name={icon} size={17} color={color} />
+      </View>
+      <View style={{ flex: 1, minWidth: 0 }}>
+        <Text style={[s.rowLabel, { color }]}>{label}</Text>
+        {detail ? (
+          <Text style={s.rowDetail} numberOfLines={2}>
+            {detail}
+          </Text>
+        ) : null}
+      </View>
+      {onPress && <Ionicons name="chevron-forward" size={16} color={colors.faint} />}
+    </PressScale>
+  );
+}
+
 export default function ProfileScreen() {
-  const { state, access, account, backendAvailable, sync, updateProfile, eraseAllData, syncNow, signOut, deleteAccount, dev } = useAppState();
+  const { state, account, backendAvailable, sync, updateProfile, eraseAllData, syncNow, signOut, deleteAccount, resetOnboarding, dev } = useAppState();
   const [name, setName] = useState(state.profile.displayName);
   const [weight, setWeight] = useState(state.profile.bodyweightKg?.toString() ?? '');
   const [confirm, setConfirm] = useState<'erase' | 'delete' | null>(null);
   const [busy, setBusy] = useState(false);
   const [accountError, setAccountError] = useState<string | null>(null);
 
+  const steps = useMemo(() => completedStepIds(state).size, [state]);
+  const since = new Date(state.onboardedAt ?? state.trialStartedAt).toLocaleDateString(undefined, { month: 'short', year: 'numeric' });
+  const focus = state.focusSkills.map((id) => SKILLS.find((x) => x.id === id)).filter((x) => x !== undefined);
+  const initial = (name.trim()[0] ?? 'C').toUpperCase();
+
   const saveWeight = () => {
     const kg = parseFloat(weight.replace(',', '.'));
     updateProfile({ bodyweightKg: Number.isFinite(kg) && kg > 0 && kg < 400 ? Math.round(kg * 10) / 10 : undefined });
   };
+  const clearLocal = () => {
+    setName('');
+    setWeight('');
+    setConfirm(null);
+  };
 
   return (
-    <Screen headerInset>
-      <H1>Profile</H1>
-      <Card>
-        <H2>You</H2>
-        <Muted>Name (shown on leaderboards)</Muted>
-        <TextInput
-          style={s.input}
-          value={name}
-          onChangeText={setName}
-          onBlur={() => updateProfile({ displayName: name.trim().slice(0, 30) })}
-          maxLength={30}
-          placeholder="What should we call you?"
-          placeholderTextColor={colors.muted}
-        />
-        <Muted>Bodyweight (kg)</Muted>
-        <TextInput
-          style={s.input}
-          value={weight}
-          onChangeText={setWeight}
-          onBlur={saveWeight}
-          keyboardType="decimal-pad"
-          placeholder="e.g. 72"
-          placeholderTextColor={colors.muted}
-        />
-      </Card>
+    <Screen headerInset contentStyle={{ gap: 22 }}>
+      <Rise style={s.hero}>
+        <View style={s.avatar}>
+          <Text style={s.avatarText}>{initial}</Text>
+        </View>
+        <View style={{ flex: 1, minWidth: 0 }}>
+          <H1 numberOfLines={1}>{name.trim() || 'You'}</H1>
+          <Muted>
+            Since {since} · {state.workouts.length} {state.workouts.length === 1 ? 'session' : 'sessions'} · {steps} {steps === 1 ? 'step' : 'steps'}
+          </Muted>
+        </View>
+      </Rise>
 
-      {backendAvailable && (
-        <Card>
-          <H2>Account</H2>
-          {account ? (
-            <>
-              <Body>{account.email ?? 'Signed in'}</Body>
-              <Muted style={sync.status === 'error' ? { color: colors.danger } : undefined}>{syncLabel(sync)}</Muted>
-              <View style={{ gap: space.sm }}>
-                <Button label="Sync now" variant="glass" onPress={() => void syncNow()} disabled={sync.status === 'syncing'} />
-                <Button
-                  label="Sign out"
-                  variant="glass"
-                  disabled={busy}
-                  onPress={async () => {
-                    setBusy(true);
-                    await signOut();
-                    setBusy(false);
-                    setName('');
-                    setWeight('');
-                  }}
-                />
-              </View>
-            </>
-          ) : (
-            <>
-              <Muted>Sign in to back up your workouts, keep your trial and progress across phones, and join the leaderboards.</Muted>
-              <Button label="Sign in" onPress={() => router.push('/sign-in')} />
-            </>
-          )}
-        </Card>
+      {focus.length > 0 && (
+        <Rise delay={60} style={s.focusRow}>
+          {focus.map((sk) => (
+            <PressScale key={sk.id} onPress={() => router.push({ pathname: '/skills', params: { id: sk.id } })} style={s.focusChip} accessibilityLabel={sk.name}>
+              <Ionicons name={skillIcon(sk.id)} size={14} color={colors.text} />
+              <Text style={s.focusText}>{sk.name}</Text>
+            </PressScale>
+          ))}
+        </Rise>
       )}
 
-      <TrialBanner />
-      {access.status !== 'pro' && <Button label="See Founder Pass" variant="primary" onPress={() => router.push('/paywall')} />}
+      <Rise delay={110}>
+        <TrialBanner />
+      </Rise>
 
-      <Card>
-        <H2>Your data</H2>
-        {account ? (
-          <>
-            <Muted>{"Deleting your account permanently removes it and every workout, skill and score stored with it. This can't be undone."}</Muted>
-            <Button
-              label={confirm === 'delete' ? 'Tap again to delete my account' : 'Delete my account'}
-              variant="danger"
-              disabled={busy}
-              onPress={async () => {
-                if (confirm !== 'delete') return setConfirm('delete');
-                setBusy(true);
-                setAccountError(await deleteAccount());
-                setBusy(false);
-                setConfirm(null);
-                setName('');
-                setWeight('');
-              }}
+      <Rise delay={160} style={{ gap: 10 }}>
+        <SectionHead label="You" />
+        <Card style={{ gap: 14 }}>
+          <View style={s.field}>
+            <Text style={s.fieldLabel}>Name</Text>
+            <TextInput
+              style={s.input}
+              value={name}
+              onChangeText={setName}
+              onBlur={() => updateProfile({ displayName: name.trim().slice(0, 30) })}
+              maxLength={30}
+              placeholder="Shown on leaderboards"
+              placeholderTextColor={colors.faint}
             />
-          </>
-        ) : (
-          <>
-            <Muted>Everything is stored on this phone. Erasing removes all workouts, skills and your profile.</Muted>
-            <Button
+          </View>
+          <View style={s.sep} />
+          <View style={s.field}>
+            <Text style={s.fieldLabel}>Bodyweight</Text>
+            <TextInput
+              style={s.input}
+              value={weight}
+              onChangeText={setWeight}
+              onBlur={saveWeight}
+              keyboardType="decimal-pad"
+              placeholder="kg"
+              placeholderTextColor={colors.faint}
+            />
+          </View>
+        </Card>
+      </Rise>
+
+      {backendAvailable && (
+        <Rise delay={210} style={{ gap: 10 }}>
+          <SectionHead label="Account" />
+          <Card style={{ gap: 4, paddingVertical: 8 }}>
+            {account ? (
+              <>
+                <Row icon="mail-outline" label={account.email ?? 'Signed in'} detail={syncLabel(sync)} />
+                <Row icon="sync-outline" label={sync.status === 'syncing' ? 'Syncing…' : 'Sync now'} onPress={sync.status === 'syncing' ? undefined : () => void syncNow()} />
+                <Row
+                  icon="log-out-outline"
+                  label="Sign out"
+                  onPress={
+                    busy
+                      ? undefined
+                      : async () => {
+                          setBusy(true);
+                          await signOut();
+                          setBusy(false);
+                          clearLocal();
+                        }
+                  }
+                />
+              </>
+            ) : (
+              <Row
+                icon="cloud-upload-outline"
+                label="Sign in to back up"
+                detail="Keep your sessions, trial and ranks across phones."
+                onPress={() => router.push('/sign-in')}
+              />
+            )}
+          </Card>
+        </Rise>
+      )}
+
+      <Rise delay={260} style={{ gap: 10 }}>
+        <SectionHead label="Your data" />
+        <Card style={{ gap: 4, paddingVertical: 8 }}>
+          <Row icon="time-outline" label="History" detail="Every session you logged" onPress={() => router.push('/history')} />
+          {account ? (
+            <Row
+              icon="trash-outline"
+              tone="danger"
+              label={confirm === 'delete' ? 'Tap again to delete my account' : 'Delete my account'}
+              detail="Removes the account and everything stored with it. Can't be undone."
+              onPress={
+                busy
+                  ? undefined
+                  : async () => {
+                      if (confirm !== 'delete') return setConfirm('delete');
+                      setBusy(true);
+                      setAccountError(await deleteAccount());
+                      setBusy(false);
+                      clearLocal();
+                    }
+              }
+            />
+          ) : (
+            <Row
+              icon="trash-outline"
+              tone="danger"
               label={confirm === 'erase' ? 'Tap again to erase everything' : 'Erase all my data'}
-              variant="danger"
+              detail="Everything lives on this phone until you sign in."
               onPress={() => {
                 if (confirm !== 'erase') return setConfirm('erase');
                 eraseAllData();
-                setName('');
-                setWeight('');
-                setConfirm(null);
+                clearLocal();
               }}
             />
-          </>
-        )}
-        {accountError && <Body style={{ color: colors.danger }}>{accountError}</Body>}
-      </Card>
+          )}
+        </Card>
+        {accountError && <Text style={s.error}>{accountError}</Text>}
+      </Rise>
 
       {__DEV__ && (
-        <Card style={{ borderColor: colors.blue }}>
-          <H2 style={{ color: colors.blue }}>Developer tools</H2>
-          <Muted>{"Only visible in development builds. When signed in, the next sync resets Pro to the server's value."}</Muted>
-          <View style={{ gap: space.sm }}>
-            <Button label={state.isPro ? 'Turn Pro off' : 'Simulate Pro'} variant="glass" onPress={() => dev.setPro(!state.isPro)} />
-            <Button label="Age trial by 30 days" variant="glass" onPress={() => dev.ageTrial(30)} />
-            <Button label="Restart trial" variant="glass" onPress={dev.restartTrial} />
-          </View>
-        </Card>
+        <Rise delay={300} style={{ gap: 10 }}>
+          <SectionHead label="Developer" />
+          <Card style={{ gap: 4, paddingVertical: 8, borderColor: 'rgba(122,162,255,0.3)' }}>
+            <Row icon="sparkles-outline" label={state.isPro ? 'Turn Pro off' : 'Simulate Pro'} onPress={() => dev.setPro(!state.isPro)} />
+            <Row icon="hourglass-outline" label="Age trial by 30 days" onPress={() => dev.ageTrial(30)} />
+            <Row icon="refresh-outline" label="Restart trial" onPress={dev.restartTrial} />
+            <Row
+              icon="play-back-outline"
+              label="Show welcome again"
+              onPress={() => {
+                resetOnboarding();
+                router.replace('/welcome');
+              }}
+            />
+          </Card>
+          <Muted style={{ fontSize: 12 }}>{"Only in development builds. When signed in, the next sync resets Pro to the server's value."}</Muted>
+        </Rise>
       )}
+
+      <Text style={s.footer}>
+        {BRAND.name} · {BRAND.tagline}
+      </Text>
     </Screen>
   );
 }
 
 const s = StyleSheet.create({
-  input: {
-    fontFamily: font,
-    backgroundColor: colors.cardRaised,
-    color: colors.text,
-    borderRadius: radius.sm,
-    paddingHorizontal: space.md,
-    paddingVertical: 10,
-    fontSize: 16,
+  hero: { flexDirection: 'row', alignItems: 'center', gap: 16 },
+  avatar: { width: 72, height: 72, borderRadius: 36, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.frost },
+  avatarText: { fontFamily: display, color: colors.onFrost, fontSize: 38, fontWeight: '700' },
+  focusRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: -6 },
+  focusChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingVertical: 7,
+    paddingHorizontal: 12,
+    borderRadius: radius.pill,
+    backgroundColor: colors.card,
     borderWidth: 1,
     borderColor: colors.border,
   },
+  focusText: { fontFamily: font, color: colors.text, fontSize: 13, fontWeight: '700' },
+  field: { flexDirection: 'row', alignItems: 'center', gap: 12 },
+  fieldLabel: { width: 96, fontFamily: font, color: colors.muted, fontSize: 14, fontWeight: '700' },
+  input: { flex: 1, minWidth: 0, fontFamily: font, color: colors.text, fontSize: 16, fontWeight: '700', paddingVertical: 6, textAlign: 'right' },
+  sep: { height: 1, backgroundColor: colors.border },
+  row: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 10 },
+  rowIcon: { width: 34, height: 34, borderRadius: 11, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.cardRaised },
+  rowLabel: { fontFamily: font, fontSize: 15, fontWeight: '700' },
+  rowDetail: { fontFamily: font, color: colors.faint, fontSize: 12, fontWeight: '600' },
+  error: { fontFamily: font, color: colors.danger, fontSize: 13, fontWeight: '600' },
+  footer: { fontFamily: font, color: colors.faint, fontSize: 12, fontWeight: '600', textAlign: 'center', marginTop: 8 },
 });

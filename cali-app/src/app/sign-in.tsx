@@ -1,10 +1,12 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { ActivityIndicator, StyleSheet, TextInput } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, TextInput, View } from 'react-native';
 
-import { Body, Button, H1, Muted, Screen } from '@/components/ui';
+import { Rise } from '@/components/motion';
+import { Button, H1, Muted, Screen } from '@/components/ui';
 import { friendlyAuthError, supabase } from '@/lib/supabase';
-import { colors, font, radius, space } from '@/theme';
+import { colors, display, font, radius } from '@/theme';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -17,7 +19,8 @@ export default function SignInScreen() {
 
   if (!supabase) {
     return (
-      <Screen>
+      <Screen headerInset>
+        <H1>Sign in</H1>
         <Muted>{"Accounts aren't available in this build."}</Muted>
       </Screen>
     );
@@ -47,43 +50,63 @@ export default function SignInScreen() {
     router.back();
   };
 
+  const digits = code.replace(/\D/g, '').slice(0, 6);
+
   return (
-    <Screen>
-      <H1>{step === 'email' ? 'Sign in' : 'Check your email'}</H1>
+    <Screen headerInset contentStyle={{ gap: 18 }}>
+      <Rise>
+        <View style={s.icon}>
+          <Ionicons name={step === 'email' ? 'mail-outline' : 'key-outline'} size={22} color={colors.onFrost} />
+        </View>
+        <H1 style={{ marginTop: 16 }}>{step === 'email' ? 'Sign in' : 'Check your email'}</H1>
+        <Muted style={{ marginTop: 6 }}>
+          {step === 'email' ? 'Back up your sessions, keep your trial across phones, and get on the boards.' : `We sent a 6-digit code to ${email}.`}
+        </Muted>
+      </Rise>
       {step === 'email' ? (
-        <>
-          <Body>Back up your workouts, keep your progress across phones, and get on the leaderboards.</Body>
+        <Rise delay={80} style={{ gap: 14 }}>
           <TextInput
             style={s.input}
             value={email}
             onChangeText={setEmail}
             placeholder="you@email.com"
-            placeholderTextColor={colors.muted}
+            placeholderTextColor={colors.faint}
             autoCapitalize="none"
             autoComplete="email"
             keyboardType="email-address"
             inputMode="email"
             onSubmitEditing={sendCode}
+            autoFocus
           />
-          <Button label="Send me a code" onPress={sendCode} disabled={busy} />
-          <Muted>No password needed. New here? This creates your account.</Muted>
-        </>
+          <Button label={busy ? 'Sending…' : 'Send me a code'} onPress={sendCode} disabled={busy} icon={<Ionicons name="arrow-forward" size={16} color={colors.onFrost} />} />
+          <Muted style={{ textAlign: 'center', fontSize: 13 }}>No password. New here? This creates your account.</Muted>
+        </Rise>
       ) : (
-        <>
-          <Body>We sent a 6-digit code to {email}.</Body>
-          <TextInput
-            style={[s.input, s.code]}
-            value={code}
-            onChangeText={setCode}
-            placeholder="123456"
-            placeholderTextColor={colors.muted}
-            keyboardType="number-pad"
-            autoComplete="one-time-code"
-            textContentType="oneTimeCode"
-            maxLength={10}
-            onSubmitEditing={verify}
-          />
-          <Button label="Sign in" onPress={verify} disabled={busy} />
+        <Rise delay={80} style={{ gap: 14 }}>
+          {/* Six boxes drawn over one invisible input, so paste and one-time-code autofill still work. */}
+          <View>
+            <View style={s.boxes}>
+              {Array.from({ length: 6 }, (_, i) => (
+                <View key={i} style={[s.box, i === digits.length && s.boxActive, i < digits.length && s.boxFilled]}>
+                  <Text style={s.boxText}>{digits[i] ?? ''}</Text>
+                </View>
+              ))}
+            </View>
+            <TextInput
+              style={s.hiddenInput}
+              value={digits}
+              onChangeText={(v) => setCode(v.replace(/\D/g, '').slice(0, 6))}
+              keyboardType="number-pad"
+              autoComplete="one-time-code"
+              textContentType="oneTimeCode"
+              maxLength={6}
+              onSubmitEditing={verify}
+              autoFocus
+              caretHidden
+              accessibilityLabel="6-digit code"
+            />
+          </View>
+          <Button label={busy ? 'Checking…' : 'Sign in'} onPress={verify} disabled={busy || digits.length < 6} />
           <Button
             label="Use a different email"
             variant="glass"
@@ -93,25 +116,48 @@ export default function SignInScreen() {
               setError(null);
             }}
           />
-        </>
+        </Rise>
       )}
-      {busy && <ActivityIndicator color={colors.accent} />}
-      {error && <Body style={{ color: colors.danger }}>{error}</Body>}
+      {busy && <ActivityIndicator color={colors.frost} />}
+      {error && (
+        <View style={s.error}>
+          <Ionicons name="alert-circle" size={16} color={colors.danger} />
+          <Text style={s.errorText}>{error}</Text>
+        </View>
+      )}
     </Screen>
   );
 }
 
 const s = StyleSheet.create({
+  icon: { width: 48, height: 48, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.frost },
   input: {
     fontFamily: font,
-    backgroundColor: colors.cardRaised,
+    backgroundColor: colors.card,
     color: colors.text,
-    borderRadius: radius.sm,
-    paddingHorizontal: space.md,
-    paddingVertical: 12,
+    borderRadius: radius.md,
+    paddingHorizontal: 18,
+    paddingVertical: 16,
     fontSize: 17,
+    fontWeight: '600',
     borderWidth: 1,
     borderColor: colors.border,
   },
-  code: { fontSize: 28, letterSpacing: 8, textAlign: 'center' },
+  boxes: { flexDirection: 'row', gap: 8 },
+  box: {
+    flex: 1,
+    aspectRatio: 0.82,
+    borderRadius: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.card,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  boxActive: { borderColor: colors.frost, borderWidth: 1.5 },
+  boxFilled: { backgroundColor: colors.cardRaised },
+  boxText: { fontFamily: display, color: colors.text, fontSize: 30, fontWeight: '700' },
+  hiddenInput: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, opacity: 0.02, color: 'transparent' },
+  error: { flexDirection: 'row', alignItems: 'center', gap: 8, padding: 12, borderRadius: 12, backgroundColor: colors.dangerFill },
+  errorText: { flex: 1, fontFamily: font, color: colors.danger, fontSize: 13, fontWeight: '700' },
 });

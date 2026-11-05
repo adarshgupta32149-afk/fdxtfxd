@@ -1,4 +1,4 @@
-import type { Skill } from './types';
+import type { Skill, StepTarget } from './types';
 
 /**
  * Progressions from beginner to elite. Steps with a `target` complete themselves
@@ -80,3 +80,14 @@ export const SKILLS: Skill[] = [
     ],
   },
 ];
+
+/** "Pull-up · 5 reps", "Handstand · 30s hold", "Muscle-up · 1 rep +10 kg". Empty when the step is ticked by hand. */
+export function targetLabel(target: StepTarget | undefined, exerciseName: (id: string) => string | undefined): string {
+  if (!target) return '';
+  const parts: string[] = [];
+  if (target.reps) parts.push(`${target.reps} ${target.reps === 1 ? 'rep' : 'reps'}`);
+  if (target.holdSec) parts.push(`${target.holdSec}s hold`);
+  if (target.kg) parts.push(`+${target.kg} kg`);
+  const name = exerciseName(target.exerciseId) ?? target.exerciseId;
+  return parts.length ? `${name} · ${parts.join(' ')}` : name;
+}

@@ -104,3 +104,26 @@ export function formatSet(set: SetEntry): string {
   const main = set.holdSec !== undefined ? `${set.holdSec}s` : `${set.reps ?? 0} reps`;
   return set.kg ? `${main} @ ${set.kg}kg` : main;
 }
+
+/** Sets from the most recent workout that included this exercise, for the logger's "previous" column. */
+export function previousSets(workouts: Workout[], exerciseId: string): SetEntry[] {
+  let best: Workout | undefined;
+  for (const w of workouts) {
+    if (!w.entries.some((e) => e.exerciseId === exerciseId)) continue;
+    if (!best || w.date > best.date) best = w;
+  }
+  return best?.entries.filter((e) => e.exerciseId === exerciseId).flatMap((e) => e.sets) ?? [];
+}
+
+/** Exercise ids the user logs most, most frequent first, for quick-add chips. */
+export function frequentExercises(workouts: Workout[], limit = 5): string[] {
+  const counts = new Map<string, number>();
+  for (const w of workouts) for (const e of w.entries) counts.set(e.exerciseId, (counts.get(e.exerciseId) ?? 0) + 1);
+  return [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, limit).map(([id]) => id);
+}
+
+/** Compact set label for tight columns: "8", "8 +5", "30s". */
+export function shortSet(set: SetEntry): string {
+  const main = set.holdSec !== undefined ? `${set.holdSec}s` : `${set.reps ?? 0}`;
+  return set.kg ? `${main} +${set.kg}` : main;
+}

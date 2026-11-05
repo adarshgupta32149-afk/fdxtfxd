@@ -34,9 +34,12 @@ export function Screen({
   topInset = false,
   headerInset = false,
   tabBar = false,
+  overlay,
 }: {
   children: ReactNode;
   contentStyle?: StyleProp<ViewStyle>;
+  /** Floats above the scrolling content, e.g. a rest timer or a fixed header. */
+  overlay?: ReactNode;
   /** Add the status-bar height on screens without a header. */
   topInset?: boolean;
   /** Clear a transparent header (back button) as well as the status bar. */
@@ -61,6 +64,7 @@ export function Screen({
       >
         {children}
       </ScrollView>
+      {overlay}
     </Backdrop>
   );
 }

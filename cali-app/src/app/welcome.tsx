@@ -5,6 +5,7 @@ import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { PressScale, Rise } from '@/components/motion';
+import { skillIcon } from '@/components/skillIcons';
 import { Backdrop, Button, Chip, FrostCard, Muted } from '@/components/ui';
 import { BRAND } from '@/lib/brand';
 import * as haptics from '@/lib/haptics';
@@ -15,15 +16,6 @@ import { useAppState } from '@/state/AppStateProvider';
 import { colors, display, font, radius } from '@/theme';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
-
-const SKILL_ICONS: Record<string, IconName> = {
-  'muscle-up': 'arrow-up-circle-outline',
-  handstand: 'hand-left-outline',
-  'front-lever': 'remove-outline',
-  planche: 'airplane-outline',
-  pistol: 'footsteps-outline',
-  'l-sit': 'git-commit-outline',
-};
 
 const PROMISES: { icon: IconName; text: string }[] = [
   { icon: 'list-outline', text: 'Log sessions in seconds' },
@@ -143,7 +135,7 @@ export default function WelcomeScreen() {
                           <View key={skill.id} style={s.cell}>
                             <PressScale onPress={() => toggleSkill(skill.id)} containerStyle={{ flex: 1 }} style={[s.tile, on && s.tileOn]} haptic="none" accessibilityLabel={skill.name}>
                               <View style={s.tileTop}>
-                                <Ionicons name={SKILL_ICONS[skill.id] ?? 'flash-outline'} size={22} color={on ? colors.onFrost : colors.text} />
+                                <Ionicons name={skillIcon(skill.id)} size={22} color={on ? colors.onFrost : colors.text} />
                                 <Ionicons name={on ? 'checkmark-circle' : 'ellipse-outline'} size={20} color={on ? colors.onFrost : colors.faint} />
                               </View>
                               <Text style={[s.tileName, on && { color: colors.onFrost }]} numberOfLines={1} adjustsFontSizeToFit>
