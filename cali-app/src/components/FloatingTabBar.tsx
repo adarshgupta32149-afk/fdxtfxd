@@ -11,10 +11,19 @@ import { colors, font, frostGradient } from '@/theme';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
-export const TABS: { name: string; href: '/' | '/ranking' | '/compete'; label: string; icon: IconName; iconOn: IconName }[] = [
-  { name: 'home', href: '/', label: 'Home', icon: 'home-outline', iconOn: 'home' },
-  { name: 'ranking', href: '/ranking', label: 'Ranking', icon: 'podium-outline', iconOn: 'podium' },
-  { name: 'compete', href: '/compete', label: 'Compete', icon: 'trophy-outline', iconOn: 'trophy' },
+export const TABS: {
+  name: string;
+  href: '/' | '/ranking' | '/compete' | '/learn';
+  label: string;
+  icon: IconName;
+  iconOn: IconName;
+  /** The sliding pill takes this gradient when the tab is active. */
+  pill: readonly [string, string, ...string[]];
+}[] = [
+  { name: 'home', href: '/', label: 'Home', icon: 'home-outline', iconOn: 'home', pill: frostGradient },
+  { name: 'ranking', href: '/ranking', label: 'Ranking', icon: 'podium-outline', iconOn: 'podium', pill: ['#F1E6C4', '#E3D3A6', '#CDB983'] },
+  { name: 'compete', href: '/compete', label: 'Compete', icon: 'trophy-outline', iconOn: 'trophy', pill: ['#FFC29E', '#FF9A62', '#F07F45'] },
+  { name: 'learn', href: '/learn', label: 'Learn', icon: 'book-outline', iconOn: 'book', pill: ['#B8EDCD', '#8FD3AE', '#6DB890'] },
 ];
 
 const PAD = 6;
@@ -23,6 +32,7 @@ const PAD = 6;
 export function tabIndexFor(pathname: string): number {
   if (pathname.startsWith('/ranking')) return 1;
   if (pathname.startsWith('/compete')) return 2;
+  if (pathname.startsWith('/learn')) return 3;
   return 0;
 }
 
@@ -56,7 +66,7 @@ export function FloatingTabBar() {
   const pathname = usePathname();
   const active = tabIndexFor(pathname);
   const { width: screen } = useWindowDimensions();
-  const [barWidth, setBarWidth] = useState(Math.min(320, screen - 44));
+  const [barWidth, setBarWidth] = useState(Math.min(360, screen - 36));
   const segment = (barWidth - PAD * 2) / TABS.length;
   const x = useState(() => new Animated.Value(active))[0];
 
@@ -66,14 +76,22 @@ export function FloatingTabBar() {
 
   return (
     <View pointerEvents="box-none" style={[s.wrap, { bottom: insets.bottom + 18 }]}>
-      <View style={[s.bar, { width: Math.min(320, screen - 44) }]} onLayout={(e) => setBarWidth(e.nativeEvent.layout.width)}>
+      <View style={[s.bar, { width: Math.min(360, screen - 36) }]} onLayout={(e) => setBarWidth(e.nativeEvent.layout.width)}>
         <Animated.View
           style={[
             s.indicator,
             { width: segment, transform: [{ translateX: x.interpolate({ inputRange: [0, TABS.length - 1], outputRange: [0, segment * (TABS.length - 1)] }) }] },
           ]}
         >
-          <LinearGradient colors={frostGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.indicatorFill} />
+          {/* One gradient per tab, cross-faded as the pill slides, so its colour follows the tab. */}
+          {TABS.map((tab, i) => (
+            <Animated.View
+              key={tab.name}
+              style={[StyleSheet.absoluteFill, { opacity: x.interpolate({ inputRange: [i - 1, i, i + 1], outputRange: [0, 1, 0], extrapolate: 'clamp' }) }]}
+            >
+              <LinearGradient colors={tab.pill} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.indicatorFill} />
+            </Animated.View>
+          ))}
         </Animated.View>
         {TABS.map((tab) => (
           <TabTrigger key={tab.name} name={tab.name} asChild>

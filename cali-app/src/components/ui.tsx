@@ -64,6 +64,15 @@ export function Screen({
       >
         {children}
       </ScrollView>
+      {/* Content scrolls under the transparent header; a soft fade keeps the back button readable. */}
+      {headerInset && (
+        <LinearGradient
+          pointerEvents="none"
+          colors={['rgba(7,11,22,0.96)', 'rgba(7,11,22,0.75)', 'rgba(7,11,22,0)']}
+          locations={[0, 0.6, 1]}
+          style={[styles.headerFade, { height: insets.top + 72 }]}
+        />
+      )}
       {overlay}
     </Backdrop>
   );
@@ -224,6 +233,7 @@ export function SectionHead({ label, action, onAction }: { label: string; action
 export const styles = StyleSheet.create({
   // Transparent on purpose: scroll views sit on the Backdrop, and a fill colour here would hide the glow.
   fill: { flex: 1 },
+  headerFade: { position: 'absolute', top: 0, left: 0, right: 0 },
   backdrop: { flex: 1, backgroundColor: colors.bg },
   screenContent: { paddingHorizontal: 22, paddingTop: space.lg, paddingBottom: space.xxl * 2, gap: space.lg },
   card: { backgroundColor: colors.card, borderRadius: radius.md, padding: 18, gap: space.md, borderWidth: 1, borderColor: colors.border },

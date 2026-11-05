@@ -21,11 +21,12 @@ interface MenuContextValue {
 const MenuContext = createContext<MenuContextValue>({ open: () => {}, close: () => {}, isOpen: false });
 export const useMenu = () => useContext(MenuContext);
 
-const ITEMS: { label: string; hint: string; icon: IconName; href: Href }[] = [
-  { label: 'History', hint: 'Every session you logged', icon: 'time-outline', href: '/history' },
-  { label: 'Skills', hint: 'Your progressions', icon: 'ribbon-outline', href: '/skills' },
-  { label: 'Records', hint: 'Personal bests', icon: 'stats-chart-outline', href: '/records' },
-  { label: 'Profile', hint: 'You, account and data', icon: 'person-outline', href: '/profile' },
+const ITEMS: { label: string; hint: string; icon: IconName; href: Href; color: string }[] = [
+  { label: 'Skills', hint: 'Your ladders', icon: 'git-network-outline', href: '/skills', color: colors.sage },
+  { label: 'Learn', hint: 'Guides and videos', icon: 'book-outline', href: '/learn', color: '#6FD6C8' },
+  { label: 'History', hint: 'Every session you logged', icon: 'time-outline', href: '/history', color: colors.sky },
+  { label: 'Records', hint: 'Personal bests', icon: 'stats-chart-outline', href: '/records', color: colors.gold },
+  { label: 'Profile', hint: 'You, account and data', icon: 'person-outline', href: '/profile', color: colors.violet },
 ];
 
 /**
@@ -134,8 +135,8 @@ function MenuPanel({ progress, onNavigate }: { progress: Animated.Value; onNavig
                 accessibilityRole="button"
                 accessibilityLabel={item.label}
               >
-                <View style={s.itemIcon}>
-                  <Ionicons name={item.icon} size={19} color={colors.text} />
+                <View style={[s.itemIcon, { backgroundColor: `${item.color}1F`, borderColor: `${item.color}40` }]}>
+                  <Ionicons name={item.icon} size={19} color={item.color} />
                 </View>
                 <View style={{ flex: 1 }}>
                   <Text style={s.itemLabel}>{item.label}</Text>

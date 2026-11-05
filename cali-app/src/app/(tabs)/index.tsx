@@ -1,21 +1,27 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { useMemo } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
 import { useNow } from '@/components/hooks';
+import { HubButton } from '@/components/HubButton';
+import { CategoryTag } from '@/components/LearnCards';
+import { articleImage, videoThumb } from '@/components/learnMedia';
 import { LiveDot, PressScale, Rise, useCountUp } from '@/components/motion';
 import { PosterCarousel } from '@/components/PosterCarousel';
 import { useMenu } from '@/components/SideMenu';
 import { Button, Card, FrostCard, H1, Muted, ProgressBar, Screen, SectionHead } from '@/components/ui';
 import { WeekStrip } from '@/components/WeekStrip';
 import { WorkoutCard } from '@/components/WorkoutCard';
+import { skillIcon } from '@/components/skillIcons';
+import { ARTICLES, dailyPick, VIDEOS } from '@/lib/learn';
 import { postersFor } from '@/lib/posters';
 import { completedStepIds, countSets, skillProgress, workoutsThisWeek } from '@/lib/records';
 import { SKILLS } from '@/lib/skills';
 import { clockLabel, PERIOD_COPY, periodOf } from '@/lib/time';
 import { useAppState } from '@/state/AppStateProvider';
-import { colors, display, font, radius } from '@/theme';
+import { colors, display, font, mossGradient, radius } from '@/theme';
 
 function StatNumber({ value, label, delay }: { value: number; label: string; delay: number }) {
   const shown = useCountUp(value, { delay });
@@ -45,6 +51,11 @@ export default function HomeScreen() {
     return focus ?? all.sort((a, b) => b.progress.done - a.progress.done)[0];
   }, [completed, state.focusSkills]);
 
+  // One guide and one video a day from Learn, leaning toward the user's focus skills.
+  const today = now.toDateString();
+  const pick = useMemo(() => dailyPick(ARTICLES, new Date(today), state.focusSkills), [today, state.focusSkills]);
+  const pickVideo = useMemo(() => dailyPick(VIDEOS.filter((v) => !v.short), new Date(today), state.focusSkills), [today, state.focusSkills]);
+
   const name = state.profile.displayName.trim();
   const sets = countSets(week);
 
@@ -52,9 +63,7 @@ export default function HomeScreen() {
     <Screen topInset tabBar contentStyle={{ gap: 20 }}>
       <Rise delay={0}>
         <View style={s.topbar}>
-          <PressScale onPress={menu.open} style={s.iconBtn} accessibilityLabel="Open menu">
-            <Ionicons name="menu" size={20} color={colors.text} />
-          </PressScale>
+          <HubButton onPress={menu.open} />
           <PressScale onPress={() => router.push('/profile')} style={s.avatar} accessibilityLabel="Profile">
             <Text style={s.avatarText}>{(name[0] ?? 'C').toUpperCase()}</Text>
           </PressScale>
@@ -99,9 +108,14 @@ export default function HomeScreen() {
       </Rise>
 
       <Rise delay={280}>
-        <Card style={{ gap: 18 }}>
-          <SectionHead label="This week" action="History" onAction={() => router.push('/history')} />
-          <WeekStrip workouts={state.workouts} now={now} />
+        <LinearGradient colors={mossGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.week}>
+          <View style={s.weekHead}>
+            <Text style={s.weekLabel}>This week</Text>
+            <PressScale onPress={() => router.push('/history')} haptic="none" accessibilityLabel="Open history">
+              <Text style={s.weekAction}>History</Text>
+            </PressScale>
+          </View>
+          <WeekStrip workouts={state.workouts} now={now} tone="moss" />
           <View style={s.statsRow}>
             <StatNumber value={week.length} label={week.length === 1 ? 'session' : 'sessions'} delay={500} />
             <View style={s.divider} />
@@ -109,7 +123,7 @@ export default function HomeScreen() {
             <View style={s.divider} />
             <StatNumber value={completed.size} label={completed.size === 1 ? 'skill step' : 'skill steps'} delay={660} />
           </View>
-        </Card>
+        </LinearGradient>
       </Rise>
 
       {next && (
@@ -118,7 +132,10 @@ export default function HomeScreen() {
             <Card>
               <SectionHead label={state.focusSkills.includes(next.skill.id) ? 'Your focus' : 'Next skill'} />
               <View style={s.skillRow}>
-                <Text style={s.skillName}>{next.skill.name}</Text>
+                <View style={s.skillIcon}>
+                  <Ionicons name={skillIcon(next.skill.id)} size={18} color={colors.onFrost} />
+                </View>
+                <Text style={[s.skillName, { flex: 1 }]}>{next.skill.name}</Text>
                 <Text style={s.skillFrac}>
                   {next.progress.done}/{next.progress.total}
                 </Text>
@@ -133,7 +150,50 @@ export default function HomeScreen() {
         </Rise>
       )}
 
-      <Rise delay={420} style={{ gap: 12 }}>
+      {pick && (
+        <Rise delay={400} style={{ gap: 12 }}>
+          <SectionHead label="Today's pick" action="Learn" onAction={() => router.push('/learn')} />
+          <PressScale onPress={() => router.push({ pathname: '/learn/[id]', params: { id: pick.id } })} scaleTo={0.98} accessibilityLabel={`Read ${pick.title}`}>
+            <View style={s.pick}>
+              <Image source={articleImage(pick.id)} style={StyleSheet.absoluteFill} resizeMode="cover" />
+              <LinearGradient colors={['rgba(7,11,22,0.1)', 'rgba(7,11,22,0.94)']} locations={[0.2, 1]} style={StyleSheet.absoluteFill} />
+              <View style={s.pickTop}>
+                <CategoryTag category={pick.category} onImage />
+              </View>
+              <View style={s.pickBottom}>
+                <Text style={s.pickTitle} numberOfLines={2}>
+                  {pick.title}
+                </Text>
+                <Text style={s.pickMeta}>
+                  {pick.source} · {pick.minutes} min read
+                </Text>
+              </View>
+            </View>
+          </PressScale>
+          {pickVideo && (
+            <PressScale
+              onPress={() => router.push({ pathname: '/learn/video/[id]', params: { id: pickVideo.id } })}
+              scaleTo={0.98}
+              style={s.pickVideo}
+              accessibilityLabel={`Watch ${pickVideo.title}`}
+            >
+              <Image source={videoThumb(pickVideo.id)} style={s.pickVideoThumb} />
+              <View style={s.pickVideoPlay}>
+                <Ionicons name="play" size={11} color={colors.onFrost} />
+              </View>
+              <View style={{ flex: 1, minWidth: 0 }}>
+                <Text style={s.pickVideoKicker}>Watch · {pickVideo.length}</Text>
+                <Text style={s.pickVideoTitle} numberOfLines={1}>
+                  {pickVideo.title}
+                </Text>
+              </View>
+              <Ionicons name="chevron-forward" size={16} color={colors.faint} />
+            </PressScale>
+          )}
+        </Rise>
+      )}
+
+      <Rise delay={460} style={{ gap: 12 }}>
         <SectionHead label="Recent" action={state.workouts.length > 2 ? 'See all' : undefined} onAction={() => router.push('/history')} />
         {state.workouts.length === 0 ? (
           <Card style={s.empty}>
@@ -150,7 +210,6 @@ export default function HomeScreen() {
 
 const s = StyleSheet.create({
   topbar: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  iconBtn: { width: 44, height: 44, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border },
   avatar: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.frost },
   avatarText: { fontFamily: display, color: colors.onFrost, fontSize: 22, fontWeight: '700' },
   clockRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },
@@ -161,10 +220,25 @@ const s = StyleSheet.create({
   trialNote: { fontFamily: font, color: colors.onFrostMuted, fontSize: 12, fontWeight: '700' },
   statsRow: { flexDirection: 'row', alignItems: 'center' },
   statCol: { flex: 1, alignItems: 'center', gap: 2 },
+  week: { borderRadius: radius.lg, padding: 18, gap: 18, borderWidth: 1, borderColor: 'rgba(143,211,174,0.2)' },
+  weekHead: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  weekLabel: { fontFamily: font, color: colors.sage, fontSize: 12, fontWeight: '800', letterSpacing: 0.8, textTransform: 'uppercase' },
+  weekAction: { fontFamily: font, color: colors.text, fontSize: 13, fontWeight: '800' },
+  skillIcon: { width: 34, height: 34, borderRadius: 11, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.sage },
+  pick: { height: 210, borderRadius: radius.lg, overflow: 'hidden', backgroundColor: colors.navyPanel, borderWidth: 1, borderColor: colors.border },
+  pickTop: { position: 'absolute', top: 14, left: 14 },
+  pickBottom: { position: 'absolute', left: 16, right: 16, bottom: 14, gap: 4 },
+  pickTitle: { fontFamily: display, color: colors.text, fontSize: 28, lineHeight: 30, fontWeight: '700' },
+  pickMeta: { fontFamily: font, color: colors.muted, fontSize: 12, fontWeight: '700' },
+  pickVideo: { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 10, borderRadius: radius.md, backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border },
+  pickVideoThumb: { width: 72, height: 44, borderRadius: 9 },
+  pickVideoPlay: { position: 'absolute', left: 39, top: 23, width: 20, height: 20, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.frostHi },
+  pickVideoKicker: { fontFamily: font, color: colors.ember, fontSize: 11, fontWeight: '800' },
+  pickVideoTitle: { fontFamily: font, color: colors.text, fontSize: 14, fontWeight: '700' },
   statNum: { fontFamily: display, color: colors.text, fontSize: 36, lineHeight: 38, fontWeight: '600', fontVariant: ['tabular-nums'] },
   statLabel: { fontFamily: font, color: colors.muted, fontSize: 12, fontWeight: '600' },
-  divider: { width: 1, height: 34, backgroundColor: colors.border },
-  skillRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' },
+  divider: { width: 1, height: 34, backgroundColor: 'rgba(143,211,174,0.22)' },
+  skillRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   skillName: { fontFamily: display, color: colors.text, fontSize: 30, lineHeight: 32, fontWeight: '600' },
   skillFrac: { fontFamily: display, color: colors.muted, fontSize: 20, fontWeight: '600' },
   nextRow: { flexDirection: 'row', alignItems: 'center', gap: 8 },

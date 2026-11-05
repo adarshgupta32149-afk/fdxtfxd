@@ -11,7 +11,8 @@ export default function TabLayout() {
 
   return (
     <Tabs style={{ flex: 1 }}>
-      <TabSlot />
+      {/* The slot's own style lets it grow past the screen on web, which stops tab screens scrolling. Pin it to the screen. */}
+      <TabSlot style={{ flexShrink: 1, flexBasis: 0, minHeight: 0 }} />
       <FloatingTabBar />
       {/* The hidden list defines the routes; the floating bar above is what people see and tap. */}
       <TabList style={{ display: 'none' }}>

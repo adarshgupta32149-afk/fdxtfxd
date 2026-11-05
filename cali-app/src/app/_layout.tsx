@@ -63,6 +63,8 @@ export default function RootLayout() {
           <Stack.Screen name="profile" options={{ title: '', headerTransparent: true }} />
           <Stack.Screen name="workout/new" options={{ headerShown: false, presentation: 'modal', animation: 'slide_from_bottom' }} />
           <Stack.Screen name="workout/[id]" options={{ title: '', headerTransparent: true }} />
+          <Stack.Screen name="learn/[id]" options={{ title: '', headerTransparent: true }} />
+          <Stack.Screen name="learn/video/[id]" options={{ title: '', headerTransparent: true }} />
           <Stack.Screen name="paywall" options={{ title: '', presentation: 'modal', headerTransparent: true, animation: 'slide_from_bottom' }} />
           <Stack.Screen name="sign-in" options={{ title: '', presentation: 'modal', headerTransparent: true, animation: 'slide_from_bottom' }} />
         </Stack>
