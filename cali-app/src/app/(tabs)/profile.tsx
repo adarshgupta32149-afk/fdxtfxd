@@ -3,31 +3,41 @@ import { useState } from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 
 import { TrialBanner } from '@/components/TrialBanner';
-import { Button, Card, H2, Muted, Screen } from '@/components/ui';
-import { useAppState } from '@/state/AppStateProvider';
+import { Body, Button, Card, H2, Muted, Screen } from '@/components/ui';
+import { useAppState, type SyncState } from '@/state/AppStateProvider';
 import { colors, radius, space } from '@/theme';
 
+function syncLabel(sync: SyncState): string {
+  if (sync.status === 'syncing') return 'Syncing…';
+  if (sync.status === 'error') return sync.message ?? 'Sync problem. Will retry.';
+  if (sync.lastSyncedAt) return `Backed up at ${new Date(sync.lastSyncedAt).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })}`;
+  return 'Backed up';
+}
+
 export default function ProfileScreen() {
-  const { state, access, updateProfile, eraseAllData, dev } = useAppState();
+  const { state, access, account, backendAvailable, sync, updateProfile, eraseAllData, syncNow, signOut, deleteAccount, dev } = useAppState();
   const [name, setName] = useState(state.profile.displayName);
   const [weight, setWeight] = useState(state.profile.bodyweightKg?.toString() ?? '');
-  const [confirmErase, setConfirmErase] = useState(false);
+  const [confirm, setConfirm] = useState<'erase' | 'delete' | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [accountError, setAccountError] = useState<string | null>(null);
 
   const saveWeight = () => {
     const kg = parseFloat(weight.replace(',', '.'));
-    updateProfile({ bodyweightKg: Number.isFinite(kg) && kg > 0 ? kg : undefined });
+    updateProfile({ bodyweightKg: Number.isFinite(kg) && kg > 0 && kg < 400 ? Math.round(kg * 10) / 10 : undefined });
   };
 
   return (
     <Screen>
       <Card>
         <H2>You</H2>
-        <Muted>Name</Muted>
+        <Muted>Name (shown on leaderboards)</Muted>
         <TextInput
           style={s.input}
           value={name}
           onChangeText={setName}
-          onBlur={() => updateProfile({ displayName: name.trim() })}
+          onBlur={() => updateProfile({ displayName: name.trim().slice(0, 30) })}
+          maxLength={30}
           placeholder="What should we call you?"
           placeholderTextColor={colors.muted}
         />
@@ -43,29 +53,84 @@ export default function ProfileScreen() {
         />
       </Card>
 
+      {backendAvailable && (
+        <Card>
+          <H2>Account</H2>
+          {account ? (
+            <>
+              <Body>{account.email ?? 'Signed in'}</Body>
+              <Muted style={sync.status === 'error' ? { color: colors.danger } : undefined}>{syncLabel(sync)}</Muted>
+              <View style={{ gap: space.sm }}>
+                <Button label="Sync now" variant="secondary" onPress={() => void syncNow()} disabled={sync.status === 'syncing'} />
+                <Button
+                  label="Sign out"
+                  variant="secondary"
+                  disabled={busy}
+                  onPress={async () => {
+                    setBusy(true);
+                    await signOut();
+                    setBusy(false);
+                    setName('');
+                    setWeight('');
+                  }}
+                />
+              </View>
+            </>
+          ) : (
+            <>
+              <Muted>Sign in to back up your workouts, keep your trial and progress across phones, and join the leaderboards.</Muted>
+              <Button label="Sign in" onPress={() => router.push('/sign-in')} />
+            </>
+          )}
+        </Card>
+      )}
+
       <TrialBanner />
       {access.status !== 'pro' && <Button label="See Founder Pass" variant="gold" onPress={() => router.push('/paywall')} />}
 
       <Card>
         <H2>Your data</H2>
-        <Muted>Everything is stored on this phone. Erasing removes all workouts, skills and your profile.</Muted>
-        <Button
-          label={confirmErase ? 'Tap again to erase everything' : 'Erase all my data'}
-          variant="danger"
-          onPress={() => {
-            if (!confirmErase) return setConfirmErase(true);
-            eraseAllData();
-            setName('');
-            setWeight('');
-            setConfirmErase(false);
-          }}
-        />
+        {account ? (
+          <>
+            <Muted>{"Deleting your account permanently removes it and every workout, skill and score stored with it. This can't be undone."}</Muted>
+            <Button
+              label={confirm === 'delete' ? 'Tap again to delete my account' : 'Delete my account'}
+              variant="danger"
+              disabled={busy}
+              onPress={async () => {
+                if (confirm !== 'delete') return setConfirm('delete');
+                setBusy(true);
+                setAccountError(await deleteAccount());
+                setBusy(false);
+                setConfirm(null);
+                setName('');
+                setWeight('');
+              }}
+            />
+          </>
+        ) : (
+          <>
+            <Muted>Everything is stored on this phone. Erasing removes all workouts, skills and your profile.</Muted>
+            <Button
+              label={confirm === 'erase' ? 'Tap again to erase everything' : 'Erase all my data'}
+              variant="danger"
+              onPress={() => {
+                if (confirm !== 'erase') return setConfirm('erase');
+                eraseAllData();
+                setName('');
+                setWeight('');
+                setConfirm(null);
+              }}
+            />
+          </>
+        )}
+        {accountError && <Body style={{ color: colors.danger }}>{accountError}</Body>}
       </Card>
 
       {__DEV__ && (
         <Card style={{ borderColor: colors.blue }}>
           <H2 style={{ color: colors.blue }}>Developer tools</H2>
-          <Muted>Only visible in development builds. Use these to test the trial and Pro states.</Muted>
+          <Muted>{"Only visible in development builds. When signed in, the next sync resets Pro to the server's value."}</Muted>
           <View style={{ gap: space.sm }}>
             <Button label={state.isPro ? 'Turn Pro off' : 'Simulate Pro'} variant="secondary" onPress={() => dev.setPro(!state.isPro)} />
             <Button label="Age trial by 30 days" variant="secondary" onPress={() => dev.ageTrial(30)} />

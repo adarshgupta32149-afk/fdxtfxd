@@ -71,4 +71,10 @@ export interface AppState {
   /** Skill steps the user ticked off by hand, keyed by step id, valued by ISO date. */
   manualSteps: Record<string, string>;
   profile: Profile;
+  /** Account (user id) the local workouts belong to, once they've been synced. */
+  ownerId?: string;
+  /** Workouts deleted on this phone that still need deleting on the server. */
+  pendingWorkoutDeletes: string[];
+  /** Hand-ticked steps unticked on this phone that still need removing on the server. */
+  pendingStepRemovals: string[];
 }

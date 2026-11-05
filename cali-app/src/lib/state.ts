@@ -14,8 +14,12 @@ export function createInitialState(now: Date): AppState {
     workouts: [],
     manualSteps: {},
     profile: { displayName: '' },
+    pendingWorkoutDeletes: [],
+    pendingStepRemovals: [],
   };
 }
+
+const stringArray = (value: unknown): string[] => (Array.isArray(value) ? value.filter((v): v is string => typeof v === 'string') : []);
 
 /** Records that the app was opened now, never moving `lastSeenAt` backwards. */
 export function touchLastSeen(state: AppState, now: Date): AppState {
@@ -57,5 +61,8 @@ export function parseState(raw: string | null, now: Date): AppState {
       displayName: typeof data.profile?.displayName === 'string' ? data.profile.displayName : '',
       bodyweightKg: typeof data.profile?.bodyweightKg === 'number' ? data.profile.bodyweightKg : undefined,
     },
+    ownerId: typeof data.ownerId === 'string' ? data.ownerId : undefined,
+    pendingWorkoutDeletes: stringArray(data.pendingWorkoutDeletes),
+    pendingStepRemovals: stringArray(data.pendingStepRemovals),
   };
 }

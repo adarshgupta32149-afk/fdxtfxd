@@ -20,6 +20,7 @@ export default function RootLayout() {
         <Stack.Screen name="workout/new" options={{ title: 'Log workout', presentation: 'modal' }} />
         <Stack.Screen name="workout/[id]" options={{ title: 'Workout' }} />
         <Stack.Screen name="paywall" options={{ title: 'Go Pro', presentation: 'modal' }} />
+        <Stack.Screen name="sign-in" options={{ title: 'Account', presentation: 'modal' }} />
       </Stack>
     </AppStateProvider>
   );
