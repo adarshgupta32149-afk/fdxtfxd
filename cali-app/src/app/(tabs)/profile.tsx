@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 
 import { TrialBanner } from '@/components/TrialBanner';
-import { Body, Button, Card, H2, Muted, Screen } from '@/components/ui';
+import { Body, Button, Card, H1, H2, Muted, Screen } from '@/components/ui';
 import { useAppState, type SyncState } from '@/state/AppStateProvider';
-import { colors, radius, space } from '@/theme';
+import { colors, font, radius, space } from '@/theme';
 
 function syncLabel(sync: SyncState): string {
   if (sync.status === 'syncing') return 'Syncing…';
@@ -28,7 +28,8 @@ export default function ProfileScreen() {
   };
 
   return (
-    <Screen>
+    <Screen topInset>
+      <H1>Profile</H1>
       <Card>
         <H2>You</H2>
         <Muted>Name (shown on leaderboards)</Muted>
@@ -61,10 +62,10 @@ export default function ProfileScreen() {
               <Body>{account.email ?? 'Signed in'}</Body>
               <Muted style={sync.status === 'error' ? { color: colors.danger } : undefined}>{syncLabel(sync)}</Muted>
               <View style={{ gap: space.sm }}>
-                <Button label="Sync now" variant="secondary" onPress={() => void syncNow()} disabled={sync.status === 'syncing'} />
+                <Button label="Sync now" variant="glass" onPress={() => void syncNow()} disabled={sync.status === 'syncing'} />
                 <Button
                   label="Sign out"
-                  variant="secondary"
+                  variant="glass"
                   disabled={busy}
                   onPress={async () => {
                     setBusy(true);
@@ -86,7 +87,7 @@ export default function ProfileScreen() {
       )}
 
       <TrialBanner />
-      {access.status !== 'pro' && <Button label="See Founder Pass" variant="gold" onPress={() => router.push('/paywall')} />}
+      {access.status !== 'pro' && <Button label="See Founder Pass" variant="primary" onPress={() => router.push('/paywall')} />}
 
       <Card>
         <H2>Your data</H2>
@@ -132,9 +133,9 @@ export default function ProfileScreen() {
           <H2 style={{ color: colors.blue }}>Developer tools</H2>
           <Muted>{"Only visible in development builds. When signed in, the next sync resets Pro to the server's value."}</Muted>
           <View style={{ gap: space.sm }}>
-            <Button label={state.isPro ? 'Turn Pro off' : 'Simulate Pro'} variant="secondary" onPress={() => dev.setPro(!state.isPro)} />
-            <Button label="Age trial by 30 days" variant="secondary" onPress={() => dev.ageTrial(30)} />
-            <Button label="Restart trial" variant="secondary" onPress={dev.restartTrial} />
+            <Button label={state.isPro ? 'Turn Pro off' : 'Simulate Pro'} variant="glass" onPress={() => dev.setPro(!state.isPro)} />
+            <Button label="Age trial by 30 days" variant="glass" onPress={() => dev.ageTrial(30)} />
+            <Button label="Restart trial" variant="glass" onPress={dev.restartTrial} />
           </View>
         </Card>
       )}
@@ -144,6 +145,7 @@ export default function ProfileScreen() {
 
 const s = StyleSheet.create({
   input: {
+    fontFamily: font,
     backgroundColor: colors.cardRaised,
     color: colors.text,
     borderRadius: radius.sm,

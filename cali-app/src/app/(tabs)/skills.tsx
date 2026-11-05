@@ -2,12 +2,12 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { Card, H2, Muted, ProgressBar, Screen } from '@/components/ui';
+import { Card, H1, Muted, ProgressBar, Screen } from '@/components/ui';
 import { completedStepIds, skillProgress } from '@/lib/records';
 import { SKILLS } from '@/lib/skills';
 import type { SkillStep } from '@/lib/types';
 import { useAppState } from '@/state/AppStateProvider';
-import { colors, space } from '@/theme';
+import { colors, font, space } from '@/theme';
 
 export default function SkillsScreen() {
   const { state, access, toggleStep } = useAppState();
@@ -17,38 +17,45 @@ export default function SkillsScreen() {
   const autoDone = useMemo(() => completedStepIds({ workouts: state.workouts, manualSteps: {} }), [state.workouts]);
 
   return (
-    <Screen>
-      {!access.canLog && <Muted>Your trial has ended. You can still view your progress; go Pro to tick off new steps.</Muted>}
+    <Screen topInset>
+      <View style={{ gap: 4 }}>
+        <H1>Skills</H1>
+        <Muted>{access.canLog ? 'Steps tick themselves off when you log them.' : 'Trial ended. Your progress stays visible; go Pro to tick off new steps.'}</Muted>
+      </View>
+
       {SKILLS.map((skill) => {
         const p = skillProgress(skill, completed);
         const isOpen = open === skill.id;
         return (
           <Card key={skill.id}>
-            <Pressable onPress={() => setOpen(isOpen ? null : skill.id)} style={{ gap: space.sm }}>
+            <Pressable onPress={() => setOpen(isOpen ? null : skill.id)} style={{ gap: space.md }}>
               <View style={s.header}>
-                <View style={{ flex: 1 }}>
-                  <H2>{skill.name}</H2>
+                <View style={{ flex: 1, gap: 2 }}>
+                  <Text style={s.name}>{skill.name}</Text>
                   <Muted>{skill.tagline}</Muted>
                 </View>
                 <Text style={s.count}>
                   {p.done}/{p.total}
                 </Text>
-                <Ionicons name={isOpen ? 'chevron-up' : 'chevron-down'} size={18} color={colors.muted} />
+                <Ionicons name={isOpen ? 'chevron-up' : 'chevron-down'} size={18} color={colors.faint} />
               </View>
               <ProgressBar value={p.done / p.total} />
             </Pressable>
-            {isOpen &&
-              skill.steps.map((step, i) => (
-                <StepRow
-                  key={step.id}
-                  index={i + 1}
-                  step={step}
-                  done={completed.has(step.id)}
-                  auto={autoDone.has(step.id)}
-                  canToggle={access.canLog && !autoDone.has(step.id)}
-                  onToggle={() => toggleStep(step.id)}
-                />
-              ))}
+            {isOpen && (
+              <View>
+                {skill.steps.map((step, i) => (
+                  <StepRow
+                    key={step.id}
+                    index={i + 1}
+                    step={step}
+                    done={completed.has(step.id)}
+                    auto={autoDone.has(step.id)}
+                    canToggle={access.canLog && !autoDone.has(step.id)}
+                    onToggle={() => toggleStep(step.id)}
+                  />
+                ))}
+              </View>
+            )}
           </Card>
         );
       })}
@@ -71,16 +78,15 @@ function StepRow({
   canToggle: boolean;
   onToggle: () => void;
 }) {
+  const hint = auto ? 'Unlocked from your logs' : step.target ? 'Log it to unlock, or tap to tick off' : 'Tap to tick off';
   return (
     <Pressable onPress={canToggle ? onToggle : undefined} style={({ pressed }) => [s.step, pressed && canToggle && { opacity: 0.7 }]}>
-      <Ionicons name={done ? 'checkmark-circle' : 'ellipse-outline'} size={24} color={done ? colors.accent : colors.muted} />
-      <View style={{ flex: 1 }}>
-        <Text style={[s.stepName, done && { color: colors.accent }]}>
+      <Ionicons name={done ? 'checkmark-circle' : 'ellipse-outline'} size={22} color={done ? colors.frost : colors.faint} />
+      <View style={{ flex: 1, gap: 2 }}>
+        <Text style={[s.stepName, !done && { color: colors.muted }]}>
           {index}. {step.name}
         </Text>
-        <Muted>
-          {auto ? 'Unlocked from your logs' : step.target ? `${step.description} Log it to unlock, or tap to tick off.` : `${step.description} Tap to tick off.`}
-        </Muted>
+        <Text style={s.stepHint}>{done && !auto ? step.description : hint}</Text>
       </View>
     </Pressable>
   );
@@ -88,7 +94,9 @@ function StepRow({
 
 const s = StyleSheet.create({
   header: { flexDirection: 'row', alignItems: 'center', gap: space.sm },
-  count: { color: colors.text, fontWeight: '800', fontSize: 16 },
-  step: { flexDirection: 'row', gap: space.md, alignItems: 'flex-start', paddingVertical: space.sm, borderTopWidth: 1, borderTopColor: colors.border },
-  stepName: { color: colors.text, fontSize: 15, fontWeight: '600' },
+  name: { fontFamily: font, color: colors.text, fontSize: 17, fontWeight: '600' },
+  count: { fontFamily: font, color: colors.text, fontWeight: '600', fontSize: 15 },
+  step: { flexDirection: 'row', gap: space.md, alignItems: 'flex-start', paddingVertical: 12, borderTopWidth: 1, borderTopColor: colors.border },
+  stepName: { fontFamily: font, color: colors.text, fontSize: 15, fontWeight: '500' },
+  stepHint: { fontFamily: font, color: colors.faint, fontSize: 12 },
 });

@@ -8,7 +8,7 @@ import { CATEGORY_LABELS, EXERCISES, getExercise } from '@/lib/exercises';
 import { newId } from '@/lib/state';
 import type { ExerciseCategory, ExerciseEntry, SetEntry } from '@/lib/types';
 import { useAppState } from '@/state/AppStateProvider';
-import { colors, radius, space } from '@/theme';
+import { colors, font, radius, space } from '@/theme';
 
 interface DraftSet {
   /** Reps or seconds, depending on the exercise. */
@@ -63,7 +63,7 @@ export default function NewWorkoutScreen() {
       <Screen>
         <H2>Logging is locked</H2>
         <Muted>Your free trial has ended. Your history is safe and still viewable.</Muted>
-        <Button label="See Founder Pass" variant="gold" onPress={() => router.replace('/paywall')} />
+        <Button label="See Founder Pass" variant="primary" onPress={() => router.replace('/paywall')} />
       </Screen>
     );
   }
@@ -128,7 +128,7 @@ export default function NewWorkoutScreen() {
               onPress={() => update(d.key, (x) => ({ ...x, sets: [...x.sets, { ...x.sets[x.sets.length - 1] }] }))}
               style={s.addSet}
             >
-              <Ionicons name="add" size={18} color={colors.accent} />
+              <Ionicons name="add" size={18} color={colors.text} />
               <Text style={s.addSetText}>Add set</Text>
             </Pressable>
           </Card>
@@ -154,7 +154,7 @@ export default function NewWorkoutScreen() {
           {options.length === 0 && <Muted>{`No exercise matches "${query}".`}</Muted>}
         </Card>
       ) : (
-        <Button label="+ Add exercise" variant="secondary" onPress={() => setPicking(true)} />
+        <Button label="+ Add exercise" variant="glass" onPress={() => setPicking(true)} />
       )}
 
       <Button label={entries.length ? `Save workout (${entries.reduce((n, e) => n + e.sets.length, 0)} sets)` : 'Save workout'} onPress={save} disabled={entries.length === 0} />
@@ -165,30 +165,36 @@ export default function NewWorkoutScreen() {
 const s = StyleSheet.create({
   entryHeader: { flexDirection: 'row', alignItems: 'center' },
   setRow: { flexDirection: 'row', alignItems: 'center', gap: space.sm },
-  setIndex: { color: colors.muted, width: 18, fontWeight: '700' },
+  setIndex: { fontFamily: font, color: colors.faint, width: 18, fontWeight: '600' },
   input: {
     flex: 1,
     // Text inputs have an intrinsic minimum width; without this they overflow the card on narrow phones.
     minWidth: 0,
     flexBasis: 0,
+    fontFamily: font,
     backgroundColor: colors.cardRaised,
     color: colors.text,
     borderRadius: radius.sm,
     paddingHorizontal: space.md,
-    paddingVertical: 10,
-    fontSize: 16,
+    paddingVertical: 12,
+    fontSize: 17,
+    fontWeight: '500',
+    textAlign: 'center',
     borderWidth: 1,
     borderColor: colors.border,
   },
   addSet: { flexDirection: 'row', alignItems: 'center', gap: 4, paddingTop: space.xs },
-  addSetText: { color: colors.accent, fontWeight: '700' },
+  addSetText: { fontFamily: font, color: colors.text, fontWeight: '600' },
   search: {
+    fontFamily: font,
     backgroundColor: colors.cardRaised,
     color: colors.text,
     borderRadius: radius.sm,
     paddingHorizontal: space.md,
-    paddingVertical: 10,
+    paddingVertical: 12,
     fontSize: 16,
+    borderWidth: 1,
+    borderColor: colors.border,
   },
   chips: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
   option: { flexDirection: 'row', alignItems: 'center', paddingVertical: 10, borderTopWidth: 1, borderTopColor: colors.border },

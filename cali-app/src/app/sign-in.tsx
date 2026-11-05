@@ -4,7 +4,7 @@ import { ActivityIndicator, StyleSheet, TextInput } from 'react-native';
 
 import { Body, Button, H1, Muted, Screen } from '@/components/ui';
 import { friendlyAuthError, supabase } from '@/lib/supabase';
-import { colors, radius, space } from '@/theme';
+import { colors, font, radius, space } from '@/theme';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -86,7 +86,7 @@ export default function SignInScreen() {
           <Button label="Sign in" onPress={verify} disabled={busy} />
           <Button
             label="Use a different email"
-            variant="secondary"
+            variant="glass"
             onPress={() => {
               setStep('email');
               setCode('');
@@ -103,6 +103,7 @@ export default function SignInScreen() {
 
 const s = StyleSheet.create({
   input: {
+    fontFamily: font,
     backgroundColor: colors.cardRaised,
     color: colors.text,
     borderRadius: radius.sm,

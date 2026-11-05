@@ -1,15 +1,15 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-import { Body, Button, Card, H2, Muted, Screen } from '@/components/ui';
+import { Body, Button, Card, FrostCard, Muted, Screen } from '@/components/ui';
 import { formatDate } from '@/components/WorkoutCard';
 import { getExercise } from '@/lib/exercises';
 import { completedStepIds, formatSet } from '@/lib/records';
 import { SKILLS } from '@/lib/skills';
 import { useAppState } from '@/state/AppStateProvider';
-import { colors } from '@/theme';
+import { colors, font } from '@/theme';
 
 export default function WorkoutDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -38,27 +38,29 @@ export default function WorkoutDetailScreen() {
       <Stack.Screen options={{ title: formatDate(workout.date) }} />
 
       {unlocked.length > 0 && (
-        <Card style={{ borderColor: colors.accent }}>
-          <H2 style={{ color: colors.accent }}>Unlocked 🔓</H2>
-          {unlocked.map(({ skill, step }) => (
-            <View key={step.id} style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
-              <Ionicons name="checkmark-circle" size={20} color={colors.accent} />
-              <Body>
-                {skill.name}: {step.name}
-              </Body>
-            </View>
-          ))}
-        </Card>
+        <FrostCard>
+          <Text style={s.unlockKicker}>New skill {unlocked.length === 1 ? 'step' : 'steps'} unlocked</Text>
+          <View style={{ gap: 10 }}>
+            {unlocked.map(({ skill, step }) => (
+              <View key={step.id} style={s.unlockRow}>
+                <Ionicons name="checkmark-circle" size={20} color={colors.onFrost} />
+                <Text style={s.unlockText}>
+                  {skill.name} · {step.name}
+                </Text>
+              </View>
+            ))}
+          </View>
+        </FrostCard>
       )}
 
       {workout.entries.map((entry, i) => (
-        <Card key={i}>
-          <H2>{getExercise(entry.exerciseId)?.name ?? entry.exerciseId}</H2>
+        <Card key={i} style={{ gap: 0, paddingVertical: 8 }}>
+          <Text style={s.exercise}>{getExercise(entry.exerciseId)?.name ?? entry.exerciseId}</Text>
           {entry.sets.map((set, j) => (
-            <Body key={j}>
-              <Muted>Set {j + 1} </Muted>
-              {formatSet(set)}
-            </Body>
+            <View key={j} style={s.setRow}>
+              <Muted>Set {j + 1}</Muted>
+              <Body style={{ fontWeight: '500' }}>{formatSet(set)}</Body>
+            </View>
           ))}
         </Card>
       ))}
@@ -75,3 +77,11 @@ export default function WorkoutDetailScreen() {
     </Screen>
   );
 }
+
+const s = StyleSheet.create({
+  unlockKicker: { fontFamily: font, color: colors.onFrostMuted, fontSize: 13, fontWeight: '600', letterSpacing: 0.4, textTransform: 'uppercase' },
+  unlockRow: { flexDirection: 'row', gap: 10, alignItems: 'center' },
+  unlockText: { fontFamily: font, color: colors.onFrost, fontSize: 16, fontWeight: '600', flexShrink: 1 },
+  exercise: { fontFamily: font, color: colors.text, fontSize: 16, fontWeight: '600', paddingVertical: 10 },
+  setRow: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 10, borderTopWidth: 1, borderTopColor: colors.border },
+});
