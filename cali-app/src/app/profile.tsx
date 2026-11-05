@@ -28,7 +28,7 @@ export default function ProfileScreen() {
   };
 
   return (
-    <Screen topInset>
+    <Screen headerInset>
       <H1>Profile</H1>
       <Card>
         <H2>You</H2>

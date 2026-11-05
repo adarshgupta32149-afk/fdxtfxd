@@ -16,6 +16,7 @@ export function createInitialState(now: Date): AppState {
     profile: { displayName: '' },
     pendingWorkoutDeletes: [],
     pendingStepRemovals: [],
+    focusSkills: [],
   };
 }
 
@@ -64,5 +65,8 @@ export function parseState(raw: string | null, now: Date): AppState {
     ownerId: typeof data.ownerId === 'string' ? data.ownerId : undefined,
     pendingWorkoutDeletes: stringArray(data.pendingWorkoutDeletes),
     pendingStepRemovals: stringArray(data.pendingStepRemovals),
+    // People who were already using the app before onboarding existed skip the welcome flow.
+    onboardedAt: isValidDate(data.onboardedAt) ? data.onboardedAt : workouts.length > 0 ? (knownDates[0] ?? fresh.lastSeenAt) : undefined,
+    focusSkills: stringArray(data.focusSkills),
   };
 }

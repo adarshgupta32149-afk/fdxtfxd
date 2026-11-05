@@ -15,7 +15,7 @@ export default function HistoryScreen() {
     <Backdrop>
       <FlatList
         style={styles.fill}
-        contentContainerStyle={[styles.screenContent, { paddingTop: insets.top + space.xl, gap: 10 }]}
+        contentContainerStyle={[styles.screenContent, { paddingTop: insets.top + 60, gap: 10 }]}
         data={workouts}
         keyExtractor={(w) => w.id}
         ListHeaderComponent={

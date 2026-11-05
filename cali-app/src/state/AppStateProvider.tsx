@@ -38,6 +38,10 @@ interface AppStateContextValue {
   /** Ticks or unticks a skill step by hand. Ignored while logging is locked. */
   toggleStep: (stepId: string) => void;
   updateProfile: (profile: Partial<Profile>) => void;
+  /** Finishes the welcome flow: saves the profile, focus skills and the steps the placement answers earned. */
+  completeOnboarding: (input: { profile: Partial<Profile>; focusSkills: string[]; placementSteps: string[] }) => void;
+  /** Sends the user back through the welcome flow (developer tool). */
+  resetOnboarding: () => void;
   eraseAllData: () => void;
   syncNow: () => Promise<void>;
   signOut: () => Promise<void>;
@@ -287,6 +291,24 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     [scheduleSync],
   );
 
+  const completeOnboarding = useCallback(
+    (input: { profile: Partial<Profile>; focusSkills: string[]; placementSteps: string[] }) => {
+      const now = new Date().toISOString();
+      setState((s) => {
+        if (!s) return s;
+        const manualSteps = { ...s.manualSteps };
+        for (const id of input.placementSteps) manualSteps[id] ??= now;
+        return { ...s, onboardedAt: now, focusSkills: input.focusSkills, profile: { ...s.profile, ...input.profile }, manualSteps };
+      });
+      scheduleSync();
+    },
+    [scheduleSync],
+  );
+
+  const resetOnboarding = useCallback(() => {
+    setState((s) => (s ? { ...s, onboardedAt: undefined } : s));
+  }, []);
+
   const eraseAllData = useCallback(() => {
     // Keeps the original trial dates so erasing data can't be used to restart the trial.
     setState((s) =>
@@ -349,6 +371,8 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
         deleteWorkout,
         toggleStep,
         updateProfile,
+        completeOnboarding,
+        resetOnboarding,
         eraseAllData,
         syncNow: runSync,
         signOut,

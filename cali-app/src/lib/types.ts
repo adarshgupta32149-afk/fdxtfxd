@@ -77,4 +77,8 @@ export interface AppState {
   pendingWorkoutDeletes: string[];
   /** Hand-ticked steps unticked on this phone that still need removing on the server. */
   pendingStepRemovals: string[];
+  /** When the welcome flow was finished; unset means show it. */
+  onboardedAt?: string;
+  /** Skills picked during onboarding, in the order chosen. Home leads with these. */
+  focusSkills: string[];
 }

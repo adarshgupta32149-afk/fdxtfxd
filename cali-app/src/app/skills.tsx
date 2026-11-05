@@ -17,7 +17,7 @@ export default function SkillsScreen() {
   const autoDone = useMemo(() => completedStepIds({ workouts: state.workouts, manualSteps: {} }), [state.workouts]);
 
   return (
-    <Screen topInset>
+    <Screen headerInset>
       <View style={{ gap: 4 }}>
         <H1>Skills</H1>
         <Muted>{access.canLog ? 'Steps tick themselves off when you log them.' : 'Trial ended. Your progress stays visible; go Pro to tick off new steps.'}</Muted>
