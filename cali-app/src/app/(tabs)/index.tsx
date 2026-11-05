@@ -60,8 +60,8 @@ export default function TodayScreen() {
 
       <View style={{ flexDirection: 'row', gap: 10 }}>
         <Stat value={week.length} label={week.length === 1 ? 'workout' : 'workouts'} />
-        <Stat value={countSets(week)} label="sets" />
-        <Stat value={completed.size} label="skill steps" />
+        <Stat value={countSets(week)} label={countSets(week) === 1 ? 'set' : 'sets'} />
+        <Stat value={completed.size} label={completed.size === 1 ? 'skill step' : 'skill steps'} />
       </View>
 
       {next && (
