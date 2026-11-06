@@ -1,12 +1,14 @@
 // Generated: one dictionary per language. Missing keys fall back to English.
 import type { Dict } from '../core';
 
+import l_ar from './ar';
 import l_bn from './bn';
 import l_de from './de';
 import l_es_419 from './es-419';
 import l_es_ES from './es-ES';
 import l_fr from './fr';
 import l_gu from './gu';
+import l_he from './he';
 import l_hi from './hi';
 import l_ja from './ja';
 import l_kn from './kn';
@@ -24,12 +26,14 @@ import l_zh_HK from './zh-HK';
 import l_zh_TW from './zh-TW';
 
 export const LOCALES: Record<string, Dict> = {
+  "ar": l_ar,
   "bn": l_bn,
   "de": l_de,
   "es-419": l_es_419,
   "es-ES": l_es_ES,
   "fr": l_fr,
   "gu": l_gu,
+  "he": l_he,
   "hi": l_hi,
   "ja": l_ja,
   "kn": l_kn,
