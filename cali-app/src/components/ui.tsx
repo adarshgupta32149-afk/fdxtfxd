@@ -14,6 +14,8 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { useT } from '@/i18n';
+import { headingLineHeight } from '@/i18n/languages';
 import { colors, display, font, frostGradient, radius, space, TAB_BAR_SPACE } from '@/theme';
 import { PressScale, Sheen, useAnimatedProgress } from './motion';
 
@@ -96,11 +98,14 @@ export function FrostCard({ children, style, sheen = false }: { children: ReactN
 type TextProps = { children: ReactNode; style?: StyleProp<TextStyle>; numberOfLines?: number };
 
 /** Big condensed display title. */
-export const H1 = ({ children, style, numberOfLines }: TextProps) => (
-  <Text style={[styles.h1, style]} numberOfLines={numberOfLines} accessibilityRole="header">
-    {children}
-  </Text>
-);
+export function H1({ children, style, numberOfLines }: TextProps) {
+  const { lang } = useT();
+  return (
+    <Text style={[styles.h1, { lineHeight: headingLineHeight(lang, 42, 44) }, style]} numberOfLines={numberOfLines} accessibilityRole="header">
+      {children}
+    </Text>
+  );
+}
 export const H2 = ({ children, style, numberOfLines }: TextProps) => (
   <Text style={[styles.h2, style]} numberOfLines={numberOfLines}>
     {children}

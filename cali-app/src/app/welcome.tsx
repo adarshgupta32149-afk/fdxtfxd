@@ -9,7 +9,7 @@ import { skillIcon } from '@/components/skillIcons';
 import { Backdrop, Button, Chip, FrostCard, Muted } from '@/components/ui';
 import { useT } from '@/i18n';
 import type { Key } from '@/i18n/en';
-import { languageByCode } from '@/i18n/languages';
+import { headingLineHeight, languageByCode } from '@/i18n/languages';
 import { BRAND } from '@/lib/brand';
 import * as haptics from '@/lib/haptics';
 import { HANDSTAND_OPTIONS, placementSteps, PULL_UP_OPTIONS, type HandstandLevel, type PullUpLevel } from '@/lib/onboarding';
@@ -98,7 +98,7 @@ export default function WelcomeScreen() {
                 </Pressable>
               </Rise>
               <Rise delay={90}>
-                <Text style={s.hero}>{t('welcome.hero')}</Text>
+                <Text style={[s.hero, { lineHeight: headingLineHeight(lang, 72, 68) }]}>{t('welcome.hero')}</Text>
               </Rise>
               <Rise delay={180}>
                 <Muted style={{ fontSize: 16, lineHeight: 23 }}>
@@ -130,7 +130,7 @@ export default function WelcomeScreen() {
           {step === 1 && (
             <View key="skills" style={{ gap: 22 }}>
               <Rise>
-                <Text style={s.q}>{t('welcome.q1')}</Text>
+                <Text style={[s.q, { lineHeight: headingLineHeight(lang, 44, 44) }]}>{t('welcome.q1')}</Text>
                 <Muted style={{ marginTop: 6 }}>{t('welcome.q1sub', { n: MAX_FOCUS })}</Muted>
               </Rise>
               <Rise delay={80}>
@@ -168,7 +168,7 @@ export default function WelcomeScreen() {
           {step === 2 && (
             <View key="level" style={{ gap: 24 }}>
               <Rise>
-                <Text style={s.q}>{t('welcome.q2')}</Text>
+                <Text style={[s.q, { lineHeight: headingLineHeight(lang, 44, 44) }]}>{t('welcome.q2')}</Text>
                 <Muted style={{ marginTop: 6 }}>{t('welcome.q2sub')}</Muted>
               </Rise>
               <Rise delay={80} style={{ gap: 12 }}>
@@ -194,7 +194,7 @@ export default function WelcomeScreen() {
           {step === 3 && (
             <View key="you" style={{ gap: 22 }}>
               <Rise>
-                <Text style={s.q}>{t('welcome.q3')}</Text>
+                <Text style={[s.q, { lineHeight: headingLineHeight(lang, 44, 44) }]}>{t('welcome.q3')}</Text>
                 <Muted style={{ marginTop: 6 }}>{t('welcome.q3sub')}</Muted>
               </Rise>
               <Rise delay={80} style={{ gap: 12 }}>

@@ -64,3 +64,10 @@ export const LANGUAGES: Language[] = [
 
 export const DEFAULT_LANGUAGE = 'en';
 export const languageByCode = (code: string) => LANGUAGES.find((l) => l.code === code);
+
+/** Scripts with tall marks above and below the line (Indic, Thai, Arabic, Hebrew) need looser line height in big headings. */
+const TALL = new Set(['hi', 'mr', 'bn', 'gu', 'pa', 'ta', 'te', 'kn', 'ml', 'th', 'ar', 'he']);
+export const needsTallLines = (code: string) => TALL.has(code);
+
+/** Line height for a heading: the Latin value, or 1.35× the font size for tall scripts. */
+export const headingLineHeight = (code: string, fontSize: number, latin: number) => (TALL.has(code) ? Math.round(fontSize * 1.35) : latin);
