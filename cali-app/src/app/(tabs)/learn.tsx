@@ -13,6 +13,8 @@ import * as haptics from '@/lib/haptics';
 import { ARTICLES, CATEGORIES, forFocus, inCategory, VIDEOS, type LearnCategory } from '@/lib/learn';
 import { completedStepIds, skillProgress } from '@/lib/records';
 import { SKILLS } from '@/lib/skills';
+import { useT } from '@/i18n';
+import type { Key } from '@/i18n/en';
 import { useAppState } from '@/state/AppStateProvider';
 import { colors, display, font, panelGradient, radius } from '@/theme';
 
@@ -31,6 +33,7 @@ function SectionTitle({ title, count, color }: { title: string; count: number; c
 /** A matte green card that ties the library to the skill the user is working on. */
 function PickedForYou({ skillId }: { skillId: string }) {
   const { state } = useAppState();
+  const { t } = useT();
   const skill = SKILLS.find((x) => x.id === skillId);
   const completed = useMemo(() => completedStepIds(state), [state]);
   const video = VIDEOS.find((v) => v.skillId === skillId && !v.short);
@@ -45,20 +48,20 @@ function PickedForYou({ skillId }: { skillId: string }) {
           <Ionicons name={skillIcon(skill.id)} size={18} color={colors.onFrost} />
         </View>
         <View style={{ flex: 1 }}>
-          <Text style={s.pickedKicker}>Picked for your {skill.name.toLowerCase()}</Text>
+          <Text style={s.pickedKicker}>{t('learn.pickedFor', { skill: skill.name })}</Text>
           <Text style={s.pickedTitle} numberOfLines={2}>
-            {next ? `Next up: ${next.name}` : 'Ladder complete. Keep it sharp.'}
+            {next ? t('learn.nextUp', { step: next.name }) : t('learn.ladderDone')}
           </Text>
         </View>
       </View>
       {video && (
-        <PressScale onPress={() => router.push({ pathname: '/learn/video/[id]', params: { id: video.id } })} scaleTo={0.98} style={s.pickedRow} accessibilityLabel={`Watch ${video.title}`}>
+        <PressScale onPress={() => router.push({ pathname: '/learn/video/[id]', params: { id: video.id } })} scaleTo={0.98} style={s.pickedRow} accessibilityLabel={`${t('learn.watch')}: ${video.title}`}>
           <Image source={videoThumb(video.id)} style={s.pickedThumb} />
           <View style={s.pickedPlay}>
             <Ionicons name="play" size={12} color={colors.onFrost} />
           </View>
           <View style={{ flex: 1, minWidth: 0 }}>
-            <Text style={s.pickedType}>Watch · {video.length}</Text>
+            <Text style={s.pickedType}>{t('learn.watch')} · {video.length}</Text>
             <Text style={s.pickedItem} numberOfLines={2}>
               {video.title}
             </Text>
@@ -66,10 +69,10 @@ function PickedForYou({ skillId }: { skillId: string }) {
         </PressScale>
       )}
       {article && (
-        <PressScale onPress={() => router.push({ pathname: '/learn/[id]', params: { id: article.id } })} scaleTo={0.98} style={s.pickedRow} accessibilityLabel={`Read ${article.title}`}>
+        <PressScale onPress={() => router.push({ pathname: '/learn/[id]', params: { id: article.id } })} scaleTo={0.98} style={s.pickedRow} accessibilityLabel={`${t('learn.read')}: ${article.title}`}>
           <Image source={articleImage(article.id)} style={s.pickedThumb} />
           <View style={{ flex: 1, minWidth: 0 }}>
-            <Text style={s.pickedType}>Read · {article.minutes} min</Text>
+            <Text style={s.pickedType}>{t('learn.read')} · {t('learn.min', { count: article.minutes })}</Text>
             <Text style={s.pickedItem} numberOfLines={2}>
               {article.title}
             </Text>
@@ -82,6 +85,7 @@ function PickedForYou({ skillId }: { skillId: string }) {
 
 export default function LearnScreen() {
   const { state } = useAppState();
+  const { t } = useT();
   const [filter, setFilter] = useState<Filter>('all');
   const focus = state.focusSkills;
 
@@ -99,15 +103,15 @@ export default function LearnScreen() {
         <View style={s.headRow}>
           <View style={{ flex: 1 }}>
             <Text style={s.kicker}>
-              {ARTICLES.length} guides · {VIDEOS.length} videos
+              {t('learn.counts', { guides: ARTICLES.length, videos: VIDEOS.length })}
             </Text>
-            <H1 style={{ marginTop: 4 }}>Learn</H1>
+            <H1 style={{ marginTop: 4 }}>{t('tabs.learn')}</H1>
           </View>
           <View style={s.headBadge}>
             <Ionicons name="sparkles" size={14} color={colors.onFrost} />
           </View>
         </View>
-        <Muted style={{ marginTop: 6 }}>The best guides and videos we could find, broken down step by step for your ladders.</Muted>
+        <Muted style={{ marginTop: 6 }}>{t('learn.intro')}</Muted>
       </Rise>
 
       {filter === 'all' && focus[0] && (
@@ -119,6 +123,7 @@ export default function LearnScreen() {
       <Rise delay={110}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={s.chipsWrap} contentContainerStyle={s.chips}>
           {([{ id: 'all', label: 'All', color: colors.frost }, ...CATEGORIES] as const).map((c) => {
+            const label = t(`learn.cat.${c.id}` as Key);
             const on = filter === c.id;
             return (
               <PressScale
@@ -129,10 +134,10 @@ export default function LearnScreen() {
                 }}
                 haptic="none"
                 style={[s.chip, on && { backgroundColor: c.color, borderColor: c.color }]}
-                accessibilityLabel={`Show ${c.label}`}
+                accessibilityLabel={`${t('common.show')} ${label}`}
               >
                 {c.id !== 'all' && <View style={[s.chipDot, { backgroundColor: on ? colors.onFrost : c.color }]} />}
-                <Text style={[s.chipText, on && { color: colors.onFrost }]}>{c.label}</Text>
+                <Text style={[s.chipText, on && { color: colors.onFrost }]}>{label}</Text>
               </PressScale>
             );
           })}
@@ -142,8 +147,8 @@ export default function LearnScreen() {
       {/* Keyed by filter so each section replays its entrance when the filter changes. */}
       <View key={filter} style={{ gap: 22 }}>
         <Rise delay={140} style={{ gap: 14 }}>
-          <SectionTitle title="Videos" count={videos.length + shorts.length} color={active?.color ?? colors.ember} />
-          {featuredVideo ? <FeaturedVideoCard video={featuredVideo} /> : <Muted>No videos in {active?.label} yet.</Muted>}
+          <SectionTitle title={t('learn.videos')} count={videos.length + shorts.length} color={active?.color ?? colors.ember} />
+          {featuredVideo ? <FeaturedVideoCard video={featuredVideo} /> : <Muted>{t('learn.noVideos')}</Muted>}
           {moreVideos.length > 0 && (
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={s.railWrap} contentContainerStyle={s.rail} decelerationRate="fast" snapToInterval={252}>
               {moreVideos.map((v) => (
@@ -155,7 +160,7 @@ export default function LearnScreen() {
             <View style={{ gap: 10 }}>
               <View style={s.shortsHead}>
                 <Ionicons name="flash" size={14} color={colors.glow} />
-                <Text style={s.shortsLabel}>Under a minute</Text>
+                <Text style={s.shortsLabel}>{t('learn.underMinute')}</Text>
               </View>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} style={s.railWrap} contentContainerStyle={s.rail}>
                 {shorts.map((v) => (
@@ -167,8 +172,8 @@ export default function LearnScreen() {
         </Rise>
 
         <Rise delay={220} style={{ gap: 14 }}>
-          <SectionTitle title="Articles" count={articles.length} color={active?.color ?? colors.glow} />
-          {featuredArticle ? <FeaturedArticleCard article={featuredArticle} /> : <Muted>No articles in {active?.label} yet.</Muted>}
+          <SectionTitle title={t('learn.articles')} count={articles.length} color={active?.color ?? colors.glow} />
+          {featuredArticle ? <FeaturedArticleCard article={featuredArticle} /> : <Muted>{t('learn.noArticles')}</Muted>}
           <View style={{ gap: 10 }}>
             {moreArticles.map((a) => (
               <ArticleRow key={a.id} article={a} />
@@ -178,7 +183,7 @@ export default function LearnScreen() {
       </View>
 
       <Text style={s.footer}>
-        Every guide links to its original. Videos open on YouTube. Breakdowns are written by Cali; photos credited on each guide.
+        {t('learn.footer')}
       </Text>
     </Screen>
   );

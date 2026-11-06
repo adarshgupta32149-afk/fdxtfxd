@@ -9,20 +9,24 @@ import { BOARDS } from '@/lib/boards';
 import { CATEGORY_LABELS, EXERCISES } from '@/lib/exercises';
 import { computeRecords, type ExerciseRecord } from '@/lib/records';
 import type { ExerciseCategory } from '@/lib/types';
+import { useT } from '@/i18n';
+import type { Key } from '@/i18n/en';
+import { boardValue } from '@/i18n/format';
 import { useAppState } from '@/state/AppStateProvider';
 import { colors, display, font, radius } from '@/theme';
 
-function describe(record: ExerciseRecord): string {
+function describe(record: ExerciseRecord, t: ReturnType<typeof useT>['t']): string {
   const parts: string[] = [];
-  if (record.maxReps) parts.push(`${record.maxReps} reps`);
-  if (record.maxHoldSec) parts.push(`${record.maxHoldSec}s`);
-  if (record.maxKg) parts.push(`${record.maxKg}kg`);
-  if (record.est1RM) parts.push(`~${record.est1RM}kg 1RM`);
+  if (record.maxReps) parts.push(t('count.reps', { count: record.maxReps }));
+  if (record.maxHoldSec) parts.push(t('unitFmt.sec', { n: record.maxHoldSec }));
+  if (record.maxKg) parts.push(t('unitFmt.kg', { n: record.maxKg }));
+  if (record.est1RM) parts.push(t('unitFmt.oneRm', { n: record.est1RM }));
   return parts.join(' · ');
 }
 
 export default function RecordsScreen() {
   const { state } = useAppState();
+  const { t } = useT();
   const records = useMemo(() => computeRecords(state.workouts), [state.workouts]);
 
   const grouped = useMemo(() => {
@@ -37,8 +41,8 @@ export default function RecordsScreen() {
   return (
     <Screen headerInset contentStyle={{ gap: 18 }}>
       <Rise>
-        <Eyebrow>Personal bests</Eyebrow>
-        <H1 style={{ marginTop: 6 }}>Records</H1>
+        <Eyebrow>{t('menu.records.hint')}</Eyebrow>
+        <H1 style={{ marginTop: 6 }}>{t('menu.records')}</H1>
       </Rise>
 
       <Rise delay={70}>
@@ -47,8 +51,8 @@ export default function RecordsScreen() {
             const mine = b.mine(records[b.exerciseId]);
             return (
               <View key={b.id} style={s.tile}>
-                <Text style={s.tileLabel}>{b.label}</Text>
-                <Text style={[s.tileValue, !mine && { color: colors.faint }]}>{mine ? b.unit(mine) : '—'}</Text>
+                <Text style={s.tileLabel}>{t(`board.${b.id}` as Key)}</Text>
+                <Text style={[s.tileValue, !mine && { color: colors.faint }]}>{mine ? boardValue(t, b, mine) : '—'}</Text>
               </View>
             );
           })}
@@ -57,7 +61,7 @@ export default function RecordsScreen() {
 
       <Rise delay={120}>
         <Text style={s.link} onPress={() => router.push('/ranking')}>
-          See how these compare in Ranking →
+          {t('records.compare')}
         </Text>
       </Rise>
 
@@ -65,7 +69,7 @@ export default function RecordsScreen() {
         <Rise delay={170}>
           <Card style={s.empty}>
             <Ionicons name="trophy-outline" size={22} color={colors.muted} />
-            <Muted style={{ flex: 1 }}>Log a session and your records start filling in here, exercise by exercise.</Muted>
+            <Muted style={{ flex: 1 }}>{t('records.empty')}</Muted>
           </Card>
         </Rise>
       ) : (
@@ -73,12 +77,12 @@ export default function RecordsScreen() {
           .filter((c) => grouped[c])
           .map((c, i) => (
             <Rise key={c} delay={170 + i * 50} style={{ gap: 10 }}>
-              <SectionHead label={CATEGORY_LABELS[c]} />
+              <SectionHead label={t(`exCat.${c}` as Key)} />
               <Card style={{ gap: 0, paddingVertical: 4 }}>
                 {grouped[c]!.map((rec, j) => (
                   <View key={rec.exerciseId} style={[s.row, j > 0 && s.rowLine]}>
                     <Text style={s.name}>{EXERCISES.find((e) => e.id === rec.exerciseId)?.name}</Text>
-                    <Text style={s.value}>{describe(rec)}</Text>
+                    <Text style={s.value}>{describe(rec, t)}</Text>
                   </View>
                 ))}
               </Card>

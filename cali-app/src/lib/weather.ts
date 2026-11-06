@@ -80,31 +80,69 @@ export function placeName(p: { city?: string | null; locality?: string | null; d
 type IconName = 'sunny' | 'moon' | 'partly-sunny' | 'cloudy-night' | 'cloud' | 'cloudy' | 'rainy' | 'thunderstorm' | 'snow' | 'water';
 
 /** WMO weather code → words and an Ionicons name. */
-export function describeWeather(code: number, isDay: boolean): { label: string; icon: IconName } {
-  if (code === 0) return { label: isDay ? 'Clear' : 'Clear night', icon: isDay ? 'sunny' : 'moon' };
-  if (code <= 2) return { label: 'Partly cloudy', icon: isDay ? 'partly-sunny' : 'cloudy-night' };
-  if (code === 3) return { label: 'Overcast', icon: 'cloudy' };
-  if (code === 45 || code === 48) return { label: 'Fog', icon: 'cloud' };
-  if (code >= 51 && code <= 57) return { label: 'Drizzle', icon: 'water' };
-  if ((code >= 61 && code <= 67) || (code >= 80 && code <= 82)) return { label: code >= 80 ? 'Showers' : 'Rain', icon: 'rainy' };
-  if ((code >= 71 && code <= 77) || code === 85 || code === 86) return { label: 'Snow', icon: 'snow' };
-  if (code >= 95) return { label: 'Thunderstorm', icon: 'thunderstorm' };
-  return { label: 'Cloudy', icon: 'cloud' };
+export type WeatherKey = 'clear' | 'clearNight' | 'partlyCloudy' | 'overcast' | 'fog' | 'drizzle' | 'rain' | 'showers' | 'snow' | 'thunderstorm' | 'cloudy';
+
+/** English labels; the app shows translated ones via the weather.<key> strings. */
+export const WEATHER_LABELS: Record<WeatherKey, string> = {
+  clear: 'Clear',
+  clearNight: 'Clear night',
+  partlyCloudy: 'Partly cloudy',
+  overcast: 'Overcast',
+  fog: 'Fog',
+  drizzle: 'Drizzle',
+  rain: 'Rain',
+  showers: 'Showers',
+  snow: 'Snow',
+  thunderstorm: 'Thunderstorm',
+  cloudy: 'Cloudy',
+};
+
+export function describeWeather(code: number, isDay: boolean): { key: WeatherKey; label: string; icon: IconName } {
+  const d = describeKey(code, isDay);
+  return { ...d, label: WEATHER_LABELS[d.key] };
+}
+
+function describeKey(code: number, isDay: boolean): { key: WeatherKey; icon: IconName } {
+  if (code === 0) return { key: isDay ? 'clear' : 'clearNight', icon: isDay ? 'sunny' : 'moon' };
+  if (code <= 2) return { key: 'partlyCloudy', icon: isDay ? 'partly-sunny' : 'cloudy-night' };
+  if (code === 3) return { key: 'overcast', icon: 'cloudy' };
+  if (code === 45 || code === 48) return { key: 'fog', icon: 'cloud' };
+  if (code >= 51 && code <= 57) return { key: 'drizzle', icon: 'water' };
+  if ((code >= 61 && code <= 67) || (code >= 80 && code <= 82)) return { key: code >= 80 ? 'showers' : 'rain', icon: 'rainy' };
+  if ((code >= 71 && code <= 77) || code === 85 || code === 86) return { key: 'snow', icon: 'snow' };
+  if (code >= 95) return { key: 'thunderstorm', icon: 'thunderstorm' };
+  return { key: 'cloudy', icon: 'cloud' };
 }
 
 const WET = (code: number) => (code >= 51 && code <= 67) || (code >= 80 && code <= 82) || code >= 95;
 
-/** One line of advice for training outside right now. */
-export function trainingTip(w: Weather): string {
-  if (w.code >= 95) return 'Thunderstorm. Stay off metal bars today; train indoors.';
-  if (WET(w.code)) return 'Wet bars are slippery. Chalk up, dry the bar, or go indoors.';
-  if (w.feelsC >= 35) return 'Very hot. Train early or late, in shade, and drink more than you think.';
-  if (w.feelsC >= 30) return 'Hot out. Shorter sets, longer rests, keep water close.';
-  if (w.feelsC <= 5) return 'Cold. Warm up wrists and shoulders twice as long before holds.';
-  if (w.isDay && (w.uvMax ?? 0) >= 8) return 'UV is high. Find shade for long holds and handstands.';
-  if (w.windKmh >= 30) return 'Windy. Handstands outside will be harder today.';
-  return 'Good conditions for the bars.';
+export type TipKey = 'storm' | 'wet' | 'veryHot' | 'hot' | 'cold' | 'uv' | 'windy' | 'good';
+
+export const TIP_TEXT: Record<TipKey, string> = {
+  storm: 'Thunderstorm. Stay off metal bars today; train indoors.',
+  wet: 'Wet bars are slippery. Chalk up, dry the bar, or go indoors.',
+  veryHot: 'Very hot. Train early or late, in shade, and drink more than you think.',
+  hot: 'Hot out. Shorter sets, longer rests, keep water close.',
+  cold: 'Cold. Warm up wrists and shoulders twice as long before holds.',
+  uv: 'UV is high. Find shade for long holds and handstands.',
+  windy: 'Windy. Handstands outside will be harder today.',
+  good: 'Good conditions for the bars.',
+};
+
+/** Which tip matters most right now (the app shows the translated weather.tip.<key>). */
+export function tipKey(w: Weather): TipKey {
+  if (w.code >= 95) return 'storm';
+  if (WET(w.code)) return 'wet';
+  if (w.feelsC >= 35) return 'veryHot';
+  if (w.feelsC >= 30) return 'hot';
+  if (w.feelsC <= 5) return 'cold';
+  if (w.isDay && (w.uvMax ?? 0) >= 8) return 'uv';
+  if (w.windKmh >= 30) return 'windy';
+  return 'good';
 }
+
+/** One line of advice for training outside right now, in English. */
+export const trainingTip = (w: Weather): string => TIP_TEXT[tipKey(w)];
 
 /** The time at the weather's location, as "10:41 pm", from the API's UTC offset. */
 export function localTimeAt(now: Date, utcOffsetSec: number): string {

@@ -7,6 +7,7 @@ import { LiveDot, PressScale, Rise } from '@/components/motion';
 import { skillIcon } from '@/components/skillIcons';
 import { Button, FrostCard, H1, Muted, Screen } from '@/components/ui';
 import { getExercise } from '@/lib/exercises';
+import { useT } from '@/i18n';
 import * as haptics from '@/lib/haptics';
 import { completedStepIds, skillProgress } from '@/lib/records';
 import { SKILLS, targetLabel } from '@/lib/skills';
@@ -20,6 +21,7 @@ const exerciseName = (id: string) => getExercise(id)?.name;
 
 export default function SkillsScreen() {
   const { state, access, toggleStep } = useAppState();
+  const { t } = useT();
   const params = useLocalSearchParams<{ id?: string }>();
   // Open on the skill Home linked to, else the user's first focus skill, else the first one.
   const initial = SKILLS.find((x) => x.id === params.id) ?? SKILLS.find((x) => x.id === state.focusSkills[0]) ?? SKILLS[0];
@@ -45,9 +47,9 @@ export default function SkillsScreen() {
   return (
     <Screen headerInset contentStyle={{ gap: 20 }}>
       <Rise>
-        <H1>Skills</H1>
+        <H1>{t('menu.skills')}</H1>
         <Muted style={{ marginTop: 4 }}>
-          {access.canLog ? 'Steps tick themselves off when you log them.' : 'Trial ended. Your progress stays; go Pro to tick off new steps.'}
+          {access.canLog ? t('skills.intro') : t('skills.introLocked')}
         </Muted>
       </Rise>
 
@@ -81,7 +83,7 @@ export default function SkillsScreen() {
           <FrostCard sheen>
             <View style={s.sumTop}>
               <View style={{ flex: 1, gap: 2 }}>
-                <Text style={s.sumKicker}>{state.focusSkills.includes(skill.id) ? 'Your focus' : skill.tagline}</Text>
+                <Text style={s.sumKicker}>{state.focusSkills.includes(skill.id) ? t('home.yourFocus') : skill.tagline}</Text>
                 <Text style={s.sumName}>{skill.name}</Text>
               </View>
               <Text style={s.sumFrac}>
@@ -93,7 +95,7 @@ export default function SkillsScreen() {
               <View style={[s.fill, { width: `${(p.done / p.total) * 100}%` }]} />
             </View>
             <Text style={s.sumNext}>
-              {p.nextStep ? `Next up: ${p.nextStep.name}` : 'Every step done. You own this skill.'}
+              {p.nextStep ? t('learn.nextUp', { step: p.nextStep.name }) : t('skills.allDone')}
             </Text>
           </FrostCard>
         </Rise>
@@ -145,6 +147,7 @@ function LadderRow({
   canLog: boolean;
   onToggle: () => void;
 }) {
+  const { t } = useT();
   const target = targetLabel(step.target, exerciseName);
   const done = state === 'done';
   const next = state === 'next';
@@ -159,7 +162,7 @@ function LadderRow({
           disabled={!canUntick}
           haptic="none"
           style={[s.node, done && s.nodeDone, next && s.nodeNext]}
-          accessibilityLabel={canUntick ? `Untick ${step.name}` : step.name}
+          accessibilityLabel={canUntick ? t('skills.untick', { step: step.name }) : step.name}
         >
           {done ? (
             <Ionicons name="checkmark" size={16} color={colors.onFrost} />
@@ -175,7 +178,7 @@ function LadderRow({
       <View style={[s.body, next && s.bodyNext]}>
         <View style={s.bodyTop}>
           <Text style={[s.stepName, state === 'locked' && { color: colors.muted }]}>{step.name}</Text>
-          {done && <Text style={s.tag}>{auto ? 'From your logs' : 'Ticked'}</Text>}
+          {done && <Text style={s.tag}>{auto ? t('skills.fromLogs') : t('skills.ticked')}</Text>}
           {state === 'locked' && <Ionicons name="lock-closed" size={13} color={colors.faint} />}
         </View>
         {state !== 'locked' && <Text style={s.desc}>{step.description}</Text>}
@@ -189,9 +192,9 @@ function LadderRow({
         {next && canLog && (
           <View style={s.actions}>
             {step.target ? (
-              <Button compact variant="ember" label="Log it" icon={<Ionicons name="add" size={16} color="#2A1408" />} onPress={() => router.push('/workout/new')} />
+              <Button compact variant="ember" label={t('skills.logIt')} icon={<Ionicons name="add" size={16} color="#2A1408" />} onPress={() => router.push('/workout/new')} />
             ) : null}
-            <Button compact variant="glass" label="Mark done" onPress={onToggle} />
+            <Button compact variant="glass" label={t('skills.markDone')} onPress={onToggle} />
           </View>
         )}
       </View>

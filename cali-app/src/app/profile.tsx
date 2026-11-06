@@ -7,6 +7,8 @@ import { PressScale, Rise } from '@/components/motion';
 import { skillIcon } from '@/components/skillIcons';
 import { TrialBanner } from '@/components/TrialBanner';
 import { Card, H1, Muted, Screen, SectionHead } from '@/components/ui';
+import { useT } from '@/i18n';
+import { languageByCode } from '@/i18n/languages';
 import { BRAND } from '@/lib/brand';
 import { completedStepIds } from '@/lib/records';
 import { SKILLS } from '@/lib/skills';
@@ -15,11 +17,11 @@ import { colors, display, font, radius } from '@/theme';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
-function syncLabel(sync: SyncState): string {
-  if (sync.status === 'syncing') return 'Syncing…';
-  if (sync.status === 'error') return sync.message ?? 'Sync problem. Will retry.';
-  if (sync.lastSyncedAt) return `Backed up at ${new Date(sync.lastSyncedAt).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })}`;
-  return 'Backed up';
+function syncLabel(sync: SyncState, t: ReturnType<typeof useT>['t'], lang: string): string {
+  if (sync.status === 'syncing') return t('profile.syncing');
+  if (sync.status === 'error') return t('profile.syncProblem');
+  if (sync.lastSyncedAt) return t('profile.backedUpAt', { time: new Date(sync.lastSyncedAt).toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit' }) });
+  return t('profile.backedUp');
 }
 
 /** One tappable settings row: icon, label, optional detail, chevron. */
@@ -45,6 +47,8 @@ function Row({ icon, label, detail, onPress, tone }: { icon: IconName; label: st
 
 export default function ProfileScreen() {
   const { state, account, backendAvailable, sync, updateProfile, eraseAllData, syncNow, signOut, deleteAccount, resetOnboarding, dev } = useAppState();
+  const { t, lang } = useT();
+  const language = languageByCode(lang);
   const [name, setName] = useState(state.profile.displayName);
   const [weight, setWeight] = useState(state.profile.bodyweightKg?.toString() ?? '');
   const [confirm, setConfirm] = useState<'erase' | 'delete' | null>(null);
@@ -52,7 +56,7 @@ export default function ProfileScreen() {
   const [accountError, setAccountError] = useState<string | null>(null);
 
   const steps = useMemo(() => completedStepIds(state).size, [state]);
-  const since = new Date(state.onboardedAt ?? state.trialStartedAt).toLocaleDateString(undefined, { month: 'short', year: 'numeric' });
+  const since = new Date(state.onboardedAt ?? state.trialStartedAt).toLocaleDateString(lang, { month: 'short', year: 'numeric' });
   const focus = state.focusSkills.map((id) => SKILLS.find((x) => x.id === id)).filter((x) => x !== undefined);
   const initial = (name.trim()[0] ?? 'C').toUpperCase();
 
@@ -73,9 +77,9 @@ export default function ProfileScreen() {
           <Text style={s.avatarText}>{initial}</Text>
         </View>
         <View style={{ flex: 1, minWidth: 0 }}>
-          <H1 numberOfLines={1}>{name.trim() || 'You'}</H1>
+          <H1 numberOfLines={1}>{name.trim() || t('profile.you')}</H1>
           <Muted>
-            Since {since} · {state.workouts.length} {state.workouts.length === 1 ? 'session' : 'sessions'} · {steps} {steps === 1 ? 'step' : 'steps'}
+            {t('profile.since', { date: since })} · {t('count.sessions', { count: state.workouts.length })} · {t('count.steps', { count: steps })}
           </Muted>
         </View>
       </Rise>
@@ -96,23 +100,23 @@ export default function ProfileScreen() {
       </Rise>
 
       <Rise delay={160} style={{ gap: 10 }}>
-        <SectionHead label="You" />
+        <SectionHead label={t('profile.you')} />
         <Card style={{ gap: 14 }}>
           <View style={s.field}>
-            <Text style={s.fieldLabel}>Name</Text>
+            <Text style={s.fieldLabel}>{t('profile.name')}</Text>
             <TextInput
               style={s.input}
               value={name}
               onChangeText={setName}
               onBlur={() => updateProfile({ displayName: name.trim().slice(0, 30) })}
               maxLength={30}
-              placeholder="Shown on leaderboards"
+              placeholder={t('profile.namePh')}
               placeholderTextColor={colors.faint}
             />
           </View>
           <View style={s.sep} />
           <View style={s.field}>
-            <Text style={s.fieldLabel}>Bodyweight</Text>
+            <Text style={s.fieldLabel}>{t('profile.bodyweight')}</Text>
             <TextInput
               style={s.input}
               value={weight}
@@ -126,17 +130,24 @@ export default function ProfileScreen() {
         </Card>
       </Rise>
 
+      <Rise delay={185} style={{ gap: 10 }}>
+        <SectionHead label={t('profile.settings')} />
+        <Card style={{ gap: 4, paddingVertical: 8 }}>
+          <Row icon="globe-outline" label={t('menu.language')} detail={language ? (language.code === 'en' ? language.native : `${language.native} · ${language.english}`) : undefined} onPress={() => router.push('/language')} />
+        </Card>
+      </Rise>
+
       {backendAvailable && (
         <Rise delay={210} style={{ gap: 10 }}>
-          <SectionHead label="Account" />
+          <SectionHead label={t('profile.account')} />
           <Card style={{ gap: 4, paddingVertical: 8 }}>
             {account ? (
               <>
-                <Row icon="mail-outline" label={account.email ?? 'Signed in'} detail={syncLabel(sync)} />
-                <Row icon="sync-outline" label={sync.status === 'syncing' ? 'Syncing…' : 'Sync now'} onPress={sync.status === 'syncing' ? undefined : () => void syncNow()} />
+                <Row icon="mail-outline" label={account.email ?? t('profile.signedIn')} detail={syncLabel(sync, t, lang)} />
+                <Row icon="sync-outline" label={sync.status === 'syncing' ? t('profile.syncing') : t('profile.syncNow')} onPress={sync.status === 'syncing' ? undefined : () => void syncNow()} />
                 <Row
                   icon="log-out-outline"
-                  label="Sign out"
+                  label={t('profile.signOut')}
                   onPress={
                     busy
                       ? undefined
@@ -152,8 +163,8 @@ export default function ProfileScreen() {
             ) : (
               <Row
                 icon="cloud-upload-outline"
-                label="Sign in to back up"
-                detail="Keep your sessions, trial and ranks across phones."
+                label={t('profile.signInBackup')}
+                detail={t('profile.signInBackupText')}
                 onPress={() => router.push('/sign-in')}
               />
             )}
@@ -162,15 +173,15 @@ export default function ProfileScreen() {
       )}
 
       <Rise delay={260} style={{ gap: 10 }}>
-        <SectionHead label="Your data" />
+        <SectionHead label={t('profile.yourData')} />
         <Card style={{ gap: 4, paddingVertical: 8 }}>
-          <Row icon="time-outline" label="History" detail="Every session you logged" onPress={() => router.push('/history')} />
+          <Row icon="time-outline" label={t('menu.history')} detail={t('menu.history.hint')} onPress={() => router.push('/history')} />
           {account ? (
             <Row
               icon="trash-outline"
               tone="danger"
-              label={confirm === 'delete' ? 'Tap again to delete my account' : 'Delete my account'}
-              detail="Removes the account and everything stored with it. Can't be undone."
+              label={confirm === 'delete' ? t('profile.deleteConfirm') : t('profile.delete')}
+              detail={t('profile.deleteText')}
               onPress={
                 busy
                   ? undefined
@@ -187,8 +198,8 @@ export default function ProfileScreen() {
             <Row
               icon="trash-outline"
               tone="danger"
-              label={confirm === 'erase' ? 'Tap again to erase everything' : 'Erase all my data'}
-              detail="Everything lives on this phone until you sign in."
+              label={confirm === 'erase' ? t('profile.eraseConfirm') : t('profile.erase')}
+              detail={t('profile.eraseText')}
               onPress={() => {
                 if (confirm !== 'erase') return setConfirm('erase');
                 eraseAllData();
@@ -221,7 +232,7 @@ export default function ProfileScreen() {
       )}
 
       <Text style={s.footer}>
-        {BRAND.name} · {BRAND.tagline}
+        {BRAND.name} · {t('brand.tagline')}
       </Text>
     </Screen>
   );

@@ -7,6 +7,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { BRAND } from '@/lib/brand';
 import * as haptics from '@/lib/haptics';
+import type { Key } from '@/i18n/en';
+import { useT } from '@/i18n';
 import { useAppState } from '@/state/AppStateProvider';
 import { colors, display, font, frostGradient, radius } from '@/theme';
 
@@ -21,13 +23,14 @@ interface MenuContextValue {
 const MenuContext = createContext<MenuContextValue>({ open: () => {}, close: () => {}, isOpen: false });
 export const useMenu = () => useContext(MenuContext);
 
-const ITEMS: { label: string; hint: string; icon: IconName; href: Href; color: string }[] = [
-  { label: 'Skills', hint: 'Your ladders', icon: 'git-network-outline', href: '/skills', color: colors.glow },
-  { label: 'Ranking', hint: 'World boards', icon: 'podium-outline', href: '/ranking', color: colors.gold },
-  { label: 'Compete', hint: 'This month’s challenge', icon: 'trophy-outline', href: '/compete', color: colors.ember },
-  { label: 'History', hint: 'Every session you logged', icon: 'time-outline', href: '/history', color: colors.sky },
-  { label: 'Records', hint: 'Personal bests', icon: 'stats-chart-outline', href: '/records', color: '#86D4F5' },
-  { label: 'Profile', hint: 'You, account and data', icon: 'person-outline', href: '/profile', color: colors.violet },
+const ITEMS: { id: string; icon: IconName; href: Href; color: string }[] = [
+  { id: 'skills', icon: 'git-network-outline', href: '/skills', color: colors.glow },
+  { id: 'ranking', icon: 'podium-outline', href: '/ranking', color: colors.gold },
+  { id: 'compete', icon: 'trophy-outline', href: '/compete', color: colors.ember },
+  { id: 'history', icon: 'time-outline', href: '/history', color: colors.sky },
+  { id: 'records', icon: 'stats-chart-outline', href: '/records', color: '#86D4F5' },
+  { id: 'profile', icon: 'person-outline', href: '/profile', color: colors.violet },
+  { id: 'language', icon: 'globe-outline', href: '/language', color: '#F2A7C3' },
 ];
 
 /**
@@ -35,6 +38,7 @@ const ITEMS: { label: string; hint: string; icon: IconName; href: Href; color: s
  * a dimmed scrim while the menu glides in from the left, with its items arriving one by one.
  */
 export function MenuShell({ children }: { children: ReactNode }) {
+  const { t } = useT();
   const [isOpen, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const progress = useState(() => new Animated.Value(0))[0];
@@ -94,7 +98,7 @@ export function MenuShell({ children }: { children: ReactNode }) {
         {mounted && (
           <>
             <Animated.View style={[StyleSheet.absoluteFill, s.scrim, { opacity: progress }]}>
-              <Pressable style={StyleSheet.absoluteFill} onPress={close} accessibilityLabel="Close menu" />
+              <Pressable style={StyleSheet.absoluteFill} onPress={close} accessibilityLabel={t('menu.close')} />
             </Animated.View>
             <Animated.View
               style={[s.panel, { width: panel, transform: [{ translateX: progress.interpolate({ inputRange: [0, 1], outputRange: [-panel, 0] }) }] }]}
@@ -112,12 +116,13 @@ export function MenuShell({ children }: { children: ReactNode }) {
 function MenuPanel({ progress, onNavigate }: { progress: Animated.Value; onNavigate: () => void }) {
   const insets = useSafeAreaInsets();
   const { state, access } = useAppState();
+  const { t } = useT();
   const name = state.profile.displayName.trim();
   return (
     <View style={[s.panelInner, { paddingTop: insets.top + 28, paddingBottom: insets.bottom + 24 }]}>
       <View style={s.brandRow}>
         <Text style={s.brand}>{BRAND.name}</Text>
-        <Text style={s.brandSub}>{name ? `Signed in as ${name}` : 'Calisthenics, ranked'}</Text>
+        <Text style={s.brandSub}>{name ? t('menu.signedInAs', { name }) : t('brand.tagline')}</Text>
       </View>
       <View style={{ gap: 4 }}>
         {ITEMS.map((item, i) => {
@@ -125,7 +130,7 @@ function MenuPanel({ progress, onNavigate }: { progress: Animated.Value; onNavig
           const start = 0.25 + i * 0.12;
           const p = progress.interpolate({ inputRange: [0, start, Math.min(1, start + 0.45)], outputRange: [0, 0, 1], extrapolate: 'clamp' });
           return (
-            <Animated.View key={item.label} style={{ opacity: p, transform: [{ translateX: p.interpolate({ inputRange: [0, 1], outputRange: [-18, 0] }) }] }}>
+            <Animated.View key={item.id} style={{ opacity: p, transform: [{ translateX: p.interpolate({ inputRange: [0, 1], outputRange: [-18, 0] }) }] }}>
               <Pressable
                 onPress={() => {
                   haptics.tap();
@@ -134,14 +139,14 @@ function MenuPanel({ progress, onNavigate }: { progress: Animated.Value; onNavig
                 }}
                 style={({ pressed }) => [s.item, pressed && { backgroundColor: colors.card }]}
                 accessibilityRole="button"
-                accessibilityLabel={item.label}
+                accessibilityLabel={t(`menu.${item.id}` as Key)}
               >
                 <View style={[s.itemIcon, { backgroundColor: `${item.color}1F`, borderColor: `${item.color}40` }]}>
                   <Ionicons name={item.icon} size={19} color={item.color} />
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={s.itemLabel}>{item.label}</Text>
-                  <Text style={s.itemHint}>{item.hint}</Text>
+                  <Text style={s.itemLabel}>{t(`menu.${item.id}` as Key)}</Text>
+                  <Text style={s.itemHint}>{t(`menu.${item.id}.hint` as Key)}</Text>
                 </View>
                 <Ionicons name="chevron-forward" size={16} color={colors.faint} />
               </Pressable>
@@ -158,9 +163,9 @@ function MenuPanel({ progress, onNavigate }: { progress: Animated.Value; onNavig
         accessibilityRole="button"
       >
         <LinearGradient colors={frostGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.pass}>
-          <Text style={s.passKicker}>{access.status === 'pro' ? 'Founder' : 'Founder Pass'}</Text>
+          <Text style={s.passKicker}>{access.status === 'pro' ? t('pass.founder') : t('pass.founderPass')}</Text>
           <Text style={s.passTitle}>
-            {access.status === 'pro' ? 'Pro, unlimited' : access.status === 'expired' ? 'Trial ended' : `${access.daysLeft} days of trial left`}
+            {access.status === 'pro' ? t('pass.proUnlimited') : access.status === 'expired' ? t('pass.trialEnded') : t('pass.daysLeft', { count: access.daysLeft })}
           </Text>
         </LinearGradient>
       </Pressable>

@@ -9,6 +9,9 @@ import { Card, Chip, Eyebrow, FrostCard, H1, Muted, Screen, SectionHead } from '
 import { useLeaderboard } from '@/components/useLeaderboard';
 import { BOARDS, type BoardId } from '@/lib/boards';
 import { computeRecords } from '@/lib/records';
+import { useT } from '@/i18n';
+import type { Key } from '@/i18n/en';
+import { boardValue } from '@/i18n/format';
 import { useAppState } from '@/state/AppStateProvider';
 import { colors, display, font } from '@/theme';
 
@@ -19,21 +22,22 @@ export default function RankingScreen() {
   const { rows, loading, error, available } = useLeaderboard(boardId, 25);
   const records = useMemo(() => computeRecords(state.workouts), [state.workouts]);
   const mine = board.mine(records[board.exerciseId]);
-  const myName = state.profile.displayName.trim() || 'You';
+  const { t } = useT();
+  const myName = state.profile.displayName.trim() || t('profile.you');
   const rest = rows.filter((r) => r.rank > 3);
 
   return (
     <Screen headerInset contentStyle={{ gap: 18 }}>
       <Rise>
-        <Eyebrow>World · verified scores</Eyebrow>
-        <H1 style={{ marginTop: 6 }}>Ranking</H1>
+        <Eyebrow>{t('ranking.kicker')}</Eyebrow>
+        <H1 style={{ marginTop: 6 }}>{t('menu.ranking')}</H1>
       </Rise>
 
       <Rise delay={60}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8 }} style={{ marginHorizontal: -22 }}>
           <View style={{ width: 14 }} />
           {BOARDS.map((b) => (
-            <Chip key={b.id} label={b.short} active={b.id === boardId} onPress={() => setBoardId(b.id)} />
+            <Chip key={b.id} label={t(`board.${b.id}.short` as Key)} active={b.id === boardId} onPress={() => setBoardId(b.id)} />
           ))}
           <View style={{ width: 14 }} />
         </ScrollView>
@@ -41,7 +45,7 @@ export default function RankingScreen() {
 
       <Rise delay={120}>
         <View style={s.boardTitleRow}>
-          <Text style={s.boardTitle}>{board.label}</Text>
+          <Text style={s.boardTitle}>{t(`board.${board.id}` as Key)}</Text>
           {loading && <ActivityIndicator size="small" color={colors.muted} />}
         </View>
       </Rise>
@@ -51,14 +55,14 @@ export default function RankingScreen() {
       {error && (
         <Card style={s.notice}>
           <Ionicons name="cloud-offline-outline" size={20} color={colors.muted} />
-          <Muted style={{ flex: 1 }}>{error}</Muted>
+          <Muted style={{ flex: 1 }}>{t('compete.offline')}</Muted>
         </Card>
       )}
 
       {!error && !loading && available && rows.length === 0 && (
         <Card style={s.notice}>
           <Ionicons name="flag-outline" size={20} color={colors.ember} />
-          <Muted style={{ flex: 1 }}>No verified scores on this board yet. The first person to submit takes the top spot.</Muted>
+          <Muted style={{ flex: 1 }}>{t('ranking.empty')}</Muted>
         </Card>
       )}
 
@@ -70,30 +74,30 @@ export default function RankingScreen() {
               <Text style={s.person} numberOfLines={1}>
                 {r.display_name}
               </Text>
-              <Text style={s.score}>{board.unit(r.value)}</Text>
+              <Text style={s.score}>{boardValue(t, board, r.value)}</Text>
             </View>
           ))}
         </Card>
       )}
 
-      <SectionHead label="Your spot" />
+      <SectionHead label={t('ranking.yourSpot')} />
       <FrostCard style={s.mine}>
         <View style={s.mineAvatar}>
           <Text style={s.mineInitial}>{myName[0].toUpperCase()}</Text>
         </View>
         <View style={{ flex: 1, gap: 2 }}>
           <Text style={s.mineName}>{myName}</Text>
-          <Text style={s.mineSub}>{mine ? `Your best: ${board.unit(mine)}` : 'Log this skill to see your best here'}</Text>
+          <Text style={s.mineSub}>{mine ? t('ranking.yourBest', { value: boardValue(t, board, mine) }) : t('ranking.logToSee')}</Text>
         </View>
         <View style={s.unranked}>
-          <Text style={s.unrankedText}>Not ranked</Text>
+          <Text style={s.unrankedText}>{t('ranking.notRanked')}</Text>
         </View>
       </FrostCard>
       <Muted style={{ fontSize: 12 }}>
-        Only video-verified scores count. Submitting yours with a clip opens with the first monthly challenge.
+        {t('ranking.note')}
       </Muted>
       <Text style={s.link} onPress={() => router.push('/compete')}>
-        See this month&apos;s challenge →
+        {t('ranking.seeChallenge')}
       </Text>
     </Screen>
   );

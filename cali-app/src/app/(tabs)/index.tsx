@@ -21,7 +21,9 @@ import { ARTICLES, dailyPick, VIDEOS } from '@/lib/learn';
 import { postersFor } from '@/lib/posters';
 import { completedStepIds, countSets, skillProgress, workoutsThisWeek } from '@/lib/records';
 import { SKILLS } from '@/lib/skills';
-import { clockLabel, PERIOD_COPY, periodOf } from '@/lib/time';
+import { clockLabel, periodOf } from '@/lib/time';
+import { useT } from '@/i18n';
+import type { Key } from '@/i18n/en';
 import { useAppState } from '@/state/AppStateProvider';
 import { colors, display, font, panelGradient, radius } from '@/theme';
 
@@ -38,10 +40,10 @@ function StatNumber({ value, label, delay }: { value: number; label: string; del
 export default function HomeScreen() {
   const { state, access } = useAppState();
   const menu = useMenu();
+  const { t, lang } = useT();
   const now = useNow(1000);
   const local = useLocalWeather();
   const period = periodOf(now);
-  const copy = PERIOD_COPY[period];
   const posters = useMemo(() => postersFor(period), [period]);
 
   const week = useMemo(() => workoutsThisWeek(state.workouts, now), [state.workouts, now]);
@@ -67,7 +69,7 @@ export default function HomeScreen() {
       <Rise delay={0}>
         <View style={s.topbar}>
           <HubButton onPress={menu.open} />
-          <PressScale onPress={() => router.push('/profile')} style={s.avatar} accessibilityLabel="Profile">
+          <PressScale onPress={() => router.push('/profile')} style={s.avatar} accessibilityLabel={t('menu.profile')}>
             <Text style={s.avatarText}>{(name[0] ?? 'C').toUpperCase()}</Text>
           </PressScale>
         </View>
@@ -76,9 +78,9 @@ export default function HomeScreen() {
       <Rise delay={70}>
         <View style={s.clockRow}>
           <LiveDot color={colors.ember} />
-          <Text style={s.clock}>{clockLabel(now)}</Text>
+          <Text style={s.clock}>{clockLabel(now, lang)}</Text>
         </View>
-        <H1 style={{ marginTop: 6 }}>{name ? `${copy.hello}${period === 'night' ? '' : ','}` : copy.hello}</H1>
+        <H1 style={{ marginTop: 6 }}>{t(`period.${period}.hello` as Key)}</H1>
         {name && period !== 'night' ? <H1 style={{ color: colors.muted }}>{name}</H1> : null}
       </Rise>
 
@@ -94,20 +96,20 @@ export default function HomeScreen() {
       <Rise delay={210}>
         <FrostCard sheen>
           <View style={{ gap: 4 }}>
-            <Text style={s.heroKicker}>{access.canLog ? copy.kicker : 'Your free trial has ended'}</Text>
-            <Text style={s.heroTitle}>{access.canLog ? copy.title : 'Your history is safe. Go Pro to keep logging.'}</Text>
+            <Text style={s.heroKicker}>{access.canLog ? t(`period.${period}.kicker` as Key) : t('home.trialEnded')}</Text>
+            <Text style={s.heroTitle}>{access.canLog ? t(`period.${period}.title` as Key) : t('home.historySafe')}</Text>
           </View>
           <View style={s.heroRow}>
             <Button
               compact
               variant="navy"
-              label={access.canLog ? 'Start session' : 'See Founder Pass'}
+              label={access.canLog ? t('home.startSession') : t('pass.see')}
               icon={<Ionicons name={access.canLog ? 'play' : 'sparkles'} size={14} color={colors.text} />}
               onPress={() => router.push(access.canLog ? '/workout/new' : '/paywall')}
             />
             {access.status === 'trial' && (
               <Text style={s.trialNote}>
-                {access.daysLeft} {access.daysLeft === 1 ? 'day' : 'days'} of trial left
+                {t('pass.daysLeft', { count: access.daysLeft })}
               </Text>
             )}
           </View>
@@ -117,18 +119,18 @@ export default function HomeScreen() {
       <Rise delay={280}>
         <LinearGradient colors={panelGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.week}>
           <View style={s.weekHead}>
-            <Text style={s.weekLabel}>This week</Text>
-            <PressScale onPress={() => router.push('/history')} haptic="none" accessibilityLabel="Open history">
-              <Text style={s.weekAction}>History</Text>
+            <Text style={s.weekLabel}>{t('home.thisWeek')}</Text>
+            <PressScale onPress={() => router.push('/history')} haptic="none" accessibilityLabel={t('menu.history')}>
+              <Text style={s.weekAction}>{t('menu.history')}</Text>
             </PressScale>
           </View>
           <WeekStrip workouts={state.workouts} now={now} tone="tint" />
           <View style={s.statsRow}>
-            <StatNumber value={week.length} label={week.length === 1 ? 'session' : 'sessions'} delay={500} />
+            <StatNumber value={week.length} label={t('unit.session', { count: week.length })} delay={500} />
             <View style={s.divider} />
-            <StatNumber value={sets} label={sets === 1 ? 'set' : 'sets'} delay={580} />
+            <StatNumber value={sets} label={t('unit.set', { count: sets })} delay={580} />
             <View style={s.divider} />
-            <StatNumber value={completed.size} label={completed.size === 1 ? 'skill step' : 'skill steps'} delay={660} />
+            <StatNumber value={completed.size} label={t('unit.skillStep', { count: completed.size })} delay={660} />
           </View>
         </LinearGradient>
       </Rise>
@@ -137,7 +139,7 @@ export default function HomeScreen() {
         <Rise delay={350}>
           <PressScale onPress={() => router.push({ pathname: '/skills', params: { id: next.skill.id } })} scaleTo={0.98}>
             <Card>
-              <SectionHead label={state.focusSkills.includes(next.skill.id) ? 'Your focus' : 'Next skill'} />
+              <SectionHead label={state.focusSkills.includes(next.skill.id) ? t('home.yourFocus') : t('home.nextSkill')} />
               <View style={s.skillRow}>
                 <View style={s.skillIcon}>
                   <Ionicons name={skillIcon(next.skill.id)} size={18} color={colors.onFrost} />
@@ -150,7 +152,7 @@ export default function HomeScreen() {
               <ProgressBar value={next.progress.done / next.progress.total} delay={700} />
               <View style={s.nextRow}>
                 <Ionicons name="arrow-forward-circle" size={18} color={colors.ember} />
-                <Muted style={{ flex: 1 }}>Next: {next.progress.nextStep?.name}</Muted>
+                <Muted style={{ flex: 1 }}>{t('home.next', { step: next.progress.nextStep?.name ?? '' })}</Muted>
               </View>
             </Card>
           </PressScale>
@@ -159,8 +161,8 @@ export default function HomeScreen() {
 
       {pick && (
         <Rise delay={400} style={{ gap: 12 }}>
-          <SectionHead label="Today's pick" action="Learn" onAction={() => router.push('/learn')} />
-          <PressScale onPress={() => router.push({ pathname: '/learn/[id]', params: { id: pick.id } })} scaleTo={0.98} accessibilityLabel={`Read ${pick.title}`}>
+          <SectionHead label={t('home.todaysPick')} action={t('tabs.learn')} onAction={() => router.push('/learn')} />
+          <PressScale onPress={() => router.push({ pathname: '/learn/[id]', params: { id: pick.id } })} scaleTo={0.98} accessibilityLabel={`${t('learn.read')}: ${pick.title}`}>
             <View style={s.pick}>
               <Image source={articleImage(pick.id)} style={StyleSheet.absoluteFill} resizeMode="cover" />
               <LinearGradient colors={['rgba(7,11,22,0.1)', 'rgba(7,11,22,0.94)']} locations={[0.2, 1]} style={StyleSheet.absoluteFill} />
@@ -172,7 +174,7 @@ export default function HomeScreen() {
                   {pick.title}
                 </Text>
                 <Text style={s.pickMeta}>
-                  {pick.source} · {pick.minutes} min read
+                  {pick.source} · {t('learn.minRead', { count: pick.minutes })}
                 </Text>
               </View>
             </View>
@@ -182,14 +184,14 @@ export default function HomeScreen() {
               onPress={() => router.push({ pathname: '/learn/video/[id]', params: { id: pickVideo.id } })}
               scaleTo={0.98}
               style={s.pickVideo}
-              accessibilityLabel={`Watch ${pickVideo.title}`}
+              accessibilityLabel={`${t('learn.watch')}: ${pickVideo.title}`}
             >
               <Image source={videoThumb(pickVideo.id)} style={s.pickVideoThumb} />
               <View style={s.pickVideoPlay}>
                 <Ionicons name="play" size={11} color={colors.onFrost} />
               </View>
               <View style={{ flex: 1, minWidth: 0 }}>
-                <Text style={s.pickVideoKicker}>Watch · {pickVideo.length}</Text>
+                <Text style={s.pickVideoKicker}>{t('learn.watch')} · {pickVideo.length}</Text>
                 <Text style={s.pickVideoTitle} numberOfLines={1}>
                   {pickVideo.title}
                 </Text>
@@ -201,11 +203,11 @@ export default function HomeScreen() {
       )}
 
       <Rise delay={460} style={{ gap: 12 }}>
-        <SectionHead label="Recent" action={state.workouts.length > 2 ? 'See all' : undefined} onAction={() => router.push('/history')} />
+        <SectionHead label={t('home.recent')} action={state.workouts.length > 2 ? t('common.seeAll') : undefined} onAction={() => router.push('/history')} />
         {state.workouts.length === 0 ? (
           <Card style={s.empty}>
             <Ionicons name="barbell-outline" size={22} color={colors.muted} />
-            <Muted style={{ flex: 1 }}>No sessions yet. Your first one starts your records and the week strip above.</Muted>
+            <Muted style={{ flex: 1 }}>{t('home.noSessions')}</Muted>
           </Card>
         ) : (
           state.workouts.slice(0, 2).map((w) => <WorkoutCard key={w.id} workout={w} />)

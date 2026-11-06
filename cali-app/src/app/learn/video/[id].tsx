@@ -7,6 +7,7 @@ import { ArticleRow, CategoryTag, ShortCard, VideoCard } from '@/components/Lear
 import { videoThumb } from '@/components/learnMedia';
 import { PressScale, Rise } from '@/components/motion';
 import { H1, Muted, Screen } from '@/components/ui';
+import { useT } from '@/i18n';
 import * as haptics from '@/lib/haptics';
 import { ARTICLES, compactCount, relatedTo, VIDEOS, watchUrl } from '@/lib/learn';
 import { SKILLS } from '@/lib/skills';
@@ -14,13 +15,14 @@ import { colors, display, font, radius } from '@/theme';
 
 export default function VideoScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { t } = useT();
   const video = VIDEOS.find((v) => v.id === id);
 
   if (!video) {
     return (
       <Screen headerInset>
-        <H1>Not found</H1>
-        <Muted>This video is no longer in the library.</Muted>
+        <H1>{t('common.notFound')}</H1>
+        <Muted>{t('learn.videoGone')}</Muted>
       </Screen>
     );
   }
@@ -40,7 +42,7 @@ export default function VideoScreen() {
   return (
     <Screen headerInset contentStyle={{ gap: 22 }}>
       <Rise>
-        <PressScale onPress={watch} scaleTo={0.98} accessibilityLabel={`Play ${video.title} on YouTube`}>
+        <PressScale onPress={watch} scaleTo={0.98} accessibilityLabel={t('learn.playsOnYouTube')}>
           <View style={[s.player, video.short && s.playerShort]}>
             <Image source={videoThumb(video.id)} style={StyleSheet.absoluteFill} resizeMode="cover" />
             <LinearGradient colors={['rgba(7,11,22,0.1)', 'rgba(7,11,22,0.55)']} style={StyleSheet.absoluteFill} />
@@ -54,7 +56,7 @@ export default function VideoScreen() {
             <View style={s.playerBottom}>
               <View style={s.yt}>
                 <Ionicons name="logo-youtube" size={14} color="#FF4E45" />
-                <Text style={s.ytText}>Plays on YouTube</Text>
+                <Text style={s.ytText}>{t('learn.playsOnYouTube')}</Text>
               </View>
               <View style={s.duration}>
                 <Text style={s.durationText}>{video.length}</Text>
@@ -70,7 +72,7 @@ export default function VideoScreen() {
           {video.short && (
             <View style={s.shortTag}>
               <Ionicons name="flash" size={10} color={colors.onFrost} />
-              <Text style={s.shortTagText}>Short</Text>
+              <Text style={s.shortTagText}>{t('learn.short')}</Text>
             </View>
           )}
         </View>
@@ -82,26 +84,26 @@ export default function VideoScreen() {
           <View style={{ flex: 1 }}>
             <Text style={s.channel}>{video.channel}</Text>
             <Text style={s.channelMeta}>
-              {compactCount(video.views)} views · {video.age}
+              {t('learn.views', { n: compactCount(video.views) })}
             </Text>
           </View>
         </View>
       </Rise>
 
       <Rise delay={120} style={s.actions}>
-        <PressScale onPress={watch} containerStyle={{ flex: 1 }} style={s.watchBtn} accessibilityLabel="Watch on YouTube">
+        <PressScale onPress={watch} containerStyle={{ flex: 1 }} style={s.watchBtn} accessibilityLabel={t('learn.playsOnYouTube')}>
           <Ionicons name="play" size={16} color={colors.onFrost} />
-          <Text style={s.watchText}>Watch</Text>
+          <Text style={s.watchText}>{t('learn.watch')}</Text>
         </PressScale>
         {skill && (
           <PressScale
             onPress={() => router.push({ pathname: '/skills', params: { id: skill.id } })}
             containerStyle={{ flex: 1 }}
             style={s.ladderBtn}
-            accessibilityLabel={`Open ${skill.name} ladder`}
+            accessibilityLabel={t('learn.ladder', { skill: skill.name })}
           >
             <Ionicons name="git-network-outline" size={16} color={colors.glow} />
-            <Text style={s.ladderText}>{skill.name} ladder</Text>
+            <Text style={s.ladderText}>{t('learn.ladder', { skill: skill.name })}</Text>
           </PressScale>
         )}
       </Rise>
@@ -110,7 +112,7 @@ export default function VideoScreen() {
         <Rise delay={170} style={{ gap: 12 }}>
           <View style={s.headRow}>
             <View style={[s.bar, { backgroundColor: colors.glow }]} />
-            <Text style={s.head}>Pairs with these guides</Text>
+            <Text style={s.head}>{t('learn.pairsWith')}</Text>
           </View>
           {guides.map((a) => (
             <ArticleRow key={a.id} article={a} />
@@ -122,7 +124,7 @@ export default function VideoScreen() {
         <Rise delay={220} style={{ gap: 12 }}>
           <View style={s.headRow}>
             <View style={[s.bar, { backgroundColor: colors.ember }]} />
-            <Text style={s.head}>More like this</Text>
+            <Text style={s.head}>{t('learn.moreLikeThis')}</Text>
           </View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginHorizontal: -22 }} contentContainerStyle={{ gap: 12, paddingHorizontal: 22 }}>
             {similar.map((v) => (v.short ? <ShortCard key={v.id} video={v} /> : <VideoCard key={v.id} video={v} />))}
@@ -130,7 +132,7 @@ export default function VideoScreen() {
         </Rise>
       )}
 
-      <Text style={s.footer}>Video by {video.channel}. Cali links to it; we do not host or edit it.</Text>
+      <Text style={s.footer}>{t('learn.videoBy', { channel: video.channel })}</Text>
     </Screen>
   );
 }

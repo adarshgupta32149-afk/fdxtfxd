@@ -7,13 +7,14 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Rise } from '@/components/motion';
 import { Backdrop, Button, Card, H1, Muted, styles } from '@/components/ui';
 import { WorkoutCard } from '@/components/WorkoutCard';
+import { useT } from '@/i18n';
 import { countSets } from '@/lib/records';
 import type { Workout } from '@/lib/types';
 import { useAppState } from '@/state/AppStateProvider';
 import { colors, display, font } from '@/theme';
 
 /** Groups sessions by calendar month, newest first. */
-function byMonth(workouts: Workout[]) {
+function byMonth(workouts: Workout[], lang: string) {
   const sorted = [...workouts].sort((a, b) => b.date.localeCompare(a.date));
   const sections: { key: string; title: string; sets: number; data: Workout[] }[] = [];
   for (const w of sorted) {
@@ -21,7 +22,7 @@ function byMonth(workouts: Workout[]) {
     const key = `${d.getFullYear()}-${d.getMonth()}`;
     let sec = sections[sections.length - 1];
     if (!sec || sec.key !== key) {
-      sec = { key, title: d.toLocaleDateString(undefined, { month: 'long', year: 'numeric' }), sets: 0, data: [] };
+      sec = { key, title: d.toLocaleDateString(lang, { month: 'long', year: 'numeric' }), sets: 0, data: [] };
       sections.push(sec);
     }
     sec.data.push(w);
@@ -33,7 +34,8 @@ function byMonth(workouts: Workout[]) {
 export default function HistoryScreen() {
   const { state, access } = useAppState();
   const insets = useSafeAreaInsets();
-  const sections = useMemo(() => byMonth(state.workouts), [state.workouts]);
+  const { t, lang } = useT();
+  const sections = useMemo(() => byMonth(state.workouts, lang), [state.workouts, lang]);
   const total = state.workouts.length;
   const sets = countSets(state.workouts);
 
@@ -47,22 +49,22 @@ export default function HistoryScreen() {
         stickySectionHeadersEnabled={false}
         ListHeaderComponent={
           <Rise style={{ gap: 16, marginBottom: 8 }}>
-            <H1>History</H1>
+            <H1>{t('menu.history')}</H1>
             {total > 0 && (
               <Card style={s.summary}>
                 <View style={s.sumCol}>
                   <Text style={s.sumNum}>{total}</Text>
-                  <Text style={s.sumLabel}>{total === 1 ? 'session' : 'sessions'}</Text>
+                  <Text style={s.sumLabel}>{t('unit.session', { count: total })}</Text>
                 </View>
                 <View style={s.divider} />
                 <View style={s.sumCol}>
                   <Text style={s.sumNum}>{sets}</Text>
-                  <Text style={s.sumLabel}>{sets === 1 ? 'set' : 'sets'}</Text>
+                  <Text style={s.sumLabel}>{t('unit.set', { count: sets })}</Text>
                 </View>
                 <View style={s.divider} />
                 <View style={s.sumCol}>
                   <Text style={s.sumNum}>{sections.length}</Text>
-                  <Text style={s.sumLabel}>{sections.length === 1 ? 'month' : 'months'}</Text>
+                  <Text style={s.sumLabel}>{t('unit.month', { count: sections.length })}</Text>
                 </View>
               </Card>
             )}
@@ -72,7 +74,7 @@ export default function HistoryScreen() {
           <View style={s.monthRow}>
             <Text style={s.month}>{section.title}</Text>
             <Text style={s.monthMeta}>
-              {section.data.length} · {section.sets} {section.sets === 1 ? 'set' : 'sets'}
+              {section.data.length} · {t('count.sets', { count: section.sets })}
             </Text>
           </View>
         )}
@@ -81,9 +83,9 @@ export default function HistoryScreen() {
           <Rise delay={80}>
             <Card style={s.empty}>
               <Ionicons name="calendar-clear-outline" size={26} color={colors.muted} />
-              <Text style={s.emptyTitle}>Nothing logged yet</Text>
-              <Muted style={{ textAlign: 'center' }}>Every session you finish lands here, grouped by month.</Muted>
-              {access.canLog && <Button compact label="Start a session" onPress={() => router.push('/workout/new')} />}
+              <Text style={s.emptyTitle}>{t('history.empty')}</Text>
+              <Muted style={{ textAlign: 'center' }}>{t('history.emptyText')}</Muted>
+              {access.canLog && <Button compact label={t('home.startSession')} onPress={() => router.push('/workout/new')} />}
             </Card>
           </Rise>
         }

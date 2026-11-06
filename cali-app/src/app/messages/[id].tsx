@@ -8,18 +8,20 @@ import { PressScale } from '@/components/motion';
 import { imageSource } from '@/components/socialMedia';
 import { Avatar } from '@/components/SocialUI';
 import { Backdrop, H1, Muted } from '@/components/ui';
+import { useT } from '@/i18n';
 import * as haptics from '@/lib/haptics';
 import { personById, type Message, type SocialState } from '@/lib/social';
 import { useSocial } from '@/state/SocialProvider';
 import { colors, display, font, radius } from '@/theme';
 
 function SharedCard({ shared, social, fromMe }: { shared: NonNullable<Message['shared']>; social: SocialState; fromMe: boolean }) {
+  const { t } = useT();
   if (shared.kind === 'short') {
     const sh = social.shorts.find((x) => x.id === shared.id);
-    if (!sh) return <Text style={s.gone}>This Short is no longer available.</Text>;
+    if (!sh) return <Text style={s.gone}>{t('msg.shortGone')}</Text>;
     const author = personById(social, sh.authorId);
     return (
-      <Pressable onPress={() => router.navigate({ pathname: '/shorts', params: { id: sh.id } })} style={[s.shared, fromMe && s.sharedMine]} accessibilityLabel="Open Short">
+      <Pressable onPress={() => router.navigate({ pathname: '/shorts', params: { id: sh.id } })} style={[s.shared, fromMe && s.sharedMine]} accessibilityLabel={t('msg.openShort')}>
         <View style={s.sharedShort}>
           {imageSource(sh.poster) && <Image source={imageSource(sh.poster)} style={StyleSheet.absoluteFill} resizeMode="cover" />}
           <View style={s.sharedPlay}>
@@ -34,11 +36,11 @@ function SharedCard({ shared, social, fromMe }: { shared: NonNullable<Message['s
     );
   }
   const po = social.posts.find((x) => x.id === shared.id);
-  if (!po) return <Text style={s.gone}>This post is no longer available.</Text>;
+  if (!po) return <Text style={s.gone}>{t('feed.unavailable')}</Text>;
   const author = personById(social, po.authorId);
   const img = imageSource(po.image);
   return (
-    <Pressable onPress={() => router.push({ pathname: '/feed/[id]', params: { id: po.id } })} style={[s.shared, fromMe && s.sharedMine]} accessibilityLabel="Open post">
+    <Pressable onPress={() => router.push({ pathname: '/feed/[id]', params: { id: po.id } })} style={[s.shared, fromMe && s.sharedMine]} accessibilityLabel={t('msg.openPost')}>
       {img && <Image source={img} style={s.sharedImg} resizeMode="cover" />}
       <Text style={s.sharedHandle}>@{author?.handle}</Text>
       <Text style={s.sharedText} numberOfLines={3}>
@@ -52,6 +54,7 @@ export default function ChatScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const insets = useSafeAreaInsets();
   const { social, send, markRead } = useSocial();
+  const { t } = useT();
   const [text, setText] = useState('');
   const scroller = useRef<ScrollViewInstance>(null);
   const conv = social.conversations.find((c) => c.id === id);
@@ -70,8 +73,8 @@ export default function ChatScreen() {
     return (
       <Backdrop>
         <View style={{ padding: 22, paddingTop: insets.top + 70, gap: 8 }}>
-          <H1>Chat not found</H1>
-          <Muted>It may have been removed.</Muted>
+          <H1>{t('msg.chatGone')}</H1>
+          <Muted>{t('msg.chatGoneText')}</Muted>
         </View>
       </Backdrop>
     );
@@ -87,7 +90,7 @@ export default function ChatScreen() {
   return (
     <Backdrop>
       <View style={[s.header, { paddingTop: insets.top + 8 }]}>
-        <PressScale onPress={() => router.back()} style={s.back} accessibilityLabel="Back">
+        <PressScale onPress={() => router.back()} style={s.back} accessibilityLabel={t('common.back')}>
           <Ionicons name="chevron-back" size={22} color={colors.text} />
         </PressScale>
         <Avatar person={who} size={38} />
@@ -121,7 +124,7 @@ export default function ChatScreen() {
               </View>
             );
           })}
-          {conv.messages.length > 0 && conv.messages.at(-1)?.fromMe && <Text style={s.seen}>Sent</Text>}
+          {conv.messages.length > 0 && conv.messages.at(-1)?.fromMe && <Text style={s.seen}>{t('social.sent')}</Text>}
         </ScrollView>
 
         <View style={[s.inputRow, { paddingBottom: insets.bottom + 10 }]}>
@@ -130,14 +133,14 @@ export default function ChatScreen() {
               style={s.input}
               value={text}
               onChangeText={setText}
-              placeholder="Message…"
+              placeholder={t('msg.placeholder')}
               placeholderTextColor={colors.faint}
               onSubmitEditing={submit}
               returnKeyType="send"
               maxLength={1000}
             />
           </View>
-          <PressScale onPress={submit} disabled={!text.trim()} style={[s.sendBtn, !text.trim() && { opacity: 0.4 }]} accessibilityLabel="Send message">
+          <PressScale onPress={submit} disabled={!text.trim()} style={[s.sendBtn, !text.trim() && { opacity: 0.4 }]} accessibilityLabel={t('msg.send')}>
             <Ionicons name="arrow-up" size={19} color={colors.onFrost} />
           </PressScale>
         </View>

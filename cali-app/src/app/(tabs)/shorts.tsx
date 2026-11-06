@@ -7,6 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { PressScale } from '@/components/motion';
 import { ShortItem } from '@/components/ShortItem';
 import { CommentsSheet, OptionsSheet, ShareSheet } from '@/components/SocialUI';
+import { useT } from '@/i18n';
 import * as haptics from '@/lib/haptics';
 import { ME } from '@/lib/social';
 import { useSocial } from '@/state/SocialProvider';
@@ -17,6 +18,7 @@ type Target = { kind: 'short'; id: string };
 export default function ShortsScreen() {
   const insets = useSafeAreaInsets();
   const { social, toggleLike, like, toggleSave } = useSocial();
+  const { t } = useT();
   const [height, setHeight] = useState(0);
   const [index, setIndex] = useState(0);
   const [focused, setFocused] = useState(true);
@@ -74,7 +76,7 @@ export default function ShortsScreen() {
           maxToRenderPerBatch={2}
           removeClippedSubviews
           renderItem={({ item, index: i }) => {
-            const t: Target = { kind: 'short', id: item.id };
+            const tg: Target = { kind: 'short', id: item.id };
             return (
               <ShortItem
                 short={item}
@@ -86,36 +88,36 @@ export default function ShortsScreen() {
                 onToggleMute={() => setMuted((m) => !m)}
                 onLike={() => {
                   haptics.tap();
-                  toggleLike(t);
+                  toggleLike(tg);
                 }}
-                onDoubleLike={() => like(t)}
-                onComments={() => setComments(t)}
-                onShare={() => setSharing(t)}
+                onDoubleLike={() => like(tg)}
+                onComments={() => setComments(tg)}
+                onShare={() => setSharing(tg)}
                 onSave={() => {
                   haptics.tap();
-                  toggleSave(t);
+                  toggleSave(tg);
                 }}
-                onMore={() => setOptions(t)}
+                onMore={() => setOptions(tg)}
               />
             );
           }}
           ListEmptyComponent={
             <View style={[s.empty, { height }]}>
               <Ionicons name="videocam-outline" size={34} color={colors.muted} />
-              <Text style={s.emptyTitle}>No Shorts yet</Text>
-              <Text style={s.emptyText}>Post the first one. Up to 3 minutes.</Text>
+              <Text style={s.emptyTitle}>{t('shorts.empty')}</Text>
+              <Text style={s.emptyText}>{t('shorts.emptyText')}</Text>
             </View>
           }
         />
       )}
 
       <View style={[s.top, { paddingTop: insets.top + 10 }]} pointerEvents="box-none">
-        <Text style={s.title}>Shorts</Text>
+        <Text style={s.title}>{t('tabs.shorts')}</Text>
         <View style={s.topActions}>
-          <PressScale onPress={() => setMuted((m) => !m)} style={s.topBtn} accessibilityLabel={muted ? 'Turn sound on' : 'Mute'}>
+          <PressScale onPress={() => setMuted((m) => !m)} style={s.topBtn} accessibilityLabel={muted ? t('shorts.soundOn') : t('shorts.mute')}>
             <Ionicons name={muted ? 'volume-mute' : 'volume-high'} size={18} color="#fff" />
           </PressScale>
-          <PressScale onPress={() => router.push('/shorts/new')} style={[s.topBtn, s.postBtn]} accessibilityLabel="Post a Short">
+          <PressScale onPress={() => router.push('/shorts/new')} style={[s.topBtn, s.postBtn]} accessibilityLabel={t('shorts.post')}>
             <Ionicons name="add" size={20} color={colors.onFrost} />
           </PressScale>
         </View>

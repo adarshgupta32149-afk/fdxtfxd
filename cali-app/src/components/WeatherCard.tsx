@@ -4,7 +4,9 @@ import { ActivityIndicator, Platform, StyleSheet, Text, View } from 'react-nativ
 
 import { PressScale } from '@/components/motion';
 import type { LocalWeather } from '@/components/useLocalWeather';
-import { describeWeather, localTimeAt, to12h, trainingTip } from '@/lib/weather';
+import { useT } from '@/i18n';
+import type { Key } from '@/i18n/en';
+import { describeWeather, localTimeAt, tipKey, to12h } from '@/lib/weather';
 import { colors, display, font, panelGradient, radius } from '@/theme';
 
 // Background tint by sky: warm for sun, cool for rain, deep for night.
@@ -25,7 +27,8 @@ function Chip({ icon, text }: { icon: React.ComponentProps<typeof Ionicons>['nam
 }
 
 export function WeatherCard({ data, now }: { data: LocalWeather; now: Date }) {
-  const { status, place, weather, weatherError, enable } = data;
+  const { status, place, weather, enable } = data;
+  const { t, lang } = useT();
 
   if (status === 'idle' || status === 'denied' || status === 'unavailable') {
     const denied = status === 'denied';
@@ -36,22 +39,22 @@ export function WeatherCard({ data, now }: { data: LocalWeather; now: Date }) {
             <Ionicons name={denied ? 'location-outline' : 'partly-sunny'} size={22} color={colors.onFrost} />
           </View>
           <View style={{ flex: 1 }}>
-            <Text style={s.askTitle}>{denied ? 'Location is off' : 'Weather where you train'}</Text>
+            <Text style={s.askTitle}>{denied ? t('weather.locationOff') : t('weather.title')}</Text>
             <Text style={s.askText}>
               {denied
                 ? Platform.OS === 'web'
-                  ? 'Allow location for this site in your browser to see local weather and time.'
-                  : 'Turn on location for Cali in Settings to see local weather and time.'
+                  ? t('weather.allowBrowser')
+                  : t('weather.allowSettings')
                 : status === 'unavailable'
-                  ? 'We could not find your location. Check that location services are on.'
-                  : 'Live temperature, conditions and the local time, with a tip for today’s session.'}
+                  ? t('weather.notFound')
+                  : t('weather.pitch')}
             </Text>
           </View>
         </View>
         {!denied && (
-          <PressScale onPress={enable} style={s.askBtn} accessibilityLabel="Use my location">
+          <PressScale onPress={enable} style={s.askBtn} accessibilityLabel={t('weather.useLocation')}>
             <Ionicons name="navigate" size={14} color={colors.onFrost} />
-            <Text style={s.askBtnText}>{status === 'unavailable' ? 'Try again' : 'Use my location'}</Text>
+            <Text style={s.askBtnText}>{status === 'unavailable' ? t('common.tryAgain') : t('weather.useLocation')}</Text>
           </PressScale>
         )}
       </LinearGradient>
@@ -62,13 +65,13 @@ export function WeatherCard({ data, now }: { data: LocalWeather; now: Date }) {
     return (
       <LinearGradient colors={panelGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={[s.card, s.loading]}>
         <ActivityIndicator color={colors.glow} />
-        <Text style={s.askText}>Finding you and checking the sky…</Text>
+        <Text style={s.askText}>{t('weather.finding')}</Text>
       </LinearGradient>
     );
   }
 
   const d = weather ? describeWeather(weather.code, weather.isDay) : null;
-  const time = weather ? localTimeAt(now, weather.utcOffsetSec) : now.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+  const time = weather ? localTimeAt(now, weather.utcOffsetSec) : now.toLocaleTimeString(lang, { hour: 'numeric', minute: '2-digit' });
   const sunset = to12h(weather?.sunset ?? null);
   const sunrise = to12h(weather?.sunrise ?? null);
   const afterSunset = weather?.sunset ? time.endsWith('pm') && !weather.isDay : false;
@@ -79,7 +82,7 @@ export function WeatherCard({ data, now }: { data: LocalWeather; now: Date }) {
         <View style={s.placeRow}>
           <Ionicons name="location" size={14} color={colors.ember} />
           <Text style={s.place} numberOfLines={1}>
-            {place ?? 'Your location'}
+            {place ?? t('weather.yourLocation')}
           </Text>
         </View>
         <Text style={s.time}>{time}</Text>
@@ -92,24 +95,24 @@ export function WeatherCard({ data, now }: { data: LocalWeather; now: Date }) {
             <View style={{ flex: 1, gap: 2 }}>
               <View style={s.condRow}>
                 <Ionicons name={d.icon} size={22} color={d.icon === 'sunny' || d.icon === 'partly-sunny' ? colors.gold : colors.glow} />
-                <Text style={s.cond}>{d.label}</Text>
+                <Text style={s.cond}>{t(`weather.${d.key}` as Key)}</Text>
               </View>
-              <Text style={s.feels}>Feels like {Math.round(weather.feelsC)}°</Text>
+              <Text style={s.feels}>{t('weather.feelsLike', { temp: Math.round(weather.feelsC) })}</Text>
             </View>
           </View>
           <View style={s.chips}>
             <Chip icon="water-outline" text={`${Math.round(weather.humidity)}%`} />
             <Chip icon="flag-outline" text={`${Math.round(weather.windKmh)} km/h`} />
             {weather.uvMax != null && <Chip icon="sunny-outline" text={`UV ${Math.round(weather.uvMax)}`} />}
-            {(afterSunset ? sunrise : sunset) && <Chip icon={afterSunset ? 'sunny' : 'moon-outline'} text={afterSunset ? `Rise ${sunrise}` : `Set ${sunset}`} />}
+            {(afterSunset ? sunrise : sunset) && <Chip icon={afterSunset ? 'sunny' : 'moon-outline'} text={afterSunset ? t('weather.rise', { time: sunrise ?? '' }) : t('weather.set', { time: sunset ?? '' })} />}
           </View>
           <View style={s.tip}>
             <Ionicons name="flash" size={13} color={colors.ember} />
-            <Text style={s.tipText}>{trainingTip(weather)}</Text>
+            <Text style={s.tipText}>{t(`weather.tip.${tipKey(weather)}` as Key)}</Text>
           </View>
         </>
       ) : (
-        <Text style={s.askText}>{weatherError ?? 'Weather is unavailable right now.'}</Text>
+        <Text style={s.askText}>{t('weather.unavailable')}</Text>
       )}
     </LinearGradient>
   );

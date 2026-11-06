@@ -5,12 +5,14 @@ import { ActivityIndicator, StyleSheet, Text, TextInput, View } from 'react-nati
 
 import { Rise } from '@/components/motion';
 import { Button, H1, Muted, Screen } from '@/components/ui';
+import { useT } from '@/i18n';
 import { friendlyAuthError, supabase } from '@/lib/supabase';
 import { colors, display, font, radius } from '@/theme';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function SignInScreen() {
+  const { t } = useT();
   const [email, setEmail] = useState('');
   const [code, setCode] = useState('');
   const [step, setStep] = useState<'email' | 'code'>('email');
@@ -20,8 +22,8 @@ export default function SignInScreen() {
   if (!supabase) {
     return (
       <Screen headerInset>
-        <H1>Sign in</H1>
-        <Muted>{"Accounts aren't available in this build."}</Muted>
+        <H1>{t('signin.title')}</H1>
+        <Muted>{t('signin.unavailable')}</Muted>
       </Screen>
     );
   }
@@ -29,7 +31,7 @@ export default function SignInScreen() {
 
   const sendCode = async () => {
     const address = email.trim().toLowerCase();
-    if (!EMAIL_RE.test(address)) return setError('That email address looks wrong.');
+    if (!EMAIL_RE.test(address)) return setError(t('signin.badEmail'));
     setBusy(true);
     setError(null);
     const { error: err } = await client.auth.signInWithOtp({ email: address, options: { shouldCreateUser: true } });
@@ -41,7 +43,7 @@ export default function SignInScreen() {
 
   const verify = async () => {
     const token = code.replace(/\D/g, '');
-    if (token.length < 6) return setError('Enter the code from the email.');
+    if (token.length < 6) return setError(t('signin.enterCode'));
     setBusy(true);
     setError(null);
     const { error: err } = await client.auth.verifyOtp({ email, token, type: 'email' });
@@ -58,9 +60,9 @@ export default function SignInScreen() {
         <View style={s.icon}>
           <Ionicons name={step === 'email' ? 'mail-outline' : 'key-outline'} size={22} color={colors.onFrost} />
         </View>
-        <H1 style={{ marginTop: 16 }}>{step === 'email' ? 'Sign in' : 'Check your email'}</H1>
+        <H1 style={{ marginTop: 16 }}>{step === 'email' ? t('signin.title') : t('signin.checkEmail')}</H1>
         <Muted style={{ marginTop: 6 }}>
-          {step === 'email' ? 'Back up your sessions, keep your trial across phones, and get on the boards.' : `We sent a 6-digit code to ${email}.`}
+          {step === 'email' ? t('signin.intro') : t('signin.sentCode', { email })}
         </Muted>
       </Rise>
       {step === 'email' ? (
@@ -78,8 +80,8 @@ export default function SignInScreen() {
             onSubmitEditing={sendCode}
             autoFocus
           />
-          <Button label={busy ? 'Sending…' : 'Send me a code'} onPress={sendCode} disabled={busy} icon={<Ionicons name="arrow-forward" size={16} color={colors.onFrost} />} />
-          <Muted style={{ textAlign: 'center', fontSize: 13 }}>No password. New here? This creates your account.</Muted>
+          <Button label={busy ? t('signin.sending') : t('signin.sendCode')} onPress={sendCode} disabled={busy} icon={<Ionicons name="arrow-forward" size={16} color={colors.onFrost} />} />
+          <Muted style={{ textAlign: 'center', fontSize: 13 }}>{t('signin.noPassword')}</Muted>
         </Rise>
       ) : (
         <Rise delay={80} style={{ gap: 14 }}>
@@ -103,12 +105,12 @@ export default function SignInScreen() {
               onSubmitEditing={verify}
               autoFocus
               caretHidden
-              accessibilityLabel="6-digit code"
+              accessibilityLabel={t('signin.code')}
             />
           </View>
-          <Button label={busy ? 'Checking…' : 'Sign in'} onPress={verify} disabled={busy || digits.length < 6} />
+          <Button label={busy ? t('upload.checking') : t('signin.title')} onPress={verify} disabled={busy || digits.length < 6} />
           <Button
-            label="Use a different email"
+            label={t('signin.otherEmail')}
             variant="glass"
             onPress={() => {
               setStep('email');

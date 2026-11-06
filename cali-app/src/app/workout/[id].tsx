@@ -8,6 +8,7 @@ import { Rise, useCountUp } from '@/components/motion';
 import { Button, Card, FrostCard, H1, Muted, Screen } from '@/components/ui';
 import { formatDate } from '@/components/WorkoutCard';
 import { getExercise } from '@/lib/exercises';
+import { useT } from '@/i18n';
 import * as haptics from '@/lib/haptics';
 import { completedStepIds, formatSet } from '@/lib/records';
 import { SKILLS } from '@/lib/skills';
@@ -27,6 +28,7 @@ function Stat({ value, label, delay }: { value: number; label: string; delay: nu
 export default function WorkoutDetailScreen() {
   const { id, fresh } = useLocalSearchParams<{ id: string; fresh?: string }>();
   const { state, deleteWorkout } = useAppState();
+  const { t, lang } = useT();
   const [confirm, setConfirm] = useState(false);
   const workout = state.workouts.find((w) => w.id === id);
   const justSaved = fresh === '1';
@@ -64,8 +66,8 @@ export default function WorkoutDetailScreen() {
   if (!workout) {
     return (
       <Screen headerInset>
-        <H1>Not found</H1>
-        <Muted>This session no longer exists.</Muted>
+        <H1>{t('common.notFound')}</H1>
+        <Muted>{t('session.gone')}</Muted>
       </Screen>
     );
   }
@@ -73,13 +75,13 @@ export default function WorkoutDetailScreen() {
   const sets = workout.entries.reduce((n, e) => n + e.sets.length, 0);
   const reps = workout.entries.reduce((n, e) => n + e.sets.reduce((m, st) => m + (st.reps ?? 0), 0), 0);
   const holds = workout.entries.reduce((n, e) => n + e.sets.reduce((m, st) => m + (st.holdSec ?? 0), 0), 0);
-  const time = new Date(workout.date).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+  const time = new Date(workout.date).toLocaleTimeString(lang, { hour: 'numeric', minute: '2-digit' });
 
   return (
     <Screen headerInset contentStyle={{ gap: 18 }}>
       <Rise>
-        <Text style={s.kicker}>{justSaved ? 'Session saved' : `${formatDate(workout.date)} · ${time}`}</Text>
-        <H1 style={{ marginTop: 4 }}>{justSaved ? (celebrate ? 'Level up.' : 'Nice work.') : 'Session'}</H1>
+        <Text style={s.kicker}>{justSaved ? t('session.saved') : `${formatDate(workout.date, lang)} · ${time}`}</Text>
+        <H1 style={{ marginTop: 4 }}>{justSaved ? (celebrate ? t('session.levelUp') : t('session.niceWork')) : t('session.title')}</H1>
       </Rise>
 
       {celebrate && (
@@ -94,7 +96,7 @@ export default function WorkoutDetailScreen() {
                 <View style={s.badge}>
                   <Ionicons name="trophy" size={18} color={colors.frost} />
                 </View>
-                <Text style={s.unlockKicker}>{unlocked.length === 1 ? 'Skill step unlocked' : `${unlocked.length} skill steps unlocked`}</Text>
+                <Text style={s.unlockKicker}>{t('session.unlocked', { count: unlocked.length })}</Text>
               </View>
               <View style={{ gap: 12 }}>
                 {unlocked.map(({ skill, step }) => (
@@ -104,7 +106,7 @@ export default function WorkoutDetailScreen() {
                   </View>
                 ))}
               </View>
-              <Button compact variant="navy" label="See your ladder" onPress={() => router.push({ pathname: '/skills', params: { id: unlocked[0].skill.id } })} />
+              <Button compact variant="navy" label={t('session.seeLadder')} onPress={() => router.push({ pathname: '/skills', params: { id: unlocked[0].skill.id } })} />
             </FrostCard>
           </Animated.View>
           <ConfettiBurst />
@@ -122,11 +124,11 @@ export default function WorkoutDetailScreen() {
 
       <Rise delay={120}>
         <Card style={s.stats}>
-          <Stat value={workout.entries.length} label={workout.entries.length === 1 ? 'exercise' : 'exercises'} delay={300} />
+          <Stat value={workout.entries.length} label={t('unit.exercise', { count: workout.entries.length })} delay={300} />
           <View style={s.divider} />
-          <Stat value={sets} label={sets === 1 ? 'set' : 'sets'} delay={380} />
+          <Stat value={sets} label={t('unit.set', { count: sets })} delay={380} />
           <View style={s.divider} />
-          {holds > reps ? <Stat value={holds} label="sec held" delay={460} /> : <Stat value={reps} label={reps === 1 ? 'rep' : 'reps'} delay={460} />}
+          {holds > reps ? <Stat value={holds} label={t('session.secHeld')} delay={460} /> : <Stat value={reps} label={t('unit.rep', { count: reps })} delay={460} />}
         </Card>
       </Rise>
 
@@ -145,10 +147,10 @@ export default function WorkoutDetailScreen() {
       ))}
 
       {justSaved ? (
-        <Button label="Done" onPress={() => router.dismissTo('/')} />
+        <Button label={t('common.done')} onPress={() => router.dismissTo('/')} />
       ) : (
         <Button
-          label={confirm ? 'Tap again to delete' : 'Delete session'}
+          label={confirm ? t('session.deleteConfirm') : t('session.delete')}
           variant="danger"
           icon={<Ionicons name="trash-outline" size={16} color={colors.danger} />}
           onPress={() => {

@@ -9,6 +9,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { PressScale, Rise } from '@/components/motion';
 import { Backdrop, Button, H1, Muted } from '@/components/ui';
+import { useT } from '@/i18n';
 import * as haptics from '@/lib/haptics';
 import { checkShortDuration, formatDuration, MAX_SHORT_SEC } from '@/lib/social';
 import { useSocial } from '@/state/SocialProvider';
@@ -37,6 +38,7 @@ function Preview({ uri, onDuration }: { uri: string; onDuration: (sec: number) =
 export default function NewShortScreen() {
   const insets = useSafeAreaInsets();
   const { postShort } = useSocial();
+  const { t } = useT();
   const [picked, setPicked] = useState<Picked | null>(null);
   const [measuredSec, setMeasuredSec] = useState<number | null>(null);
   const [caption, setCaption] = useState('');
@@ -51,7 +53,7 @@ export default function NewShortScreen() {
     try {
       if (from === 'camera') {
         const perm = await ImagePicker.requestCameraPermissionsAsync();
-        if (!perm.granted) return setError('Camera access is off. Turn it on in Settings to record.');
+        if (!perm.granted) return setError(t('upload.cameraOff'));
       }
       const opts: ImagePicker.ImagePickerOptions = { mediaTypes: ['videos'], videoMaxDuration: MAX_SHORT_SEC, quality: 1 };
       const res = from === 'camera' ? await ImagePicker.launchCameraAsync(opts) : await ImagePicker.launchImageLibraryAsync(opts);
@@ -64,7 +66,7 @@ export default function NewShortScreen() {
       const fromPicker = Platform.OS !== 'web' && a.duration && a.duration > 0 ? a.duration : null;
       setPicked({ uri: a.uri, durationMs: fromPicker });
     } catch {
-      setError('Could not open your videos. Try again.');
+      setError(t('upload.videosError'));
     }
   };
 
@@ -83,27 +85,27 @@ export default function NewShortScreen() {
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }}>
         <ScrollView contentContainerStyle={[s.content, { paddingTop: insets.top + 64, paddingBottom: insets.bottom + 40 }]} keyboardShouldPersistTaps="handled">
           <Rise>
-            <Text style={s.kicker}>New Short</Text>
-            <H1 style={{ marginTop: 4 }}>Post a clip</H1>
-            <Muted style={{ marginTop: 6 }}>Vertical works best. Up to 3 minutes.</Muted>
+            <Text style={s.kicker}>{t('upload.newShort')}</Text>
+            <H1 style={{ marginTop: 4 }}>{t('upload.title')}</H1>
+            <Muted style={{ marginTop: 6 }}>{t('upload.sub')}</Muted>
           </Rise>
 
           {!picked ? (
             <Rise delay={80} style={{ gap: 12 }}>
-              <PressScale onPress={() => choose('library')} scaleTo={0.98} style={s.pickCard} accessibilityLabel="Choose a video">
+              <PressScale onPress={() => choose('library')} scaleTo={0.98} style={s.pickCard} accessibilityLabel={t('upload.choose')}>
                 <View style={s.pickIcon}>
                   <Ionicons name="images-outline" size={28} color={colors.onFrost} />
                 </View>
-                <Text style={s.pickTitle}>Choose a video</Text>
-                <Text style={s.pickSub}>From your gallery</Text>
+                <Text style={s.pickTitle}>{t('upload.choose')}</Text>
+                <Text style={s.pickSub}>{t('upload.fromGallery')}</Text>
               </PressScale>
               {Platform.OS !== 'web' && (
-                <PressScale onPress={() => choose('camera')} scaleTo={0.98} style={[s.pickCard, s.pickCardAlt]} accessibilityLabel="Record a video">
+                <PressScale onPress={() => choose('camera')} scaleTo={0.98} style={[s.pickCard, s.pickCardAlt]} accessibilityLabel={t('upload.record')}>
                   <View style={[s.pickIcon, { backgroundColor: colors.ember }]}>
                     <Ionicons name="videocam" size={26} color={colors.onFrost} />
                   </View>
-                  <Text style={s.pickTitle}>Record</Text>
-                  <Text style={s.pickSub}>Stops at 3:00</Text>
+                  <Text style={s.pickTitle}>{t('upload.record')}</Text>
+                  <Text style={s.pickSub}>{t('upload.stopsAt')}</Text>
                 </PressScale>
               )}
             </Rise>
@@ -113,23 +115,23 @@ export default function NewShortScreen() {
                 <Preview key={picked.uri} uri={picked.uri} onDuration={setMeasuredSec} />
                 <View style={s.durChip}>
                   <Ionicons name={check == null ? 'time-outline' : check.ok ? 'checkmark-circle' : 'alert-circle'} size={13} color={check == null ? '#fff' : check.ok ? colors.glow : colors.danger} />
-                  <Text style={s.durText}>{seconds != null ? formatDuration(seconds) : 'Checking…'}</Text>
+                  <Text style={s.durText}>{seconds != null ? formatDuration(seconds) : t('upload.checking')}</Text>
                 </View>
-                <PressScale onPress={() => setPicked(null)} containerStyle={s.changeWrap} style={s.changeBtn} accessibilityLabel="Choose a different video">
+                <PressScale onPress={() => setPicked(null)} containerStyle={s.changeWrap} style={s.changeBtn} accessibilityLabel={t('upload.change')}>
                   <Ionicons name="swap-horizontal" size={14} color="#fff" />
-                  <Text style={s.changeText}>Change</Text>
+                  <Text style={s.changeText}>{t('upload.changeShort')}</Text>
                 </PressScale>
               </View>
 
               <View style={{ gap: 8 }}>
                 <View style={s.meterHead}>
-                  <Text style={s.meterLabel}>Length</Text>
-                  <Text style={[s.meterLabel, over && { color: colors.danger }]}>{seconds != null ? `${formatDuration(seconds)} of 3:00` : '–'}</Text>
+                  <Text style={s.meterLabel}>{t('upload.length')}</Text>
+                  <Text style={[s.meterLabel, over && { color: colors.danger }]}>{seconds != null ? t('upload.of', { len: formatDuration(seconds) }) : '–'}</Text>
                 </View>
                 <View style={s.meter}>
                   <View style={[s.meterFill, { width: `${pct * 100}%`, backgroundColor: over ? colors.danger : colors.glow }]} />
                 </View>
-                {check && !check.ok && <Text style={s.error}>{check.reason}</Text>}
+                {check && !check.ok && <Text style={s.error}>{seconds != null && seconds > MAX_SHORT_SEC ? t('upload.tooLong', { len: formatDuration(seconds) }) : t('upload.unreadable')}</Text>}
               </View>
 
               <View style={s.captionBox}>
@@ -137,7 +139,7 @@ export default function NewShortScreen() {
                   style={s.caption}
                   value={caption}
                   onChangeText={setCaption}
-                  placeholder="Write a caption… what are you working on?"
+                  placeholder={t('upload.caption')}
                   placeholderTextColor={colors.faint}
                   multiline
                   maxLength={300}
@@ -145,8 +147,8 @@ export default function NewShortScreen() {
                 <Text style={s.counter}>{caption.length}/300</Text>
               </View>
 
-              <Button label="Post Short" icon={<Ionicons name="arrow-up-circle" size={18} color={colors.onFrost} />} disabled={!check?.ok} onPress={post} />
-              {Platform.OS === 'web' && <Text style={s.small}>In this web preview, uploads stay until you reload the page.</Text>}
+              <Button label={t('upload.postShort')} icon={<Ionicons name="arrow-up-circle" size={18} color={colors.onFrost} />} disabled={!check?.ok} onPress={post} />
+              {Platform.OS === 'web' && <Text style={s.small}>{t('upload.webNote')}</Text>}
             </Rise>
           )}
 
@@ -158,8 +160,8 @@ export default function NewShortScreen() {
           )}
 
           <View style={s.rules}>
-            <Text style={s.rulesTitle}>Keep it good</Text>
-            <Text style={s.rulesText}>Training, progress, form checks and fun. No hate, nudity or dangerous stunts. Anyone can report a post.</Text>
+            <Text style={s.rulesTitle}>{t('upload.rulesTitle')}</Text>
+            <Text style={s.rulesText}>{t('upload.rules')}</Text>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>

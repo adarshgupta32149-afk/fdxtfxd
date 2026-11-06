@@ -8,6 +8,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { PressScale, Rise } from '@/components/motion';
 import { Avatar } from '@/components/SocialUI';
 import { Backdrop, Button, H1 } from '@/components/ui';
+import { useT } from '@/i18n';
+import type { Key } from '@/i18n/en';
 import * as haptics from '@/lib/haptics';
 import { ME, personById, SPACES, type SpaceId } from '@/lib/social';
 import { useSocial } from '@/state/SocialProvider';
@@ -17,6 +19,7 @@ export default function NewPostScreen() {
   const insets = useSafeAreaInsets();
   const params = useLocalSearchParams<{ space?: string }>();
   const { social, postToFeed } = useSocial();
+  const { t } = useT();
   const [space, setSpace] = useState<SpaceId>((SPACES.find((x) => x.id === params.space)?.id ?? 'progress') as SpaceId);
   const [text, setText] = useState('');
   const [image, setImage] = useState<{ uri: string; aspect: number } | null>(null);
@@ -34,7 +37,7 @@ export default function NewPostScreen() {
       const aspect = a.width && a.height ? Math.min(1.91, Math.max(0.8, a.width / a.height)) : 1;
       setImage({ uri: a.uri, aspect });
     } catch {
-      setError('Could not open your photos. Try again.');
+      setError(t('upload.photosError'));
     }
   };
 
@@ -50,23 +53,23 @@ export default function NewPostScreen() {
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }}>
         <ScrollView contentContainerStyle={[s.content, { paddingTop: insets.top + 64, paddingBottom: insets.bottom + 40 }]} keyboardShouldPersistTaps="handled">
           <Rise>
-            <Text style={s.kicker}>New post</Text>
-            <H1 style={{ marginTop: 4 }}>Share it</H1>
+            <Text style={s.kicker}>{t('feed.newPost')}</Text>
+            <H1 style={{ marginTop: 4 }}>{t('feed.shareIt')}</H1>
           </Rise>
 
           <Rise delay={60} style={{ gap: 10 }}>
-            <Text style={s.label}>Post in</Text>
+            <Text style={s.label}>{t('feed.postIn')}</Text>
             <View style={s.spaces}>
               {SPACES.map((sp) => {
                 const on = sp.id === space;
                 return (
-                  <PressScale key={sp.id} onPress={() => setSpace(sp.id)} style={[s.space, on && { backgroundColor: sp.color, borderColor: sp.color }]} accessibilityLabel={`Post in ${sp.label}`}>
-                    <Text style={[s.spaceText, on && { color: colors.onFrost }]}>{sp.label}</Text>
+                  <PressScale key={sp.id} onPress={() => setSpace(sp.id)} style={[s.space, on && { backgroundColor: sp.color, borderColor: sp.color }]} accessibilityLabel={`${t('feed.postIn')}: ${t(`space.${sp.id}` as Key)}`}>
+                    <Text style={[s.spaceText, on && { color: colors.onFrost }]}>{t(`space.${sp.id}` as Key)}</Text>
                   </PressScale>
                 );
               })}
             </View>
-            <Text style={s.blurb}>{SPACES.find((x) => x.id === space)?.blurb}</Text>
+            <Text style={s.blurb}>{t(`space.${space}.blurb` as Key)}</Text>
           </Rise>
 
           <Rise delay={110} style={s.editor}>
@@ -78,7 +81,7 @@ export default function NewPostScreen() {
               style={s.input}
               value={text}
               onChangeText={setText}
-              placeholder={space === 'questions' ? 'Ask the community…' : space === 'form' ? 'What should people look at?' : 'What happened today?'}
+              placeholder={space === 'questions' ? t('feed.phQuestion') : space === 'form' ? t('feed.phForm') : t('feed.phDefault')}
               placeholderTextColor={colors.faint}
               multiline
               maxLength={2000}
@@ -87,22 +90,22 @@ export default function NewPostScreen() {
             {image ? (
               <View style={[s.photo, { aspectRatio: image.aspect }]}>
                 <Image source={{ uri: image.uri }} style={StyleSheet.absoluteFill} resizeMode="cover" />
-                <PressScale onPress={() => setImage(null)} containerStyle={s.removeWrap} style={s.removePhoto} accessibilityLabel="Remove photo">
+                <PressScale onPress={() => setImage(null)} containerStyle={s.removeWrap} style={s.removePhoto} accessibilityLabel={t('feed.removePhoto')}>
                   <Ionicons name="close" size={16} color="#fff" />
                 </PressScale>
               </View>
             ) : (
-              <PressScale onPress={pick} style={s.addPhoto} accessibilityLabel="Add a photo">
+              <PressScale onPress={pick} style={s.addPhoto} accessibilityLabel={t('feed.addPhoto')}>
                 <Ionicons name="image-outline" size={18} color={colors.text} />
-                <Text style={s.addPhotoText}>Add a photo</Text>
+                <Text style={s.addPhotoText}>{t('feed.addPhoto')}</Text>
               </PressScale>
             )}
             <Text style={s.counter}>{text.length}/2000</Text>
           </Rise>
 
           {error && <Text style={s.error}>{error}</Text>}
-          <Button label="Post" icon={<Ionicons name="arrow-up-circle" size={18} color={colors.onFrost} />} disabled={!canPost} onPress={post} />
-          {Platform.OS === 'web' && image && <Text style={s.small}>In this web preview, photos stay until you reload the page.</Text>}
+          <Button label={t('feed.post')} icon={<Ionicons name="arrow-up-circle" size={18} color={colors.onFrost} />} disabled={!canPost} onPress={post} />
+          {Platform.OS === 'web' && image && <Text style={s.small}>{t('feed.webPhotos')}</Text>}
         </ScrollView>
       </KeyboardAvoidingView>
     </Backdrop>

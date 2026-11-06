@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Animated, Pressable, StyleSheet, View } from 'react-native';
 
+import { useT } from '@/i18n';
 import * as haptics from '@/lib/haptics';
 import { colors } from '@/theme';
 
@@ -11,6 +12,7 @@ const TILES = [colors.frost, colors.glow, colors.ember, 'rgba(228,228,230,0.35)'
  * On press the grid twists a quarter turn and the tiles pull together before the menu opens.
  */
 export function HubButton({ onPress }: { onPress: () => void }) {
+  const { t: tr } = useT();
   const t = useState(() => new Animated.Value(0))[0];
   const press = () => {
     haptics.tap();
@@ -22,7 +24,7 @@ export function HubButton({ onPress }: { onPress: () => void }) {
   const squeeze = t.interpolate({ inputRange: [0, 0.5, 1], outputRange: [1, 0.78, 1] });
 
   return (
-    <Pressable onPress={press} accessibilityRole="button" accessibilityLabel="Open menu" hitSlop={6} style={s.btn}>
+    <Pressable onPress={press} accessibilityRole="button" accessibilityLabel={tr('menu.open')} hitSlop={6} style={s.btn}>
       <Animated.View style={[s.grid, { transform: [{ rotate }, { scale: squeeze }] }]}>
         {TILES.map((c, i) => (
           <View key={i} style={[s.tile, { backgroundColor: c }]} />

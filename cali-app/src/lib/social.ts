@@ -190,15 +190,23 @@ export function formatDuration(totalSec: number): string {
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
 }
 
-/** "now", "5m", "3h", "2d", "4w", then a date. */
-export function timeAgo(iso: string, now: Date): string {
+/** How long ago, as a unit and a number, so each language can word it. */
+export function agoParts(iso: string, now: Date): { unit: 'now' | 'm' | 'h' | 'd' | 'w' | 'date'; n: number } {
   const sec = Math.max(0, (now.getTime() - new Date(iso).getTime()) / 1000);
-  if (sec < 60) return 'now';
-  if (sec < 3600) return `${Math.floor(sec / 60)}m`;
-  if (sec < 86400) return `${Math.floor(sec / 3600)}h`;
-  if (sec < 86400 * 7) return `${Math.floor(sec / 86400)}d`;
-  if (sec < 86400 * 35) return `${Math.floor(sec / (86400 * 7))}w`;
-  return new Date(iso).toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
+  if (sec < 60) return { unit: 'now', n: 0 };
+  if (sec < 3600) return { unit: 'm', n: Math.floor(sec / 60) };
+  if (sec < 86400) return { unit: 'h', n: Math.floor(sec / 3600) };
+  if (sec < 86400 * 7) return { unit: 'd', n: Math.floor(sec / 86400) };
+  if (sec < 86400 * 35) return { unit: 'w', n: Math.floor(sec / (86400 * 7)) };
+  return { unit: 'date', n: 0 };
+}
+
+/** "now", "5m", "3h", "2d", "4w", then a date (English; screens use the translated useAgo). */
+export function timeAgo(iso: string, now: Date, locale?: string): string {
+  const { unit, n } = agoParts(iso, now);
+  if (unit === 'now') return 'now';
+  if (unit === 'date') return new Date(iso).toLocaleDateString(locale, { day: 'numeric', month: 'short' });
+  return `${n}${unit}`;
 }
 
 /** 1234 → "1.2K", 5600000 → "5.6M". */

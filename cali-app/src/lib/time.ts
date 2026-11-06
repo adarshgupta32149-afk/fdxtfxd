@@ -26,9 +26,9 @@ export function untilMonthEnd(now: Date): { days: number; hours: number; minutes
 
 export const pad2 = (n: number) => String(n).padStart(2, '0');
 
-/** "Thu 5 Nov · 10:41:07 pm" in the viewer's own locale and time zone. */
-export function clockLabel(now: Date): string {
-  const day = now.toLocaleDateString(undefined, { weekday: 'short', day: 'numeric', month: 'short' });
-  const time = now.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit', second: '2-digit' });
+/** "Thu 5 Nov · 10:41:07 pm" in the app language (or the device locale) and the viewer's time zone. */
+export function clockLabel(now: Date, locale?: string): string {
+  const day = now.toLocaleDateString(locale, { weekday: 'short', day: 'numeric', month: 'short' });
+  const time = now.toLocaleTimeString(locale, { hour: 'numeric', minute: '2-digit', second: '2-digit' });
   return `${day} · ${time}`;
 }

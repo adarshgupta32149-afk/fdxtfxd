@@ -6,6 +6,8 @@ import { useEffect, useState, type ComponentProps, type Ref } from 'react';
 import { Animated, Pressable, StyleSheet, Text, useWindowDimensions, View, type ViewInstance } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import type { Key } from '@/i18n/en';
+import { useT } from '@/i18n';
 import * as haptics from '@/lib/haptics';
 import { totalUnread } from '@/lib/social';
 import { useSocial } from '@/state/SocialProvider';
@@ -16,17 +18,16 @@ type IconName = ComponentProps<typeof Ionicons>['name'];
 export const TABS: {
   name: string;
   href: '/' | '/feed' | '/shorts' | '/messages' | '/learn';
-  label: string;
   icon: IconName;
   iconOn: IconName;
   /** The sliding pill takes this gradient when the tab is active. */
   pill: readonly [string, string, ...string[]];
 }[] = [
-  { name: 'home', href: '/', label: 'Home', icon: 'home-outline', iconOn: 'home', pill: frostGradient },
-  { name: 'feed', href: '/feed', label: 'Feed', icon: 'people-outline', iconOn: 'people', pill: ['#F8C9DB', '#F2A7C3', '#DE8AAB'] },
-  { name: 'shorts', href: '/shorts', label: 'Shorts', icon: 'play-circle-outline', iconOn: 'play-circle', pill: ['#FFC29E', '#FF9A62', '#F07F45'] },
-  { name: 'messages', href: '/messages', label: 'Messages', icon: 'chatbubbles-outline', iconOn: 'chatbubbles', pill: ['#CFE0FF', '#9EC2FF', '#7FA6EE'] },
-  { name: 'learn', href: '/learn', label: 'Learn', icon: 'book-outline', iconOn: 'book', pill: ['#F1E6C4', '#E3D3A6', '#CDB983'] },
+  { name: 'home', href: '/', icon: 'home-outline', iconOn: 'home', pill: frostGradient },
+  { name: 'feed', href: '/feed', icon: 'people-outline', iconOn: 'people', pill: ['#F8C9DB', '#F2A7C3', '#DE8AAB'] },
+  { name: 'shorts', href: '/shorts', icon: 'play-circle-outline', iconOn: 'play-circle', pill: ['#FFC29E', '#FF9A62', '#F07F45'] },
+  { name: 'messages', href: '/messages', icon: 'chatbubbles-outline', iconOn: 'chatbubbles', pill: ['#CFE0FF', '#9EC2FF', '#7FA6EE'] },
+  { name: 'learn', href: '/learn', icon: 'book-outline', iconOn: 'book', pill: ['#F1E6C4', '#E3D3A6', '#CDB983'] },
 ];
 
 const PAD = 6;
@@ -40,6 +41,8 @@ export function tabIndexFor(pathname: string): number {
 type TabButtonProps = TabTriggerSlotProps & { tab: (typeof TABS)[number]; badge?: number; ref?: Ref<ViewInstance> };
 
 function TabButton({ tab, badge, isFocused, onPress, ...rest }: TabButtonProps) {
+  const { t } = useT();
+  const label = t(`tabs.${tab.name}` as Key);
   return (
     <Pressable
       {...rest}
@@ -50,7 +53,7 @@ function TabButton({ tab, badge, isFocused, onPress, ...rest }: TabButtonProps) 
       style={s.tab}
       accessibilityRole="tab"
       accessibilityState={{ selected: !!isFocused }}
-      accessibilityLabel={tab.label}
+      accessibilityLabel={label}
     >
       <View>
         <Ionicons name={isFocused ? tab.iconOn : tab.icon} size={20} color={isFocused ? colors.onFrost : colors.muted} />
@@ -60,7 +63,7 @@ function TabButton({ tab, badge, isFocused, onPress, ...rest }: TabButtonProps) 
           </View>
         )}
       </View>
-      <Text style={[s.label, { color: isFocused ? colors.onFrost : colors.muted }]}>{tab.label}</Text>
+      <Text style={[s.label, { color: isFocused ? colors.onFrost : colors.muted }]}>{label}</Text>
     </Pressable>
   );
 }

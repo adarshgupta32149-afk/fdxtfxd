@@ -2,6 +2,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useEffect, useState } from 'react';
 import { Animated, StyleSheet, Text, View } from 'react-native';
 
+import { useT } from '@/i18n';
+import { boardValue } from '@/i18n/format';
 import type { Board, BoardRow } from '@/lib/boards';
 import { colors, display, font, frostGradient } from '@/theme';
 
@@ -17,6 +19,7 @@ const SLOTS = [
  * Empty places stay visible as "open" so a quiet board still invites the first entry.
  */
 export function Podium({ rows, board }: { rows: BoardRow[]; board: Board }) {
+  const { t } = useT();
   const rise = useState(() => SLOTS.map(() => new Animated.Value(0)))[0];
 
   useEffect(() => {
@@ -47,9 +50,9 @@ export function Podium({ rows, board }: { rows: BoardRow[]; board: Board }) {
               <Text style={[s.initial, first && { color: colors.onFrost }]}>{row ? row.display_name[0]?.toUpperCase() : '?'}</Text>
             </View>
             <Text style={s.name} numberOfLines={1}>
-              {row ? row.display_name : 'Open'}
+              {row ? row.display_name : t('ranking.open')}
             </Text>
-            <Text style={s.value}>{row ? board.unit(row.value) : '—'}</Text>
+            <Text style={s.value}>{row ? boardValue(t, board, row.value) : '—'}</Text>
             {first ? (
               <LinearGradient colors={frostGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={[s.block, { height: slot.height }]}>
                 <Text style={[s.place, { color: colors.onFrost }]}>1</Text>

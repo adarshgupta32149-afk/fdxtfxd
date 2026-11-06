@@ -711,10 +711,17 @@ export function compactCount(n: number): string {
   return String(n);
 }
 
-/** "Aug 2023", "2023", "Oct 2026". */
-export function formatPublished(iso: string): string {
+/** "Aug 2023", "2023", "Oct 2026"; pass a locale for the month in another language. */
+export function formatPublished(iso: string, locale?: string): string {
   const [y, m] = iso.split('-');
   if (!m) return y;
+  if (locale && locale !== 'en') {
+    try {
+      return new Date(Number(y), Number(m) - 1, 1).toLocaleDateString(locale, { month: 'short', year: 'numeric' });
+    } catch {
+      // fall through to English
+    }
+  }
   const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][Number(m) - 1];
   return month ? `${month} ${y}` : y;
 }

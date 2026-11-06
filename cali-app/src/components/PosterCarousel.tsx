@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View, type NativeScrollEvent, type NativeSyntheticEvent, type ScrollViewInstance } from 'react-native';
 
 import type { Poster, PosterTone } from '@/lib/posters';
-import { PERIOD_COPY, type Period } from '@/lib/time';
+import { useT } from '@/i18n';
+import type { Key } from '@/i18n/en';
+import type { Period } from '@/lib/time';
 import { colors, display, font, radius } from '@/theme';
 
 const TONES: Record<PosterTone, { bg: readonly [string, string, ...string[]]; ink: string; soft: string; light: boolean }> = {
@@ -95,6 +97,7 @@ export function PosterCarousel({ posters, period }: { posters: Poster[]; period:
 }
 
 function TextPoster({ poster, period }: { poster: Poster; period: Period }) {
+  const { t: tr } = useT();
   const t = TONES[poster.tone];
   return (
     <LinearGradient colors={t.bg} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.poster}>
@@ -103,9 +106,9 @@ function TextPoster({ poster, period }: { poster: Poster; period: Period }) {
       </Text>
       <View style={s.topRow}>
         <View style={[s.badge, { backgroundColor: t.light ? 'rgba(11,19,36,0.10)' : 'rgba(7,11,22,0.45)' }]}>
-          <Text style={[s.badgeText, { color: t.ink }]}>{PERIOD_COPY[period].label.toUpperCase()}</Text>
+          <Text style={[s.badgeText, { color: t.ink }]}>{tr(`period.${period}.label` as Key).toUpperCase()}</Text>
         </View>
-        {poster.sample && <Text style={[s.sample, { color: t.soft }]}>Sample poster</Text>}
+        {poster.sample && <Text style={[s.sample, { color: t.soft }]}>{tr('poster.sample')}</Text>}
       </View>
       <View style={{ gap: 6 }}>
         <Text style={[s.headline, { color: t.ink }]}>{poster.lines.join('\n').toUpperCase()}</Text>

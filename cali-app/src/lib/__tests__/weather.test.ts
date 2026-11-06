@@ -40,7 +40,7 @@ describe('weather parsing', () => {
 
 describe('descriptions and tips', () => {
   it('maps WMO codes', () => {
-    expect(describeWeather(0, true)).toEqual({ label: 'Clear', icon: 'sunny' });
+    expect(describeWeather(0, true)).toEqual({ key: 'clear', label: 'Clear', icon: 'sunny' });
     expect(describeWeather(0, false).icon).toBe('moon');
     expect(describeWeather(63, true).label).toBe('Rain');
     expect(describeWeather(81, true).label).toBe('Showers');

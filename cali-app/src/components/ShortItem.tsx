@@ -9,7 +9,9 @@ import { PressScale } from '@/components/motion';
 import { imageSource, videoSource } from '@/components/socialMedia';
 import { Avatar } from '@/components/SocialUI';
 import * as haptics from '@/lib/haptics';
-import { ME, personById, shortCount, timeAgo, type Short, type SocialState } from '@/lib/social';
+import { useT } from '@/i18n';
+import { useAgo } from '@/i18n/useAgo';
+import { ME, personById, shortCount, type Short, type SocialState } from '@/lib/social';
 import { colors, font } from '@/theme';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
@@ -96,6 +98,8 @@ export function ShortItem({
     p.timeUpdateEventInterval = 0.2;
   });
   const [paused, setPaused] = useState(false);
+  const { t } = useT();
+  const ago = useAgo();
   const [now] = useState(() => new Date());
   const [expanded, setExpanded] = useState(false);
   const [burst, setBurst] = useState<{ x: number; y: number; key: number } | null>(null);
@@ -144,7 +148,7 @@ export function ShortItem({
       <VideoView player={player} style={StyleSheet.absoluteFill} contentFit="cover" nativeControls={false} />
       <LinearGradient colors={['rgba(0,0,0,0.35)', 'rgba(0,0,0,0)', 'rgba(0,0,0,0)', 'rgba(0,0,0,0.75)']} locations={[0, 0.18, 0.55, 1]} style={StyleSheet.absoluteFill} pointerEvents="none" />
 
-      <Pressable style={StyleSheet.absoluteFill} onPress={onTap} accessibilityLabel={paused ? 'Play' : 'Pause'} />
+      <Pressable style={StyleSheet.absoluteFill} onPress={onTap} accessibilityLabel={paused ? t('shorts.play') : t('shorts.pause')} />
 
       {paused && (
         <View pointerEvents="none" style={s.pausedWrap}>
@@ -164,32 +168,32 @@ export function ShortItem({
             </View>
           )}
         </View>
-        <RailButton icon={short.liked ? 'heart' : 'heart-outline'} color={short.liked ? colors.heart : undefined} count={shortCount(short.likes)} onPress={onLike} label={short.liked ? 'Unlike' : 'Like'} />
-        <RailButton icon="chatbubble-ellipses-outline" count={shortCount(short.comments.length)} onPress={onComments} label="Comments" />
-        <RailButton icon="paper-plane-outline" count={shortCount(short.shares)} onPress={onShare} label="Share" />
-        <RailButton icon={short.saved ? 'bookmark' : 'bookmark-outline'} color={short.saved ? colors.gold : undefined} onPress={onSave} label={short.saved ? 'Unsave' : 'Save'} />
-        <RailButton icon="ellipsis-horizontal" onPress={onMore} label="More options" />
+        <RailButton icon={short.liked ? 'heart' : 'heart-outline'} color={short.liked ? colors.heart : undefined} count={shortCount(short.likes)} onPress={onLike} label={short.liked ? t('social.unlike') : t('social.like')} />
+        <RailButton icon="chatbubble-ellipses-outline" count={shortCount(short.comments.length)} onPress={onComments} label={t('social.commentsLabel')} />
+        <RailButton icon="paper-plane-outline" count={shortCount(short.shares)} onPress={onShare} label={t('social.share')} />
+        <RailButton icon={short.saved ? 'bookmark' : 'bookmark-outline'} color={short.saved ? colors.gold : undefined} onPress={onSave} label={short.saved ? t('social.unsave') : t('social.save')} />
+        <RailButton icon="ellipsis-horizontal" onPress={onMore} label={t('social.moreOptions')} />
       </View>
 
       <View style={[s.meta, { bottom: bottomInset + 22 }]} pointerEvents="box-none">
         <View style={s.authorRow}>
-          <Text style={s.handle}>@{author?.handle ?? 'someone'}</Text>
-          <Text style={s.when}>· {timeAgo(short.createdAt, now)}</Text>
+          <Text style={s.handle}>@{author?.handle ?? t('social.someone')}</Text>
+          <Text style={s.when}>· {ago(short.createdAt, now)}</Text>
           {short.sample && (
             <View style={s.sample}>
-              <Text style={s.sampleText}>Sample</Text>
+              <Text style={s.sampleText}>{t('social.sample')}</Text>
             </View>
           )}
         </View>
-        <Pressable onPress={() => setExpanded((e) => !e)} accessibilityLabel={expanded ? 'Show less' : 'Show more'}>
+        <Pressable onPress={() => setExpanded((e) => !e)} accessibilityLabel={expanded ? t('common.showLess') : t('common.showMore')}>
           <Text style={s.caption} numberOfLines={expanded ? 8 : 2}>
             {short.caption}
           </Text>
         </Pressable>
         {short.credit && <Text style={s.credit}>{short.credit}</Text>}
-        <Pressable onPress={onToggleMute} style={s.sound} hitSlop={8} accessibilityLabel={muted ? 'Turn sound on' : 'Mute'}>
+        <Pressable onPress={onToggleMute} style={s.sound} hitSlop={8} accessibilityLabel={muted ? t('shorts.soundOn') : t('shorts.mute')}>
           <Ionicons name={muted ? 'volume-mute' : 'volume-high'} size={13} color="#fff" />
-          <Text style={s.soundText}>{muted ? 'Tap for sound' : 'Original audio'}</Text>
+          <Text style={s.soundText}>{muted ? t('shorts.tapForSound') : t('shorts.originalAudio')}</Text>
         </Pressable>
       </View>
 

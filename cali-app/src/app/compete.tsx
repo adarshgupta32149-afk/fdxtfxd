@@ -8,14 +8,17 @@ import { Button, Card, Eyebrow, FrostCard, H1, Muted, Screen, SectionHead } from
 import { useLeaderboard } from '@/components/useLeaderboard';
 import { challengeFor } from '@/lib/boards';
 import { pad2, untilMonthEnd } from '@/lib/time';
+import { useT } from '@/i18n';
+import type { Key } from '@/i18n/en';
+import { boardValue } from '@/i18n/format';
 import { colors, display, font } from '@/theme';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
-const STEPS: { icon: IconName; title: string; body: string }[] = [
-  { icon: 'videocam-outline', title: 'Film one attempt', body: 'One continuous clip, whole body in frame, from start to last rep.' },
-  { icon: 'cloud-upload-outline', title: 'Submit it in the app', body: 'Your score goes in as pending. Nobody sees it until it is checked.' },
-  { icon: 'checkmark-done-outline', title: 'Get verified', body: 'Clean reps count. Verified scores go straight onto the board.' },
+const STEPS: { icon: IconName; id: 'film' | 'submit' | 'verify' }[] = [
+  { icon: 'videocam-outline', id: 'film' },
+  { icon: 'cloud-upload-outline', id: 'submit' },
+  { icon: 'checkmark-done-outline', id: 'verify' },
 ];
 
 function TimeBox({ value, label, live }: { value: string; label: string; live?: boolean }) {
@@ -31,7 +34,8 @@ export default function CompeteScreen() {
   const now = useNow(1000);
   const challenge = challengeFor(now);
   const left = untilMonthEnd(now);
-  const month = now.toLocaleDateString(undefined, { month: 'long' });
+  const { t, lang } = useT();
+  const month = now.toLocaleDateString(lang, { month: 'long' });
   const { rows, error } = useLeaderboard(challenge.id, 3);
 
   return (
@@ -39,42 +43,42 @@ export default function CompeteScreen() {
       <Rise>
         <View style={s.liveRow}>
           <LiveDot color={colors.ember} />
-          <Eyebrow style={{ color: colors.ember }}>Live · {month}</Eyebrow>
+          <Eyebrow style={{ color: colors.ember }}>{t('compete.live', { month })}</Eyebrow>
         </View>
-        <H1 style={{ marginTop: 6 }}>Compete</H1>
+        <H1 style={{ marginTop: 6 }}>{t('menu.compete')}</H1>
       </Rise>
 
       <Rise delay={80}>
         <FrostCard sheen style={{ gap: 14 }}>
-          <Text style={s.kicker}>{month.toUpperCase()} CHALLENGE</Text>
-          <Text style={s.challenge}>{challenge.label}</Text>
-          <Text style={s.sub}>One attempt, on video. Ends at midnight on the last day of {month}.</Text>
+          <Text style={s.kicker}>{t('compete.challenge', { month }).toUpperCase()}</Text>
+          <Text style={s.challenge}>{t(`board.${challenge.id}` as Key)}</Text>
+          <Text style={s.sub}>{t('compete.rules', { month })}</Text>
           <View style={s.timer}>
-            <TimeBox value={String(left.days)} label="days" />
-            <TimeBox value={pad2(left.hours)} label="hours" />
-            <TimeBox value={pad2(left.minutes)} label="min" />
-            <TimeBox value={pad2(left.seconds)} label="sec" live />
+            <TimeBox value={String(left.days)} label={t('compete.days')} />
+            <TimeBox value={pad2(left.hours)} label={t('compete.hours')} />
+            <TimeBox value={pad2(left.minutes)} label={t('compete.min')} />
+            <TimeBox value={pad2(left.seconds)} label={t('compete.sec')} live />
           </View>
         </FrostCard>
       </Rise>
 
       <Rise delay={150}>
-        <Button label="Submissions open soon" variant="glass" disabled onPress={() => {}} icon={<Ionicons name="lock-closed" size={14} color={colors.text} />} />
+        <Button label={t('compete.soon')} variant="glass" disabled onPress={() => {}} icon={<Ionicons name="lock-closed" size={14} color={colors.text} />} />
       </Rise>
 
       <Rise delay={210} style={{ gap: 12 }}>
-        <SectionHead label="How it works" />
+        <SectionHead label={t('compete.how')} />
         <Card style={{ gap: 0, paddingVertical: 4 }}>
           {STEPS.map((step, i) => (
-            <View key={step.title} style={[s.step, i > 0 && s.stepLine]}>
+            <View key={step.id} style={[s.step, i > 0 && s.stepLine]}>
               <View style={s.stepIcon}>
                 <Ionicons name={step.icon} size={18} color={colors.text} />
               </View>
               <View style={{ flex: 1, gap: 2 }}>
                 <Text style={s.stepTitle}>
-                  {i + 1}. {step.title}
+                  {i + 1}. {t(`compete.step.${step.id}` as Key)}
                 </Text>
-                <Muted style={{ fontSize: 13 }}>{step.body}</Muted>
+                <Muted style={{ fontSize: 13 }}>{t(`compete.step.${step.id}.body` as Key)}</Muted>
               </View>
             </View>
           ))}
@@ -82,20 +86,20 @@ export default function CompeteScreen() {
       </Rise>
 
       <Rise delay={270} style={{ gap: 12 }}>
-        <SectionHead label="Current standings" />
+        <SectionHead label={t('compete.standings')} />
         <Card style={{ gap: 0, paddingVertical: 6 }}>
           {rows.length > 0 ? (
             rows.map((r, i) => (
               <View key={`${r.rank}-${r.display_name}`} style={[s.row, i > 0 && s.stepLine]}>
                 <Text style={s.rank}>{r.rank}</Text>
                 <Text style={s.person}>{r.display_name}</Text>
-                <Text style={s.score}>{challenge.unit(r.value)}</Text>
+                <Text style={s.score}>{boardValue(t, challenge, r.value)}</Text>
               </View>
             ))
           ) : (
             <View style={s.row}>
               <Ionicons name={error ? 'cloud-offline-outline' : 'flag-outline'} size={18} color={error ? colors.muted : colors.ember} />
-              <Muted style={{ flex: 1 }}>{error ?? 'No entries yet. The board is wide open.'}</Muted>
+              <Muted style={{ flex: 1 }}>{error ? t('compete.offline') : t('compete.empty')}</Muted>
             </View>
           )}
         </Card>
@@ -105,8 +109,8 @@ export default function CompeteScreen() {
         <Card style={s.prize}>
           <Ionicons name="trophy" size={22} color={colors.gold} />
           <View style={{ flex: 1, gap: 2 }}>
-            <Text style={s.stepTitle}>Winners keep a trophy</Text>
-            <Muted style={{ fontSize: 13 }}>The top three each month get a permanent trophy on their profile.</Muted>
+            <Text style={s.stepTitle}>{t('compete.trophy')}</Text>
+            <Muted style={{ fontSize: 13 }}>{t('compete.trophyText')}</Muted>
           </View>
         </Card>
       </Rise>

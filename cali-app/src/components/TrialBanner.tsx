@@ -4,6 +4,7 @@ import { router } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { TRIAL_DAYS } from '@/lib/trial';
+import { useT } from '@/i18n';
 import { useAppState } from '@/state/AppStateProvider';
 import { colors, display, font, frostGradient, radius } from '@/theme';
 import { PressScale } from './motion';
@@ -11,16 +12,17 @@ import { PressScale } from './motion';
 /** Plan card for Profile: a frosted panel with the trial countdown, or the Founder badge. */
 export function TrialBanner() {
   const { access } = useAppState();
+  const { t } = useT();
 
   if (access.status === 'pro') {
     return (
       <LinearGradient colors={frostGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.frost}>
         <View style={s.row}>
           <Ionicons name="sparkles" size={16} color={colors.onFrost} />
-          <Text style={s.kicker}>Founder · Pro</Text>
+          <Text style={s.kicker}>{t('pass.founderPro')}</Text>
         </View>
-        <Text style={s.title}>Unlimited logging</Text>
-        <Text style={s.text}>Thanks for backing us early.</Text>
+        <Text style={s.title}>{t('pass.unlimited')}</Text>
+        <Text style={s.text}>{t('pass.thanks')}</Text>
       </LinearGradient>
     );
   }
@@ -28,21 +30,21 @@ export function TrialBanner() {
   const expired = access.status === 'expired';
   const used = 1 - access.daysLeft / TRIAL_DAYS;
   return (
-    <PressScale onPress={() => router.push('/paywall')} scaleTo={0.98} accessibilityLabel="See the Founder Pass">
+    <PressScale onPress={() => router.push('/paywall')} scaleTo={0.98} accessibilityLabel={t('pass.seeThe')}>
       <LinearGradient colors={frostGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.frost}>
-        <Text style={s.kicker}>{expired ? 'Trial ended' : 'Free trial'}</Text>
+        <Text style={s.kicker}>{expired ? t('pass.trialEnded') : t('pass.freeTrial')}</Text>
         <View style={s.row}>
           <Text style={s.big}>{expired ? '0' : access.daysLeft}</Text>
-          <Text style={s.bigUnit}>{access.daysLeft === 1 ? 'day left' : 'days left'}</Text>
+          <Text style={s.bigUnit}>{t('pass.daysLeftUnit', { count: access.daysLeft })}</Text>
         </View>
         <View style={s.track}>
           <View style={[s.fill, { width: `${Math.max(0, Math.min(1, used)) * 100}%` }]} />
         </View>
         <Text style={s.text}>
-          {expired ? 'Your history is all still here. Go Pro to keep logging.' : 'Everything is unlocked until then. History stays yours after.'}
+          {expired ? t('pass.expiredText') : t('pass.trialText')}
         </Text>
         <View style={s.row}>
-          <Text style={s.link}>See the Founder Pass</Text>
+          <Text style={s.link}>{t('pass.seeThe')}</Text>
           <Ionicons name="arrow-forward" size={14} color={colors.onFrost} />
         </View>
       </LinearGradient>

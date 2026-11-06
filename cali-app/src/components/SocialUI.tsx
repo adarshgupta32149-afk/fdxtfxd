@@ -5,7 +5,9 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { PressScale } from '@/components/motion';
 import * as haptics from '@/lib/haptics';
-import { personById, shortCount, timeAgo, type Person } from '@/lib/social';
+import { useT } from '@/i18n';
+import { useAgo } from '@/i18n/useAgo';
+import { personById, shortCount, type Person } from '@/lib/social';
 import { useSocial } from '@/state/SocialProvider';
 import { colors, display, font, radius } from '@/theme';
 
@@ -30,14 +32,15 @@ export function Avatar({ person, size = 36, ring }: { person?: Person; size?: nu
 /** Bottom sheet frame shared by comments, share and options. */
 function Sheet({ visible, onClose, title, children, tall }: { visible: boolean; onClose: () => void; title: string; children: React.ReactNode; tall?: boolean }) {
   const insets = useSafeAreaInsets();
+  const { t } = useT();
   return (
     <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose}>
-      <Pressable style={s.scrim} onPress={onClose} accessibilityLabel="Close" />
+      <Pressable style={s.scrim} onPress={onClose} accessibilityLabel={t('common.close')} />
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={[s.sheet, tall && { height: '72%' }, { paddingBottom: insets.bottom + 10 }]}>
         <View style={s.grabber} />
         <View style={s.sheetHead}>
           <Text style={s.sheetTitle}>{title}</Text>
-          <Pressable onPress={onClose} hitSlop={10} accessibilityLabel="Close sheet">
+          <Pressable onPress={onClose} hitSlop={10} accessibilityLabel={t('social.closeSheet')}>
             <Ionicons name="close" size={22} color={colors.muted} />
           </Pressable>
         </View>
@@ -49,6 +52,8 @@ function Sheet({ visible, onClose, title, children, tall }: { visible: boolean; 
 
 export function CommentsSheet({ target, onClose }: { target: Target | null; onClose: () => void }) {
   const { social, comment, likeComment } = useSocial();
+  const { t } = useT();
+  const ago = useAgo();
   const [text, setText] = useState('');
   const [now] = useState(() => new Date());
   const item = target ? (target.kind === 'short' ? social.shorts.find((x) => x.id === target.id) : social.posts.find((x) => x.id === target.id)) : undefined;
@@ -62,7 +67,7 @@ export function CommentsSheet({ target, onClose }: { target: Target | null; onCl
   };
 
   return (
-    <Sheet visible={!!target} onClose={onClose} title={`${list.length} ${list.length === 1 ? 'comment' : 'comments'}`} tall>
+    <Sheet visible={!!target} onClose={onClose} title={t('social.comments', { count: list.length })} tall>
       <FlatList
         data={list}
         keyExtractor={(c) => c.id}
@@ -71,7 +76,7 @@ export function CommentsSheet({ target, onClose }: { target: Target | null; onCl
         ListEmptyComponent={
           <View style={s.empty}>
             <Ionicons name="chatbubble-ellipses-outline" size={28} color={colors.faint} />
-            <Text style={s.emptyText}>No comments yet. Start the conversation.</Text>
+            <Text style={s.emptyText}>{t('social.noComments')}</Text>
           </View>
         }
         renderItem={({ item: c }) => {
@@ -81,11 +86,11 @@ export function CommentsSheet({ target, onClose }: { target: Target | null; onCl
               <Avatar person={who} size={32} />
               <View style={{ flex: 1, minWidth: 0 }}>
                 <Text style={s.commentHead}>
-                  {who?.handle ?? 'someone'} <Text style={s.commentTime}>· {timeAgo(c.createdAt, now)}</Text>
+                  {who?.handle ?? t('social.someone')} <Text style={s.commentTime}>· {ago(c.createdAt, now)}</Text>
                 </Text>
                 <Text style={s.commentText}>{c.text}</Text>
               </View>
-              <Pressable onPress={() => target && likeComment(target, c.id)} hitSlop={8} style={s.commentLike} accessibilityLabel={c.liked ? 'Unlike comment' : 'Like comment'}>
+              <Pressable onPress={() => target && likeComment(target, c.id)} hitSlop={8} style={s.commentLike} accessibilityLabel={c.liked ? t('social.unlike') : t('social.like')}>
                 <Ionicons name={c.liked ? 'heart' : 'heart-outline'} size={15} color={c.liked ? colors.heart : colors.faint} />
                 {c.likes > 0 && <Text style={s.commentLikes}>{shortCount(c.likes)}</Text>}
               </Pressable>
@@ -99,13 +104,13 @@ export function CommentsSheet({ target, onClose }: { target: Target | null; onCl
           style={s.input}
           value={text}
           onChangeText={setText}
-          placeholder="Add a comment…"
+          placeholder={t('social.addComment')}
           placeholderTextColor={colors.faint}
           onSubmitEditing={send}
           returnKeyType="send"
           maxLength={500}
         />
-        <PressScale onPress={send} disabled={!text.trim()} style={[s.sendBtn, !text.trim() && { opacity: 0.4 }]} accessibilityLabel="Post comment">
+        <PressScale onPress={send} disabled={!text.trim()} style={[s.sendBtn, !text.trim() && { opacity: 0.4 }]} accessibilityLabel={t('social.postComment')}>
           <Ionicons name="arrow-up" size={18} color={colors.onFrost} />
         </PressScale>
       </View>
@@ -116,6 +121,7 @@ export function CommentsSheet({ target, onClose }: { target: Target | null; onCl
 /** Key it by the target so each post starts with nothing sent. */
 export function ShareSheet({ target, caption, onClose }: { target: Target | null; caption: string; onClose: () => void }) {
   const { social, share, send } = useSocial();
+  const { t } = useT();
   const [sentTo, setSentTo] = useState<string[]>([]);
   const [note, setNote] = useState<string | null>(null);
 
@@ -127,23 +133,23 @@ export function ShareSheet({ target, caption, onClose }: { target: Target | null
     send(conversationId, { shared: target });
     share(target);
     setSentTo((x) => [...x, conversationId]);
-    setNote(`Sent to ${name}`);
+    setNote(t('social.sentTo', { name }));
   };
 
   const outside = async () => {
     if (!target) return;
     try {
-      await Share.share({ message: `${caption}\n\nSeen on Cali` });
+      await Share.share({ message: `${caption}\n\n${t('social.seenOnCali')}` });
       share(target);
-      setNote('Shared');
+      setNote(t('social.shared'));
     } catch {
-      setNote('Sharing outside Cali works in the phone app.');
+      setNote(t('social.shareAppOnly'));
     }
   };
 
   return (
-    <Sheet visible={!!target} onClose={onClose} title="Share">
-      <Text style={s.shareLabel}>Send in Messages</Text>
+    <Sheet visible={!!target} onClose={onClose} title={t('social.share')}>
+      <Text style={s.shareLabel}>{t('social.sendInMessages')}</Text>
       <FlatList
         horizontal
         data={people}
@@ -153,7 +159,7 @@ export function ShareSheet({ target, caption, onClose }: { target: Target | null
         renderItem={({ item: { conv, who } }) => {
           const done = sentTo.includes(conv.id);
           return (
-            <Pressable onPress={() => sendTo(conv.id, who!.name)} style={s.sharePerson} accessibilityLabel={`Send to ${who!.name}`}>
+            <Pressable onPress={() => sendTo(conv.id, who!.name)} style={s.sharePerson} accessibilityLabel={t('social.sendTo', { name: who!.name })}>
               <View>
                 <Avatar person={who} size={54} />
                 {done && (
@@ -163,14 +169,14 @@ export function ShareSheet({ target, caption, onClose }: { target: Target | null
                 )}
               </View>
               <Text style={s.sharePersonName} numberOfLines={1}>
-                {done ? 'Sent' : who!.name}
+                {done ? t('social.sent') : who!.name}
               </Text>
             </Pressable>
           );
         }}
       />
       <View style={s.shareActions}>
-        <ShareAction icon="share-outline" label="Share outside Cali" onPress={outside} />
+        <ShareAction icon="share-outline" label={t('social.shareOutside')} onPress={outside} />
       </View>
       {note && (
         <View style={s.toast}>
@@ -196,14 +202,15 @@ function ShareAction({ icon, label, onPress }: { icon: IconName; label: string; 
 /** Report anything; delete your own. Key it by the target so each post starts fresh. */
 export function OptionsSheet({ target, mine, onClose }: { target: Target | null; mine: boolean; onClose: () => void }) {
   const { remove } = useSocial();
+  const { t } = useT();
   const [reported, setReported] = useState(false);
   return (
-    <Sheet visible={!!target} onClose={onClose} title={mine ? 'Your post' : 'Options'}>
+    <Sheet visible={!!target} onClose={onClose} title={mine ? t('social.yourPost') : t('social.options')}>
       <View style={{ paddingHorizontal: 18, gap: 8 }}>
         {mine ? (
           <OptionRow
             icon="trash-outline"
-            label="Delete"
+            label={t('common.delete')}
             danger
             onPress={() => {
               if (!target) return;
@@ -215,12 +222,12 @@ export function OptionsSheet({ target, mine, onClose }: { target: Target | null;
         ) : reported ? (
           <View style={s.toast}>
             <Ionicons name="shield-checkmark" size={16} color={colors.glow} />
-            <Text style={s.toastText}>Thanks. We will review this post.</Text>
+            <Text style={s.toastText}>{t('social.reportThanks')}</Text>
           </View>
         ) : (
           <>
-            <OptionRow icon="flag-outline" label="Report" danger onPress={() => setReported(true)} />
-            <OptionRow icon="eye-off-outline" label="Not interested" onPress={onClose} />
+            <OptionRow icon="flag-outline" label={t('social.report')} danger onPress={() => setReported(true)} />
+            <OptionRow icon="eye-off-outline" label={t('social.notInterested')} onPress={onClose} />
           </>
         )}
       </View>

@@ -9,6 +9,8 @@ import { PressScale, Rise } from '@/components/motion';
 import { PostCard } from '@/components/PostCard';
 import { Avatar, CommentsSheet, OptionsSheet, ShareSheet } from '@/components/SocialUI';
 import { Backdrop, H1, styles as ui } from '@/components/ui';
+import { useT } from '@/i18n';
+import type { Key } from '@/i18n/en';
 import { ME, personById, SPACES, type SpaceId } from '@/lib/social';
 import { useSocial } from '@/state/SocialProvider';
 import { colors, display, font, radius, TAB_BAR_SPACE } from '@/theme';
@@ -19,6 +21,7 @@ export default function FeedScreen() {
   const insets = useSafeAreaInsets();
   const now = useNow(60_000);
   const { social, toggleLike, like, toggleSave } = useSocial();
+  const { t } = useT();
   const [space, setSpace] = useState<SpaceId | 'all'>('all');
   const [comments, setComments] = useState<Target | null>(null);
   const [sharing, setSharing] = useState<Target | null>(null);
@@ -34,10 +37,10 @@ export default function FeedScreen() {
     <View style={{ gap: 18, marginBottom: 6 }}>
       <Rise style={s.headRow}>
         <View style={{ flex: 1 }}>
-          <Text style={s.kicker}>Community</Text>
-          <H1 style={{ marginTop: 2 }}>Feed</H1>
+          <Text style={s.kicker}>{t('feed.community')}</Text>
+          <H1 style={{ marginTop: 2 }}>{t('tabs.feed')}</H1>
         </View>
-        <PressScale onPress={() => router.push('/feed/new')} style={s.newBtn} accessibilityLabel="New post">
+        <PressScale onPress={() => router.push('/feed/new')} style={s.newBtn} accessibilityLabel={t('feed.newPost')}>
           <Ionicons name="add" size={22} color={colors.onFrost} />
         </PressScale>
       </Rise>
@@ -45,11 +48,12 @@ export default function FeedScreen() {
       <Rise delay={60}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={s.chipsWrap} contentContainerStyle={s.chips}>
           {[{ id: 'all' as const, label: 'All', color: colors.frost }, ...SPACES].map((c) => {
+            const label = c.id === 'all' ? t('learn.cat.all') : t(`space.${c.id}` as Key);
             const on = space === c.id;
             return (
-              <PressScale key={c.id} onPress={() => setSpace(c.id)} style={[s.chip, on && { backgroundColor: c.color, borderColor: c.color }]} accessibilityLabel={`Show ${c.label}`}>
+              <PressScale key={c.id} onPress={() => setSpace(c.id)} style={[s.chip, on && { backgroundColor: c.color, borderColor: c.color }]} accessibilityLabel={`${t('common.show')} ${label}`}>
                 {c.id !== 'all' && <View style={[s.chipDot, { backgroundColor: on ? colors.onFrost : c.color }]} />}
-                <Text style={[s.chipText, on && { color: colors.onFrost }]}>{c.label}</Text>
+                <Text style={[s.chipText, on && { color: colors.onFrost }]}>{label}</Text>
               </PressScale>
             );
           })}
@@ -59,21 +63,21 @@ export default function FeedScreen() {
       {active && (
         <View style={[s.spaceBanner, { borderColor: `${active.color}55` }]}>
           <View style={[s.spaceIcon, { backgroundColor: active.color }]}>
-            <Text style={s.spaceIconText}>{active.label[0]}</Text>
+            <Text style={s.spaceIconText}>{t(`space.${active.id}` as Key)[0]}</Text>
           </View>
           <View style={{ flex: 1 }}>
             <Text style={s.spaceName}>c/{active.label.toLowerCase().replace(' ', '')}</Text>
             <Text style={s.spaceBlurb}>
-              {active.blurb} · {posts.length} {posts.length === 1 ? 'post' : 'posts'}
+              {t(`space.${active.id}.blurb` as Key)} · {t('feed.posts', { count: posts.length })}
             </Text>
           </View>
         </View>
       )}
 
       <Rise delay={110}>
-        <PressScale onPress={() => router.push({ pathname: '/feed/new', params: space === 'all' ? {} : { space } })} scaleTo={0.98} style={s.composer} accessibilityLabel="Share something">
+        <PressScale onPress={() => router.push({ pathname: '/feed/new', params: space === 'all' ? {} : { space } })} scaleTo={0.98} style={s.composer} accessibilityLabel={t('feed.shareSomething')}>
           <Avatar person={me} size={34} />
-          <Text style={s.composerText}>Share a win, a question, a form check…</Text>
+          <Text style={s.composerText}>{t('feed.composer')}</Text>
           <Ionicons name="image-outline" size={20} color={colors.muted} />
         </PressScale>
       </Rise>
@@ -90,19 +94,19 @@ export default function FeedScreen() {
         ListHeaderComponent={header}
         showsVerticalScrollIndicator={false}
         renderItem={({ item, index }) => {
-          const t: Target = { kind: 'post', id: item.id };
+          const tg: Target = { kind: 'post', id: item.id };
           return (
             <Rise delay={Math.min(index, 4) * 60 + 140}>
               <PostCard
                 post={item}
                 social={social}
                 now={now}
-                onLike={() => toggleLike(t)}
-                onDoubleLike={() => like(t)}
-                onComments={() => setComments(t)}
-                onShare={() => setSharing(t)}
-                onSave={() => toggleSave(t)}
-                onMore={() => setOptions(t)}
+                onLike={() => toggleLike(tg)}
+                onDoubleLike={() => like(tg)}
+                onComments={() => setComments(tg)}
+                onShare={() => setSharing(tg)}
+                onSave={() => toggleSave(tg)}
+                onMore={() => setOptions(tg)}
               />
             </Rise>
           );
@@ -110,8 +114,8 @@ export default function FeedScreen() {
         ListEmptyComponent={
           <View style={s.empty}>
             <Ionicons name="sparkles-outline" size={28} color={colors.muted} />
-            <Text style={s.emptyTitle}>Quiet in here</Text>
-            <Text style={s.emptyText}>Be the first to post in {active?.label ?? 'the feed'}.</Text>
+            <Text style={s.emptyTitle}>{t('feed.quiet')}</Text>
+            <Text style={s.emptyText}>{t('feed.beFirst')}</Text>
           </View>
         }
       />

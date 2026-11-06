@@ -5,16 +5,19 @@ import { Image, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'r
 
 import { articleImage, videoThumb } from '@/components/learnMedia';
 import { PressScale } from '@/components/motion';
+import { useT } from '@/i18n';
+import type { Key } from '@/i18n/en';
 import { categoryOf, compactCount, type Article, type LearnCategory, type Video } from '@/lib/learn';
 import { colors, display, font, radius } from '@/theme';
 
 /** Small coloured label for a Learn category. */
 export function CategoryTag({ category, onImage }: { category: LearnCategory; onImage?: boolean }) {
   const c = categoryOf(category);
+  const { t } = useT();
   return (
     <View style={[s.tag, onImage && s.tagOnImage]}>
       <View style={[s.tagDot, { backgroundColor: c.color }]} />
-      <Text style={[s.tagText, { color: c.color }]}>{c.label}</Text>
+      <Text style={[s.tagText, { color: c.color }]}>{t(`learn.cat.${c.id}` as Key)}</Text>
     </View>
   );
 }
@@ -32,6 +35,7 @@ function PlayBadge({ size = 46 }: { size?: number }) {
 
 /** Big 16:9 video card for the top of the Videos section. */
 export function FeaturedVideoCard({ video }: { video: Video }) {
+  const { t } = useT();
   return (
     <PressScale onPress={() => openVideo(video)} scaleTo={0.98} accessibilityLabel={`Video: ${video.title}`}>
       <View style={s.featureVideo}>
@@ -51,7 +55,7 @@ export function FeaturedVideoCard({ video }: { video: Video }) {
             {video.title}
           </Text>
           <Text style={s.featureMeta}>
-            {video.channel} · {compactCount(video.views)} views
+            {video.channel} · {t('learn.views', { n: compactCount(video.views) })}
           </Text>
         </View>
       </View>
@@ -86,6 +90,7 @@ export function VideoCard({ video, style }: { video: Video; style?: StyleProp<Vi
 
 /** Vertical card for YouTube Shorts. */
 export function ShortCard({ video }: { video: Video }) {
+  const { t } = useT();
   return (
     <PressScale onPress={() => openVideo(video)} scaleTo={0.96} style={s.short} accessibilityLabel={`Short: ${video.title}`}>
       <Image source={videoThumb(video.id)} style={StyleSheet.absoluteFill} resizeMode="cover" />
@@ -98,7 +103,7 @@ export function ShortCard({ video }: { video: Video }) {
         <Text style={s.shortTitle} numberOfLines={3}>
           {video.title}
         </Text>
-        <Text style={s.shortMeta}>{compactCount(video.views)} views</Text>
+        <Text style={s.shortMeta}>{t('learn.views', { n: compactCount(video.views) })}</Text>
       </View>
     </PressScale>
   );
@@ -106,6 +111,7 @@ export function ShortCard({ video }: { video: Video }) {
 
 /** Large article card: photo with the title set on it. */
 export function FeaturedArticleCard({ article }: { article: Article }) {
+  const { t } = useT();
   return (
     <PressScale onPress={() => openArticle(article)} scaleTo={0.98} accessibilityLabel={`Article: ${article.title}`}>
       <View style={s.featureArticle}>
@@ -115,7 +121,7 @@ export function FeaturedArticleCard({ article }: { article: Article }) {
           <CategoryTag category={article.category} onImage />
           <View style={s.duration}>
             <Ionicons name="time-outline" size={11} color={colors.text} />
-            <Text style={s.durationText}>{article.minutes} min</Text>
+            <Text style={s.durationText}>{t('learn.min', { count: article.minutes })}</Text>
           </View>
         </View>
         <View style={s.featureBottom}>
@@ -134,6 +140,7 @@ export function FeaturedArticleCard({ article }: { article: Article }) {
 
 /** List row for an article: thumbnail, tag, title, source and read time. */
 export function ArticleRow({ article }: { article: Article }) {
+  const { t } = useT();
   return (
     <PressScale onPress={() => openArticle(article)} scaleTo={0.98} style={s.row} accessibilityLabel={`Article: ${article.title}`}>
       <Image source={articleImage(article.id)} style={s.rowThumb} resizeMode="cover" />
@@ -143,7 +150,7 @@ export function ArticleRow({ article }: { article: Article }) {
           {article.title}
         </Text>
         <Text style={s.rowMeta} numberOfLines={1}>
-          {article.source} · {article.minutes} min read
+          {article.source} · {t('learn.minRead', { count: article.minutes })}
         </Text>
       </View>
     </PressScale>

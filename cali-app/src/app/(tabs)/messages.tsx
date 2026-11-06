@@ -8,21 +8,25 @@ import { useNow } from '@/components/hooks';
 import { PressScale, Rise } from '@/components/motion';
 import { Avatar } from '@/components/SocialUI';
 import { Backdrop, H1, styles as ui } from '@/components/ui';
-import { ME, personById, timeAgo, totalUnread, type Message } from '@/lib/social';
+import { useT } from '@/i18n';
+import type { Key } from '@/i18n/en';
+import { useAgo } from '@/i18n/useAgo';
+import { ME, personById, totalUnread, type Message } from '@/lib/social';
 import { useSocial } from '@/state/SocialProvider';
 import { colors, font, radius, TAB_BAR_SPACE } from '@/theme';
 
-function preview(m: Message | undefined): string {
-  if (!m) return 'Say hi';
-  const who = m.fromMe ? 'You: ' : '';
-  if (m.shared) return `${who}Sent a ${m.shared.kind === 'short' ? 'Short' : 'post'}`;
-  return `${who}${m.text ?? ''}`;
+function preview(m: Message | undefined, t: (k: Key, v?: Record<string, string | number>) => string): string {
+  if (!m) return t('msg.sayHi');
+  const body = m.shared ? (m.shared.kind === 'short' ? t('msg.sentShort') : t('msg.sentPost')) : (m.text ?? '');
+  return m.fromMe ? t('msg.you', { text: body }) : body;
 }
 
 export default function MessagesScreen() {
   const insets = useSafeAreaInsets();
   const now = useNow(60_000);
   const { social, chatWith } = useSocial();
+  const { t } = useT();
+  const ago = useAgo();
   const [query, setQuery] = useState('');
   const unread = totalUnread(social);
 
@@ -50,18 +54,18 @@ export default function MessagesScreen() {
         ListHeaderComponent={
           <View style={{ gap: 18, marginBottom: 10 }}>
             <Rise style={{ paddingHorizontal: 6 }}>
-              <Text style={s.kicker}>{unread ? `${unread} unread` : 'All caught up'}</Text>
-              <H1 style={{ marginTop: 2 }}>Messages</H1>
+              <Text style={s.kicker}>{unread ? t('msg.unread', { count: unread }) : t('msg.caughtUp')}</Text>
+              <H1 style={{ marginTop: 2 }}>{t('tabs.messages')}</H1>
             </Rise>
             <Rise delay={50} style={s.search}>
               <Ionicons name="search" size={16} color={colors.faint} />
-              <TextInput style={s.searchInput} value={query} onChangeText={setQuery} placeholder="Search people" placeholderTextColor={colors.faint} />
+              <TextInput style={s.searchInput} value={query} onChangeText={setQuery} placeholder={t('msg.search')} placeholderTextColor={colors.faint} />
             </Rise>
             <Rise delay={90}>
-              <Text style={s.label}>Your crew</Text>
+              <Text style={s.label}>{t('msg.crew')}</Text>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginHorizontal: -16 }} contentContainerStyle={{ gap: 14, paddingHorizontal: 22, paddingTop: 10 }}>
                 {people.map((p) => (
-                  <Pressable key={p.id} onPress={() => open(p.id)} style={s.person} accessibilityLabel={`Message ${p.name}`}>
+                  <Pressable key={p.id} onPress={() => open(p.id)} style={s.person} accessibilityLabel={t('msg.messageTo', { name: p.name })}>
                     <View>
                       <Avatar person={p} size={58} />
                       <View style={s.online} />
@@ -73,20 +77,20 @@ export default function MessagesScreen() {
                 ))}
               </ScrollView>
             </Rise>
-            <Text style={s.label}>Chats</Text>
+            <Text style={s.label}>{t('msg.chats')}</Text>
           </View>
         }
         renderItem={({ item: { c, who }, index }) => {
           const last = c.messages.at(-1);
           return (
             <Rise delay={120 + Math.min(index, 6) * 40}>
-              <PressScale onPress={() => router.push({ pathname: '/messages/[id]', params: { id: c.id } })} scaleTo={0.98} style={s.row} accessibilityLabel={`Chat with ${who!.name}`}>
+              <PressScale onPress={() => router.push({ pathname: '/messages/[id]', params: { id: c.id } })} scaleTo={0.98} style={s.row} accessibilityLabel={t('msg.chatWith', { name: who!.name })}>
                 <Avatar person={who} size={50} />
                 <View style={{ flex: 1, minWidth: 0, gap: 2 }}>
                   <Text style={[s.name, c.unread > 0 && { color: colors.text }]}>{who!.name}</Text>
                   <Text style={[s.preview, c.unread > 0 && s.previewUnread]} numberOfLines={1}>
-                    {preview(last)}
-                    {last ? `  ·  ${timeAgo(last.createdAt, now)}` : ''}
+                    {preview(last, t)}
+                    {last ? `  ·  ${ago(last.createdAt, now)}` : ''}
                   </Text>
                 </View>
                 {c.unread > 0 ? (
@@ -100,8 +104,8 @@ export default function MessagesScreen() {
             </Rise>
           );
         }}
-        ListEmptyComponent={<Text style={s.empty}>No chats match “{query}”.</Text>}
-        ListFooterComponent={<Text style={s.footer}>Sample chats until launch. Messages you send are kept on this phone.</Text>}
+        ListEmptyComponent={<Text style={s.empty}>{t('msg.noMatch', { query })}</Text>}
+        ListFooterComponent={<Text style={s.footer}>{t('msg.footer')}</Text>}
       />
     </Backdrop>
   );

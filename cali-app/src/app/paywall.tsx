@@ -5,6 +5,8 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { PressScale, Rise } from '@/components/motion';
 import { Button, Card, FrostCard, H1, Muted, Screen } from '@/components/ui';
+import { useT } from '@/i18n';
+import type { Key } from '@/i18n/en';
 import { TRIAL_DAYS } from '@/lib/trial';
 import { useAppState } from '@/state/AppStateProvider';
 import { colors, display, font } from '@/theme';
@@ -12,19 +14,20 @@ import { colors, display, font } from '@/theme';
 type IconName = ComponentProps<typeof Ionicons>['name'];
 type Region = 'in' | 'world';
 
-const PRICE: Record<Region, { amount: string; label: string; perMonth: string }> = {
-  in: { amount: '₹500', label: 'India', perMonth: 'about ₹42 a month' },
-  world: { amount: '$10', label: 'Worldwide', perMonth: 'under $1 a month' },
+const PRICE: Record<Region, { amount: string }> = {
+  in: { amount: '₹500' },
+  world: { amount: '$10' },
 };
 
 // What Free keeps after the trial vs what the Founder Pass adds.
-const COMPARE: { icon: IconName; label: string; free: boolean | string; pro: boolean | string }[] = [
-  { icon: 'time-outline', label: 'Your full history', free: true, pro: true },
-  { icon: 'create-outline', label: 'Log sessions', free: `${TRIAL_DAYS} days`, pro: true },
-  { icon: 'ribbon-outline', label: 'Skill ladders that tick themselves', free: `${TRIAL_DAYS} days`, pro: true },
-  { icon: 'podium-outline', label: 'Video-verified rankings', free: false, pro: true },
-  { icon: 'trophy-outline', label: 'Monthly challenges', free: false, pro: true },
-  { icon: 'sparkles-outline', label: 'Founder badge, forever', free: false, pro: true },
+// 'trial' means: included during the free trial only.
+const COMPARE: { icon: IconName; id: string; free: boolean | 'trial'; pro: boolean }[] = [
+  { icon: 'time-outline', id: 'history', free: true, pro: true },
+  { icon: 'create-outline', id: 'log', free: 'trial', pro: true },
+  { icon: 'ribbon-outline', id: 'ladders', free: 'trial', pro: true },
+  { icon: 'podium-outline', id: 'rankings', free: false, pro: true },
+  { icon: 'trophy-outline', id: 'challenges', free: false, pro: true },
+  { icon: 'sparkles-outline', id: 'badge', free: false, pro: true },
 ];
 
 function Mark({ value, onFrost }: { value: boolean | string; onFrost?: boolean }) {
@@ -38,22 +41,23 @@ function Mark({ value, onFrost }: { value: boolean | string; onFrost?: boolean }
 
 export default function PaywallScreen() {
   const { access, dev } = useAppState();
+  const { t } = useT();
   const [region, setRegion] = useState<Region>('in');
   const price = PRICE[region];
 
   return (
     <Screen headerInset contentStyle={{ gap: 20 }}>
       <Rise>
-        <Text style={s.kicker}>Founder Pass · launch price</Text>
-        <H1 style={{ marginTop: 4 }}>{'Train without\nlimits.'}</H1>
-        <Muted style={{ marginTop: 6 }}>Back us early and lock in the launch price for the whole year.</Muted>
+        <Text style={s.kicker}>{t('pass.kicker')}</Text>
+        <H1 style={{ marginTop: 4 }}>{t('pass.title')}</H1>
+        <Muted style={{ marginTop: 6 }}>{t('pass.intro')}</Muted>
       </Rise>
 
       <Rise delay={80}>
         <View style={s.toggle}>
           {(Object.keys(PRICE) as Region[]).map((r) => (
-            <PressScale key={r} onPress={() => setRegion(r)} containerStyle={{ flex: 1 }} style={[s.toggleBtn, region === r && s.toggleOn]} accessibilityLabel={PRICE[r].label}>
-              <Text style={[s.toggleText, region === r && { color: colors.onFrost }]}>{PRICE[r].label}</Text>
+            <PressScale key={r} onPress={() => setRegion(r)} containerStyle={{ flex: 1 }} style={[s.toggleBtn, region === r && s.toggleOn]} accessibilityLabel={t(`pass.region.${r}` as Key)}>
+              <Text style={[s.toggleText, region === r && { color: colors.onFrost }]}>{t(`pass.region.${r}` as Key)}</Text>
             </PressScale>
           ))}
         </View>
@@ -64,15 +68,15 @@ export default function PaywallScreen() {
           <View style={s.priceRow}>
             <Text style={s.price}>{price.amount}</Text>
             <View>
-              <Text style={s.per}>per year</Text>
-              <Text style={s.perSub}>{price.perMonth}</Text>
+              <Text style={s.per}>{t('pass.perYear')}</Text>
+              <Text style={s.perSub}>{t(`pass.perMonth.${region}` as Key)}</Text>
             </View>
           </View>
           <View style={s.badgeRow}>
             <View style={s.badge}>
-              <Text style={s.badgeText}>Founder</Text>
+              <Text style={s.badgeText}>{t('pass.founder')}</Text>
             </View>
-            <Text style={s.perSub}>Price stays yours while you renew.</Text>
+            <Text style={s.perSub}>{t('pass.priceStays')}</Text>
           </View>
         </FrostCard>
       </Rise>
@@ -81,15 +85,15 @@ export default function PaywallScreen() {
         <Card style={{ gap: 0, paddingVertical: 8 }}>
           <View style={[s.cmpRow, { borderTopWidth: 0 }]}>
             <View style={{ flex: 1 }} />
-            <Text style={s.cmpHead}>Free</Text>
-            <Text style={[s.cmpHead, { color: colors.text }]}>Founder</Text>
+            <Text style={s.cmpHead}>{t('pass.free')}</Text>
+            <Text style={[s.cmpHead, { color: colors.text }]}>{t('pass.founder')}</Text>
           </View>
           {COMPARE.map((row) => (
-            <View key={row.label} style={s.cmpRow}>
+            <View key={row.id} style={s.cmpRow}>
               <Ionicons name={row.icon} size={16} color={colors.muted} />
-              <Text style={s.cmpLabel}>{row.label}</Text>
+              <Text style={s.cmpLabel}>{t(`pass.cmp.${row.id}` as Key)}</Text>
               <View style={s.cmpCell}>
-                <Mark value={row.free} />
+                <Mark value={row.free === 'trial' ? t('pass.nDays', { count: TRIAL_DAYS }) : row.free} />
               </View>
               <View style={s.cmpCell}>
                 <Mark value={row.pro} />
@@ -101,7 +105,7 @@ export default function PaywallScreen() {
 
       <Rise delay={260} style={{ gap: 10 }}>
         {access.status === 'pro' ? (
-          <Button label="You're a Founder" variant="glass" icon={<Ionicons name="checkmark" size={16} color={colors.text} />} onPress={() => router.back()} />
+          <Button label={t('pass.youreFounder')} variant="glass" icon={<Ionicons name="checkmark" size={16} color={colors.text} />} onPress={() => router.back()} />
         ) : __DEV__ ? (
           <Button
             label="Simulate purchase (dev only)"
@@ -111,9 +115,9 @@ export default function PaywallScreen() {
             }}
           />
         ) : (
-          <Button label="Checkout opens at launch" disabled onPress={() => {}} />
+          <Button label={t('pass.checkoutSoon')} disabled onPress={() => {}} />
         )}
-        <Muted style={{ textAlign: 'center', fontSize: 12 }}>Your history always stays viewable, Pro or not.</Muted>
+        <Muted style={{ textAlign: 'center', fontSize: 12 }}>{t('pass.historyStays')}</Muted>
       </Rise>
     </Screen>
   );

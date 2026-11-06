@@ -7,6 +7,9 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { PressScale, Rise } from '@/components/motion';
 import { skillIcon } from '@/components/skillIcons';
 import { Backdrop, Button, Chip, FrostCard, Muted } from '@/components/ui';
+import { useT } from '@/i18n';
+import type { Key } from '@/i18n/en';
+import { languageByCode } from '@/i18n/languages';
 import { BRAND } from '@/lib/brand';
 import * as haptics from '@/lib/haptics';
 import { HANDSTAND_OPTIONS, placementSteps, PULL_UP_OPTIONS, type HandstandLevel, type PullUpLevel } from '@/lib/onboarding';
@@ -17,10 +20,10 @@ import { colors, display, font, radius } from '@/theme';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
-const PROMISES: { icon: IconName; text: string }[] = [
-  { icon: 'list-outline', text: 'Log sessions in seconds' },
-  { icon: 'ribbon-outline', text: 'Skill steps that tick themselves off' },
-  { icon: 'podium-outline', text: 'Video-verified world rankings' },
+const PROMISES: { icon: IconName; id: 'log' | 'steps' | 'rankings' }[] = [
+  { icon: 'list-outline', id: 'log' },
+  { icon: 'ribbon-outline', id: 'steps' },
+  { icon: 'podium-outline', id: 'rankings' },
 ];
 
 const MAX_FOCUS = 3;
@@ -35,6 +38,7 @@ export default function WelcomeScreen() {
   const insets = useSafeAreaInsets();
   const { completeOnboarding } = useAppState();
   const [step, setStep] = useState(0);
+  const { t, lang } = useT();
   const [focus, setFocus] = useState<string[]>([]);
   const [pullUps, setPullUps] = useState<PullUpLevel | null>(null);
   const [handstand, setHandstand] = useState<HandstandLevel | null>(null);
@@ -67,7 +71,7 @@ export default function WelcomeScreen() {
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }}>
         {step > 0 && (
           <View style={[s.top, { paddingTop: insets.top + 12 }]}>
-            <Pressable onPress={() => go(step - 1)} hitSlop={12} accessibilityRole="button" accessibilityLabel="Back" style={s.back}>
+            <Pressable onPress={() => go(step - 1)} hitSlop={12} accessibilityRole="button" accessibilityLabel={t('common.back')} style={s.back}>
               <Ionicons name="chevron-back" size={22} color={colors.text} />
             </Pressable>
             <View style={s.progress}>
@@ -86,33 +90,37 @@ export default function WelcomeScreen() {
         >
           {step === 0 && (
             <View key="hero" style={{ flex: 1, gap: 28 }}>
-              <Rise>
+              <Rise style={s.brandRow}>
                 <Text style={s.brand}>{BRAND.name.toUpperCase()}</Text>
+                <Pressable onPress={() => router.push('/language')} style={s.langPill} accessibilityRole="button" accessibilityLabel={t('menu.language')}>
+                  <Ionicons name="globe-outline" size={14} color={colors.text} />
+                  <Text style={s.langText}>{languageByCode(lang)?.native ?? 'English'}</Text>
+                </Pressable>
               </Rise>
               <Rise delay={90}>
-                <Text style={s.hero}>{'Train skills.\nEarn your\nrank.'}</Text>
+                <Text style={s.hero}>{t('welcome.hero')}</Text>
               </Rise>
               <Rise delay={180}>
                 <Muted style={{ fontSize: 16, lineHeight: 23 }}>
-                  From your first pull-up to a clean muscle-up. Track every rep, unlock every step, and see where you stand.
+                  {t('welcome.intro')}
                 </Muted>
               </Rise>
               <Rise delay={260} style={{ gap: 12 }}>
                 {PROMISES.map((p) => (
-                  <View key={p.text} style={s.promise}>
+                  <View key={p.id} style={s.promise}>
                     <View style={s.promiseIcon}>
                       <Ionicons name={p.icon} size={17} color={colors.text} />
                     </View>
-                    <Text style={s.promiseText}>{p.text}</Text>
+                    <Text style={s.promiseText}>{t(`welcome.promise.${p.id}` as Key)}</Text>
                   </View>
                 ))}
               </Rise>
               <Rise delay={340} style={{ gap: 14, marginTop: 'auto' }}>
-                <Button label="Get started" onPress={() => go(1)} icon={<Ionicons name="arrow-forward" size={16} color={colors.onFrost} />} />
+                <Button label={t('welcome.start')} onPress={() => go(1)} icon={<Ionicons name="arrow-forward" size={16} color={colors.onFrost} />} />
                 <Text style={s.small}>
-                  {TRIAL_DAYS} days free. No card needed.{'  '}
+                  {t('welcome.free', { days: TRIAL_DAYS })}{'  '}
                   <Text style={s.link} onPress={() => router.push('/sign-in')}>
-                    I have an account
+                    {t('welcome.haveAccount')}
                   </Text>
                 </Text>
               </Rise>
@@ -122,8 +130,8 @@ export default function WelcomeScreen() {
           {step === 1 && (
             <View key="skills" style={{ gap: 22 }}>
               <Rise>
-                <Text style={s.q}>What do you want to unlock?</Text>
-                <Muted style={{ marginTop: 6 }}>Pick up to {MAX_FOCUS}. Home will lead with these.</Muted>
+                <Text style={s.q}>{t('welcome.q1')}</Text>
+                <Muted style={{ marginTop: 6 }}>{t('welcome.q1sub', { n: MAX_FOCUS })}</Muted>
               </Rise>
               <Rise delay={80}>
                 <View style={s.grid}>
@@ -153,47 +161,47 @@ export default function WelcomeScreen() {
                   ))}
                 </View>
               </Rise>
-              <Button label={focus.length ? 'Continue' : 'Pick at least one'} disabled={!focus.length} onPress={() => go(2)} />
+              <Button label={focus.length ? t('common.continue') : t('welcome.pickOne')} disabled={!focus.length} onPress={() => go(2)} />
             </View>
           )}
 
           {step === 2 && (
             <View key="level" style={{ gap: 24 }}>
               <Rise>
-                <Text style={s.q}>Where are you now?</Text>
-                <Muted style={{ marginTop: 6 }}>Be honest. We use this to skip the steps you already own.</Muted>
+                <Text style={s.q}>{t('welcome.q2')}</Text>
+                <Muted style={{ marginTop: 6 }}>{t('welcome.q2sub')}</Muted>
               </Rise>
               <Rise delay={80} style={{ gap: 12 }}>
-                <Text style={s.label}>Strict pull-ups in one set</Text>
+                <Text style={s.label}>{t('welcome.pullUps')}</Text>
                 <View style={s.chips}>
                   {PULL_UP_OPTIONS.map((o) => (
-                    <Chip key={o.value} label={o.label} active={pullUps === o.value} onPress={() => setPullUps(o.value)} />
+                    <Chip key={o.value} label={o.value === 'none' ? t('welcome.notYet') : o.label} active={pullUps === o.value} onPress={() => setPullUps(o.value)} />
                   ))}
                 </View>
               </Rise>
               <Rise delay={150} style={{ gap: 12 }}>
-                <Text style={s.label}>Handstand</Text>
+                <Text style={s.label}>{t('welcome.handstand')}</Text>
                 <View style={s.chips}>
                   {HANDSTAND_OPTIONS.map((o) => (
-                    <Chip key={o.value} label={o.label} active={handstand === o.value} onPress={() => setHandstand(o.value)} />
+                    <Chip key={o.value} label={t(`welcome.hs.${o.value}` as Key)} active={handstand === o.value} onPress={() => setHandstand(o.value)} />
                   ))}
                 </View>
               </Rise>
-              <Button label="Continue" disabled={!pullUps || !handstand} onPress={() => go(3)} />
+              <Button label={t('common.continue')} disabled={!pullUps || !handstand} onPress={() => go(3)} />
             </View>
           )}
 
           {step === 3 && (
             <View key="you" style={{ gap: 22 }}>
               <Rise>
-                <Text style={s.q}>What should we call you?</Text>
-                <Muted style={{ marginTop: 6 }}>This name shows on leaderboards. You can change it anytime.</Muted>
+                <Text style={s.q}>{t('welcome.q3')}</Text>
+                <Muted style={{ marginTop: 6 }}>{t('welcome.q3sub')}</Muted>
               </Rise>
               <Rise delay={80} style={{ gap: 12 }}>
                 <TextInput
                   value={name}
                   onChangeText={setName}
-                  placeholder="Your name"
+                  placeholder={t('welcome.namePh')}
                   placeholderTextColor={colors.faint}
                   style={s.input}
                   maxLength={30}
@@ -203,7 +211,7 @@ export default function WelcomeScreen() {
                 <TextInput
                   value={weight}
                   onChangeText={setWeight}
-                  placeholder="Bodyweight in kg (optional)"
+                  placeholder={t('welcome.weightPh')}
                   placeholderTextColor={colors.faint}
                   style={s.input}
                   keyboardType="decimal-pad"
@@ -211,12 +219,12 @@ export default function WelcomeScreen() {
               </Rise>
               <Rise delay={150}>
                 <FrostCard style={{ gap: 6, padding: 18 }}>
-                  <Text style={s.trialKicker}>Starts today</Text>
-                  <Text style={s.trialTitle}>{TRIAL_DAYS}-day free trial</Text>
-                  <Text style={s.trialSub}>Everything unlocked. Your history stays yours, whatever you decide after.</Text>
+                  <Text style={s.trialKicker}>{t('welcome.startsToday')}</Text>
+                  <Text style={s.trialTitle}>{t('welcome.trialTitle', { days: TRIAL_DAYS })}</Text>
+                  <Text style={s.trialSub}>{t('welcome.trialSub')}</Text>
                 </FrostCard>
               </Rise>
-              <Button label="Start training" disabled={!name.trim()} onPress={finish} icon={<Ionicons name="flash" size={15} color={colors.onFrost} />} />
+              <Button label={t('welcome.startTraining')} disabled={!name.trim()} onPress={finish} icon={<Ionicons name="flash" size={15} color={colors.onFrost} />} />
             </View>
           )}
         </ScrollView>
@@ -239,6 +247,9 @@ const s = StyleSheet.create({
   promiseText: { fontFamily: font, color: colors.text, fontSize: 15, fontWeight: '600' },
   small: { fontFamily: font, color: colors.muted, fontSize: 13, fontWeight: '600', textAlign: 'center' },
   link: { color: colors.text, fontWeight: '800' },
+  brandRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  langPill: { flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 7, paddingHorizontal: 12, borderRadius: 999, backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border },
+  langText: { fontFamily: font, color: colors.text, fontSize: 13, fontWeight: '700' },
   q: { fontFamily: display, color: colors.text, fontSize: 44, lineHeight: 44, fontWeight: '700' },
   grid: { gap: 10 },
   gridRow: { flexDirection: 'row', gap: 10 },

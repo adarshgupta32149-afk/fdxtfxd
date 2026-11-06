@@ -8,14 +8,18 @@ import { HeartBurst } from '@/components/ShortItem';
 import { imageSource } from '@/components/socialMedia';
 import { Avatar } from '@/components/SocialUI';
 import * as haptics from '@/lib/haptics';
-import { personById, SPACES, timeAgo, type FeedPost, type SocialState } from '@/lib/social';
+import { useT } from '@/i18n';
+import type { Key } from '@/i18n/en';
+import { useAgo } from '@/i18n/useAgo';
+import { personById, SPACES, type FeedPost, type SocialState } from '@/lib/social';
 import { colors, display, font, radius } from '@/theme';
 
 export function SpaceTag({ space }: { space: FeedPost['space'] }) {
+  const { t } = useT();
   const sp = SPACES.find((x) => x.id === space)!;
   return (
     <View style={[s.space, { backgroundColor: `${sp.color}22` }]}>
-      <Text style={[s.spaceText, { color: sp.color }]}>{sp.label}</Text>
+      <Text style={[s.spaceText, { color: sp.color }]}>{t(`space.${sp.id}` as Key)}</Text>
     </View>
   );
 }
@@ -45,6 +49,8 @@ export function PostCard({
   detail?: boolean;
 }) {
   const author = personById(social, post.authorId);
+  const { t, lang } = useT();
+  const ago = useAgo();
   const [burst, setBurst] = useState<{ x: number; y: number; key: number } | null>(null);
   const lastTap = useRef(0);
   const img = imageSource(post.image);
@@ -72,21 +78,21 @@ export function PostCard({
         <View style={{ flex: 1, minWidth: 0 }}>
           <View style={s.headLine}>
             <Text style={s.handle} numberOfLines={1}>
-              {author?.handle ?? 'someone'}
+              {author?.handle ?? t('social.someone')}
             </Text>
-            <Text style={s.time}>· {timeAgo(post.createdAt, now)}</Text>
+            <Text style={s.time}>· {ago(post.createdAt, now)}</Text>
           </View>
           <View style={s.headLine}>
             <SpaceTag space={post.space} />
-            {post.sample && <Text style={s.sample}>Sample</Text>}
+            {post.sample && <Text style={s.sample}>{t('social.sample')}</Text>}
           </View>
         </View>
-        <Pressable onPress={onMore} hitSlop={10} accessibilityLabel="Post options">
+        <Pressable onPress={onMore} hitSlop={10} accessibilityLabel={t('social.options')}>
           <Ionicons name="ellipsis-horizontal" size={18} color={colors.muted} />
         </Pressable>
       </View>
 
-      <Pressable onPress={onBodyPress} accessibilityLabel="Double tap to like">
+      <Pressable onPress={onBodyPress} accessibilityLabel={t('social.doubleTap')}>
         {img ? (
           <View style={[s.media, { aspectRatio: post.aspect ?? 4 / 5 }]}>
             <Image source={img} style={StyleSheet.absoluteFill} resizeMode="cover" />
@@ -102,25 +108,25 @@ export function PostCard({
       </Pressable>
 
       <View style={s.actions}>
-        <PressScale onPress={onLike} scaleTo={0.8} haptic="tap" style={s.action} accessibilityLabel={post.liked ? 'Unlike' : 'Like'}>
+        <PressScale onPress={onLike} scaleTo={0.8} haptic="tap" style={s.action} accessibilityLabel={post.liked ? t('social.unlike') : t('social.like')}>
           <Ionicons name={post.liked ? 'heart' : 'heart-outline'} size={25} color={post.liked ? colors.heart : colors.text} />
         </PressScale>
-        <PressScale onPress={onComments} scaleTo={0.8} style={s.action} accessibilityLabel="Comment">
+        <PressScale onPress={onComments} scaleTo={0.8} style={s.action} accessibilityLabel={t('social.comment')}>
           <Ionicons name="chatbubble-outline" size={23} color={colors.text} />
         </PressScale>
-        <PressScale onPress={onShare} scaleTo={0.8} style={s.action} accessibilityLabel="Share">
+        <PressScale onPress={onShare} scaleTo={0.8} style={s.action} accessibilityLabel={t('social.share')}>
           <Ionicons name="paper-plane-outline" size={23} color={colors.text} />
         </PressScale>
         <View style={{ flex: 1 }} />
-        <PressScale onPress={onSave} scaleTo={0.8} haptic="tap" style={s.action} accessibilityLabel={post.saved ? 'Unsave' : 'Save'}>
+        <PressScale onPress={onSave} scaleTo={0.8} haptic="tap" style={s.action} accessibilityLabel={post.saved ? t('social.unsave') : t('social.save')}>
           <Ionicons name={post.saved ? 'bookmark' : 'bookmark-outline'} size={23} color={post.saved ? colors.gold : colors.text} />
         </PressScale>
       </View>
 
       <View style={s.body}>
         <Text style={s.likes}>
-          {post.likes.toLocaleString()} {post.likes === 1 ? 'like' : 'likes'}
-          {post.shares > 0 ? <Text style={s.shares}>  ·  {post.shares} shares</Text> : null}
+          {t('social.likes', { count: post.likes, n: post.likes.toLocaleString(lang) })}
+          {post.shares > 0 ? <Text style={s.shares}>  ·  {t('social.shares', { count: post.shares })}</Text> : null}
         </Text>
         {img && (
           <Text style={s.caption} numberOfLines={detail ? undefined : 3}>
@@ -130,9 +136,9 @@ export function PostCard({
         )}
         {post.credit && <Text style={s.credit}>{post.credit}</Text>}
         {!detail && post.comments.length > 0 && (
-          <Pressable onPress={open} accessibilityLabel="View comments">
+          <Pressable onPress={open} accessibilityLabel={t('social.viewComments')}>
             <Text style={s.viewAll}>
-              View {post.comments.length === 1 ? '1 comment' : `all ${post.comments.length} comments`}
+              {t('social.viewAll', { count: post.comments.length })}
             </Text>
             {lastComment && (
               <Text style={s.preview} numberOfLines={1}>

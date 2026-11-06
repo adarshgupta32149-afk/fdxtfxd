@@ -9,6 +9,7 @@ import { ArticleRow, CategoryTag, VideoCard } from '@/components/LearnCards';
 import { articleImage } from '@/components/learnMedia';
 import { PressScale, Rise } from '@/components/motion';
 import { Backdrop, Button, H1, Muted } from '@/components/ui';
+import { useT } from '@/i18n';
 import { ARTICLES, categoryOf, formatPublished, relatedTo, VIDEOS } from '@/lib/learn';
 import { SKILLS } from '@/lib/skills';
 import { colors, display, font, panelGradient, radius } from '@/theme';
@@ -30,6 +31,7 @@ function Block({ title, color, children, delay }: { title: string; color: string
 export default function ArticleScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const insets = useSafeAreaInsets();
+  const { t, lang } = useT();
   const { width } = useWindowDimensions();
   const scrollY = useState(() => new Animated.Value(0))[0];
   const [contentH, setContentH] = useState(1);
@@ -40,8 +42,8 @@ export default function ArticleScreen() {
     return (
       <Backdrop>
         <View style={{ padding: 22, paddingTop: insets.top + 70, gap: 8 }}>
-          <H1>Not found</H1>
-          <Muted>This guide is no longer in the library.</Muted>
+          <H1>{t('common.notFound')}</H1>
+          <Muted>{t('learn.guideGone')}</Muted>
         </View>
       </Backdrop>
     );
@@ -82,7 +84,8 @@ export default function ArticleScreen() {
             <View style={s.metaRow}>
               <CategoryTag category={article.category} />
               <Text style={s.metaDot}>·</Text>
-              <Text style={s.metaText}>{article.minutes} min read</Text>
+              <Text style={s.metaText}>{t('learn.minRead', { count: article.minutes })}</Text>
+              {lang !== 'en' && <Text style={s.metaText}>· {t('learn.inEnglish')}</Text>}
             </View>
             <Text style={s.title}>{article.title}</Text>
             <Text style={s.dek}>{article.dek}</Text>
@@ -93,14 +96,14 @@ export default function ArticleScreen() {
               <View style={{ flex: 1 }}>
                 <Text style={s.bylineSource}>{article.source}</Text>
                 <Text style={s.bylineMeta}>
-                  {article.author} · {formatPublished(article.published)}
-                  {article.updated ? ` · updated ${formatPublished(article.updated)}` : ''}
+                  {article.author} · {formatPublished(article.published, lang)}
+                  {article.updated ? ` · ${t('learn.updated', { date: formatPublished(article.updated, lang) })}` : ''}
                 </Text>
               </View>
             </View>
           </Rise>
 
-          <Block title="The short version" color={cat.color} delay={80}>
+          <Block title={t('learn.shortVersion')} color={cat.color} delay={80}>
             {article.summary.map((p, i) => (
               <Text key={i} style={s.para}>
                 {p}
@@ -109,7 +112,7 @@ export default function ArticleScreen() {
           </Block>
 
           {article.steps && (
-            <Block title={article.stepsTitle ?? 'Step by step'} color={cat.color} delay={140}>
+            <Block title={lang === 'en' && article.stepsTitle ? article.stepsTitle : t('learn.stepByStep')} color={cat.color} delay={140}>
               <View>
                 {article.steps.map((st, i) => {
                   const last = i === article.steps!.length - 1;
@@ -139,7 +142,7 @@ export default function ArticleScreen() {
           )}
 
           {article.mistakes && (
-            <Block title="Mistakes to avoid" color={colors.danger} delay={180}>
+            <Block title={t('learn.mistakes')} color={colors.danger} delay={180}>
               <View style={{ gap: 10 }}>
                 {article.mistakes.map((m) => (
                   <View key={m.name} style={s.mistake}>
@@ -157,7 +160,7 @@ export default function ArticleScreen() {
             </Block>
           )}
 
-          <Block title="Worth remembering" color={colors.gold} delay={220}>
+          <Block title={t('learn.remember')} color={colors.gold} delay={220}>
             <View style={{ gap: 12 }}>
               {article.takeaways.map((t) => (
                 <View key={t} style={s.takeaway}>
@@ -172,7 +175,7 @@ export default function ArticleScreen() {
             <LinearGradient colors={panelGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.tryCard}>
               <View style={s.tryHead}>
                 <Ionicons name="flash" size={14} color={colors.glow} />
-                <Text style={s.tryKicker}>Try it in Cali</Text>
+                <Text style={s.tryKicker}>{t('learn.tryIt')}</Text>
               </View>
               <Text style={s.tryText}>{article.caliTip}</Text>
               <View style={s.tryActions}>
@@ -180,15 +183,15 @@ export default function ArticleScreen() {
                   <PressScale
                     onPress={() => router.push({ pathname: '/skills', params: { id: skill.id } })}
                     style={s.tryBtn}
-                    accessibilityLabel={`Open ${skill.name} ladder`}
+                    accessibilityLabel={t('learn.ladder', { skill: skill.name })}
                   >
-                    <Text style={s.tryBtnText}>{skill.name} ladder</Text>
+                    <Text style={s.tryBtnText}>{t('learn.ladder', { skill: skill.name })}</Text>
                     <Ionicons name="arrow-forward" size={14} color={colors.onFrost} />
                   </PressScale>
                 )}
-                <PressScale onPress={() => router.push('/workout/new')} style={[s.tryBtn, s.tryBtnGhost]} accessibilityLabel="Start a session">
+                <PressScale onPress={() => router.push('/workout/new')} style={[s.tryBtn, s.tryBtnGhost]} accessibilityLabel={t('home.startSession')}>
                   <Ionicons name="play" size={12} color={colors.glow} />
-                  <Text style={[s.tryBtnText, { color: colors.glow }]}>Start session</Text>
+                  <Text style={[s.tryBtnText, { color: colors.glow }]}>{t('home.startSession')}</Text>
                 </PressScale>
               </View>
             </LinearGradient>
@@ -202,14 +205,14 @@ export default function ArticleScreen() {
           )}
 
           <Button
-            label={`Read the original on ${article.source}`}
+            label={t('learn.readOriginal', { source: article.source })}
             variant="glass"
             icon={<Ionicons name="open-outline" size={16} color={colors.text} />}
             onPress={() => void Linking.openURL(article.url)}
           />
           {article.photoCredit && (
             <Text style={s.credit}>
-              Photo: {article.photoCredit.text} ({article.photoCredit.license}, Wikimedia Commons). The original article image is no longer online.
+              {t('learn.photoCredit', { credit: `${article.photoCredit.text} (${article.photoCredit.license}, Wikimedia Commons)` })}
             </Text>
           )}
 
@@ -217,7 +220,7 @@ export default function ArticleScreen() {
             <View style={{ gap: 14 }}>
               <View style={s.blockHead}>
                 <View style={[s.blockBar, { backgroundColor: colors.ember }]} />
-                <Text style={s.blockTitle}>Watch next</Text>
+                <Text style={s.blockTitle}>{t('learn.watchNext')}</Text>
               </View>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginHorizontal: -22 }} contentContainerStyle={{ gap: 12, paddingHorizontal: 22 }}>
                 {videos.map((v) => (
@@ -231,7 +234,7 @@ export default function ArticleScreen() {
             <View style={{ gap: 14 }}>
               <View style={s.blockHead}>
                 <View style={[s.blockBar, { backgroundColor: colors.glow }]} />
-                <Text style={s.blockTitle}>Read next</Text>
+                <Text style={s.blockTitle}>{t('learn.readNext')}</Text>
               </View>
               <View style={{ gap: 10 }}>
                 {more.map((a) => (

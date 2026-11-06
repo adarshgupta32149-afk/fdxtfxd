@@ -8,6 +8,8 @@ import { useNow } from '@/components/hooks';
 import { PressScale, Rise } from '@/components/motion';
 import { Button, Card, Chip, H1, Muted, Screen } from '@/components/ui';
 import { CATEGORY_LABELS, EXERCISES, getExercise } from '@/lib/exercises';
+import { useT } from '@/i18n';
+import type { Key } from '@/i18n/en';
 import * as haptics from '@/lib/haptics';
 import { frequentExercises, previousSets, shortSet } from '@/lib/records';
 import { newId } from '@/lib/state';
@@ -66,6 +68,7 @@ const clock = (sec: number) => {
 
 export default function NewWorkoutScreen() {
   const { state, access, addWorkout } = useAppState();
+  const { t } = useT();
   const insets = useSafeAreaInsets();
   const now = useNow(1000);
   const [startedAt] = useState(() => Date.now());
@@ -105,10 +108,10 @@ export default function NewWorkoutScreen() {
     return (
       <Screen topInset contentStyle={{ gap: 14, paddingTop: insets.top + 80 }}>
         <Ionicons name="lock-closed" size={28} color={colors.frost} />
-        <H1>Logging is locked</H1>
-        <Muted>Your free trial has ended. Every session you logged is safe and still viewable.</Muted>
-        <Button label="See Founder Pass" onPress={() => router.replace('/paywall')} />
-        <Button label="Back" variant="glass" onPress={() => router.back()} />
+        <H1>{t('log.locked')}</H1>
+        <Muted>{t('log.lockedText')}</Muted>
+        <Button label={t('pass.see')} onPress={() => router.replace('/paywall')} />
+        <Button label={t('common.back')} variant="glass" onPress={() => router.back()} />
       </Screen>
     );
   }
@@ -154,17 +157,17 @@ export default function NewWorkoutScreen() {
 
   const header = (
     <View style={[s.header, { paddingTop: insets.top + 10 }]}>
-      <PressScale onPress={discard} style={s.headerBtn} accessibilityLabel="Discard session">
-        {confirmDiscard ? <Text style={s.discardText}>Discard?</Text> : <Ionicons name="close" size={20} color={colors.text} />}
+      <PressScale onPress={discard} style={s.headerBtn} accessibilityLabel={t('log.discard')}>
+        {confirmDiscard ? <Text style={s.discardText}>{t('log.discardQ')}</Text> : <Ionicons name="close" size={20} color={colors.text} />}
       </PressScale>
       <View style={s.headerMid}>
         <Text style={s.elapsed}>{clock((now.getTime() - startedAt) / 1000)}</Text>
         <Text style={s.headerSub}>
-          {drafts.length} {drafts.length === 1 ? 'exercise' : 'exercises'} · {setCount} {setCount === 1 ? 'set' : 'sets'}
+          {t('count.exercises', { count: drafts.length })} · {t('count.sets', { count: setCount })}
         </Text>
       </View>
-      <PressScale onPress={save} disabled={!setCount} style={[s.finish, !setCount && { opacity: 0.35 }]} accessibilityLabel="Finish session">
-        <Text style={s.finishText}>Finish</Text>
+      <PressScale onPress={save} disabled={!setCount} style={[s.finish, !setCount && { opacity: 0.35 }]} accessibilityLabel={t('log.finishSession')}>
+        <Text style={s.finishText}>{t('log.finish')}</Text>
       </PressScale>
     </View>
   );
@@ -175,14 +178,14 @@ export default function NewWorkoutScreen() {
         <View style={[s.restFill, { width: `${Math.max(0, Math.min(1, restLeft / rest.total)) * 100}%` }]} />
         <Ionicons name={restLeft > 0 ? 'timer-outline' : 'checkmark-circle'} size={20} color={colors.onFrost} />
         <View style={{ flex: 1 }}>
-          <Text style={s.restLabel}>{restLeft > 0 ? 'Rest' : 'Go'}</Text>
-          <Text style={s.restTime}>{restLeft > 0 ? clock(restLeft) : 'Next set'}</Text>
+          <Text style={s.restLabel}>{restLeft > 0 ? t('log.rest') : t('log.go')}</Text>
+          <Text style={s.restTime}>{restLeft > 0 ? clock(restLeft) : t('log.nextSet')}</Text>
         </View>
-        <PressScale onPress={() => setRest((r) => r && { until: r.until + 15000, total: r.total + 15 })} style={s.restBtn} accessibilityLabel="Add 15 seconds">
+        <PressScale onPress={() => setRest((r) => r && { until: r.until + 15000, total: r.total + 15 })} style={s.restBtn} accessibilityLabel={t('log.add15')}>
           <Text style={s.restBtnText}>+15</Text>
         </PressScale>
-        <PressScale onPress={() => setRest(null)} style={s.restBtn} accessibilityLabel="Skip rest">
-          <Text style={s.restBtnText}>Skip</Text>
+        <PressScale onPress={() => setRest(null)} style={s.restBtn} accessibilityLabel={t('log.skipRest')}>
+          <Text style={s.restBtnText}>{t('log.skip')}</Text>
         </PressScale>
       </View>
     </View>
@@ -201,7 +204,7 @@ export default function NewWorkoutScreen() {
       {drafts.map((d, di) => {
         const ex = getExercise(d.exerciseId)!;
         const prev = previousSets(state.workouts, d.exerciseId);
-        const unit = ex.kind === 'hold' ? 'sec' : 'reps';
+        const unit = ex.kind === 'hold' ? t('log.sec') : t('log.reps');
         return (
           <Rise key={d.key} distance={10}>
             <Card style={{ gap: 10 }}>
@@ -212,20 +215,20 @@ export default function NewWorkoutScreen() {
                 <View style={{ flex: 1 }}>
                   <Text style={s.exName}>{ex.name}</Text>
                   <Text style={s.exMeta}>
-                    {CATEGORY_LABELS[ex.category]}
-                    {prev.length ? ` · last time ${prev.map(shortSet).join(' · ')}` : ' · first time'}
+                    {t(`exCat.${ex.category}` as Key)}
+                    {prev.length ? ` · ${t('log.lastTime', { sets: prev.map(shortSet).join(' · ') })}` : ` · ${t('log.firstTime')}`}
                   </Text>
                 </View>
-                <Pressable hitSlop={10} accessibilityLabel={`Remove ${ex.name}`} onPress={() => setDrafts((all) => all.filter((x) => x.key !== d.key))}>
+                <Pressable hitSlop={10} accessibilityLabel={t('log.remove', { name: ex.name })} onPress={() => setDrafts((all) => all.filter((x) => x.key !== d.key))}>
                   <Ionicons name="trash-outline" size={18} color={colors.faint} />
                 </Pressable>
               </View>
 
               <View style={s.colHead}>
-                <Text style={[s.colText, { width: 28 }]}>Set</Text>
-                <Text style={[s.colText, s.prevCol]}>Previous</Text>
+                <Text style={[s.colText, { width: 28 }]}>{t('log.set')}</Text>
+                <Text style={[s.colText, s.prevCol]}>{t('log.previous')}</Text>
                 <Text style={[s.colText, s.inputCol]}>{unit}</Text>
-                {ex.allowsWeight && <Text style={[s.colText, s.inputCol]}>{ex.category === 'lift' ? 'kg' : '+kg'}</Text>}
+                {ex.allowsWeight && <Text style={[s.colText, s.inputCol]}>{ex.category === 'lift' ? t('log.kg') : t('log.plusKg')}</Text>}
                 <View style={{ width: 36 }} />
               </View>
 
@@ -237,7 +240,7 @@ export default function NewWorkoutScreen() {
                       style={{ width: 28 }}
                       disabled={d.sets.length === 1}
                       onLongPress={() => update(d.key, (x) => ({ ...x, sets: x.sets.filter((_, j) => j !== i) }))}
-                      accessibilityLabel={`Set ${i + 1}, long press to remove`}
+                      accessibilityLabel={t('log.setRemove', { n: i + 1 })}
                     >
                       <Text style={[s.setIndex, set.done && { color: colors.onFrostMuted }]}>{i + 1}</Text>
                     </Pressable>
@@ -251,7 +254,7 @@ export default function NewWorkoutScreen() {
                       keyboardType="number-pad"
                       placeholder={p ? String(p.holdSec ?? p.reps ?? '') : unit}
                       placeholderTextColor={set.done ? colors.onFrostMuted : colors.faint}
-                      accessibilityLabel={`Set ${i + 1} ${unit}`}
+                      accessibilityLabel={t('log.setUnit', { n: i + 1, unit })}
                     />
                     {ex.allowsWeight && (
                       <TextInput
@@ -261,14 +264,14 @@ export default function NewWorkoutScreen() {
                         keyboardType="decimal-pad"
                         placeholder={p?.kg ? String(p.kg) : '0'}
                         placeholderTextColor={set.done ? colors.onFrostMuted : colors.faint}
-                        accessibilityLabel={`Set ${i + 1} weight`}
+                        accessibilityLabel={t('log.setWeight', { n: i + 1 })}
                       />
                     )}
                     <PressScale
                       onPress={() => toggleDone(d, i, p)}
                       haptic="none"
                       style={[s.check, set.done && s.checkDone]}
-                      accessibilityLabel={set.done ? `Undo set ${i + 1}` : `Complete set ${i + 1}`}
+                      accessibilityLabel={set.done ? t('log.undoSet', { n: i + 1 }) : t('log.completeSet', { n: i + 1 })}
                     >
                       <Ionicons name="checkmark" size={18} color={set.done ? colors.frost : colors.faint} />
                     </PressScale>
@@ -279,10 +282,10 @@ export default function NewWorkoutScreen() {
               <PressScale
                 onPress={() => update(d.key, (x) => ({ ...x, sets: [...x.sets, { ...x.sets[x.sets.length - 1], done: false }] }))}
                 style={s.addSet}
-                accessibilityLabel={`Add a set of ${ex.name}`}
+                accessibilityLabel={t('log.addSetOf', { name: ex.name })}
               >
                 <Ionicons name="add" size={16} color={colors.text} />
-                <Text style={s.addSetText}>Add set</Text>
+                <Text style={s.addSetText}>{t('log.addSet')}</Text>
               </PressScale>
             </Card>
           </Rise>
@@ -291,8 +294,8 @@ export default function NewWorkoutScreen() {
 
       {drafts.length === 0 && (
         <Rise>
-          <Text style={s.emptyTitle}>{'What are\nwe training?'}</Text>
-          <Muted style={{ marginTop: 6 }}>Add exercises as you go. Tick a set and the rest timer starts on its own.</Muted>
+          <Text style={s.emptyTitle}>{t('log.emptyTitle')}</Text>
+          <Muted style={{ marginTop: 6 }}>{t('log.emptyText')}</Muted>
         </Rise>
       )}
 
@@ -301,16 +304,16 @@ export default function NewWorkoutScreen() {
           <Card style={{ gap: 12 }}>
             <View style={s.searchRow}>
               <Ionicons name="search" size={16} color={colors.faint} />
-              <TextInput style={s.search} value={query} onChangeText={setQuery} placeholder="Search exercises" placeholderTextColor={colors.faint} />
+              <TextInput style={s.search} value={query} onChangeText={setQuery} placeholder={t('log.search')} placeholderTextColor={colors.faint} />
               {drafts.length > 0 && (
-                <Pressable onPress={() => setPicking(false)} hitSlop={10} accessibilityLabel="Close exercise list">
+                <Pressable onPress={() => setPicking(false)} hitSlop={10} accessibilityLabel={t('common.close')}>
                   <Ionicons name="close-circle" size={18} color={colors.faint} />
                 </Pressable>
               )}
             </View>
             {frequent.length > 0 && !query && (
               <View style={{ gap: 8 }}>
-                <Text style={s.colText}>Your usuals</Text>
+                <Text style={s.colText}>{t('log.usuals')}</Text>
                 <View style={s.chips}>
                   {frequent.map((id) => (
                     <Chip key={id} label={`+ ${getExercise(id)?.name ?? id}`} onPress={() => addExercise(id)} />
@@ -319,20 +322,20 @@ export default function NewWorkoutScreen() {
               </View>
             )}
             <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8 }}>
-              <Chip label="All" active={category === 'all'} onPress={() => setCategory('all')} />
+              <Chip label={t('learn.cat.all')} active={category === 'all'} onPress={() => setCategory('all')} />
               {(Object.keys(CATEGORY_LABELS) as ExerciseCategory[]).map((c) => (
-                <Chip key={c} label={CATEGORY_LABELS[c]} active={category === c} onPress={() => setCategory(c)} />
+                <Chip key={c} label={t(`exCat.${c}` as Key)} active={category === c} onPress={() => setCategory(c)} />
               ))}
             </ScrollView>
             <View>
               {options.map((e) => (
                 <Pressable key={e.id} onPress={() => addExercise(e.id)} style={({ pressed }) => [s.option, pressed && { opacity: 0.6 }]}>
                   <Text style={s.optionName}>{e.name}</Text>
-                  <Text style={s.optionKind}>{e.kind === 'hold' ? 'Hold' : e.allowsWeight ? 'Reps · kg' : 'Reps'}</Text>
+                  <Text style={s.optionKind}>{e.kind === 'hold' ? t('log.kindHold') : e.allowsWeight ? t('log.kindRepsKg') : t('log.kindReps')}</Text>
                   <Ionicons name="add-circle-outline" size={20} color={colors.muted} />
                 </Pressable>
               ))}
-              {options.length === 0 && <Muted style={{ paddingVertical: 10 }}>{`No exercise matches "${query}".`}</Muted>}
+              {options.length === 0 && <Muted style={{ paddingVertical: 10 }}>{t('log.noMatch', { query })}</Muted>}
             </View>
           </Card>
         </Rise>
@@ -342,7 +345,7 @@ export default function NewWorkoutScreen() {
 
       {setCount > 0 && (
         <Button
-          label={`Finish session · ${setCount} ${setCount === 1 ? 'set' : 'sets'}`}
+          label={`${t('log.finishSession')} · ${t('count.sets', { count: setCount })}`}
           icon={<Ionicons name="flag" size={16} color={colors.onFrost} />}
           onPress={save}
         />

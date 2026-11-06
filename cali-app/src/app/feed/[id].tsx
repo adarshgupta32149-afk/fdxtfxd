@@ -10,7 +10,9 @@ import { PostCard } from '@/components/PostCard';
 import { Avatar, OptionsSheet, ShareSheet } from '@/components/SocialUI';
 import { Backdrop, H1, Muted } from '@/components/ui';
 import * as haptics from '@/lib/haptics';
-import { ME, personById, shortCount, timeAgo } from '@/lib/social';
+import { useT } from '@/i18n';
+import { useAgo } from '@/i18n/useAgo';
+import { ME, personById, shortCount } from '@/lib/social';
 import { useSocial } from '@/state/SocialProvider';
 import { colors, font } from '@/theme';
 
@@ -19,6 +21,8 @@ export default function PostScreen() {
   const insets = useSafeAreaInsets();
   const now = useNow(60_000);
   const { social, toggleLike, like, toggleSave, comment, likeComment } = useSocial();
+  const { t } = useT();
+  const ago = useAgo();
   const [text, setText] = useState('');
   const [sharing, setSharing] = useState(false);
   const [options, setOptions] = useState(false);
@@ -28,17 +32,17 @@ export default function PostScreen() {
     return (
       <Backdrop>
         <View style={{ padding: 22, paddingTop: insets.top + 70, gap: 8 }}>
-          <H1>Post removed</H1>
-          <Muted>This post is no longer available.</Muted>
+          <H1>{t('feed.removed')}</H1>
+          <Muted>{t('feed.unavailable')}</Muted>
         </View>
       </Backdrop>
     );
   }
-  const t = { kind: 'post' as const, id: post.id };
+  const tg = { kind: 'post' as const, id: post.id };
   const send = () => {
     if (!text.trim()) return;
     haptics.tap();
-    comment(t, text);
+    comment(tg, text);
     setText('');
   };
 
@@ -51,17 +55,17 @@ export default function PostScreen() {
             social={social}
             now={now}
             detail
-            onLike={() => toggleLike(t)}
-            onDoubleLike={() => like(t)}
+            onLike={() => toggleLike(tg)}
+            onDoubleLike={() => like(tg)}
             onComments={() => {}}
             onShare={() => setSharing(true)}
-            onSave={() => toggleSave(t)}
+            onSave={() => toggleSave(tg)}
             onMore={() => setOptions(true)}
           />
           <Text style={s.head}>
-            {post.comments.length} {post.comments.length === 1 ? 'comment' : 'comments'}
+            {t('social.comments', { count: post.comments.length })}
           </Text>
-          {post.comments.length === 0 && <Muted>No comments yet. Say something nice.</Muted>}
+          {post.comments.length === 0 && <Muted>{t('feed.noComments')}</Muted>}
           {post.comments.map((c) => {
             const who = personById(social, c.authorId);
             return (
@@ -69,11 +73,11 @@ export default function PostScreen() {
                 <Avatar person={who} size={34} />
                 <View style={{ flex: 1, minWidth: 0 }}>
                   <Text style={s.commentHead}>
-                    {who?.handle ?? 'someone'} <Text style={s.time}>· {timeAgo(c.createdAt, now)}</Text>
+                    {who?.handle ?? t('social.someone')} <Text style={s.time}>· {ago(c.createdAt, now)}</Text>
                   </Text>
                   <Text style={s.commentText}>{c.text}</Text>
                 </View>
-                <Pressable onPress={() => likeComment(t, c.id)} hitSlop={8} style={s.like} accessibilityLabel={c.liked ? 'Unlike comment' : 'Like comment'}>
+                <Pressable onPress={() => likeComment(tg, c.id)} hitSlop={8} style={s.like} accessibilityLabel={c.liked ? t('social.unlike') : t('social.like')}>
                   <Ionicons name={c.liked ? 'heart' : 'heart-outline'} size={15} color={c.liked ? colors.heart : colors.faint} />
                   {c.likes > 0 && <Text style={s.likeCount}>{shortCount(c.likes)}</Text>}
                 </Pressable>
@@ -87,21 +91,21 @@ export default function PostScreen() {
             style={s.input}
             value={text}
             onChangeText={setText}
-            placeholder={`Reply to ${personById(social, post.authorId)?.handle ?? 'post'}…`}
+            placeholder={t('feed.replyTo', { handle: personById(social, post.authorId)?.handle ?? '' })}
             placeholderTextColor={colors.faint}
             onSubmitEditing={send}
             returnKeyType="send"
             maxLength={500}
           />
-          <PressScale onPress={send} disabled={!text.trim()} style={[s.sendBtn, !text.trim() && { opacity: 0.4 }]} accessibilityLabel="Post comment">
+          <PressScale onPress={send} disabled={!text.trim()} style={[s.sendBtn, !text.trim() && { opacity: 0.4 }]} accessibilityLabel={t('social.postComment')}>
             <Ionicons name="arrow-up" size={18} color={colors.onFrost} />
           </PressScale>
         </View>
       </KeyboardAvoidingView>
-      <ShareSheet key={sharing ? 'share' : 'none'} target={sharing ? t : null} caption={post.text} onClose={() => setSharing(false)} />
+      <ShareSheet key={sharing ? 'share' : 'none'} target={sharing ? tg : null} caption={post.text} onClose={() => setSharing(false)} />
       <OptionsSheet
         key={options ? 'opt' : 'none-o'}
-        target={options ? t : null}
+        target={options ? tg : null}
         mine={post.authorId === ME}
         onClose={() => {
           setOptions(false);
