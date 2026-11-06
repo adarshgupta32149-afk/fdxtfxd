@@ -8,7 +8,9 @@ import l_es_ES from './es-ES';
 import l_fr from './fr';
 import l_gu from './gu';
 import l_hi from './hi';
+import l_ja from './ja';
 import l_kn from './kn';
+import l_ko from './ko';
 import l_ml from './ml';
 import l_mr from './mr';
 import l_pa from './pa';
@@ -17,6 +19,9 @@ import l_pt_PT from './pt-PT';
 import l_ru from './ru';
 import l_ta from './ta';
 import l_te from './te';
+import l_zh_CN from './zh-CN';
+import l_zh_HK from './zh-HK';
+import l_zh_TW from './zh-TW';
 
 export const LOCALES: Record<string, Dict> = {
   "bn": l_bn,
@@ -26,7 +31,9 @@ export const LOCALES: Record<string, Dict> = {
   "fr": l_fr,
   "gu": l_gu,
   "hi": l_hi,
+  "ja": l_ja,
   "kn": l_kn,
+  "ko": l_ko,
   "ml": l_ml,
   "mr": l_mr,
   "pa": l_pa,
@@ -35,4 +42,7 @@ export const LOCALES: Record<string, Dict> = {
   "ru": l_ru,
   "ta": l_ta,
   "te": l_te,
+  "zh-CN": l_zh_CN,
+  "zh-HK": l_zh_HK,
+  "zh-TW": l_zh_TW,
 };
