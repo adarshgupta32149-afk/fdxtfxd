@@ -35,6 +35,21 @@
           "resizeMode": "contain",
           "backgroundColor": "#070B16"
         }
+      ],
+      "expo-video",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Cali needs your photos so you can post Shorts and pictures to the feed.",
+          "cameraPermission": "Cali uses the camera to record Shorts.",
+          "microphonePermission": "Cali uses the microphone to record sound with your Shorts."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Cali uses your location to show the local weather and time for your session."
+        }
       ]
     ],
     "scheme": "cali",

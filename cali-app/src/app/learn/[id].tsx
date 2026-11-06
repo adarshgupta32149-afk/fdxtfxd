@@ -11,7 +11,7 @@ import { PressScale, Rise } from '@/components/motion';
 import { Backdrop, Button, H1, Muted } from '@/components/ui';
 import { ARTICLES, categoryOf, formatPublished, relatedTo, VIDEOS } from '@/lib/learn';
 import { SKILLS } from '@/lib/skills';
-import { colors, display, font, mossGradient, radius } from '@/theme';
+import { colors, display, font, panelGradient, radius } from '@/theme';
 
 const HERO = 340;
 
@@ -126,7 +126,7 @@ export default function ArticleScreen() {
                         <Text style={s.stepHow}>{st.how}</Text>
                         {st.pass && (
                           <View style={s.pass}>
-                            <Ionicons name="flag" size={11} color={colors.mossDeep} />
+                            <Ionicons name="flag" size={11} color={colors.onFrost} />
                             <Text style={s.passText}>{st.pass}</Text>
                           </View>
                         )}
@@ -148,7 +148,7 @@ export default function ArticleScreen() {
                       <Text style={s.mistakeName}>{m.name}</Text>
                     </View>
                     <View style={s.mistakeFix}>
-                      <Ionicons name="arrow-forward" size={13} color={colors.sage} style={{ marginTop: 2 }} />
+                      <Ionicons name="arrow-forward" size={13} color={colors.glow} style={{ marginTop: 2 }} />
                       <Text style={s.mistakeFixText}>{m.fix}</Text>
                     </View>
                   </View>
@@ -169,9 +169,9 @@ export default function ArticleScreen() {
           </Block>
 
           <Rise delay={260}>
-            <LinearGradient colors={mossGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.tryCard}>
+            <LinearGradient colors={panelGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.tryCard}>
               <View style={s.tryHead}>
-                <Ionicons name="flash" size={14} color={colors.sage} />
+                <Ionicons name="flash" size={14} color={colors.glow} />
                 <Text style={s.tryKicker}>Try it in Cali</Text>
               </View>
               <Text style={s.tryText}>{article.caliTip}</Text>
@@ -183,12 +183,12 @@ export default function ArticleScreen() {
                     accessibilityLabel={`Open ${skill.name} ladder`}
                   >
                     <Text style={s.tryBtnText}>{skill.name} ladder</Text>
-                    <Ionicons name="arrow-forward" size={14} color={colors.mossDeep} />
+                    <Ionicons name="arrow-forward" size={14} color={colors.onFrost} />
                   </PressScale>
                 )}
                 <PressScale onPress={() => router.push('/workout/new')} style={[s.tryBtn, s.tryBtnGhost]} accessibilityLabel="Start a session">
-                  <Ionicons name="play" size={12} color={colors.sage} />
-                  <Text style={[s.tryBtnText, { color: colors.sage }]}>Start session</Text>
+                  <Ionicons name="play" size={12} color={colors.glow} />
+                  <Text style={[s.tryBtnText, { color: colors.glow }]}>Start session</Text>
                 </PressScale>
               </View>
             </LinearGradient>
@@ -230,7 +230,7 @@ export default function ArticleScreen() {
           {more.length > 0 && (
             <View style={{ gap: 14 }}>
               <View style={s.blockHead}>
-                <View style={[s.blockBar, { backgroundColor: colors.sage }]} />
+                <View style={[s.blockBar, { backgroundColor: colors.glow }]} />
                 <Text style={s.blockTitle}>Read next</Text>
               </View>
               <View style={{ gap: 10 }}>
@@ -293,8 +293,8 @@ const s = StyleSheet.create({
   stepBody: { flex: 1, minWidth: 0, paddingTop: 4, paddingBottom: 22, gap: 5 },
   stepName: { fontFamily: font, color: colors.text, fontSize: 16, fontWeight: '800' },
   stepHow: { fontFamily: font, color: colors.muted, fontSize: 14, lineHeight: 21, fontWeight: '500' },
-  pass: { flexDirection: 'row', alignItems: 'center', gap: 5, alignSelf: 'flex-start', marginTop: 4, paddingVertical: 4, paddingHorizontal: 9, borderRadius: radius.pill, backgroundColor: colors.sage },
-  passText: { fontFamily: font, color: colors.mossDeep, fontSize: 12, fontWeight: '800' },
+  pass: { flexDirection: 'row', alignItems: 'center', gap: 5, alignSelf: 'flex-start', marginTop: 4, paddingVertical: 4, paddingHorizontal: 9, borderRadius: radius.pill, backgroundColor: colors.glow },
+  passText: { fontFamily: font, color: colors.onFrost, fontSize: 12, fontWeight: '800' },
 
   mistake: { padding: 14, gap: 8, borderRadius: radius.md, backgroundColor: colors.card, borderWidth: 1, borderColor: colors.border },
   mistakeHead: { flexDirection: 'row', alignItems: 'center', gap: 8 },
@@ -306,14 +306,14 @@ const s = StyleSheet.create({
   takeawayDot: { width: 8, height: 8, borderRadius: 4, marginTop: 7, backgroundColor: colors.gold },
   takeawayText: { flex: 1, fontFamily: font, color: '#CDD1DB', fontSize: 15, lineHeight: 22, fontWeight: '600' },
 
-  tryCard: { borderRadius: radius.lg, padding: 18, gap: 10, borderWidth: 1, borderColor: 'rgba(143,211,174,0.22)' },
+  tryCard: { borderRadius: radius.lg, padding: 18, gap: 10, borderWidth: 1, borderColor: 'rgba(158,194,255,0.22)' },
   tryHead: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  tryKicker: { fontFamily: font, color: colors.sage, fontSize: 12, fontWeight: '800', letterSpacing: 0.6, textTransform: 'uppercase' },
+  tryKicker: { fontFamily: font, color: colors.glow, fontSize: 12, fontWeight: '800', letterSpacing: 0.6, textTransform: 'uppercase' },
   tryText: { fontFamily: font, color: colors.text, fontSize: 15, lineHeight: 22, fontWeight: '700' },
   tryActions: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 4 },
-  tryBtn: { flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 10, paddingHorizontal: 14, borderRadius: 12, backgroundColor: colors.sage },
-  tryBtnGhost: { backgroundColor: 'rgba(143,211,174,0.12)', borderWidth: 1, borderColor: 'rgba(143,211,174,0.3)' },
-  tryBtnText: { fontFamily: font, color: colors.mossDeep, fontSize: 13, fontWeight: '800' },
+  tryBtn: { flexDirection: 'row', alignItems: 'center', gap: 6, paddingVertical: 10, paddingHorizontal: 14, borderRadius: 12, backgroundColor: colors.glow },
+  tryBtnGhost: { backgroundColor: 'rgba(158,194,255,0.12)', borderWidth: 1, borderColor: 'rgba(158,194,255,0.3)' },
+  tryBtnText: { fontFamily: font, color: colors.onFrost, fontSize: 13, fontWeight: '800' },
 
   note: { flexDirection: 'row', gap: 8, padding: 12, borderRadius: 12, backgroundColor: colors.card },
   noteText: { flex: 1, fontFamily: font, color: colors.muted, fontSize: 12.5, lineHeight: 18, fontWeight: '600' },

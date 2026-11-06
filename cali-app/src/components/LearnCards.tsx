@@ -183,7 +183,7 @@ const s = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 3,
-    backgroundColor: colors.sage,
+    backgroundColor: colors.glow,
     paddingVertical: 3,
     paddingHorizontal: 6,
     borderRadius: 7,

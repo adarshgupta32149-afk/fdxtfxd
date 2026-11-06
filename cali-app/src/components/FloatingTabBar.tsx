@@ -7,13 +7,15 @@ import { Animated, Pressable, StyleSheet, Text, useWindowDimensions, View, type 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import * as haptics from '@/lib/haptics';
+import { totalUnread } from '@/lib/social';
+import { useSocial } from '@/state/SocialProvider';
 import { colors, font, frostGradient } from '@/theme';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
 export const TABS: {
   name: string;
-  href: '/' | '/ranking' | '/compete' | '/learn';
+  href: '/' | '/feed' | '/shorts' | '/messages' | '/learn';
   label: string;
   icon: IconName;
   iconOn: IconName;
@@ -21,24 +23,23 @@ export const TABS: {
   pill: readonly [string, string, ...string[]];
 }[] = [
   { name: 'home', href: '/', label: 'Home', icon: 'home-outline', iconOn: 'home', pill: frostGradient },
-  { name: 'ranking', href: '/ranking', label: 'Ranking', icon: 'podium-outline', iconOn: 'podium', pill: ['#F1E6C4', '#E3D3A6', '#CDB983'] },
-  { name: 'compete', href: '/compete', label: 'Compete', icon: 'trophy-outline', iconOn: 'trophy', pill: ['#FFC29E', '#FF9A62', '#F07F45'] },
-  { name: 'learn', href: '/learn', label: 'Learn', icon: 'book-outline', iconOn: 'book', pill: ['#B8EDCD', '#8FD3AE', '#6DB890'] },
+  { name: 'feed', href: '/feed', label: 'Feed', icon: 'people-outline', iconOn: 'people', pill: ['#F8C9DB', '#F2A7C3', '#DE8AAB'] },
+  { name: 'shorts', href: '/shorts', label: 'Shorts', icon: 'play-circle-outline', iconOn: 'play-circle', pill: ['#FFC29E', '#FF9A62', '#F07F45'] },
+  { name: 'messages', href: '/messages', label: 'Messages', icon: 'chatbubbles-outline', iconOn: 'chatbubbles', pill: ['#CFE0FF', '#9EC2FF', '#7FA6EE'] },
+  { name: 'learn', href: '/learn', label: 'Learn', icon: 'book-outline', iconOn: 'book', pill: ['#F1E6C4', '#E3D3A6', '#CDB983'] },
 ];
 
 const PAD = 6;
 
 /** Which tab the current path belongs to. */
 export function tabIndexFor(pathname: string): number {
-  if (pathname.startsWith('/ranking')) return 1;
-  if (pathname.startsWith('/compete')) return 2;
-  if (pathname.startsWith('/learn')) return 3;
-  return 0;
+  const i = TABS.findIndex((t) => t.href !== '/' && pathname.startsWith(t.href));
+  return i === -1 ? 0 : i;
 }
 
-type TabButtonProps = TabTriggerSlotProps & { tab: (typeof TABS)[number]; ref?: Ref<ViewInstance> };
+type TabButtonProps = TabTriggerSlotProps & { tab: (typeof TABS)[number]; badge?: number; ref?: Ref<ViewInstance> };
 
-function TabButton({ tab, isFocused, onPress, ...rest }: TabButtonProps) {
+function TabButton({ tab, badge, isFocused, onPress, ...rest }: TabButtonProps) {
   return (
     <Pressable
       {...rest}
@@ -51,7 +52,14 @@ function TabButton({ tab, isFocused, onPress, ...rest }: TabButtonProps) {
       accessibilityState={{ selected: !!isFocused }}
       accessibilityLabel={tab.label}
     >
-      <Ionicons name={isFocused ? tab.iconOn : tab.icon} size={20} color={isFocused ? colors.onFrost : colors.muted} />
+      <View>
+        <Ionicons name={isFocused ? tab.iconOn : tab.icon} size={20} color={isFocused ? colors.onFrost : colors.muted} />
+        {!!badge && (
+          <View style={s.badge}>
+            <Text style={s.badgeText}>{badge > 9 ? '9+' : badge}</Text>
+          </View>
+        )}
+      </View>
       <Text style={[s.label, { color: isFocused ? colors.onFrost : colors.muted }]}>{tab.label}</Text>
     </Pressable>
   );
@@ -65,8 +73,9 @@ export function FloatingTabBar() {
   const insets = useSafeAreaInsets();
   const pathname = usePathname();
   const active = tabIndexFor(pathname);
+  const unread = totalUnread(useSocial().social);
   const { width: screen } = useWindowDimensions();
-  const [barWidth, setBarWidth] = useState(Math.min(360, screen - 36));
+  const [barWidth, setBarWidth] = useState(Math.min(400, screen - 24));
   const segment = (barWidth - PAD * 2) / TABS.length;
   const x = useState(() => new Animated.Value(active))[0];
 
@@ -76,7 +85,7 @@ export function FloatingTabBar() {
 
   return (
     <View pointerEvents="box-none" style={[s.wrap, { bottom: insets.bottom + 18 }]}>
-      <View style={[s.bar, { width: Math.min(360, screen - 36) }]} onLayout={(e) => setBarWidth(e.nativeEvent.layout.width)}>
+      <View style={[s.bar, { width: Math.min(400, screen - 24) }]} onLayout={(e) => setBarWidth(e.nativeEvent.layout.width)}>
         <Animated.View
           style={[
             s.indicator,
@@ -95,7 +104,7 @@ export function FloatingTabBar() {
         </Animated.View>
         {TABS.map((tab) => (
           <TabTrigger key={tab.name} name={tab.name} asChild>
-            <TabButton tab={tab} />
+            <TabButton tab={tab} badge={tab.name === 'messages' ? unread : 0} />
           </TabTrigger>
         ))}
       </View>
@@ -122,5 +131,20 @@ const s = StyleSheet.create({
   indicator: { position: 'absolute', top: PAD, bottom: PAD, left: PAD },
   indicatorFill: { flex: 1, borderRadius: 16 },
   tab: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 2 },
-  label: { fontFamily: font, fontSize: 11, fontWeight: '700' },
+  label: { fontFamily: font, fontSize: 10.5, fontWeight: '700' },
+  badge: {
+    position: 'absolute',
+    top: -5,
+    right: -9,
+    minWidth: 16,
+    height: 16,
+    paddingHorizontal: 4,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.heart,
+    borderWidth: 1.5,
+    borderColor: '#0E1424',
+  },
+  badgeText: { fontFamily: font, color: '#fff', fontSize: 9, fontWeight: '800' },
 });

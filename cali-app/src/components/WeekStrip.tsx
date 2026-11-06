@@ -4,8 +4,8 @@ import type { Workout } from '@/lib/types';
 import { colors, font } from '@/theme';
 
 /** Monday-to-Sunday dots for the current week: filled on days you trained, ringed for today. */
-export function WeekStrip({ workouts, now, tone = 'glass' }: { workouts: Workout[]; now: Date; tone?: 'glass' | 'moss' }) {
-  const moss = tone === 'moss';
+export function WeekStrip({ workouts, now, tone = 'glass' }: { workouts: Workout[]; now: Date; tone?: 'glass' | 'tint' }) {
+  const tint = tone === 'tint';
   const monday = new Date(now);
   monday.setHours(0, 0, 0, 0);
   monday.setDate(monday.getDate() - ((monday.getDay() + 6) % 7));
@@ -21,10 +21,10 @@ export function WeekStrip({ workouts, now, tone = 'glass' }: { workouts: Workout
         const future = day > now && !isToday;
         return (
           <View key={i} style={s.col}>
-            <Text style={[s.letter, moss && { color: 'rgba(143,211,174,0.6)' }, isToday && { color: colors.text }]}>
+            <Text style={[s.letter, tint && { color: 'rgba(158,194,255,0.6)' }, isToday && { color: colors.text }]}>
               {day.toLocaleDateString(undefined, { weekday: 'narrow' })}
             </Text>
-            <View style={[s.dot, moss && s.dotMoss, did && (moss ? s.doneMoss : s.done), isToday && !did && s.today, future && { opacity: 0.4 }]} />
+            <View style={[s.dot, tint && s.dotTint, did && (tint ? s.doneTint : s.done), isToday && !did && s.today, future && { opacity: 0.4 }]} />
           </View>
         );
       })}
@@ -38,7 +38,7 @@ const s = StyleSheet.create({
   letter: { fontFamily: font, color: colors.faint, fontSize: 11, fontWeight: '700' },
   dot: { width: 22, height: 22, borderRadius: 11, backgroundColor: 'rgba(228,228,230,0.07)', borderWidth: 1, borderColor: colors.border },
   done: { backgroundColor: colors.frost, borderColor: colors.frost },
-  dotMoss: { backgroundColor: 'rgba(143,211,174,0.08)', borderColor: 'rgba(143,211,174,0.22)' },
-  doneMoss: { backgroundColor: colors.sage, borderColor: colors.sage },
+  dotTint: { backgroundColor: 'rgba(158,194,255,0.08)', borderColor: 'rgba(158,194,255,0.22)' },
+  doneTint: { backgroundColor: colors.glow, borderColor: colors.glow },
   today: { borderColor: colors.ember, borderWidth: 2 },
 });

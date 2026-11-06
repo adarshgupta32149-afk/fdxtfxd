@@ -69,7 +69,7 @@ export default function VideoScreen() {
           <CategoryTag category={video.category} />
           {video.short && (
             <View style={s.shortTag}>
-              <Ionicons name="flash" size={10} color={colors.mossDeep} />
+              <Ionicons name="flash" size={10} color={colors.onFrost} />
               <Text style={s.shortTagText}>Short</Text>
             </View>
           )}
@@ -100,7 +100,7 @@ export default function VideoScreen() {
             style={s.ladderBtn}
             accessibilityLabel={`Open ${skill.name} ladder`}
           >
-            <Ionicons name="git-network-outline" size={16} color={colors.sage} />
+            <Ionicons name="git-network-outline" size={16} color={colors.glow} />
             <Text style={s.ladderText}>{skill.name} ladder</Text>
           </PressScale>
         )}
@@ -109,7 +109,7 @@ export default function VideoScreen() {
       {guides.length > 0 && (
         <Rise delay={170} style={{ gap: 12 }}>
           <View style={s.headRow}>
-            <View style={[s.bar, { backgroundColor: colors.sage }]} />
+            <View style={[s.bar, { backgroundColor: colors.glow }]} />
             <Text style={s.head}>Pairs with these guides</Text>
           </View>
           {guides.map((a) => (
@@ -148,8 +148,8 @@ const s = StyleSheet.create({
   durationText: { fontFamily: font, color: colors.text, fontSize: 12, fontWeight: '800', fontVariant: ['tabular-nums'] },
 
   metaRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
-  shortTag: { flexDirection: 'row', alignItems: 'center', gap: 3, backgroundColor: colors.sage, paddingVertical: 2, paddingHorizontal: 7, borderRadius: 7 },
-  shortTagText: { fontFamily: font, color: colors.mossDeep, fontSize: 10, fontWeight: '800' },
+  shortTag: { flexDirection: 'row', alignItems: 'center', gap: 3, backgroundColor: colors.glow, paddingVertical: 2, paddingHorizontal: 7, borderRadius: 7 },
+  shortTagText: { fontFamily: font, color: colors.onFrost, fontSize: 10, fontWeight: '800' },
   title: { fontFamily: display, color: colors.text, fontSize: 34, lineHeight: 36, fontWeight: '700' },
   channelRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   channelMark: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.cardRaised, borderWidth: 1, borderColor: colors.border },
@@ -167,11 +167,11 @@ const s = StyleSheet.create({
     gap: 8,
     paddingVertical: 14,
     borderRadius: 14,
-    backgroundColor: colors.sageSoft,
+    backgroundColor: colors.glowSoft,
     borderWidth: 1,
-    borderColor: 'rgba(143,211,174,0.3)',
+    borderColor: 'rgba(158,194,255,0.3)',
   },
-  ladderText: { fontFamily: font, color: colors.sage, fontSize: 15, fontWeight: '800' },
+  ladderText: { fontFamily: font, color: colors.glow, fontSize: 15, fontWeight: '800' },
 
   headRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
   bar: { width: 4, height: 20, borderRadius: 2 },

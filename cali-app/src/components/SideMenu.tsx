@@ -22,10 +22,11 @@ const MenuContext = createContext<MenuContextValue>({ open: () => {}, close: () 
 export const useMenu = () => useContext(MenuContext);
 
 const ITEMS: { label: string; hint: string; icon: IconName; href: Href; color: string }[] = [
-  { label: 'Skills', hint: 'Your ladders', icon: 'git-network-outline', href: '/skills', color: colors.sage },
-  { label: 'Learn', hint: 'Guides and videos', icon: 'book-outline', href: '/learn', color: '#6FD6C8' },
+  { label: 'Skills', hint: 'Your ladders', icon: 'git-network-outline', href: '/skills', color: colors.glow },
+  { label: 'Ranking', hint: 'World boards', icon: 'podium-outline', href: '/ranking', color: colors.gold },
+  { label: 'Compete', hint: 'This month’s challenge', icon: 'trophy-outline', href: '/compete', color: colors.ember },
   { label: 'History', hint: 'Every session you logged', icon: 'time-outline', href: '/history', color: colors.sky },
-  { label: 'Records', hint: 'Personal bests', icon: 'stats-chart-outline', href: '/records', color: colors.gold },
+  { label: 'Records', hint: 'Personal bests', icon: 'stats-chart-outline', href: '/records', color: '#86D4F5' },
   { label: 'Profile', hint: 'You, account and data', icon: 'person-outline', href: '/profile', color: colors.violet },
 ];
 

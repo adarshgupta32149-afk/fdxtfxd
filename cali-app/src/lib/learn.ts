@@ -10,12 +10,12 @@ export type LearnCategory = 'basics' | 'pull' | 'balance' | 'statics' | 'core' |
 
 export const CATEGORIES: { id: LearnCategory; label: string; color: string }[] = [
   { id: 'basics', label: 'Basics', color: '#E4E4E6' },
-  { id: 'pull', label: 'Pull', color: '#8FD3AE' },
-  { id: 'balance', label: 'Balance', color: '#8AB4FF' },
+  { id: 'pull', label: 'Pull', color: '#FFB38A' },
+  { id: 'balance', label: 'Balance', color: '#F2A7C3' },
   { id: 'statics', label: 'Statics', color: '#E3C77A' },
   { id: 'core', label: 'Core', color: '#B9A4FF' },
   { id: 'legs', label: 'Legs', color: '#FF9A8A' },
-  { id: 'mobility', label: 'Mobility', color: '#6FD6C8' },
+  { id: 'mobility', label: 'Mobility', color: '#86D4F5' },
   { id: 'recovery', label: 'Recovery', color: '#F5B971' },
 ];
 

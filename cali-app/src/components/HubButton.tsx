@@ -4,7 +4,7 @@ import { Animated, Pressable, StyleSheet, View } from 'react-native';
 import * as haptics from '@/lib/haptics';
 import { colors } from '@/theme';
 
-const TILES = [colors.frost, colors.sage, colors.ember, 'rgba(228,228,230,0.35)'];
+const TILES = [colors.frost, colors.glow, colors.ember, 'rgba(228,228,230,0.35)'];
 
 /**
  * The menu trigger: a 2×2 grid of rounded tiles in the app's colours, like an app launcher.

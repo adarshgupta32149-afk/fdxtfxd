@@ -1,7 +1,7 @@
 /**
- * Deep navy × frosted matte white, with a matte dark green and a warm ember.
+ * Deep navy × frosted matte white, with a cool blue glow and a warm ember.
  * The whites are sampled from the frosted-glass reference: never pure white, so nothing glares.
- * Green is for growth and learning (progress, streaks, the Learn tab); ember is for live and
+ * Glow is for progress, learning and social (likes stay ember-red); ember is for live and
  * competition moments. Each Learn category also carries its own soft colour (see lib/learn.ts).
  */
 export const colors = {
@@ -36,18 +36,17 @@ export const colors = {
   danger: '#F2A1A1',
   dangerFill: 'rgba(242,161,161,0.08)',
   blue: '#9DB4EA',
-  /** Matte dark green: deep panel, mid panel, raised edge, and the readable sage on top. */
-  mossDeep: '#0E2219',
-  moss: '#163A2B',
-  mossHi: '#24573F',
-  sage: '#8FD3AE',
-  sageSoft: 'rgba(143,211,174,0.14)',
+  /** Cool blue accent that reads on navy, and its soft fill. */
+  glow: '#9EC2FF',
+  glowSoft: 'rgba(158,194,255,0.14)',
+  /** Like / heart red. */
+  heart: '#FF5A6E',
   violet: '#B9A4FF',
   sky: '#8AB4FF',
 };
 
-/** Matte green panel gradient, top-left lit, for Learn and progress cards. */
-export const mossGradient = ['#1C4733', '#143526', '#0E2219'] as const;
+/** Lifted navy panel gradient, top-left lit, for featured cards. */
+export const panelGradient = ['#1D2A4C', '#141E3A', '#0D1529'] as const;
 
 /** The frost gradient, from top-left light to bottom-right soft shadow. */
 export const frostGradient = [colors.frostHi, '#DCDCDD', colors.frostLo] as const;

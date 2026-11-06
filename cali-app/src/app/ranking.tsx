@@ -23,7 +23,7 @@ export default function RankingScreen() {
   const rest = rows.filter((r) => r.rank > 3);
 
   return (
-    <Screen topInset tabBar contentStyle={{ gap: 18 }}>
+    <Screen headerInset contentStyle={{ gap: 18 }}>
       <Rise>
         <Eyebrow>World · verified scores</Eyebrow>
         <H1 style={{ marginTop: 6 }}>Ranking</H1>

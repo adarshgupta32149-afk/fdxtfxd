@@ -35,7 +35,7 @@ export default function CompeteScreen() {
   const { rows, error } = useLeaderboard(challenge.id, 3);
 
   return (
-    <Screen topInset tabBar contentStyle={{ gap: 18 }}>
+    <Screen headerInset contentStyle={{ gap: 18 }}>
       <Rise>
         <View style={s.liveRow}>
           <LiveDot color={colors.ember} />

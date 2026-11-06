@@ -14,7 +14,7 @@ import { ARTICLES, CATEGORIES, forFocus, inCategory, VIDEOS, type LearnCategory 
 import { completedStepIds, skillProgress } from '@/lib/records';
 import { SKILLS } from '@/lib/skills';
 import { useAppState } from '@/state/AppStateProvider';
-import { colors, display, font, mossGradient, radius } from '@/theme';
+import { colors, display, font, panelGradient, radius } from '@/theme';
 
 type Filter = LearnCategory | 'all';
 
@@ -39,10 +39,10 @@ function PickedForYou({ skillId }: { skillId: string }) {
   const next = skillProgress(skill, completed).nextStep;
 
   return (
-    <LinearGradient colors={mossGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.picked}>
+    <LinearGradient colors={panelGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={s.picked}>
       <View style={s.pickedHead}>
         <View style={s.pickedIcon}>
-          <Ionicons name={skillIcon(skill.id)} size={18} color={colors.mossDeep} />
+          <Ionicons name={skillIcon(skill.id)} size={18} color={colors.onFrost} />
         </View>
         <View style={{ flex: 1 }}>
           <Text style={s.pickedKicker}>Picked for your {skill.name.toLowerCase()}</Text>
@@ -55,7 +55,7 @@ function PickedForYou({ skillId }: { skillId: string }) {
         <PressScale onPress={() => router.push({ pathname: '/learn/video/[id]', params: { id: video.id } })} scaleTo={0.98} style={s.pickedRow} accessibilityLabel={`Watch ${video.title}`}>
           <Image source={videoThumb(video.id)} style={s.pickedThumb} />
           <View style={s.pickedPlay}>
-            <Ionicons name="play" size={12} color={colors.mossDeep} />
+            <Ionicons name="play" size={12} color={colors.onFrost} />
           </View>
           <View style={{ flex: 1, minWidth: 0 }}>
             <Text style={s.pickedType}>Watch · {video.length}</Text>
@@ -104,7 +104,7 @@ export default function LearnScreen() {
             <H1 style={{ marginTop: 4 }}>Learn</H1>
           </View>
           <View style={s.headBadge}>
-            <Ionicons name="sparkles" size={14} color={colors.mossDeep} />
+            <Ionicons name="sparkles" size={14} color={colors.onFrost} />
           </View>
         </View>
         <Muted style={{ marginTop: 6 }}>The best guides and videos we could find, broken down step by step for your ladders.</Muted>
@@ -154,7 +154,7 @@ export default function LearnScreen() {
           {shorts.length > 0 && (
             <View style={{ gap: 10 }}>
               <View style={s.shortsHead}>
-                <Ionicons name="flash" size={14} color={colors.sage} />
+                <Ionicons name="flash" size={14} color={colors.glow} />
                 <Text style={s.shortsLabel}>Under a minute</Text>
               </View>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} style={s.railWrap} contentContainerStyle={s.rail}>
@@ -167,7 +167,7 @@ export default function LearnScreen() {
         </Rise>
 
         <Rise delay={220} style={{ gap: 14 }}>
-          <SectionTitle title="Articles" count={articles.length} color={active?.color ?? colors.sage} />
+          <SectionTitle title="Articles" count={articles.length} color={active?.color ?? colors.glow} />
           {featuredArticle ? <FeaturedArticleCard article={featuredArticle} /> : <Muted>No articles in {active?.label} yet.</Muted>}
           <View style={{ gap: 10 }}>
             {moreArticles.map((a) => (
@@ -186,18 +186,18 @@ export default function LearnScreen() {
 
 const s = StyleSheet.create({
   headRow: { flexDirection: 'row', alignItems: 'flex-end' },
-  kicker: { fontFamily: font, color: colors.sage, fontSize: 12, fontWeight: '800', letterSpacing: 0.8, textTransform: 'uppercase' },
-  headBadge: { width: 40, height: 40, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.sage, marginBottom: 6 },
+  kicker: { fontFamily: font, color: colors.glow, fontSize: 12, fontWeight: '800', letterSpacing: 0.8, textTransform: 'uppercase' },
+  headBadge: { width: 40, height: 40, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.glow, marginBottom: 6 },
 
-  picked: { borderRadius: radius.lg, padding: 16, gap: 12, borderWidth: 1, borderColor: 'rgba(143,211,174,0.22)' },
+  picked: { borderRadius: radius.lg, padding: 16, gap: 12, borderWidth: 1, borderColor: 'rgba(158,194,255,0.22)' },
   pickedHead: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  pickedIcon: { width: 38, height: 38, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.sage },
-  pickedKicker: { fontFamily: font, color: colors.sage, fontSize: 11, fontWeight: '800', letterSpacing: 0.6, textTransform: 'uppercase' },
+  pickedIcon: { width: 38, height: 38, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.glow },
+  pickedKicker: { fontFamily: font, color: colors.glow, fontSize: 11, fontWeight: '800', letterSpacing: 0.6, textTransform: 'uppercase' },
   pickedTitle: { fontFamily: display, color: colors.text, fontSize: 24, lineHeight: 26, fontWeight: '700' },
   pickedRow: { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 8, borderRadius: 16, backgroundColor: 'rgba(7,11,22,0.35)' },
   pickedThumb: { width: 76, height: 52, borderRadius: 10 },
-  pickedPlay: { position: 'absolute', left: 38, top: 25, width: 22, height: 22, borderRadius: 11, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.sage },
-  pickedType: { fontFamily: font, color: colors.sage, fontSize: 11, fontWeight: '800' },
+  pickedPlay: { position: 'absolute', left: 38, top: 25, width: 22, height: 22, borderRadius: 11, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.glow },
+  pickedType: { fontFamily: font, color: colors.glow, fontSize: 11, fontWeight: '800' },
   pickedItem: { fontFamily: font, color: colors.text, fontSize: 13, lineHeight: 17, fontWeight: '700' },
 
   chipsWrap: { marginHorizontal: -22 },
@@ -214,7 +214,7 @@ const s = StyleSheet.create({
   railWrap: { marginHorizontal: -22 },
   rail: { gap: 12, paddingHorizontal: 22 },
   shortsHead: { flexDirection: 'row', alignItems: 'center', gap: 6 },
-  shortsLabel: { fontFamily: font, color: colors.sage, fontSize: 12, fontWeight: '800', letterSpacing: 0.6, textTransform: 'uppercase' },
+  shortsLabel: { fontFamily: font, color: colors.glow, fontSize: 12, fontWeight: '800', letterSpacing: 0.6, textTransform: 'uppercase' },
 
   footer: { fontFamily: font, color: colors.faint, fontSize: 11, lineHeight: 16, fontWeight: '600', textAlign: 'center', marginTop: 4 },
 });
