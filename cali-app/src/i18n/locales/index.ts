@@ -12,6 +12,7 @@ import l_gu from './gu';
 import l_he from './he';
 import l_hi from './hi';
 import l_id from './id';
+import l_it from './it';
 import l_ja from './ja';
 import l_kn from './kn';
 import l_ko from './ko';
@@ -19,12 +20,14 @@ import l_ml from './ml';
 import l_mr from './mr';
 import l_ms from './ms';
 import l_pa from './pa';
+import l_pl from './pl';
 import l_pt_BR from './pt-BR';
 import l_pt_PT from './pt-PT';
 import l_ru from './ru';
 import l_ta from './ta';
 import l_te from './te';
 import l_th from './th';
+import l_tr from './tr';
 import l_vi from './vi';
 import l_zh_CN from './zh-CN';
 import l_zh_HK from './zh-HK';
@@ -42,6 +45,7 @@ export const LOCALES: Record<string, Dict> = {
   "he": l_he,
   "hi": l_hi,
   "id": l_id,
+  "it": l_it,
   "ja": l_ja,
   "kn": l_kn,
   "ko": l_ko,
@@ -49,12 +53,14 @@ export const LOCALES: Record<string, Dict> = {
   "mr": l_mr,
   "ms": l_ms,
   "pa": l_pa,
+  "pl": l_pl,
   "pt-BR": l_pt_BR,
   "pt-PT": l_pt_PT,
   "ru": l_ru,
   "ta": l_ta,
   "te": l_te,
   "th": l_th,
+  "tr": l_tr,
   "vi": l_vi,
   "zh-CN": l_zh_CN,
   "zh-HK": l_zh_HK,
