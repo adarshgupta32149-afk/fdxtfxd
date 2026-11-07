@@ -1,0 +1,500 @@
+1|{n} g
+2|{n} sa
+3|{n} dk
+4|şimdi
+5|{n} hf
+6|En uzun amuda kalkış
+7|Amuda kalkış
+8|Maks. muscle-up
+9|Muscle-up
+10|Maks. barfiks
+11|Barfiks
+12|En ağır barfiks
+13|Ağırlıklı
+14|Sıralamalı kalistenik
+15|Geri
+16|Kapat
+17|Devam
+18|Sil
+19|Bitti
+20|Bulunamadı
+21|Tümünü gör
+22|Göster
+23|Daha az göster
+24|Daha fazla göster
+25|Tekrar dene
+26|{month} meydan okuması
+27|gün
+28|Henüz katılım yok. Tablo tamamen boş.
+29|saat
+30|Nasıl işler
+31|Canlı · {month}
+32|dk
+33|Sıralama şu anda çevrimdışı.
+34|Tek deneme, videoyla. {month} ayının son günü gece yarısı biter.
+35|sn
+36|Başvurular yakında açılıyor
+37|Güncel sıralama
+38|Bir denemeni çek
+39|Tek parça kesintisiz klip, tüm vücut kadrajda, başlangıçtan son tekrara kadar.
+40|Uygulamadan gönder
+41|Skorun beklemede olarak girer. Kontrol edilene kadar kimse göremez.
+42|Doğrulan
+43|Sadece temiz tekrarlar sayılır. Doğrulanan skorlar doğrudan tabloya girer.
+44|Kazananlar kupayı alır
+45|Her ayın ilk üçü profilinde kalıcı bir kupa kazanır.
+46|{count} egzersiz
+47|{count} egzersiz
+48|{count} tekrar
+49|{count} tekrar
+50|{count} antrenman
+51|{count} antrenman
+52|{count} set
+53|{count} set
+54|{count} adım
+55|{count} adım
+56|Merkez
+57|Bacak
+58|Kaldırışlar
+59|Çekiş
+60|İtiş
+61|Beceriler
+62|Fotoğraf ekle
+63|Burada ilk paylaşımı sen yap.
+64|Topluluk
+65|Bir başarı, soru ya da form kontrolü paylaş…
+66|Yeni gönderi
+67|Henüz yorum yok. Güzel bir şey söyle.
+68|Bugün ne oldu?
+69|İnsanlar neye baksın?
+70|Topluluğa sor…
+71|Paylaş
+72|Paylaşılacak yer
+73|{count} gönderi
+74|{count} gönderi
+75|Burası henüz sessiz
+76|Fotoğrafı kaldır
+77|Gönderi kaldırıldı
+78|{handle} kişisine yanıt ver…
+79|Paylaş
+80|Bir şey paylaş
+81|Bu gönderi artık mevcut değil.
+82|Bu web önizlemesinde fotoğraflar sayfayı yenileyene kadar kalır.
+83|Henüz kayıt yok
+84|Bitirdiğin her antrenman ay ay gruplanarak burada görünür.
+85|Geçmişin güvende. Kaydetmeye devam etmek için Pro'ya geç.
+86|Sıradaki: {step}
+87|Sıradaki beceri
+88|Henüz antrenman yok. İlk antrenmanın rekorlarını ve yukarıdaki hafta şeridini başlatır.
+89|Son
+90|Antrenmana başla
+91|Bu hafta
+92|Günün seçimi
+93|Ücretsiz deneme süren bitti
+94|Odağın
+95|{count} dil
+96|{count} dilin tümü
+97|Varsayılan dil İngilizce. Menüler ve düğmeler için başka bir dil seç; rehberler ve gönderiler yazıldıkları dilde kalır.
+98|“{query}” ile eşleşen dil yok.
+99|Çeviriler Cali tarafından yapıldı. Hata mı gördün? Bize söyle, düzeltelim.
+100|Düzen yönünü değiştirmek için Cali'yi yeniden başlat.
+101|Dil ara
+102|Telefonunun dili
+103|Dil
+104|Makaleler
+105|Tümü
+106|Denge
+107|Temeller
+108|Merkez
+109|Bacak
+110|Mobilite
+111|Çekiş
+112|Toparlanma
+113|Statikler
+114|{guides} rehber · {videos} video
+115|Her rehber orijinaline bağlanır. Videolar YouTube'da açılır. Özetleri Cali yazdı; fotoğraf kaynakları her rehberde belirtildi.
+116|Bu rehber artık kütüphanede değil.
+117|İngilizce rehber
+118|Bulabildiğimiz en iyi rehberler ve videolar, merdivenlerin için adım adım anlatıldı.
+119|{skill} merdiveni
+120|Merdiven tamamlandı. Formunu koru.
+121|{count} dk okuma
+122|{count} dk okuma
+123|{count} dk
+124|{count} dk
+125|Kaçınılması gereken hatalar
+126|Benzerleri
+127|Sıradaki: {step}
+128|Bu kategoride henüz makale yok.
+129|Bu kategoride henüz video yok.
+130|Bu rehberlerle birlikte
+131|Fotoğraf: {credit}. Orijinal makale görseli artık çevrimiçi değil.
+132|{skill} için seçildi
+133|YouTube'da oynatılır
+134|Oku
+135|Sıradaki okuma
+136|Orijinalini {source} üzerinde oku
+137|Akılda tutulacaklar
+138|Short
+139|Kısa versiyon
+140|Adım adım
+141|Cali'de dene
+142|Bir dakikadan kısa
+143|{date} tarihinde güncellendi
+144|Video: {channel}. Cali yalnızca bağlantı verir; videoyu barındırmaz veya düzenlemeyiz.
+145|Bu video artık kütüphanede değil.
+146|Videolar
+147|{n} görüntüleme
+148|İzle
+149|Sıradaki video
+150|15 saniye ekle
+151|Set ekle
+152|{name} seti ekle
+153|{n}. seti tamamla
+154|Antrenmanı iptal et
+155|İptal edilsin mi?
+156|Egzersizleri ilerledikçe ekle. Bir seti işaretle, dinlenme sayacı kendiliğinden başlasın.
+157|Bugün ne\nçalışıyoruz?
+158|Bitir
+159|Antrenmanı bitir
+160|ilk kez
+161|Başla
+162|kg
+163|Tutuş
+164|Tekrar
+165|Tekrar · kg
+166|geçen sefer {sets}
+167|Kayıt kilitli
+168|Ücretsiz deneme süren bitti. Kaydettiğin her antrenman güvende ve hâlâ görüntülenebilir.
+169|Sonraki set
+170|“{query}” ile eşleşen egzersiz yok.
+171|+kg
+172|Önceki
+173|{name} kaldır
+174|tekrar
+175|Dinlenme
+176|Egzersiz ara
+177|sn
+178|Set
+179|{n}. set, kaldırmak için basılı tut
+180|{n}. set {unit}
+181|{n}. set ağırlığı
+182|Atla
+183|Dinlenmeyi atla
+184|{n}. seti geri al
+185|Her zamankiler
+186|Menüyü kapat
+187|Yarış
+188|Bu ayın meydan okuması
+189|Geçmiş
+190|Kaydettiğin her antrenman
+191|Dil
+192|İngilizce ve 44 dil daha
+193|Menüyü aç
+194|Profil
+195|Sen, hesap ve veriler
+196|Sıralama
+197|Dünya tabloları
+198|Rekorlar
+199|Kişisel rekorlar
+200|{name} olarak giriş yapıldı
+201|Beceriler
+202|Merdivenlerin
+203|Hepsi okundu
+204|Sohbet bulunamadı
+205|Kaldırılmış olabilir.
+206|{name} ile sohbet
+207|Sohbetler
+208|Ekibin
+209|Lansmana kadar örnek sohbetler. Gönderdiğin mesajlar bu telefonda saklanır.
+210|{name} kişisine mesaj gönder
+211|“{query}” ile eşleşen sohbet yok.
+212|Gönderiyi aç
+213|Short'u aç
+214|Mesaj…
+215|Merhaba de
+216|Kişi ara
+217|Mesaj gönder
+218|Bir gönderi gönderdi
+219|Bir Short gönderdi
+220|Bu Short artık mevcut değil.
+221|{count} okunmamış
+222|{count} okunmamış
+223|Sen: {text}
+224|Ödeme lansmanda açılıyor
+225|Kurucu rozeti, sonsuza dek
+226|Aylık meydan okumalar
+227|Tüm geçmişin
+228|Kendiliğinden işaretlenen beceri merdivenleri
+229|Antrenman kaydet
+230|Videoyla doğrulanmış sıralamalar
+231|gün kaldı
+232|gün kaldı
+233|Denemenin bitmesine {count} gün kaldı
+234|Denemenin bitmesine {count} gün kaldı
+235|Tüm geçmişin hâlâ burada. Kaydetmeye devam etmek için Pro'ya geç.
+236|Kurucu
+237|Kurucu Pası
+238|Kurucu · Pro
+239|Ücretsiz
+240|Ücretsiz deneme
+241|Pro olsan da olmasan da geçmişin her zaman görüntülenebilir.
+242|Bizi erkenden destekle, lansman fiyatını tüm yıl için sabitle.
+243|Kurucu Pası · lansman fiyatı
+244|{count} gün
+245|{count} gün
+246|ayda yaklaşık ₹42
+247|ayda 1 $'ın altında
+248|yıllık
+249|Yeniledikçe fiyat senin kalır.
+250|Pro, sınırsız
+251|Hindistan
+252|Dünya geneli
+253|Kurucu Pası'nı gör
+254|Kurucu Pası'nı gör
+255|Bizi erkenden desteklediğin için teşekkürler.
+256|Sınırsızca\nantrenman yap.
+257|Deneme bitti
+258|O zamana kadar her şey açık. Sonrasında da geçmiş senin.
+259|Sınırsız kayıt
+260|Sen bir Kurucusun
+261|Tünaydın
+262|Öğle arası
+263|Öğleden sonra
+264|Yirmi dakika yeter. Başla.
+265|İyi akşamlar
+266|Sen hazır olunca
+267|Akşam
+268|Bugünün antrenmanını yapalım
+269|Günaydın
+270|Taze bir başlangıç
+271|Sabah
+272|Gün başlamadan bir antrenman yap
+273|Hâlâ uyanık mısın?
+274|Gece antrenmanı mı?
+275|Gece geç saat
+276|Hızlı 15 dakika, sonra uyku
+277|Örnek afiş
+278|Hesap
+279|Yedeklendi
+280|{time} itibarıyla yedeklendi
+281|Vücut ağırlığı
+282|Hesabımı sil
+283|Hesabımı silmek için tekrar dokun
+284|Hesabı ve içinde saklanan her şeyi siler. Geri alınamaz.
+285|Tüm verilerimi sil
+286|Her şeyi silmek için tekrar dokun
+287|Giriş yapana kadar her şey bu telefonda kalır.
+288|Ad
+289|Liderlik tablolarında gösterilir
+290|Ayarlar
+291|Yedeklemek için giriş yap
+292|Antrenmanlarını, denemeni ve sıralamalarını tüm telefonlarda koru.
+293|Çıkış yap
+294|Giriş yapıldı
+295|{date} tarihinden beri
+296|Şimdi eşitle
+297|Eşitleme sorunu. Tekrar denenecek.
+298|Eşitleniyor…
+299|Sen
+300|Verilerin
+301|Bu tabloda henüz doğrulanmış skor yok. İlk gönderen zirveye yerleşir.
+302|Dünya · doğrulanmış skorlar
+303|En iyini burada görmek için bu beceriyi kaydet
+304|Sıralamada değil
+305|Sadece videoyla doğrulanan skorlar sayılır. Klip ile gönderim ilk aylık meydan okumayla açılır.
+306|Boş
+307|Bu ayın meydan okumasını gör →
+308|En iyin: {value}
+309|Yerin
+310|Sıralamada karşılaştır →
+311|Bir antrenman kaydet, rekorların burada egzersiz egzersiz dolmaya başlasın.
+312|Antrenmanı sil
+313|Silmek için tekrar dokun
+314|Bu antrenman artık yok.
+315|Seviye atladın.
+316|Harika iş.
+317|Antrenman kaydedildi
+318|sn tutuş
+319|Merdivenini gör
+320|Antrenman
+321|Beceri adımı açıldı
+322|{count} beceri adımı açıldı
+323|Henüz Shorts yok
+324|İlkini sen paylaş. En fazla 3 dakika.
+325|Sessize al
+326|Orijinal ses
+327|Duraklat
+328|Oynat
+329|Short paylaş
+330|Sesi aç
+331|Ses için dokun
+332|Bu e-posta adresi yanlış görünüyor.
+333|E-postanı kontrol et
+334|6 haneli kod
+335|E-postadaki kodu gir.
+336|Antrenmanlarını yedekle, denemeni başka telefona taşı ve tablolara gir.
+337|Şifre yok. Yeni misin? Bu, hesabını oluşturur.
+338|Başka e-posta kullan
+339|Bana kod gönder
+340|Gönderiliyor…
+341|{email} adresine 6 haneli bir kod gönderdik.
+342|Giriş yap
+343|Bu sürümde hesaplar kullanılamıyor.
+344|Tüm adımlar tamam. Bu beceri artık senin.
+345|Kayıtlarından
+346|Adımlar, kaydettiğinde kendiliğinden işaretlenir.
+347|Deneme bitti. İlerlemen kalır; yeni adımları işaretlemek için Pro'ya geç.
+348|Kaydet
+349|Tamamlandı olarak işaretle
+350|İşaretlendi
+351|{step} işaretini kaldır
+352|Yorum ekle…
+353|Paneli kapat
+354|Yorum yap
+355|Yorumlar
+356|{count} yorum
+357|{count} yorum
+358|Beğenmek için iki kez dokun
+359|Beğen
+360|{n} beğeni
+361|{n} beğeni
+362|Diğer seçenekler
+363|Henüz yorum yok. Sohbeti başlat.
+364|İlgilenmiyorum
+365|Seçenekler
+366|Yorumu paylaş
+367|Bildir
+368|Teşekkürler. Bu gönderiyi inceleyeceğiz.
+369|Örnek
+370|Kaydet
+371|Cali'de görüldü
+372|Mesajlarla gönder
+373|{name} kişisine gönder
+374|Gönderildi
+375|{name} kişisine gönderildi
+376|Paylaş
+377|Cali dışında paylaşım telefon uygulamasında çalışır.
+378|Cali dışında paylaş
+379|Paylaşıldı
+380|{count} paylaşım
+381|{count} paylaşım
+382|biri
+383|Beğenmekten vazgeç
+384|Kaydedilenlerden çıkar
+385|1 yorumu gör
+386|{count} yorumun tümünü gör
+387|Yorumları gör
+388|Gönderin
+389|Form kontrolü
+390|Bir tekrar paylaş, dürüst geri bildirim al.
+391|Mizah
+392|Spor salonu esprileri, nazikçe.
+393|İlerleme
+394|Öncesi ve sonrası, haftalık kayıtlar.
+395|Sorular
+396|Hiçbir soru fazla basit değil.
+397|Başarılar
+398|İlk barfiks mi? Herkese anlat.
+399|Akış
+400|Ana sayfa
+401|Öğren
+402|Mesajlar
+403|Shorts
+404|egzersiz
+405|egzersiz
+406|ay
+407|ay
+408|tekrar
+409|tekrar
+410|antrenman
+411|antrenman
+412|set
+413|set
+414|beceri adımı
+415|beceri adımı
+416|{n} kg
+417|~{n} kg 1RM
+418|+{n} kg
+419|{n} sn
+420|Kamera erişimi kapalı. Kaydetmek için Ayarlar'dan aç.
+421|Bir açıklama yaz… üzerinde ne çalışıyorsun?
+422|Başka video seç
+423|Değiştir
+424|Kontrol ediliyor…
+425|Video seç
+426|Galerinden
+427|Uzunluk
+428|Yeni Short
+429|{len} / 3:00
+430|Fotoğrafların açılamadı. Tekrar dene.
+431|Short'u paylaş
+432|Çek
+433|Antrenman, ilerleme, form kontrolleri ve eğlence. Nefret, çıplaklık ya da tehlikeli gösteriler yok. Herkes bir gönderiyi bildirebilir.
+434|Ortamı güzel tut
+435|3:00'te durur
+436|Dikey en iyisi. En fazla 3 dakika.
+437|Bir klip paylaş
+438|Bu video {len} uzunluğunda. Shorts en fazla 3:00 olabilir, önce kırp.
+439|Bu videonun uzunluğunu okuyamadık. Başka bir tane dene.
+440|Videoların açılamadı. Tekrar dene.
+441|Bu web önizlemesinde yüklemeler sayfayı yenileyene kadar kalır.
+442|Yerel hava durumunu ve saati görmek için tarayıcında bu siteye konum izni ver.
+443|Yerel hava durumunu ve saati görmek için Ayarlar'dan Cali için konumu aç.
+444|Açık
+445|Açık gece
+446|Bulutlu
+447|Çisenti
+448|Hissedilen {temp}°
+449|Seni buluyor ve gökyüzüne bakıyoruz…
+450|Sis
+451|Konum kapalı
+452|Konumunu bulamadık. Konum servislerinin açık olduğunu kontrol et.
+453|Kapalı
+454|Parçalı bulutlu
+455|Canlı sıcaklık, hava durumu ve yerel saat, bugünkü antrenman için bir ipucuyla.
+456|Yağmur
+457|Doğuş {time}
+458|Batış {time}
+459|Sağanak
+460|Kar
+461|Gök gürültülü fırtına
+462|Soğuk. Tutuşlardan önce bilekleri ve omuzları iki kat uzun ısıt.
+463|Barlar için iyi koşullar.
+464|Sıcak. Daha kısa setler, daha uzun dinlenmeler, su yakında olsun.
+465|Gök gürültülü fırtına. Bugün metal barlardan uzak dur; içeride çalış.
+466|UV yüksek. Uzun tutuşlar ve amuda kalkış için gölge bul.
+467|Çok sıcak. Sabah erken ya da akşam, gölgede çalış ve düşündüğünden fazla su iç.
+468|Islak bar kaygandır. Magnezyum sür, barı kurula ya da içeri geç.
+469|Rüzgârlı. Bugün dışarıda amuda kalkmak daha zor olacak.
+470|Antrenman yaptığın yerin havası
+471|Hava durumu şu anda alınamıyor.
+472|Konumumu kullan
+473|Konumun
+474|{days} gün ücretsiz. Kart gerekmez.
+475|Amuda kalkış
+476|Hesabım var
+477|Becerileri çalış.\nSıralamanı\nkazan.
+478|Henüz değil
+479|Duvarda, 30 sn veya fazla
+480|Duvara yaslanarak, kısa süre
+481|İlk barfiksinden temiz bir muscle-up'a kadar. Her tekrarı kaydet, her adımı aç ve nerede olduğunu gör.
+482|Adın
+483|Henüz değil
+484|En az birini seç
+485|Antrenmanları saniyeler içinde kaydet
+486|Videoyla doğrulanmış dünya sıralamaları
+487|Kendiliğinden işaretlenen beceri adımları
+488|Tek sette kurallı barfiks
+489|Neyi açmak istiyorsun?
+490|En fazla {n} tane seç. Ana sayfa bunlarla başlayacak.
+491|Şu an neredesin?
+492|Dürüst ol. Bunu, zaten yapabildiğin adımları atlamak için kullanıyoruz.
+493|Sana nasıl hitap edelim?
+494|Bu ad liderlik tablolarında görünür. İstediğin zaman değiştirebilirsin.
+495|Başlayalım
+496|Antrenmana başla
+497|Bugün başlıyor
+498|Her şey açık. Sonra ne karar verirsen ver, geçmişin senin.
+499|{days} günlük ücretsiz deneme
+500|Vücut ağırlığı kg (isteğe bağlı)

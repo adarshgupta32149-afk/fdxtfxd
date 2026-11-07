@@ -1,0 +1,500 @@
+1|{n} h
+2|{n} j
+3|{n} min
+4|baru tadi
+5|{n} mgg
+6|Handstand paling lama
+7|Handstand
+8|Muscle-up maksimum
+9|Muscle-up
+10|Pull-up maksimum
+11|Pull-up
+12|Pull-up paling berat
+13|Berpemberat
+14|Kalistenik, dengan kedudukan
+15|Kembali
+16|Tutup
+17|Teruskan
+18|Padam
+19|Selesai
+20|Tidak dijumpai
+21|Lihat semua
+22|Tunjuk
+23|Tunjuk kurang
+24|Tunjuk lagi
+25|Cuba lagi
+26|Cabaran {month}
+27|hari
+28|Belum ada penyertaan. Papan masih terbuka luas.
+29|jam
+30|Cara ia berfungsi
+31|Langsung · {month}
+32|min
+33|Kedudukan tidak tersedia sekarang.
+34|Satu cubaan, dalam video. Tamat tengah malam pada hari terakhir {month}.
+35|saat
+36|Penyerahan dibuka tidak lama lagi
+37|Kedudukan semasa
+38|Rakam satu cubaan
+39|Satu klip berterusan, seluruh badan dalam bingkai, dari mula hingga ulangan terakhir.
+40|Hantar dalam aplikasi
+41|Skor anda masuk sebagai belum disahkan. Tiada siapa nampak sehingga ia disemak.
+42|Dapatkan pengesahan
+43|Hanya ulangan yang bersih dikira. Skor yang disahkan terus masuk ke papan.
+44|Pemenang simpan trofi
+45|Tiga teratas setiap bulan mendapat trofi kekal pada profil mereka.
+46|{count} senaman
+47|{count} senaman
+48|{count} ulangan
+49|{count} ulangan
+50|{count} sesi
+51|{count} sesi
+52|{count} set
+53|{count} set
+54|{count} langkah
+55|{count} langkah
+56|Teras
+57|Kaki
+58|Angkatan
+59|Tarik
+60|Tolak
+61|Kemahiran
+62|Tambah foto
+63|Jadilah yang pertama menyiarkan di sini.
+64|Komuniti
+65|Kongsi kejayaan, soalan atau semakan teknik…
+66|Siaran baharu
+67|Belum ada komen. Tulis sesuatu yang baik.
+68|Apa yang berlaku hari ini?
+69|Apa yang patut orang lihat?
+70|Tanya komuniti…
+71|Siar
+72|Siar dalam
+73|{count} siaran
+74|{count} siaran
+75|Masih sunyi di sini
+76|Buang foto
+77|Siaran dibuang
+78|Balas kepada {handle}…
+79|Kongsikan
+80|Kongsi sesuatu
+81|Siaran ini tidak lagi tersedia.
+82|Dalam pratonton web ini, foto kekal sehingga anda memuat semula halaman.
+83|Belum ada log
+84|Setiap sesi yang anda habiskan muncul di sini, mengikut bulan.
+85|Sejarah anda selamat. Langgan Pro untuk terus mengelog.
+86|Seterusnya: {step}
+87|Kemahiran seterusnya
+88|Belum ada sesi. Sesi pertama anda memulakan rekod dan jalur minggu di atas.
+89|Terkini
+90|Mula sesi
+91|Minggu ini
+92|Pilihan hari ini
+93|Percubaan percuma anda telah tamat
+94|Fokus anda
+95|{count} bahasa
+96|Semua {count} bahasa
+97|Bahasa Inggeris ialah lalai. Pilih bahasa lain untuk menu dan butang; panduan dan siaran kekal dalam bahasa asalnya.
+98|Tiada bahasa yang sepadan dengan “{query}”.
+99|Terjemahan dibuat oleh Cali. Nampak kesilapan? Beritahu kami, kami akan betulkan.
+100|Mulakan semula Cali untuk menukar arah susun atur.
+101|Cari bahasa
+102|Bahasa telefon anda
+103|Bahasa
+104|Artikel
+105|Semua
+106|Imbangan
+107|Asas
+108|Teras
+109|Kaki
+110|Mobiliti
+111|Tarik
+112|Pemulihan
+113|Statik
+114|{guides} panduan · {videos} video
+115|Setiap panduan dipautkan kepada sumber asalnya. Video dibuka di YouTube. Huraian ditulis oleh Cali; kredit foto ada pada setiap panduan.
+116|Panduan ini tiada lagi dalam perpustakaan.
+117|Panduan dalam bahasa Inggeris
+118|Panduan dan video terbaik yang kami temui, diperincikan langkah demi langkah untuk tangga anda.
+119|Tangga {skill}
+120|Tangga selesai. Kekalkan prestasi.
+121|{count} min bacaan
+122|{count} min bacaan
+123|{count} min
+124|{count} min
+125|Kesilapan yang perlu dielakkan
+126|Lagi seperti ini
+127|Seterusnya: {step}
+128|Belum ada artikel dalam kategori ini.
+129|Belum ada video dalam kategori ini.
+130|Sesuai dengan panduan ini
+131|Foto: {credit}. Imej artikel asal tiada lagi dalam talian.
+132|Dipilih untuk {skill} anda
+133|Dimainkan di YouTube
+134|Baca
+135|Baca seterusnya
+136|Baca artikel asal di {source}
+137|Patut diingati
+138|Short
+139|Versi ringkas
+140|Langkah demi langkah
+141|Cuba dalam Cali
+142|Kurang seminit
+143|dikemas kini {date}
+144|Video oleh {channel}. Cali hanya memautkannya; kami tidak mengehos atau menyuntingnya.
+145|Video ini tiada lagi dalam perpustakaan.
+146|Video
+147|{n} tontonan
+148|Tonton
+149|Tonton seterusnya
+150|Tambah 15 saat
+151|Tambah set
+152|Tambah set {name}
+153|Lengkapkan set {n}
+154|Buang sesi
+155|Buang?
+156|Tambah senaman sambil berlatih. Tandakan satu set dan pemasa rehat bermula sendiri.
+157|Apa kita\nlatih hari ini?
+158|Tamat
+159|Tamatkan sesi
+160|kali pertama
+161|Jom
+162|kg
+163|Tahan
+164|Ulangan
+165|Ulangan · kg
+166|kali lepas {sets}
+167|Pengelogan dikunci
+168|Percubaan percuma anda telah tamat. Setiap sesi yang anda log selamat dan masih boleh dilihat.
+169|Set seterusnya
+170|Tiada senaman yang sepadan dengan “{query}”.
+171|+kg
+172|Sebelumnya
+173|Buang {name}
+174|ulangan
+175|Rehat
+176|Cari senaman
+177|saat
+178|Set
+179|Set {n}, tekan lama untuk membuang
+180|Set {n} {unit}
+181|Berat set {n}
+182|Langkau
+183|Langkau rehat
+184|Buat asal set {n}
+185|Senaman biasa anda
+186|Tutup menu
+187|Bertanding
+188|Cabaran bulan ini
+189|Sejarah
+190|Setiap sesi yang anda log
+191|Bahasa
+192|Inggeris dan 44 lagi
+193|Buka menu
+194|Profil
+195|Anda, akaun dan data
+196|Kedudukan
+197|Papan dunia
+198|Rekod
+199|Rekod peribadi
+200|Log masuk sebagai {name}
+201|Kemahiran
+202|Tangga anda
+203|Semua sudah dibaca
+204|Sembang tidak dijumpai
+205|Ia mungkin telah dibuang.
+206|Sembang dengan {name}
+207|Sembang
+208|Geng anda
+209|Contoh sembang sehingga pelancaran. Mesej yang anda hantar disimpan dalam telefon ini.
+210|Hantar mesej kepada {name}
+211|Tiada sembang yang sepadan dengan “{query}”.
+212|Buka siaran
+213|Buka Short
+214|Mesej…
+215|Tegur dulu
+216|Cari orang
+217|Hantar mesej
+218|Menghantar siaran
+219|Menghantar Short
+220|Short ini tidak lagi tersedia.
+221|{count} belum dibaca
+222|{count} belum dibaca
+223|Anda: {text}
+224|Pembayaran dibuka semasa pelancaran
+225|Lencana Pengasas, selamanya
+226|Cabaran bulanan
+227|Sejarah penuh anda
+228|Tangga kemahiran yang bertanda sendiri
+229|Log sesi
+230|Kedudukan disahkan video
+231|hari lagi
+232|hari lagi
+233|Tinggal {count} hari percubaan
+234|Tinggal {count} hari percubaan
+235|Semua sejarah anda masih di sini. Langgan Pro untuk terus mengelog.
+236|Pengasas
+237|Pas Pengasas
+238|Pengasas · Pro
+239|Percuma
+240|Percubaan percuma
+241|Sejarah anda sentiasa boleh dilihat, Pro atau tidak.
+242|Sokong kami awal dan kunci harga pelancaran untuk setahun penuh.
+243|Pas Pengasas · harga pelancaran
+244|{count} hari
+245|{count} hari
+246|kira-kira ₹42 sebulan
+247|kurang $1 sebulan
+248|setahun
+249|Harga kekal selagi anda memperbaharui.
+250|Pro, tanpa had
+251|India
+252|Seluruh dunia
+253|Lihat Pas Pengasas
+254|Lihat Pas Pengasas
+255|Terima kasih kerana menyokong kami awal.
+256|Berlatih tanpa\nhad.
+257|Percubaan tamat
+258|Semuanya dibuka sehingga itu. Sejarah kekal milik anda selepas itu.
+259|Pengelogan tanpa had
+260|Anda seorang Pengasas
+261|Selamat tengah hari
+262|Waktu tengah hari
+263|Petang
+264|Dua puluh minit sudah cukup. Jom.
+265|Selamat petang
+266|Sedia bila anda sedia
+267|Malam
+268|Jom selesaikan sesi hari ini
+269|Selamat pagi
+270|Permulaan baharu
+271|Pagi
+272|Buat satu sesi sebelum hari bermula
+273|Masih berjaga?
+274|Sesi malam?
+275|Lewat malam
+276|15 minit pantas, kemudian tidur
+277|Poster contoh
+278|Akaun
+279|Disandarkan
+280|Disandarkan pada {time}
+281|Berat badan
+282|Padam akaun saya
+283|Ketik sekali lagi untuk memadam akaun saya
+284|Memadam akaun dan semua yang disimpan bersamanya. Tidak boleh dibuat asal.
+285|Padam semua data saya
+286|Ketik sekali lagi untuk memadam semuanya
+287|Semuanya kekal dalam telefon ini sehingga anda log masuk.
+288|Nama
+289|Ditunjukkan pada papan pendahulu
+290|Tetapan
+291|Log masuk untuk sandaran
+292|Simpan sesi, percubaan dan kedudukan anda merentas telefon.
+293|Log keluar
+294|Sudah log masuk
+295|Sejak {date}
+296|Segerakkan sekarang
+297|Masalah penyegerakan. Akan cuba lagi.
+298|Menyegerak…
+299|Anda
+300|Data anda
+301|Belum ada skor disahkan di papan ini. Orang pertama yang menghantar terus ke tempat teratas.
+302|Dunia · skor disahkan
+303|Log kemahiran ini untuk melihat skor terbaik anda di sini
+304|Tiada kedudukan
+305|Hanya skor yang disahkan video dikira. Penghantaran dengan klip dibuka bersama cabaran bulanan pertama.
+306|Kosong
+307|Lihat cabaran bulan ini →
+308|Terbaik anda: {value}
+309|Tempat anda
+310|Lihat perbandingannya dalam Kedudukan →
+311|Log satu sesi dan rekod anda mula terisi di sini, senaman demi senaman.
+312|Padam sesi
+313|Ketik sekali lagi untuk memadam
+314|Sesi ini tiada lagi.
+315|Naik tahap.
+316|Syabas.
+317|Sesi disimpan
+318|saat ditahan
+319|Lihat tangga anda
+320|Sesi
+321|Langkah kemahiran dibuka
+322|{count} langkah kemahiran dibuka
+323|Belum ada Shorts
+324|Siarkan yang pertama. Sehingga 3 minit.
+325|Senyap
+326|Audio asal
+327|Jeda
+328|Main
+329|Siar Short
+330|Hidupkan bunyi
+331|Ketik untuk bunyi
+332|Alamat e-mel itu nampak salah.
+333|Semak e-mel anda
+334|Kod 6 digit
+335|Masukkan kod daripada e-mel.
+336|Sandarkan sesi anda, bawa percubaan anda ke telefon lain dan masuk ke papan.
+337|Tanpa kata laluan. Baru di sini? Ini akan mencipta akaun anda.
+338|Guna e-mel lain
+339|Hantar kod kepada saya
+340|Menghantar…
+341|Kami telah menghantar kod 6 digit ke {email}.
+342|Log masuk
+343|Akaun tidak tersedia dalam binaan ini.
+344|Semua langkah selesai. Kemahiran ini milik anda.
+345|Daripada log anda
+346|Langkah bertanda sendiri apabila anda mengelognya.
+347|Percubaan tamat. Kemajuan anda kekal; langgan Pro untuk menanda langkah baharu.
+348|Log
+349|Tanda selesai
+350|Bertanda
+351|Nyahtanda {step}
+352|Tambah komen…
+353|Tutup panel
+354|Komen
+355|Komen
+356|{count} komen
+357|{count} komen
+358|Ketik dua kali untuk suka
+359|Suka
+360|{n} suka
+361|{n} suka
+362|Lagi pilihan
+363|Belum ada komen. Mulakan perbualan.
+364|Tidak berminat
+365|Pilihan
+366|Siar komen
+367|Laporkan
+368|Terima kasih. Kami akan menyemak siaran ini.
+369|Contoh
+370|Simpan
+371|Dilihat di Cali
+372|Hantar dalam Mesej
+373|Hantar kepada {name}
+374|Dihantar
+375|Dihantar kepada {name}
+376|Kongsi
+377|Perkongsian di luar Cali berfungsi dalam aplikasi telefon.
+378|Kongsi di luar Cali
+379|Dikongsi
+380|{count} perkongsian
+381|{count} perkongsian
+382|seseorang
+383|Batal suka
+384|Batal simpan
+385|Lihat 1 komen
+386|Lihat semua {count} komen
+387|Lihat komen
+388|Siaran anda
+389|Semakan teknik
+390|Siarkan satu ulangan, dapatkan maklum balas jujur.
+391|Meme
+392|Lawak gim, tetap baik.
+393|Kemajuan
+394|Sebelum dan selepas, log minggu demi minggu.
+395|Soalan
+396|Tiada soalan yang terlalu asas.
+397|Kejayaan
+398|Pull-up pertama? Beritahu semua orang.
+399|Suapan
+400|Utama
+401|Belajar
+402|Mesej
+403|Shorts
+404|senaman
+405|senaman
+406|bulan
+407|bulan
+408|ulangan
+409|ulangan
+410|sesi
+411|sesi
+412|set
+413|set
+414|langkah kemahiran
+415|langkah kemahiran
+416|{n} kg
+417|~{n} kg 1RM
+418|+{n} kg
+419|{n} s
+420|Akses kamera dimatikan. Hidupkan dalam Tetapan untuk merakam.
+421|Tulis kapsyen… apa yang anda sedang usahakan?
+422|Pilih video lain
+423|Tukar
+424|Menyemak…
+425|Pilih video
+426|Daripada galeri anda
+427|Panjang
+428|Short baharu
+429|{len} daripada 3:00
+430|Tidak dapat membuka foto anda. Cuba lagi.
+431|Siar Short
+432|Rakam
+433|Latihan, kemajuan, semakan teknik dan keseronokan. Tiada kebencian, kebogelan atau aksi berbahaya. Sesiapa boleh melaporkan siaran.
+434|Kekalkan suasana baik
+435|Berhenti pada 3:00
+436|Menegak paling sesuai. Sehingga 3 minit.
+437|Siarkan klip
+438|Video ini {len}. Shorts boleh sehingga 3:00, jadi potong dahulu.
+439|Kami tidak dapat membaca panjang video ini. Cuba video lain.
+440|Tidak dapat membuka video anda. Cuba lagi.
+441|Dalam pratonton web ini, muat naik kekal sehingga anda memuat semula halaman.
+442|Benarkan lokasi untuk laman ini dalam pelayar anda untuk melihat cuaca dan waktu tempatan.
+443|Hidupkan lokasi untuk Cali dalam Tetapan untuk melihat cuaca dan waktu tempatan.
+444|Cerah
+445|Malam cerah
+446|Berawan
+447|Gerimis
+448|Terasa seperti {temp}°
+449|Mencari anda dan meninjau langit…
+450|Kabus
+451|Lokasi dimatikan
+452|Kami tidak dapat mencari lokasi anda. Pastikan perkhidmatan lokasi dihidupkan.
+453|Mendung
+454|Berawan sebahagian
+455|Suhu, keadaan dan waktu tempatan secara langsung, dengan petua untuk sesi hari ini.
+456|Hujan
+457|Terbit {time}
+458|Terbenam {time}
+459|Hujan lebat sekejap
+460|Salji
+461|Ribut petir
+462|Sejuk. Panaskan pergelangan dan bahu dua kali lebih lama sebelum tahanan.
+463|Keadaan baik untuk palang.
+464|Panas. Set lebih pendek, rehat lebih lama, air dekat dengan anda.
+465|Ribut petir. Jauhi palang logam hari ini; berlatih di dalam.
+466|UV tinggi. Cari tempat teduh untuk tahanan lama dan handstand.
+467|Sangat panas. Berlatih awal pagi atau lewat petang, di tempat teduh, dan minum lebih daripada yang anda sangka.
+468|Palang basah licin. Guna kapur, keringkan palang atau masuk ke dalam.
+469|Berangin. Handstand di luar lebih sukar hari ini.
+470|Cuaca di tempat anda berlatih
+471|Cuaca tidak tersedia sekarang.
+472|Guna lokasi saya
+473|Lokasi anda
+474|{days} hari percuma. Tiada kad diperlukan.
+475|Handstand
+476|Saya ada akaun
+477|Latih kemahiran.\nRaih\nkedudukan.
+478|Belum
+479|Di dinding, 30 s atau lebih
+480|Bersandar di dinding, sekejap
+481|Dari pull-up pertama anda hingga muscle-up yang bersih. Jejak setiap ulangan, buka setiap langkah dan lihat kedudukan anda.
+482|Nama anda
+483|Belum
+484|Pilih sekurang-kurangnya satu
+485|Log sesi dalam beberapa saat
+486|Kedudukan dunia disahkan video
+487|Langkah kemahiran yang bertanda sendiri
+488|Pull-up ketat dalam satu set
+489|Apa yang anda mahu buka?
+490|Pilih sehingga {n}. Utama akan bermula dengan ini.
+491|Di mana anda sekarang?
+492|Jujurlah. Kami guna ini untuk melangkau langkah yang anda sudah kuasai.
+493|Apa kami patut panggil anda?
+494|Nama ini dipaparkan pada papan pendahulu. Anda boleh tukar bila-bila masa.
+495|Bermula
+496|Mula berlatih
+497|Bermula hari ini
+498|Semuanya dibuka. Sejarah anda kekal milik anda, apa pun keputusan anda selepas itu.
+499|Percubaan percuma {days} hari
+500|Berat badan dalam kg (pilihan)

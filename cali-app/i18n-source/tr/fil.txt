@@ -1,0 +1,500 @@
+1|{n}a
+2|{n}o
+3|{n}m
+4|ngayon
+5|{n}l
+6|Pinakamatagal na handstand
+7|Handstand
+8|Pinakamaraming muscle-up
+9|Muscle-up
+10|Pinakamaraming pull-up
+11|Pull-up
+12|Pinakamabigat na pull-up
+13|May pabigat
+14|Calisthenics, may ranking
+15|Bumalik
+16|Isara
+17|Magpatuloy
+18|Burahin
+19|Tapos na
+20|Hindi nahanap
+21|Tingnan lahat
+22|Ipakita
+23|Ipakita ang mas kaunti
+24|Ipakita ang higit pa
+25|Subukang muli
+26|Hamon ng {month}
+27|araw
+28|Wala pang sumasali. Bukas pa ang board.
+29|oras
+30|Paano ito gumagana
+31|Live · {month}
+32|min
+33|Offline ang standings ngayon.
+34|Isang subok, naka-video. Magtatapos sa hatinggabi ng huling araw ng {month}.
+35|seg
+36|Malapit nang magbukas ang pagsusumite
+37|Kasalukuyang standings
+38|Mag-video ng isang subok
+39|Isang tuloy-tuloy na clip, buong katawan sa frame, mula simula hanggang huling rep.
+40|Isumite sa app
+41|Pending muna ang score mo. Walang makakakita nito hangga't hindi pa nasusuri.
+42|Magpa-verify
+43|Malinis na reps lang ang bilang. Diretso sa board ang mga verified na score.
+44|May tropeo ang mga panalo
+45|Ang top three bawat buwan ay may permanenteng tropeo sa kanilang profile.
+46|{count} ehersisyo
+47|{count} ehersisyo
+48|{count} rep
+49|{count} reps
+50|{count} session
+51|{count} session
+52|{count} set
+53|{count} set
+54|{count} hakbang
+55|{count} hakbang
+56|Core
+57|Binti
+58|Lifts
+59|Hila
+60|Tulak
+61|Skills
+62|Magdagdag ng larawan
+63|Ikaw na ang unang mag-post dito.
+64|Komunidad
+65|Mag-share ng panalo, tanong, o form check…
+66|Bagong post
+67|Wala pang komento. Magsabi ng maganda.
+68|Ano'ng nangyari ngayon?
+69|Ano ang dapat tingnan ng mga tao?
+70|Magtanong sa komunidad…
+71|I-post
+72|I-post sa
+73|{count} post
+74|{count} post
+75|Tahimik pa rito
+76|Alisin ang larawan
+77|Inalis ang post
+78|Sumagot kay {handle}…
+79|I-share ito
+80|Mag-share ng kahit ano
+81|Hindi na available ang post na ito.
+82|Sa web preview na ito, mananatili ang mga larawan hanggang i-reload mo ang page.
+83|Wala pang naka-log
+84|Lahat ng session na matatapos mo ay lalabas dito, naka-grupo kada buwan.
+85|Ligtas ang history mo. Mag-Pro para patuloy na mag-log.
+86|Susunod: {step}
+87|Susunod na skill
+88|Wala pang session. Sisimulan ng una mong session ang records mo at ang week strip sa itaas.
+89|Kamakailan
+90|Simulan ang session
+91|Ngayong linggo
+92|Pick ngayong araw
+93|Tapos na ang libreng trial mo
+94|Ang focus mo
+95|{count} wika
+96|Lahat ng {count} wika
+97|English ang default. Pumili ng ibang wika para sa menu at mga button; mananatili sa orihinal na wika ang mga gabay at post.
+98|Walang wikang tugma sa “{query}”.
+99|Gawa ng Cali ang mga salin. May nakitang mali? Sabihin sa amin at aayusin namin.
+100|I-restart ang Cali para palitan ang direksyon ng layout.
+101|Maghanap ng wika
+102|Wika ng phone mo
+103|Wika
+104|Mga artikulo
+105|Lahat
+106|Balanse
+107|Mga batayan
+108|Core
+109|Binti
+110|Mobility
+111|Hila
+112|Recovery
+113|Statics
+114|{guides} gabay · {videos} video
+115|Naka-link ang bawat gabay sa orihinal. Bubukas sa YouTube ang mga video. Ang mga paliwanag ay isinulat ng Cali; may credit ang mga larawan sa bawat gabay.
+116|Wala na sa library ang gabay na ito.
+117|Gabay sa English
+118|Ang pinakamahusay na mga gabay at video na nahanap namin, hinimay nang hakbang-hakbang para sa iyong mga hagdan.
+119|Hagdan ng {skill}
+120|Kumpleto ang hagdan. Panatilihing matalas.
+121|{count} min na basa
+122|{count} min na basa
+123|{count} min
+124|{count} min
+125|Mga pagkakamaling iwasan
+126|Iba pang katulad nito
+127|Susunod: {step}
+128|Wala pang artikulo sa kategoryang ito.
+129|Wala pang video sa kategoryang ito.
+130|Bagay sa mga gabay na ito
+131|Larawan: {credit}. Wala na online ang larawan ng orihinal na artikulo.
+132|Pinili para sa iyong {skill}
+133|Nagpe-play sa YouTube
+134|Basahin
+135|Basahin susunod
+136|Basahin ang orihinal sa {source}
+137|Tandaan
+138|Short
+139|Ang maikling bersyon
+140|Hakbang-hakbang
+141|Subukan sa Cali
+142|Wala pang isang minuto
+143|na-update {date}
+144|Video ni {channel}. Nagli-link lang ang Cali dito; hindi namin ito hino-host o ine-edit.
+145|Wala na sa library ang video na ito.
+146|Mga video
+147|{n} views
+148|Panoorin
+149|Panoorin susunod
+150|Magdagdag ng 15 segundo
+151|Magdagdag ng set
+152|Magdagdag ng set ng {name}
+153|Tapusin ang set {n}
+154|Itapon ang session
+155|Itapon?
+156|Magdagdag ng ehersisyo habang nagpapatuloy. I-tick ang set at kusang magsisimula ang rest timer.
+157|Ano'ng\nite-train natin?
+158|Tapusin
+159|Tapusin ang session
+160|unang beses
+161|Tara
+162|kg
+163|Hold
+164|Reps
+165|Reps · kg
+166|huling beses {sets}
+167|Naka-lock ang pag-log
+168|Tapos na ang libreng trial mo. Ligtas at makikita pa rin ang bawat session na na-log mo.
+169|Susunod na set
+170|Walang ehersisyong tugma sa “{query}”.
+171|+kg
+172|Nakaraan
+173|Alisin ang {name}
+174|reps
+175|Pahinga
+176|Maghanap ng ehersisyo
+177|seg
+178|Set
+179|Set {n}, pindutin nang matagal para alisin
+180|Set {n} {unit}
+181|Bigat ng set {n}
+182|Laktawan
+183|Laktawan ang pahinga
+184|I-undo ang set {n}
+185|Mga karaniwan mo
+186|Isara ang menu
+187|Makipagkumpitensya
+188|Hamon ngayong buwan
+189|History
+190|Lahat ng session na na-log mo
+191|Wika
+192|English at 44 pa
+193|Buksan ang menu
+194|Profile
+195|Ikaw, account at data
+196|Ranking
+197|Mga world board
+198|Records
+199|Personal bests
+200|Naka-sign in bilang {name}
+201|Skills
+202|Ang mga hagdan mo
+203|Updated ka na
+204|Hindi nahanap ang chat
+205|Maaaring inalis na ito.
+206|Chat kay {name}
+207|Mga chat
+208|Ang tropa mo
+209|Mga sample na chat hanggang sa launch. Nasa phone na ito ang mga mensaheng ipapadala mo.
+210|I-message si {name}
+211|Walang chat na tugma sa “{query}”.
+212|Buksan ang post
+213|Buksan ang Short
+214|Mensahe…
+215|Mag-hi
+216|Maghanap ng tao
+217|Ipadala ang mensahe
+218|Nagpadala ng post
+219|Nagpadala ng Short
+220|Hindi na available ang Short na ito.
+221|{count} hindi pa nababasa
+222|{count} hindi pa nababasa
+223|Ikaw: {text}
+224|Magbubukas ang checkout sa launch
+225|Founder badge, habambuhay
+226|Buwanang hamon
+227|Ang buong history mo
+228|Mga skill ladder na kusang nati-tick
+229|Mag-log ng session
+230|Mga ranking na verified sa video
+231|araw na lang
+232|araw na lang
+233|{count} araw na lang ang trial
+234|{count} araw na lang ang trial
+235|Nandito pa rin lahat ng history mo. Mag-Pro para patuloy na mag-log.
+236|Founder
+237|Founder Pass
+238|Founder · Pro
+239|Libre
+240|Libreng trial
+241|Laging makikita ang history mo, Pro man o hindi.
+242|Suportahan kami nang maaga at i-lock ang launch price buong taon.
+243|Founder Pass · launch price
+244|{count} araw
+245|{count} araw
+246|mga ₹42 kada buwan
+247|wala pang $1 kada buwan
+248|kada taon
+249|Sa iyo ang presyo habang nagre-renew ka.
+250|Pro, walang limitasyon
+251|India
+252|Buong mundo
+253|Tingnan ang Founder Pass
+254|Tingnan ang Founder Pass
+255|Salamat sa maagang pagsuporta sa amin.
+256|Mag-train nang walang\nlimitasyon.
+257|Tapos na ang trial
+258|Bukas ang lahat hanggang noon. Sa iyo pa rin ang history pagkatapos.
+259|Walang limitasyong pag-log
+260|Isa kang Founder
+261|Magandang hapon
+262|Tanghaling oras
+263|Hapon
+264|Sapat na ang dalawampung minuto. Tara.
+265|Magandang gabi
+266|Handa kapag handa ka
+267|Gabi
+268|Tapusin natin ang session ngayon
+269|Magandang umaga
+270|Bagong simula
+271|Umaga
+272|Mag-session bago magsimula ang araw
+273|Gising ka pa?
+274|Night session?
+275|Hatinggabi
+276|Mabilis na 15 minuto, tapos tulog
+277|Sample na poster
+278|Account
+279|Naka-back up
+280|Naka-back up nang {time}
+281|Timbang ng katawan
+282|Burahin ang account ko
+283|I-tap ulit para burahin ang account ko
+284|Buburahin ang account at lahat ng nakaimbak dito. Hindi na ito mababawi.
+285|Burahin lahat ng data ko
+286|I-tap ulit para burahin lahat
+287|Nasa phone na ito ang lahat hanggang mag-sign in ka.
+288|Pangalan
+289|Ipinapakita sa mga leaderboard
+290|Settings
+291|Mag-sign in para mag-back up
+292|Dalhin ang mga session, trial at ranggo mo sa kahit anong phone.
+293|Mag-sign out
+294|Naka-sign in
+295|Mula {date}
+296|I-sync ngayon
+297|May problema sa sync. Susubukan ulit.
+298|Nagsi-sync…
+299|Ikaw
+300|Ang data mo
+301|Wala pang verified na score sa board na ito. Ang unang magsumite ang mangunguna.
+302|Mundo · verified na score
+303|I-log ang skill na ito para makita rito ang pinakamahusay mo
+304|Walang ranggo
+305|Mga score na verified sa video lang ang bilang. Magbubukas ang pagsumite gamit ang clip kasabay ng unang buwanang hamon.
+306|Bakante
+307|Tingnan ang hamon ngayong buwan →
+308|Pinakamahusay mo: {value}
+309|Ang puwesto mo
+310|Tingnan ang paghahambing sa Ranking →
+311|Mag-log ng session at magsisimulang mapuno rito ang mga record mo, ehersisyo kada ehersisyo.
+312|Burahin ang session
+313|I-tap ulit para burahin
+314|Wala na ang session na ito.
+315|Level up.
+316|Magaling.
+317|Na-save ang session
+318|seg na hold
+319|Tingnan ang hagdan mo
+320|Session
+321|Na-unlock ang skill step
+322|{count} skill step ang na-unlock
+323|Wala pang Shorts
+324|I-post ang una. Hanggang 3 minuto.
+325|I-mute
+326|Orihinal na audio
+327|I-pause
+328|I-play
+329|Mag-post ng Short
+330|Buksan ang tunog
+331|I-tap para sa tunog
+332|Mukhang mali ang email address na iyan.
+333|Tingnan ang email mo
+334|6-digit na code
+335|Ilagay ang code mula sa email.
+336|I-back up ang mga session mo, dalhin ang trial sa ibang phone, at sumali sa mga board.
+337|Walang password. Bago ka rito? Gagawa ito ng account mo.
+338|Gumamit ng ibang email
+339|Padalhan ako ng code
+340|Nagpapadala…
+341|Nagpadala kami ng 6-digit na code sa {email}.
+342|Mag-sign in
+343|Hindi available ang mga account sa build na ito.
+344|Tapos lahat ng hakbang. Sa iyo na ang skill na ito.
+345|Mula sa mga log mo
+346|Kusang nati-tick ang mga hakbang kapag na-log mo.
+347|Tapos na ang trial. Mananatili ang progreso mo; mag-Pro para mag-tick ng bagong hakbang.
+348|I-log
+349|Markahang tapos
+350|Naka-tick
+351|Alisin ang tick sa {step}
+352|Magdagdag ng komento…
+353|Isara ang sheet
+354|Magkomento
+355|Mga komento
+356|{count} komento
+357|{count} komento
+358|I-double tap para i-like
+359|I-like
+360|{n} like
+361|{n} likes
+362|Iba pang opsyon
+363|Wala pang komento. Simulan ang usapan.
+364|Hindi interesado
+365|Mga opsyon
+366|I-post ang komento
+367|I-report
+368|Salamat. Rerepasuhin namin ang post na ito.
+369|Sample
+370|I-save
+371|Nakita sa Cali
+372|Ipadala sa Messages
+373|Ipadala kay {name}
+374|Naipadala
+375|Naipadala kay {name}
+376|I-share
+377|Gumagana ang pag-share sa labas ng Cali sa phone app.
+378|I-share sa labas ng Cali
+379|Na-share
+380|{count} share
+381|{count} shares
+382|isang tao
+383|I-unlike
+384|I-unsave
+385|Tingnan ang 1 komento
+386|Tingnan lahat ng {count} komento
+387|Tingnan ang mga komento
+388|Ang post mo
+389|Form check
+390|Mag-post ng rep, makakuha ng tapat na feedback.
+391|Memes
+392|Gym humor, pero mabait.
+393|Progreso
+394|Before and after, lingguhang log.
+395|Mga tanong
+396|Walang tanong na masyadong basic.
+397|Mga panalo
+398|Unang pull-up? Ikuwento sa lahat.
+399|Feed
+400|Home
+401|Matuto
+402|Messages
+403|Shorts
+404|ehersisyo
+405|ehersisyo
+406|buwan
+407|buwan
+408|rep
+409|reps
+410|session
+411|session
+412|set
+413|set
+414|skill step
+415|skill step
+416|{n} kg
+417|~{n} kg 1RM
+418|+{n} kg
+419|{n}s
+420|Naka-off ang access sa camera. I-on ito sa Settings para makapag-record.
+421|Magsulat ng caption… ano'ng pinagtatrabahuhan mo?
+422|Pumili ng ibang video
+423|Palitan
+424|Sinusuri…
+425|Pumili ng video
+426|Mula sa gallery mo
+427|Haba
+428|Bagong Short
+429|{len} sa 3:00
+430|Hindi mabuksan ang mga larawan mo. Subukang muli.
+431|I-post ang Short
+432|Mag-record
+433|Training, progreso, form check at saya. Bawal ang hate, hubad o delikadong stunt. Kahit sino ay puwedeng mag-report ng post.
+434|Panatilihing maganda
+435|Hihinto sa 3:00
+436|Pinakamaganda ang vertical. Hanggang 3 minuto.
+437|Mag-post ng clip
+438|{len} ang video na ito. Hanggang 3:00 lang ang Shorts, kaya i-trim muna.
+439|Hindi namin mabasa kung gaano kahaba ang video na ito. Subukan ang iba.
+440|Hindi mabuksan ang mga video mo. Subukang muli.
+441|Sa web preview na ito, mananatili ang mga upload hanggang i-reload mo ang page.
+442|Payagan ang location para sa site na ito sa browser mo para makita ang lokal na panahon at oras.
+443|I-on ang location para sa Cali sa Settings para makita ang lokal na panahon at oras.
+444|Maaliwalas
+445|Maaliwalas na gabi
+446|Maulap
+447|Ambon
+448|Parang {temp}°
+449|Hinahanap ka at sinisilip ang langit…
+450|Hamog
+451|Naka-off ang location
+452|Hindi namin mahanap ang lokasyon mo. Tiyaking naka-on ang location services.
+453|Makulimlim
+454|Bahagyang maulap
+455|Live na temperatura, kondisyon at lokal na oras, may tip para sa session ngayon.
+456|Ulan
+457|Sikat {time}
+458|Lubog {time}
+459|Pag-ulan
+460|Niyebe
+461|Bagyong may kidlat
+462|Malamig. Painitin nang doble ang tagal ang pulso at balikat bago mag-hold.
+463|Magandang kondisyon para sa bars.
+464|Mainit. Mas maikling set, mas mahabang pahinga, laging may tubig.
+465|May kidlat. Lumayo sa metal na bar ngayon; mag-train sa loob.
+466|Mataas ang UV. Maghanap ng lilim para sa mahahabang hold at handstand.
+467|Napakainit. Mag-train nang maaga o gabi, sa lilim, at uminom nang mas marami kaysa sa inaakala mo.
+468|Madulas ang basang bar. Mag-chalk, punasan ang bar, o pumasok sa loob.
+469|Mahangin. Mas mahirap ang handstand sa labas ngayon.
+470|Panahon kung saan ka nagte-train
+471|Hindi available ang panahon ngayon.
+472|Gamitin ang lokasyon ko
+473|Ang lokasyon mo
+474|{days} araw na libre. Walang card na kailangan.
+475|Handstand
+476|May account na ako
+477|Mag-train ng skills.\nKamtin ang\niyong ranggo.
+478|Hindi pa
+479|Sa pader, 30s o higit pa
+480|Nakasandal sa pader, saglit
+481|Mula sa una mong pull-up hanggang sa malinis na muscle-up. I-track ang bawat rep, i-unlock ang bawat hakbang, at tingnan kung nasaan ka.
+482|Pangalan mo
+483|Hindi pa
+484|Pumili ng kahit isa
+485|Mag-log ng session sa ilang segundo
+486|World ranking na verified sa video
+487|Mga skill step na kusang nati-tick
+488|Strict na pull-up sa isang set
+489|Ano'ng gusto mong i-unlock?
+490|Pumili ng hanggang {n}. Ito ang uunahin sa Home.
+491|Nasaan ka na ngayon?
+492|Maging tapat. Ginagamit namin ito para laktawan ang mga hakbang na kaya mo na.
+493|Ano'ng itatawag namin sa iyo?
+494|Lalabas ang pangalang ito sa mga leaderboard. Puwede mo itong palitan anumang oras.
+495|Magsimula
+496|Simulan ang training
+497|Magsisimula ngayon
+498|Bukas ang lahat. Sa iyo ang history mo, anuman ang pasya mo pagkatapos.
+499|{days}-araw na libreng trial
+500|Timbang sa kg (opsyonal)

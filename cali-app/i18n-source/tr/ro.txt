@@ -1,0 +1,519 @@
+1|{n} z
+2|{n} h
+3|{n} min
+4|acum
+5|{n} săpt.
+6|Cea mai lungă stare în mâini
+7|Stare în mâini
+8|Max. muscle-up-uri
+9|Muscle-up-uri
+10|Max. tracțiuni
+11|Tracțiuni
+12|Cea mai grea tracțiune
+13|Cu greutate
+14|Calistenie, cu clasament
+15|Înapoi
+16|Închide
+17|Continuă
+18|Șterge
+19|Gata
+20|Negăsit
+21|Vezi tot
+22|Arată
+23|Arată mai puțin
+24|Arată mai mult
+25|Încearcă din nou
+26|Provocarea din {month}
+27|zile
+28|Încă nicio înscriere. Clasamentul e larg deschis.
+29|ore
+30|Cum funcționează
+31|Live · {month}
+32|min
+33|Clasamentul e offline acum.
+34|O singură încercare, filmată. Se încheie la miezul nopții, în ultima zi din {month}.
+35|s
+36|Înscrierile se deschid curând
+37|Clasament actual
+38|Filmează o încercare
+39|Un singur clip continuu, tot corpul în cadru, de la start până la ultima repetare.
+40|Trimite-o din aplicație
+41|Scorul tău intră în așteptare. Nimeni nu-l vede până nu e verificat.
+42|Fii verificat
+43|Contează doar repetările curate. Scorurile verificate ajung direct în clasament.
+44|Câștigătorii păstrează un trofeu
+45|Primii trei în fiecare lună primesc un trofeu permanent pe profil.
+46|{count} exercițiu
+47|{count} de exerciții
+47.few|{count} exerciții
+48|{count} repetare
+49|{count} de repetări
+49.few|{count} repetări
+50|{count} antrenament
+51|{count} de antrenamente
+51.few|{count} antrenamente
+52|{count} serie
+53|{count} de serii
+53.few|{count} serii
+54|{count} pas
+55|{count} de pași
+55.few|{count} pași
+56|Core
+57|Picioare
+58|Ridicări
+59|Tragere
+60|Împingere
+61|Abilități
+62|Adaugă o fotografie
+63|Fii primul care postează aici.
+64|Comunitate
+65|Împărtășește o reușită, o întrebare, o verificare de formă…
+66|Postare nouă
+67|Niciun comentariu încă. Spune ceva frumos.
+68|Ce s-a întâmplat azi?
+69|La ce ar trebui să se uite lumea?
+70|Întreabă comunitatea…
+71|Postează
+72|Postează în
+73|{count} postare
+74|{count} de postări
+74.few|{count} postări
+75|E liniște aici
+76|Elimină fotografia
+77|Postare eliminată
+78|Răspunde-i lui {handle}…
+79|Distribuie
+80|Distribuie ceva
+81|Această postare nu mai este disponibilă.
+82|În această previzualizare web, fotografiile rămân până reîncarci pagina.
+83|Nimic înregistrat încă
+84|Fiecare antrenament terminat apare aici, grupat pe luni.
+85|Istoricul tău e în siguranță. Treci la Pro ca să înregistrezi în continuare.
+86|Următorul: {step}
+87|Următoarea abilitate
+88|Niciun antrenament încă. Primul îți pornește recordurile și banda săptămânii de mai sus.
+89|Recente
+90|Începe antrenamentul
+91|Săptămâna aceasta
+92|Alegerea zilei
+93|Perioada ta de probă gratuită s-a încheiat
+94|Focusul tău
+95|{count} limbă
+96|Toate cele {count} de limbi
+97|Engleza e limba implicită. Alege altă limbă pentru meniuri și butoane; ghidurile și postările rămân în limba în care au fost scrise.
+98|Nicio limbă nu corespunde cu „{query}”.
+99|Traducerile sunt făcute de Cali. Ai găsit o greșeală? Spune-ne și o corectăm.
+100|Repornește Cali pentru a schimba direcția aspectului.
+101|Caută limbi
+102|Limba telefonului
+103|Limbă
+104|Articole
+105|Toate
+106|Echilibru
+107|Elemente de bază
+108|Core
+109|Picioare
+110|Mobilitate
+111|Tragere
+112|Recuperare
+113|Statice
+114|Ghiduri: {guides} · videoclipuri: {videos}
+115|Fiecare ghid duce la original. Videoclipurile se deschid pe YouTube. Explicațiile sunt scrise de Cali; sursele fotografiilor sunt trecute la fiecare ghid.
+116|Acest ghid nu mai e în bibliotecă.
+117|Ghid în engleză
+118|Cele mai bune ghiduri și videoclipuri pe care le-am găsit, explicate pas cu pas pentru scările tale.
+119|Scara {skill}
+120|Scară completă. Rămâi în formă.
+121|{count} min de citit
+122|{count} min de citit
+123|{count} min
+124|{count} min
+125|Greșeli de evitat
+126|Mai multe ca acesta
+127|Urmează: {step}
+128|Încă nu sunt articole în această categorie.
+129|Încă nu sunt videoclipuri în această categorie.
+130|Se potrivește cu aceste ghiduri
+131|Fotografie: {credit}. Imaginea din articolul original nu mai e online.
+132|Ales pentru {skill}
+133|Se redă pe YouTube
+134|Citește
+135|Citește în continuare
+136|Citește originalul pe {source}
+137|De reținut
+138|Short
+139|Pe scurt
+140|Pas cu pas
+141|Încearcă în Cali
+142|Sub un minut
+143|actualizat pe {date}
+144|Videoclip de {channel}. Cali doar trimite către el; nu îl găzduim și nu îl edităm.
+145|Acest videoclip nu mai e în bibliotecă.
+146|Videoclipuri
+147|{n} vizualizări
+148|Urmărește
+149|Urmărește în continuare
+150|Adaugă 15 secunde
+151|Adaugă serie
+152|Adaugă o serie de {name}
+153|Finalizează seria {n}
+154|Renunță la antrenament
+155|Renunți?
+156|Adaugă exerciții pe parcurs. Bifează o serie și cronometrul de pauză pornește singur.
+157|Ce antrenăm\nazi?
+158|Termină
+159|Termină antrenamentul
+160|prima dată
+161|Start
+162|kg
+163|Menținere
+164|Repetări
+165|Rep. · kg
+166|data trecută {sets}
+167|Înregistrarea e blocată
+168|Perioada ta de probă gratuită s-a încheiat. Fiecare antrenament înregistrat e în siguranță și poate fi văzut în continuare.
+169|Seria următoare
+170|Niciun exercițiu nu corespunde cu „{query}”.
+171|+kg
+172|Anterioara
+173|Elimină {name}
+174|rep.
+175|Pauză
+176|Caută exerciții
+177|s
+178|Serie
+179|Seria {n}, apasă lung pentru a elimina
+180|Seria {n} {unit}
+181|Greutatea seriei {n}
+182|Sari
+183|Sari peste pauză
+184|Anulează seria {n}
+185|Exercițiile tale obișnuite
+186|Închide meniul
+187|Concurează
+188|Provocarea lunii
+189|Istoric
+190|Fiecare antrenament înregistrat
+191|Limbă
+192|Engleză și încă 44
+193|Deschide meniul
+194|Profil
+195|Tu, contul și datele
+196|Clasament
+197|Clasamente mondiale
+198|Recorduri
+199|Recorduri personale
+200|Conectat ca {name}
+201|Abilități
+202|Scările tale
+203|Ai citit tot
+204|Conversația nu a fost găsită
+205|Poate a fost eliminată.
+206|Conversație cu {name}
+207|Conversații
+208|Gașca ta
+209|Conversații demonstrative până la lansare. Mesajele trimise rămân pe acest telefon.
+210|Trimite-i un mesaj lui {name}
+211|Nicio conversație nu corespunde cu „{query}”.
+212|Deschide postarea
+213|Deschide Short-ul
+214|Mesaj…
+215|Salută
+216|Caută persoane
+217|Trimite mesajul
+218|A trimis o postare
+219|A trimis un Short
+220|Acest Short nu mai este disponibil.
+221|{count} necitit
+222|{count} de necitite
+222.few|{count} necitite
+223|Tu: {text}
+224|Plata se deschide la lansare
+225|Insignă de Fondator, pentru totdeauna
+226|Provocări lunare
+227|Istoricul tău complet
+228|Scări de abilități care se bifează singure
+229|Înregistrează antrenamente
+230|Clasamente verificate video
+231|zi rămasă
+232|de zile rămase
+232.few|zile rămase
+233|A mai rămas {count} zi de probă
+234|Au mai rămas {count} de zile de probă
+234.few|Au mai rămas {count} zile de probă
+235|Tot istoricul tău e încă aici. Treci la Pro ca să înregistrezi în continuare.
+236|Fondator
+237|Permis de Fondator
+238|Fondator · Pro
+239|Gratuit
+240|Perioadă de probă gratuită
+241|Istoricul tău rămâne mereu vizibil, cu Pro sau fără.
+242|Susține-ne de la început și blochează prețul de lansare pentru tot anul.
+243|Permis de Fondator · preț de lansare
+244|{count} zi
+245|{count} de zile
+245.few|{count} zile
+246|cam ₹42 pe lună
+247|sub 1 $ pe lună
+248|pe an
+249|Prețul rămâne al tău cât timp reînnoiești.
+250|Pro, nelimitat
+251|India
+252|Restul lumii
+253|Vezi Permisul de Fondator
+254|Vezi Permisul de Fondator
+255|Mulțumim că ne susții de la început.
+256|Antrenează-te\nfără limite.
+257|Perioada de probă s-a încheiat
+258|Totul e deblocat până atunci. Istoricul rămâne al tău și după.
+259|Înregistrare nelimitată
+260|Ești Fondator
+261|Bună ziua
+262|Fereastra de prânz
+263|După-amiază
+264|Douăzeci de minute ajung. Hai.
+265|Bună seara
+266|Gata când ești și tu
+267|Seară
+268|Hai să facem antrenamentul de azi
+269|Bună dimineața
+270|Un nou început
+271|Dimineață
+272|Antrenează-te înainte să înceapă ziua
+273|Încă treaz?
+274|Antrenament de noapte?
+275|Noaptea târziu
+276|15 minute rapide, apoi somn
+277|Afiș demonstrativ
+278|Cont
+279|Copie de rezervă făcută
+280|Copie de rezervă la {time}
+281|Greutate corporală
+282|Șterge-mi contul
+283|Atinge din nou pentru a-mi șterge contul
+284|Elimină contul și tot ce e stocat în el. Nu poate fi anulat.
+285|Șterge toate datele mele
+286|Atinge din nou pentru a șterge tot
+287|Totul rămâne pe acest telefon până te conectezi.
+288|Nume
+289|Afișat în clasamente
+290|Setări
+291|Conectează-te pentru copie de rezervă
+292|Păstrează-ți antrenamentele, perioada de probă și locurile pe orice telefon.
+293|Deconectează-te
+294|Conectat
+295|Din {date}
+296|Sincronizează acum
+297|Problemă de sincronizare. Vom încerca din nou.
+298|Se sincronizează…
+299|Tu
+300|Datele tale
+301|Încă nu există scoruri verificate în acest clasament. Primul care trimite ia locul întâi.
+302|Lume · scoruri verificate
+303|Înregistrează această abilitate ca să-ți vezi aici recordul
+304|Neclasat
+305|Contează doar scorurile verificate video. Trimiterea cu clip se deschide odată cu prima provocare lunară.
+306|Liber
+307|Vezi provocarea lunii →
+308|Recordul tău: {value}
+309|Locul tău
+310|Compară-le în Clasament →
+311|Înregistrează un antrenament și recordurile încep să apară aici, exercițiu cu exercițiu.
+312|Șterge antrenamentul
+313|Atinge din nou pentru a șterge
+314|Acest antrenament nu mai există.
+315|Nivel nou.
+316|Bravo.
+317|Antrenament salvat
+318|s menținute
+319|Vezi-ți scara
+320|Antrenament
+321|Pas de abilitate deblocat
+322|Pași de abilitate deblocați: {count}
+323|Încă niciun Short
+324|Postează-l pe primul. Până la 3 minute.
+325|Fără sunet
+326|Audio original
+327|Pauză
+328|Redă
+329|Postează un Short
+330|Pornește sunetul
+331|Atinge pentru sunet
+332|Adresa de e-mail pare greșită.
+333|Verifică-ți e-mailul
+334|Cod din 6 cifre
+335|Introdu codul din e-mail.
+336|Fă copie de rezervă antrenamentelor, păstrează perioada de probă pe orice telefon și intră în clasamente.
+337|Fără parolă. Ești nou? Asta îți creează contul.
+338|Folosește alt e-mail
+339|Trimite-mi un cod
+340|Se trimite…
+341|Am trimis un cod din 6 cifre la {email}.
+342|Conectează-te
+343|Conturile nu sunt disponibile în această versiune.
+344|Toți pașii făcuți. Abilitatea asta e a ta.
+345|Din înregistrările tale
+346|Pașii se bifează singuri când îi înregistrezi.
+347|Perioada de probă s-a încheiat. Progresul rămâne; treci la Pro ca să bifezi pași noi.
+348|Înregistrează
+349|Marchează ca făcut
+350|Bifat
+351|Debifează {step}
+352|Adaugă un comentariu…
+353|Închide panoul
+354|Comentează
+355|Comentarii
+356|{count} comentariu
+357|{count} de comentarii
+357.few|{count} comentarii
+358|Atinge de două ori pentru a aprecia
+359|Apreciază
+360|{n} apreciere
+361|{n} de aprecieri
+361.few|{n} aprecieri
+362|Mai multe opțiuni
+363|Niciun comentariu încă. Începe conversația.
+364|Nu mă interesează
+365|Opțiuni
+366|Publică comentariul
+367|Raportează
+368|Mulțumim. Vom verifica această postare.
+369|Exemplu
+370|Salvează
+371|Văzut pe Cali
+372|Trimite în Mesaje
+373|Trimite-i lui {name}
+374|Trimis
+375|Trimis lui {name}
+376|Distribuie
+377|Distribuirea în afara Cali funcționează în aplicația de telefon.
+378|Distribuie în afara Cali
+379|Distribuit
+380|{count} distribuire
+381|{count} de distribuiri
+381.few|{count} distribuiri
+382|cineva
+383|Nu mai aprecia
+384|Elimină din salvate
+385|Vezi 1 comentariu
+386|Vezi toate comentariile ({count})
+387|Vezi comentariile
+388|Postarea ta
+389|Verificare de formă
+390|Postează o repetare, primește o părere sinceră.
+391|Meme
+392|Umor de sală, dar cu bun-simț.
+393|Progres
+394|Înainte și după, jurnale săptămână de săptămână.
+395|Întrebări
+396|Nicio întrebare nu e prea simplă.
+397|Reușite
+398|Prima tracțiune? Spune-le tuturor.
+399|Flux
+400|Acasă
+401|Învață
+402|Mesaje
+403|Shorts
+404|exercițiu
+405|de exerciții
+405.few|exerciții
+406|lună
+407|de luni
+407.few|luni
+408|repetare
+409|de repetări
+409.few|repetări
+410|antrenament
+411|de antrenamente
+411.few|antrenamente
+412|serie
+413|de serii
+413.few|serii
+414|pas de abilitate
+415|de pași de abilitate
+415.few|pași de abilitate
+416|{n} kg
+417|~{n} kg 1RM
+418|+{n} kg
+419|{n} s
+420|Accesul la cameră e oprit. Activează-l din Setări ca să filmezi.
+421|Scrie o descriere… la ce lucrezi?
+422|Alege alt videoclip
+423|Schimbă
+424|Se verifică…
+425|Alege un videoclip
+426|Din galeria ta
+427|Durată
+428|Short nou
+429|{len} din 3:00
+430|Nu ți-am putut deschide fotografiile. Încearcă din nou.
+431|Postează Short-ul
+432|Filmează
+433|Antrenament, progres, verificări de formă și distracție. Fără ură, nuditate sau cascadorii periculoase. Oricine poate raporta o postare.
+434|Păstrează atmosfera bună
+435|Se oprește la 3:00
+436|Vertical merge cel mai bine. Până la 3 minute.
+437|Postează un clip
+438|Acest videoclip are {len}. Shorts pot avea până la 3:00, așa că taie-l întâi.
+439|Nu am putut citi durata acestui videoclip. Încearcă altul.
+440|Nu ți-am putut deschide videoclipurile. Încearcă din nou.
+441|În această previzualizare web, încărcările rămân până reîncarci pagina.
+442|Permite locația pentru acest site în browser ca să vezi vremea și ora locală.
+443|Activează locația pentru Cali din Setări ca să vezi vremea și ora locală.
+444|Senin
+445|Noapte senină
+446|Înnorat
+447|Burniță
+448|Se simte ca {temp}°
+449|Te căutăm și ne uităm la cer…
+450|Ceață
+451|Locația e oprită
+452|Nu ți-am putut găsi locația. Verifică dacă serviciile de localizare sunt pornite.
+453|Cer acoperit
+454|Parțial înnorat
+455|Temperatură, condiții și ora locală în timp real, cu un sfat pentru antrenamentul de azi.
+456|Ploaie
+457|Răsărit {time}
+458|Apus {time}
+459|Averse
+460|Ninsoare
+461|Furtună
+462|E frig. Încălzește încheieturile și umerii de două ori mai mult înainte de mențineri.
+463|Condiții bune pentru bare.
+464|E cald. Serii mai scurte, pauze mai lungi, apă la îndemână.
+465|Furtună. Azi stai departe de barele metalice; antrenează-te în interior.
+466|UV ridicat. Caută umbră pentru menținerile lungi și stările în mâini.
+467|Foarte cald. Antrenează-te devreme sau târziu, la umbră, și bea mai mult decât crezi.
+468|Barele ude alunecă. Pune magneziu, șterge bara sau intră înăuntru.
+469|Vânt. Stările în mâini afară vor fi mai grele azi.
+470|Vremea unde te antrenezi
+471|Vremea nu e disponibilă acum.
+472|Folosește locația mea
+473|Locația ta
+474|{days} de zile gratuit. Fără card.
+475|Stare în mâini
+476|Am deja cont
+477|Antrenează abilități.\nCâștigă-ți\nlocul.
+478|Încă nu
+479|La perete, 30 s sau mai mult
+480|Lângă perete, scurt
+481|De la prima tracțiune la un muscle-up curat. Urmărește fiecare repetare, deblochează fiecare pas și vezi unde te afli.
+482|Numele tău
+483|Încă nu
+484|Alege cel puțin unul
+485|Înregistrează antrenamente în câteva secunde
+486|Clasamente mondiale verificate video
+487|Pași de abilitate care se bifează singuri
+488|Tracțiuni stricte într-o serie
+489|Ce vrei să deblochezi?
+490|Alege până la {n}. Ecranul Acasă va începe cu acestea.
+491|Unde ești acum?
+492|Fii sincer. Folosim asta ca să sărim peste pașii pe care îi stăpânești deja.
+493|Cum să-ți spunem?
+494|Numele apare în clasamente. Îl poți schimba oricând.
+495|Hai să începem
+496|Începe antrenamentul
+497|Începe azi
+498|Totul deblocat. Istoricul rămâne al tău, orice ai decide după.
+499|Probă gratuită de {days} de zile
+500|Greutate corporală în kg (opțional)

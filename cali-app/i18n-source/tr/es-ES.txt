@@ -1,0 +1,500 @@
+1|{n} d
+2|{n} h
+3|{n} min
+4|ahora
+5|{n} sem
+6|Parada de manos más larga
+7|Parada de manos
+8|Máximo de muscle-ups
+9|Muscle-ups
+10|Máximo de dominadas
+11|Dominadas
+12|Dominada con más peso
+13|Con lastre
+14|Calistenia, con ranking
+15|Atrás
+16|Cerrar
+17|Continuar
+18|Eliminar
+19|Listo
+20|No encontrado
+21|Ver todo
+22|Mostrar
+23|Mostrar menos
+24|Mostrar más
+25|Reintentar
+26|Reto de {month}
+27|días
+28|Aún no hay participaciones. El tablero está libre.
+29|horas
+30|Cómo funciona
+31|En vivo · {month}
+32|min
+33|La clasificación no está disponible ahora.
+34|Un intento, en vídeo. Termina a medianoche del último día de {month}.
+35|s
+36|Las inscripciones abren pronto
+37|Clasificación actual
+38|Graba un intento
+39|Un solo clip continuo, con todo el cuerpo en cuadro, desde el inicio hasta la última repetición.
+40|Envíalo desde la app
+41|Tu marca queda pendiente. Nadie la ve hasta que se revise.
+42|Obtén la verificación
+43|Solo cuentan las repeticiones limpias. Las marcas verificadas van directamente al tablero.
+44|Los ganadores se quedan un trofeo
+45|Los tres primeros de cada mes reciben un trofeo permanente en su perfil.
+46|{count} ejercicio
+47|{count} ejercicios
+48|{count} repetición
+49|{count} repeticiones
+50|{count} sesión
+51|{count} sesiones
+52|{count} serie
+53|{count} series
+54|{count} paso
+55|{count} pasos
+56|Core
+57|Piernas
+58|Levantamientos
+59|Tirón
+60|Empuje
+61|Habilidades
+62|Añadir una foto
+63|Sé el primero en publicar aquí.
+64|Comunidad
+65|Comparte un logro, una pregunta, una revisión de técnica…
+66|Nueva publicación
+67|Aún no hay comentarios. Di algo bonito.
+68|¿Qué pasó hoy?
+69|¿En qué deberían fijarse?
+70|Pregúntale a la comunidad…
+71|Publicar
+72|Publicar en
+73|{count} publicación
+74|{count} publicaciones
+75|Todo tranquilo por aquí
+76|Quitar foto
+77|Publicación eliminada
+78|Responder a {handle}…
+79|Compartir
+80|Comparte algo
+81|Esta publicación ya no está disponible.
+82|En esta vista previa web, las fotos se mantienen hasta que recargues la página.
+83|Aún no hay registros
+84|Cada sesión que termines aparece aquí, agrupada por mes.
+85|Tu historial está a salvo. Hazte Pro para seguir registrando.
+86|Siguiente: {step}
+87|Siguiente habilidad
+88|Aún no hay sesiones. La primera inicia tus récords y la franja semanal de arriba.
+89|Recientes
+90|Iniciar sesión de entreno
+91|Esta semana
+92|Selección de hoy
+93|Tu prueba gratuita terminó
+94|Tu enfoque
+95|{count} idioma
+96|Los {count} idiomas
+97|El inglés es el predeterminado. Elige otro idioma para menús y botones; las guías y publicaciones se quedan en el idioma en que se escribieron.
+98|Ningún idioma coincide con “{query}”.
+99|Las traducciones las hace Cali. ¿Ves un error? Avísanos y lo corregimos.
+100|Reinicia Cali para cambiar la dirección del diseño.
+101|Buscar idiomas
+102|El idioma de tu teléfono
+103|Idioma
+104|Artículos
+105|Todo
+106|Equilibrio
+107|Fundamentos
+108|Core
+109|Piernas
+110|Movilidad
+111|Tirón
+112|Recuperación
+113|Estáticos
+114|{guides} guías · {videos} vídeos
+115|Cada guía enlaza a su original. Los vídeos se abren en YouTube. Los resúmenes los escribe Cali; las fotos tienen crédito en cada guía.
+116|Esta guía ya no está en la biblioteca.
+117|Guía en inglés
+118|Las mejores guías y vídeos que encontramos, explicados paso a paso para tus escaleras.
+119|Escalera de {skill}
+120|Escalera completa. Mantenla a punto.
+121|{count} min de lectura
+122|{count} min de lectura
+123|{count} min
+124|{count} min
+125|Errores que evitar
+126|Más como esto
+127|A continuación: {step}
+128|Aún no hay artículos en esta categoría.
+129|Aún no hay vídeos en esta categoría.
+130|Combina con estas guías
+131|Foto: {credit}. La imagen del artículo original ya no está en línea.
+132|Elegido para tu {skill}
+133|Se reproduce en YouTube
+134|Leer
+135|Lee después
+136|Lee el original en {source}
+137|Para recordar
+138|Short
+139|La versión corta
+140|Paso a paso
+141|Pruébalo en Cali
+142|Menos de un minuto
+143|actualizado el {date}
+144|Vídeo de {channel}. Cali solo lo enlaza; no lo alojamos ni lo editamos.
+145|Este vídeo ya no está en la biblioteca.
+146|Vídeos
+147|{n} vistas
+148|Ver
+149|Ver después
+150|Añadir 15 segundos
+151|Añadir serie
+152|Añadir una serie de {name}
+153|Completar serie {n}
+154|Descartar sesión
+155|¿Descartar?
+156|Añade ejercicios sobre la marcha. Marca una serie y el temporizador de descanso arranca solo.
+157|¿Qué vamos\na entrenar?
+158|Terminar
+159|Terminar sesión
+160|primera vez
+161|Vamos
+162|kg
+163|Mantener
+164|Reps
+165|Reps · kg
+166|la última vez {sets}
+167|El registro está bloqueado
+168|Tu prueba gratuita terminó. Cada sesión que registraste está a salvo y puedes verla.
+169|Siguiente serie
+170|Ningún ejercicio coincide con “{query}”.
+171|+kg
+172|Anterior
+173|Quitar {name}
+174|reps
+175|Descanso
+176|Buscar ejercicios
+177|s
+178|Serie
+179|Serie {n}, mantén presionado para quitarla
+180|Serie {n} {unit}
+181|Peso de la serie {n}
+182|Omitir
+183|Saltar descanso
+184|Deshacer serie {n}
+185|Tus habituales
+186|Cerrar menú
+187|Competir
+188|El reto de este mes
+189|Historial
+190|Cada sesión que registraste
+191|Idioma
+192|Inglés y 44 más
+193|Abrir menú
+194|Perfil
+195|Tú, tu cuenta y tus datos
+196|Ranking
+197|Tableros mundiales
+198|Récords
+199|Mejores marcas personales
+200|Sesión iniciada como {name}
+201|Habilidades
+202|Tus escaleras
+203|Estás al día
+204|Chat no encontrado
+205|Puede que lo hayan eliminado.
+206|Chat con {name}
+207|Chats
+208|Tu equipo
+209|Chats de ejemplo hasta el lanzamiento. Los mensajes que envíes se guardan en este teléfono.
+210|Enviar mensaje a {name}
+211|Ningún chat coincide con “{query}”.
+212|Abrir publicación
+213|Abrir Short
+214|Mensaje…
+215|Saluda
+216|Buscar personas
+217|Enviar mensaje
+218|Envió una publicación
+219|Envió un Short
+220|Este Short ya no está disponible.
+221|{count} sin leer
+222|{count} sin leer
+223|Tú: {text}
+224|El pago se abre en el lanzamiento
+225|Insignia de Fundador, para siempre
+226|Retos mensuales
+227|Tu historial completo
+228|Escaleras de habilidades que se marcan solas
+229|Registra sesiones
+230|Rankings verificados en vídeo
+231|día restante
+232|días restantes
+233|Te queda {count} día de prueba
+234|Te quedan {count} días de prueba
+235|Todo tu historial sigue aquí. Hazte Pro para seguir registrando.
+236|Fundador
+237|Pase Fundador
+238|Fundador · Pro
+239|Gratis
+240|Prueba gratuita
+241|Tu historial siempre se puede ver, seas Pro o no.
+242|Apóyanos desde el inicio y asegura el precio de lanzamiento por todo el año.
+243|Pase Fundador · precio de lanzamiento
+244|{count} día
+245|{count} días
+246|unos ₹42 al mes
+247|menos de $1 al mes
+248|por año
+249|El precio se mantiene mientras renueves.
+250|Pro, ilimitado
+251|India
+252|Resto del mundo
+253|Ver el Pase Fundador
+254|Ver el Pase Fundador
+255|Gracias por apoyarnos desde el inicio.
+256|Entrena sin\nlímites.
+257|Prueba terminada
+258|Todo está desbloqueado hasta entonces. Después, tu historial sigue siendo tuyo.
+259|Registro ilimitado
+260|Eres Fundador
+261|Buenas tardes
+262|Ventana de mediodía
+263|Tarde
+264|Veinte minutos bastan. Vamos.
+265|Buenas noches
+266|Cuando quieras
+267|Noche
+268|Hagamos la sesión de hoy
+269|Buenos días
+270|Nuevo comienzo
+271|Mañana
+272|Entrena antes de que el día te gane
+273|¿Sigues despierto?
+274|¿Sesión nocturna?
+275|De madrugada
+276|15 minutos rápidos y a dormir
+277|Póster de ejemplo
+278|Cuenta
+279|Respaldado
+280|Respaldado a las {time}
+281|Peso corporal
+282|Eliminar mi cuenta
+283|Toca de nuevo para eliminar mi cuenta
+284|Elimina la cuenta y todo lo que contiene. No se puede deshacer.
+285|Borrar todos mis datos
+286|Toca de nuevo para borrarlo todo
+287|Todo se queda en este teléfono hasta que inicies sesión.
+288|Nombre
+289|Se muestra en los rankings
+290|Ajustes
+291|Inicia sesión para respaldar
+292|Conserva tus sesiones, tu prueba y tus posiciones en cualquier teléfono.
+293|Cerrar sesión
+294|Sesión iniciada
+295|Desde {date}
+296|Sincronizar ahora
+297|Error de sincronización. Se reintentará.
+298|Sincronizando…
+299|Tú
+300|Tus datos
+301|Aún no hay marcas verificadas en este tablero. La primera persona en enviar se queda con el primer puesto.
+302|Mundo · marcas verificadas
+303|Registra esta habilidad para ver tu mejor marca aquí
+304|Sin clasificar
+305|Solo cuentan las marcas verificadas en vídeo. El envío con clip se abre con el primer reto mensual.
+306|Libre
+307|Ver el reto de este mes →
+308|Tu mejor marca: {value}
+309|Tu puesto
+310|Mira cómo se comparan en el Ranking →
+311|Registra una sesión y tus récords empezarán a llenarse aquí, ejercicio por ejercicio.
+312|Eliminar sesión
+313|Toca de nuevo para eliminar
+314|Esta sesión ya no existe.
+315|Subiste de nivel.
+316|Buen trabajo.
+317|Sesión guardada
+318|s sostenidos
+319|Ver tu escalera
+320|Sesión
+321|Paso de habilidad desbloqueado
+322|{count} pasos de habilidad desbloqueados
+323|Aún no hay Shorts
+324|Publica el primero. Hasta 3 minutos.
+325|Silenciar
+326|Audio original
+327|Pausar
+328|Reproducir
+329|Publicar un Short
+330|Activar sonido
+331|Toca para activar el sonido
+332|Ese correo electrónico no parece válido.
+333|Revisa tu correo
+334|Código de 6 dígitos
+335|Introduce el código del correo.
+336|Respalda tus sesiones, conserva tu prueba en cualquier teléfono y entra a los rankings.
+337|Sin contraseña. ¿Eres nuevo? Esto crea tu cuenta.
+338|Usar otro correo
+339|Envíame un código
+340|Enviando…
+341|Enviamos un código de 6 dígitos a {email}.
+342|Iniciar sesión
+343|Las cuentas no están disponibles en esta versión.
+344|Todos los pasos hechos. Esta habilidad es tuya.
+345|De tus registros
+346|Los pasos se marcan solos cuando los registras.
+347|La prueba terminó. Tu progreso se queda; hazte Pro para marcar pasos nuevos.
+348|Registrarlo
+349|Marcar como hecho
+350|Marcado
+351|Desmarcar {step}
+352|Añade un comentario…
+353|Cerrar panel
+354|Comentar
+355|Comentarios
+356|{count} comentario
+357|{count} comentarios
+358|Toca dos veces para dar me gusta
+359|Me gusta
+360|{n} me gusta
+361|{n} me gusta
+362|Más opciones
+363|Aún no hay comentarios. Empieza la conversación.
+364|No me interesa
+365|Opciones
+366|Publicar comentario
+367|Denunciar
+368|Gracias. Revisaremos esta publicación.
+369|Ejemplo
+370|Guardar
+371|Visto en Cali
+372|Enviar por Mensajes
+373|Enviar a {name}
+374|Enviado
+375|Enviado a {name}
+376|Compartir
+377|Compartir fuera de Cali funciona en la app del teléfono.
+378|Compartir fuera de Cali
+379|Compartido
+380|{count} vez compartido
+381|{count} veces compartido
+382|alguien
+383|Quitar me gusta
+384|Quitar de guardados
+385|Ver 1 comentario
+386|Ver los {count} comentarios
+387|Ver comentarios
+388|Tu publicación
+389|Revisión de técnica
+390|Publica una repetición y recibe opiniones honestas.
+391|Memes
+392|Humor de gimnasio, con buen rollo.
+393|Progreso
+394|Antes y después, registros semana a semana.
+395|Preguntas
+396|Ninguna pregunta es demasiado básica.
+397|Logros
+398|¿Tu primera dominada? Cuéntaselo a todos.
+399|Feed
+400|Inicio
+401|Aprender
+402|Mensajes
+403|Shorts
+404|ejercicio
+405|ejercicios
+406|mes
+407|meses
+408|repetición
+409|repeticiones
+410|sesión
+411|sesiones
+412|serie
+413|series
+414|paso de habilidad
+415|pasos de habilidad
+416|{n} kg
+417|~{n} kg 1RM
+418|+{n} kg
+419|{n} s
+420|El acceso a la cámara está desactivado. Actívalo en Ajustes para grabar.
+421|Escribe una descripción… ¿en qué estás trabajando?
+422|Elegir otro vídeo
+423|Cambiar
+424|Comprobando…
+425|Elegir un vídeo
+426|De tu galería
+427|Duración
+428|Nuevo Short
+429|{len} de 3:00
+430|No se pudieron abrir tus fotos. Inténtalo de nuevo.
+431|Publicar Short
+432|Grabar
+433|Entrenamiento, progreso, revisiones de técnica y diversión. Nada de odio, desnudos ni acrobacias peligrosas. Cualquiera puede denunciar una publicación.
+434|Buen rollo, siempre
+435|Se detiene en 3:00
+436|Mejor en vertical. Hasta 3 minutos.
+437|Publica un clip
+438|Este vídeo dura {len}. Los Shorts pueden durar hasta 3:00, así que recórtalo primero.
+439|No pudimos leer la duración de este vídeo. Prueba con otro.
+440|No se pudieron abrir tus vídeos. Inténtalo de nuevo.
+441|En esta vista previa web, lo que subas se mantiene hasta que recargues la página.
+442|Permite la ubicación para este sitio en tu navegador para ver el clima y la hora local.
+443|Activa la ubicación para Cali en Ajustes para ver el clima y la hora local.
+444|Despejado
+445|Noche despejada
+446|Nublado
+447|Llovizna
+448|Sensación de {temp}°
+449|Buscándote y mirando el cielo…
+450|Niebla
+451|La ubicación está desactivada
+452|No pudimos encontrar tu ubicación. Revisa que los servicios de ubicación estén activados.
+453|Cubierto
+454|Parcialmente nublado
+455|Temperatura, condiciones y hora local en vivo, con un consejo para la sesión de hoy.
+456|Lluvia
+457|Sale {time}
+458|Se pone {time}
+459|Chubascos
+460|Nieve
+461|Tormenta eléctrica
+462|Hace frío. Calienta muñecas y hombros el doble de tiempo antes de las retenciones.
+463|Buenas condiciones para las barras.
+464|Hace calor. Series más cortas, descansos más largos y el agua cerca.
+465|Tormenta eléctrica. Hoy aléjate de las barras de metal; entrena bajo techo.
+466|El UV está alto. Busca sombra para las retenciones largas y las paradas de manos.
+467|Mucho calor. Entrena temprano o tarde, a la sombra, y bebe más agua de la que crees.
+468|Las barras mojadas resbalan. Ponte magnesio, seca la barra o entrena bajo techo.
+469|Hay viento. Las paradas de manos al aire libre serán más difíciles hoy.
+470|El clima donde entrenas
+471|El clima no está disponible ahora.
+472|Usar mi ubicación
+473|Tu ubicación
+474|{days} días gratis. Sin tarjeta.
+475|Parada de manos
+476|Ya tengo una cuenta
+477|Entrena habilidades.\nGánate tu\nposición.
+478|Todavía no
+479|En la pared, 30 s o más
+480|Contra la pared, un momento
+481|De tu primera dominada a un muscle-up limpio. Registra cada repetición, desbloquea cada paso y mira dónde estás.
+482|Tu nombre
+483|Todavía no
+484|Elige al menos uno
+485|Registra sesiones en segundos
+486|Rankings mundiales verificados en vídeo
+487|Pasos de habilidad que se marcan solos
+488|Dominadas estrictas en una serie
+489|¿Qué quieres desbloquear?
+490|Elige hasta {n}. El inicio empezará con estos.
+491|¿Dónde estás ahora?
+492|Sé sincero. Lo usamos para saltarnos los pasos que ya dominas.
+493|¿Cómo te llamamos?
+494|Este nombre aparece en los rankings. Puedes cambiarlo cuando quieras.
+495|Empezar
+496|Empieza a entrenar
+497|Empieza hoy
+498|Todo desbloqueado. Tu historial es tuyo, decidas lo que decidas después.
+499|Prueba gratuita de {days} días
+500|Peso corporal en kg (opcional)

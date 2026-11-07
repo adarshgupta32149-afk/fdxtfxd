@@ -1,0 +1,500 @@
+1|{n} d
+2|{n} u
+3|{n} min
+4|nu
+5|{n} w
+6|Langste handstand
+7|Handstand
+8|Max. muscle-ups
+9|Muscle-ups
+10|Max. pull-ups
+11|Pull-ups
+12|Zwaarste pull-up
+13|Met gewicht
+14|Calisthenics, met ranglijst
+15|Terug
+16|Sluiten
+17|Doorgaan
+18|Verwijderen
+19|Klaar
+20|Niet gevonden
+21|Alles bekijken
+22|Tonen
+23|Minder tonen
+24|Meer tonen
+25|Opnieuw proberen
+26|Challenge van {month}
+27|dagen
+28|Nog geen inzendingen. Het bord ligt wijd open.
+29|uur
+30|Zo werkt het
+31|Live · {month}
+32|min
+33|Het klassement is nu offline.
+34|Eén poging, op video. Eindigt om middernacht op de laatste dag van {month}.
+35|sec
+36|Inzenden kan binnenkort
+37|Huidige stand
+38|Film één poging
+39|Eén doorlopende clip, hele lichaam in beeld, van start tot laatste herhaling.
+40|Dien hem in via de app
+41|Je score staat eerst in afwachting. Niemand ziet hem tot hij is gecontroleerd.
+42|Laat je verifiëren
+43|Alleen schone herhalingen tellen. Geverifieerde scores komen direct op het bord.
+44|Winnaars houden een trofee
+45|De top drie van elke maand krijgt een blijvende trofee op hun profiel.
+46|{count} oefening
+47|{count} oefeningen
+48|{count} herhaling
+49|{count} herhalingen
+50|{count} sessie
+51|{count} sessies
+52|{count} set
+53|{count} sets
+54|{count} stap
+55|{count} stappen
+56|Core
+57|Benen
+58|Lifts
+59|Trekken
+60|Duwen
+61|Skills
+62|Foto toevoegen
+63|Plaats hier als eerste iets.
+64|Community
+65|Deel een succes, een vraag, een formcheck…
+66|Nieuwe post
+67|Nog geen reacties. Zeg iets aardigs.
+68|Wat gebeurde er vandaag?
+69|Waar moeten mensen op letten?
+70|Vraag het de community…
+71|Plaatsen
+72|Plaatsen in
+73|{count} post
+74|{count} posts
+75|Het is hier nog stil
+76|Foto verwijderen
+77|Post verwijderd
+78|Reageer op {handle}…
+79|Deel het
+80|Deel iets
+81|Deze post is niet meer beschikbaar.
+82|In deze webpreview blijven foto's staan tot je de pagina herlaadt.
+83|Nog niets gelogd
+84|Elke sessie die je afrondt komt hier, gegroepeerd per maand.
+85|Je geschiedenis is veilig. Neem Pro om te blijven loggen.
+86|Volgende: {step}
+87|Volgende skill
+88|Nog geen sessies. Je eerste sessie start je records en de weekbalk hierboven.
+89|Recent
+90|Sessie starten
+91|Deze week
+92|Tip van vandaag
+93|Je gratis proefperiode is afgelopen
+94|Jouw focus
+95|{count} taal
+96|Alle {count} talen
+97|Engels is de standaard. Kies een andere taal voor menu's en knoppen; gidsen en posts blijven in hun oorspronkelijke taal.
+98|Geen taal gevonden voor ‘{query}’.
+99|Vertalingen zijn gemaakt door Cali. Fout gezien? Laat het weten, dan passen we het aan.
+100|Start Cali opnieuw om de leesrichting te wisselen.
+101|Talen zoeken
+102|Taal van je telefoon
+103|Taal
+104|Artikelen
+105|Alles
+106|Balans
+107|Basis
+108|Core
+109|Benen
+110|Mobiliteit
+111|Trekken
+112|Herstel
+113|Statics
+114|{guides} gidsen · {videos} video's
+115|Elke gids linkt naar het origineel. Video's openen op YouTube. De uitleg is geschreven door Cali; fotobronnen staan bij elke gids.
+116|Deze gids staat niet meer in de bibliotheek.
+117|Gids in het Engels
+118|De beste gidsen en video's die we konden vinden, stap voor stap uitgelegd voor jouw ladders.
+119|{skill}-ladder
+120|Ladder voltooid. Blijf scherp.
+121|{count} min lezen
+122|{count} min lezen
+123|{count} min
+124|{count} min
+125|Fouten om te vermijden
+126|Meer zoals dit
+127|Hierna: {step}
+128|Nog geen artikelen in deze categorie.
+129|Nog geen video's in deze categorie.
+130|Past bij deze gidsen
+131|Foto: {credit}. De afbeelding uit het oorspronkelijke artikel staat niet meer online.
+132|Gekozen voor je {skill}
+133|Speelt af op YouTube
+134|Lezen
+135|Lees hierna
+136|Lees het origineel op {source}
+137|Om te onthouden
+138|Short
+139|De korte versie
+140|Stap voor stap
+141|Probeer het in Cali
+142|Minder dan een minuut
+143|bijgewerkt {date}
+144|Video van {channel}. Cali linkt er alleen naar; wij hosten of bewerken hem niet.
+145|Deze video staat niet meer in de bibliotheek.
+146|Video's
+147|{n} weergaven
+148|Bekijken
+149|Bekijk hierna
+150|15 seconden erbij
+151|Set toevoegen
+152|Set {name} toevoegen
+153|Set {n} afronden
+154|Sessie weggooien
+155|Weggooien?
+156|Voeg oefeningen toe terwijl je bezig bent. Vink een set af en de rusttimer start vanzelf.
+157|Wat gaan we\ntrainen?
+158|Klaar
+159|Sessie afronden
+160|eerste keer
+161|Gaan
+162|kg
+163|Hold
+164|Herh.
+165|Herh. · kg
+166|vorige keer {sets}
+167|Loggen is vergrendeld
+168|Je gratis proefperiode is afgelopen. Elke gelogde sessie is veilig en blijft zichtbaar.
+169|Volgende set
+170|Geen oefening gevonden voor ‘{query}’.
+171|+kg
+172|Vorige
+173|{name} verwijderen
+174|herh.
+175|Rust
+176|Oefeningen zoeken
+177|sec
+178|Set
+179|Set {n}, lang indrukken om te verwijderen
+180|Set {n} {unit}
+181|Gewicht set {n}
+182|Overslaan
+183|Rust overslaan
+184|Set {n} ongedaan maken
+185|Je vaste oefeningen
+186|Menu sluiten
+187|Meedoen
+188|De challenge van deze maand
+189|Geschiedenis
+190|Elke sessie die je logde
+191|Taal
+192|Engels en 44 andere
+193|Menu openen
+194|Profiel
+195|Jij, account en gegevens
+196|Ranglijst
+197|Wereldranglijsten
+198|Records
+199|Persoonlijke records
+200|Ingelogd als {name}
+201|Skills
+202|Je ladders
+203|Alles gelezen
+204|Chat niet gevonden
+205|Misschien is hij verwijderd.
+206|Chat met {name}
+207|Chats
+208|Je crew
+209|Voorbeeldchats tot de lancering. Berichten die je stuurt blijven op deze telefoon.
+210|Bericht aan {name}
+211|Geen chats gevonden voor ‘{query}’.
+212|Post openen
+213|Short openen
+214|Bericht…
+215|Zeg hoi
+216|Mensen zoeken
+217|Bericht versturen
+218|Stuurde een post
+219|Stuurde een Short
+220|Deze Short is niet meer beschikbaar.
+221|{count} ongelezen
+222|{count} ongelezen
+223|Jij: {text}
+224|Afrekenen kan vanaf de lancering
+225|Founder-badge, voor altijd
+226|Maandelijkse challenges
+227|Je volledige geschiedenis
+228|Skill-ladders die zichzelf afvinken
+229|Sessies loggen
+230|Op video geverifieerde ranglijsten
+231|dag over
+232|dagen over
+233|Nog {count} dag proefperiode
+234|Nog {count} dagen proefperiode
+235|Je hele geschiedenis staat er nog. Neem Pro om te blijven loggen.
+236|Founder
+237|Founder Pass
+238|Founder · Pro
+239|Gratis
+240|Gratis proefperiode
+241|Je geschiedenis blijft altijd zichtbaar, met of zonder Pro.
+242|Steun ons vroeg en zet de lanceringsprijs vast voor het hele jaar.
+243|Founder Pass · lanceringsprijs
+244|{count} dag
+245|{count} dagen
+246|ongeveer ₹42 per maand
+247|minder dan $1 per maand
+248|per jaar
+249|De prijs blijft van jou zolang je verlengt.
+250|Pro, onbeperkt
+251|India
+252|Wereldwijd
+253|Bekijk de Founder Pass
+254|Bekijk de Founder Pass
+255|Bedankt dat je ons vroeg steunt.
+256|Train zonder\ngrenzen.
+257|Proefperiode voorbij
+258|Tot dan is alles ontgrendeld. Daarna blijft je geschiedenis van jou.
+259|Onbeperkt loggen
+260|Je bent Founder
+261|Goedemiddag
+262|Middagpauze
+263|Middag
+264|Twintig minuten is genoeg. Gaan.
+265|Goedenavond
+266|Klaar wanneer jij dat bent
+267|Avond
+268|Laten we de sessie van vandaag doen
+269|Goedemorgen
+270|Frisse start
+271|Ochtend
+272|Train voordat de dag begint
+273|Nog wakker?
+274|Nachtsessie?
+275|Laat op de avond
+276|Snel 15 minuten, dan slapen
+277|Voorbeeldposter
+278|Account
+279|Back-up gemaakt
+280|Back-up om {time}
+281|Lichaamsgewicht
+282|Mijn account verwijderen
+283|Tik nogmaals om mijn account te verwijderen
+284|Verwijdert het account en alles wat erin staat. Kan niet ongedaan worden gemaakt.
+285|Al mijn gegevens wissen
+286|Tik nogmaals om alles te wissen
+287|Alles blijft op deze telefoon tot je inlogt.
+288|Naam
+289|Zichtbaar op ranglijsten
+290|Instellingen
+291|Log in voor een back-up
+292|Houd je sessies, proefperiode en posities op elke telefoon.
+293|Uitloggen
+294|Ingelogd
+295|Sinds {date}
+296|Nu synchroniseren
+297|Synchronisatieprobleem. We proberen het opnieuw.
+298|Synchroniseren…
+299|Jij
+300|Je gegevens
+301|Nog geen geverifieerde scores op dit bord. Wie het eerst inzendt, staat bovenaan.
+302|Wereld · geverifieerde scores
+303|Log deze skill om hier je beste prestatie te zien
+304|Niet gerangschikt
+305|Alleen op video geverifieerde scores tellen. Inzenden met een clip kan vanaf de eerste maandelijkse challenge.
+306|Vrij
+307|Bekijk de challenge van deze maand →
+308|Jouw beste: {value}
+309|Jouw plek
+310|Vergelijk ze in de Ranglijst →
+311|Log een sessie en je records vullen zich hier, oefening voor oefening.
+312|Sessie verwijderen
+313|Tik nogmaals om te verwijderen
+314|Deze sessie bestaat niet meer.
+315|Level up.
+316|Goed bezig.
+317|Sessie opgeslagen
+318|sec vastgehouden
+319|Bekijk je ladder
+320|Sessie
+321|Skill-stap ontgrendeld
+322|{count} skill-stappen ontgrendeld
+323|Nog geen Shorts
+324|Plaats de eerste. Tot 3 minuten.
+325|Dempen
+326|Originele audio
+327|Pauzeren
+328|Afspelen
+329|Plaats een Short
+330|Geluid aan
+331|Tik voor geluid
+332|Dat e-mailadres lijkt niet te kloppen.
+333|Check je e-mail
+334|Code van 6 cijfers
+335|Vul de code uit de e-mail in.
+336|Maak een back-up van je sessies, neem je proefperiode mee naar andere telefoons en kom op de borden.
+337|Geen wachtwoord. Nieuw hier? Dit maakt je account aan.
+338|Ander e-mailadres gebruiken
+339|Stuur me een code
+340|Versturen…
+341|We hebben een code van 6 cijfers gestuurd naar {email}.
+342|Inloggen
+343|Accounts zijn niet beschikbaar in deze build.
+344|Alle stappen gedaan. Deze skill is van jou.
+345|Uit je logs
+346|Stappen vinken zichzelf af als je ze logt.
+347|Proefperiode voorbij. Je voortgang blijft; neem Pro om nieuwe stappen af te vinken.
+348|Loggen
+349|Markeren als klaar
+350|Afgevinkt
+351|{step} niet meer afvinken
+352|Reactie toevoegen…
+353|Paneel sluiten
+354|Reageren
+355|Reacties
+356|{count} reactie
+357|{count} reacties
+358|Dubbeltik om te liken
+359|Vind ik leuk
+360|{n} like
+361|{n} likes
+362|Meer opties
+363|Nog geen reacties. Begin het gesprek.
+364|Niet geïnteresseerd
+365|Opties
+366|Reactie plaatsen
+367|Melden
+368|Bedankt. We bekijken deze post.
+369|Voorbeeld
+370|Opslaan
+371|Gezien op Cali
+372|Versturen via Berichten
+373|Versturen naar {name}
+374|Verstuurd
+375|Verstuurd naar {name}
+376|Delen
+377|Delen buiten Cali werkt in de telefoon-app.
+378|Delen buiten Cali
+379|Gedeeld
+380|{count} keer gedeeld
+381|{count} keer gedeeld
+382|iemand
+383|Niet meer leuk
+384|Niet meer opslaan
+385|Bekijk 1 reactie
+386|Bekijk alle {count} reacties
+387|Reacties bekijken
+388|Jouw post
+389|Formcheck
+390|Plaats een herhaling, krijg eerlijke feedback.
+391|Memes
+392|Gymhumor, maar wel aardig.
+393|Voortgang
+394|Voor en na, logs week na week.
+395|Vragen
+396|Geen vraag is te simpel.
+397|Successen
+398|Eerste pull-up? Vertel het iedereen.
+399|Feed
+400|Home
+401|Leren
+402|Berichten
+403|Shorts
+404|oefening
+405|oefeningen
+406|maand
+407|maanden
+408|herhaling
+409|herhalingen
+410|sessie
+411|sessies
+412|set
+413|sets
+414|skill-stap
+415|skill-stappen
+416|{n} kg
+417|~{n} kg 1RM
+418|+{n} kg
+419|{n} s
+420|Cameratoegang staat uit. Zet hem aan in Instellingen om op te nemen.
+421|Schrijf een bijschrift… waar werk je aan?
+422|Andere video kiezen
+423|Wijzigen
+424|Controleren…
+425|Video kiezen
+426|Uit je galerij
+427|Lengte
+428|Nieuwe Short
+429|{len} van 3:00
+430|Kan je foto's niet openen. Probeer het opnieuw.
+431|Short plaatsen
+432|Opnemen
+433|Training, voortgang, formchecks en plezier. Geen haat, naakt of gevaarlijke stunts. Iedereen kan een post melden.
+434|Houd het leuk
+435|Stopt bij 3:00
+436|Verticaal werkt het best. Tot 3 minuten.
+437|Plaats een clip
+438|Deze video duurt {len}. Shorts mogen tot 3:00 duren, dus knip hem eerst bij.
+439|We konden de lengte van deze video niet lezen. Probeer een andere.
+440|Kan je video's niet openen. Probeer het opnieuw.
+441|In deze webpreview blijven uploads staan tot je de pagina herlaadt.
+442|Sta locatie toe voor deze site in je browser om het lokale weer en de tijd te zien.
+443|Zet locatie aan voor Cali in Instellingen om het lokale weer en de tijd te zien.
+444|Helder
+445|Heldere nacht
+446|Bewolkt
+447|Motregen
+448|Voelt als {temp}°
+449|We zoeken je op en kijken naar de lucht…
+450|Mist
+451|Locatie staat uit
+452|We konden je locatie niet vinden. Controleer of locatievoorzieningen aanstaan.
+453|Zwaarbewolkt
+454|Half bewolkt
+455|Live temperatuur, weer en lokale tijd, met een tip voor de sessie van vandaag.
+456|Regen
+457|Op {time}
+458|Onder {time}
+459|Buien
+460|Sneeuw
+461|Onweer
+462|Koud. Warm polsen en schouders twee keer zo lang op voor holds.
+463|Goede omstandigheden voor de stangen.
+464|Warm buiten. Kortere sets, langere rust, water binnen handbereik.
+465|Onweer. Blijf vandaag weg van metalen stangen; train binnen.
+466|Hoge UV. Zoek schaduw voor lange holds en handstands.
+467|Erg heet. Train vroeg of laat, in de schaduw, en drink meer dan je denkt.
+468|Natte stangen zijn glad. Krijt erop, droog de stang of ga naar binnen.
+469|Winderig. Handstands buiten zijn vandaag lastiger.
+470|Het weer waar je traint
+471|Weer is nu niet beschikbaar.
+472|Mijn locatie gebruiken
+473|Jouw locatie
+474|{days} dagen gratis. Geen kaart nodig.
+475|Handstand
+476|Ik heb een account
+477|Train skills.\nVerdien je\nplek.
+478|Nog niet
+479|Tegen de muur, 30 s of langer
+480|Tegen een muur, even
+481|Van je eerste pull-up tot een schone muscle-up. Volg elke herhaling, ontgrendel elke stap en zie waar je staat.
+482|Je naam
+483|Nog niet
+484|Kies er minstens één
+485|Log sessies in seconden
+486|Op video geverifieerde wereldranglijsten
+487|Skill-stappen die zichzelf afvinken
+488|Strikte pull-ups in één set
+489|Wat wil je ontgrendelen?
+490|Kies er maximaal {n}. Home begint hiermee.
+491|Waar sta je nu?
+492|Wees eerlijk. Hiermee slaan we de stappen over die je al beheerst.
+493|Hoe mogen we je noemen?
+494|Deze naam staat op ranglijsten. Je kunt hem altijd aanpassen.
+495|Aan de slag
+496|Begin met trainen
+497|Start vandaag
+498|Alles ontgrendeld. Je geschiedenis blijft van jou, wat je daarna ook besluit.
+499|{days} dagen gratis proberen
+500|Lichaamsgewicht in kg (optioneel)

@@ -1,0 +1,500 @@
+1|{n} hr
+2|{n} j
+3|{n} mnt
+4|baru saja
+5|{n} mgg
+6|Handstand terlama
+7|Handstand
+8|Muscle-up terbanyak
+9|Muscle-up
+10|Pull-up terbanyak
+11|Pull-up
+12|Pull-up terberat
+13|Dengan beban
+14|Kalistenik, dengan peringkat
+15|Kembali
+16|Tutup
+17|Lanjut
+18|Hapus
+19|Selesai
+20|Tidak ditemukan
+21|Lihat semua
+22|Tampilkan
+23|Tampilkan lebih sedikit
+24|Tampilkan lebih banyak
+25|Coba lagi
+26|Tantangan {month}
+27|hari
+28|Belum ada peserta. Papan masih terbuka lebar.
+29|jam
+30|Cara kerjanya
+31|Live · {month}
+32|mnt
+33|Klasemen sedang offline.
+34|Satu percobaan, direkam video. Berakhir tengah malam di hari terakhir {month}.
+35|dtk
+36|Pendaftaran segera dibuka
+37|Klasemen saat ini
+38|Rekam satu percobaan
+39|Satu klip tanpa putus, seluruh badan masuk bingkai, dari awal sampai repetisi terakhir.
+40|Kirim lewat aplikasi
+41|Skormu masuk sebagai tertunda. Tidak ada yang bisa melihatnya sampai diperiksa.
+42|Dapatkan verifikasi
+43|Hanya repetisi bersih yang dihitung. Skor terverifikasi langsung masuk papan.
+44|Pemenang dapat trofi
+45|Tiga teratas setiap bulan mendapat trofi permanen di profil mereka.
+46|{count} latihan
+47|{count} latihan
+48|{count} repetisi
+49|{count} repetisi
+50|{count} sesi
+51|{count} sesi
+52|{count} set
+53|{count} set
+54|{count} tahap
+55|{count} tahap
+56|Core
+57|Kaki
+58|Angkatan
+59|Tarik
+60|Dorong
+61|Skill
+62|Tambah foto
+63|Jadilah yang pertama posting di sini.
+64|Komunitas
+65|Bagikan pencapaian, pertanyaan, atau cek teknik…
+66|Postingan baru
+67|Belum ada komentar. Tulis sesuatu yang baik.
+68|Apa yang terjadi hari ini?
+69|Apa yang perlu dilihat orang?
+70|Tanya komunitas…
+71|Posting
+72|Posting di
+73|{count} postingan
+74|{count} postingan
+75|Masih sepi di sini
+76|Hapus foto
+77|Postingan dihapus
+78|Balas {handle}…
+79|Bagikan
+80|Bagikan sesuatu
+81|Postingan ini sudah tidak tersedia.
+82|Di pratinjau web ini, foto tersimpan sampai halaman dimuat ulang.
+83|Belum ada catatan
+84|Setiap sesi yang kamu selesaikan muncul di sini, dikelompokkan per bulan.
+85|Riwayatmu aman. Upgrade ke Pro untuk terus mencatat.
+86|Berikutnya: {step}
+87|Skill berikutnya
+88|Belum ada sesi. Sesi pertamamu memulai rekor dan strip mingguan di atas.
+89|Terbaru
+90|Mulai sesi
+91|Minggu ini
+92|Pilihan hari ini
+93|Uji coba gratismu sudah berakhir
+94|Fokusmu
+95|{count} bahasa
+96|Semua {count} bahasa
+97|Bahasa Inggris adalah default. Pilih bahasa lain untuk menu dan tombol; panduan dan postingan tetap dalam bahasa aslinya.
+98|Tidak ada bahasa yang cocok dengan “{query}”.
+99|Terjemahan dibuat oleh Cali. Menemukan kesalahan? Beri tahu kami, kami perbaiki.
+100|Mulai ulang Cali untuk mengganti arah tata letak.
+101|Cari bahasa
+102|Bahasa ponselmu
+103|Bahasa
+104|Artikel
+105|Semua
+106|Keseimbangan
+107|Dasar
+108|Core
+109|Kaki
+110|Mobilitas
+111|Tarik
+112|Pemulihan
+113|Statis
+114|{guides} panduan · {videos} video
+115|Setiap panduan menautkan ke aslinya. Video dibuka di YouTube. Ulasan ditulis oleh Cali; kredit foto ada di setiap panduan.
+116|Panduan ini sudah tidak ada di perpustakaan.
+117|Panduan dalam bahasa Inggris
+118|Panduan dan video terbaik yang bisa kami temukan, dijabarkan langkah demi langkah untuk tanggamu.
+119|Tangga {skill}
+120|Tangga selesai. Jaga terus.
+121|{count} mnt baca
+122|{count} mnt baca
+123|{count} mnt
+124|{count} mnt
+125|Kesalahan yang harus dihindari
+126|Serupa dengan ini
+127|Selanjutnya: {step}
+128|Belum ada artikel di kategori ini.
+129|Belum ada video di kategori ini.
+130|Cocok dengan panduan ini
+131|Foto: {credit}. Gambar artikel aslinya sudah tidak online.
+132|Dipilih untuk {skill}-mu
+133|Diputar di YouTube
+134|Baca
+135|Baca berikutnya
+136|Baca aslinya di {source}
+137|Patut diingat
+138|Short
+139|Versi singkat
+140|Langkah demi langkah
+141|Coba di Cali
+142|Kurang dari semenit
+143|diperbarui {date}
+144|Video oleh {channel}. Cali hanya menautkannya; kami tidak meng-hosting atau mengeditnya.
+145|Video ini sudah tidak ada di perpustakaan.
+146|Video
+147|{n} kali ditonton
+148|Tonton
+149|Tonton berikutnya
+150|Tambah 15 detik
+151|Tambah set
+152|Tambah set {name}
+153|Selesaikan set {n}
+154|Buang sesi
+155|Buang?
+156|Tambahkan latihan sambil jalan. Centang satu set dan timer istirahat mulai sendiri.
+157|Latihan apa\nhari ini?
+158|Selesai
+159|Selesaikan sesi
+160|pertama kali
+161|Ayo
+162|kg
+163|Tahan
+164|Repetisi
+165|Rep · kg
+166|terakhir {sets}
+167|Pencatatan terkunci
+168|Uji coba gratismu sudah berakhir. Setiap sesi yang kamu catat aman dan masih bisa dilihat.
+169|Set berikutnya
+170|Tidak ada latihan yang cocok dengan “{query}”.
+171|+kg
+172|Sebelumnya
+173|Hapus {name}
+174|rep
+175|Istirahat
+176|Cari latihan
+177|dtk
+178|Set
+179|Set {n}, tekan lama untuk menghapus
+180|Set {n} {unit}
+181|Beban set {n}
+182|Lewati
+183|Lewati istirahat
+184|Batalkan set {n}
+185|Latihan rutinmu
+186|Tutup menu
+187|Kompetisi
+188|Tantangan bulan ini
+189|Riwayat
+190|Setiap sesi yang kamu catat
+191|Bahasa
+192|Inggris dan 44 lainnya
+193|Buka menu
+194|Profil
+195|Kamu, akun, dan data
+196|Peringkat
+197|Papan dunia
+198|Rekor
+199|Rekor pribadi
+200|Masuk sebagai {name}
+201|Skill
+202|Tanggamu
+203|Semua sudah dibaca
+204|Chat tidak ditemukan
+205|Mungkin sudah dihapus.
+206|Chat dengan {name}
+207|Chat
+208|Kru kamu
+209|Contoh chat sampai peluncuran. Pesan yang kamu kirim disimpan di ponsel ini.
+210|Kirim pesan ke {name}
+211|Tidak ada chat yang cocok dengan “{query}”.
+212|Buka postingan
+213|Buka Short
+214|Pesan…
+215|Sapa dulu
+216|Cari orang
+217|Kirim pesan
+218|Mengirim postingan
+219|Mengirim Short
+220|Short ini sudah tidak tersedia.
+221|{count} belum dibaca
+222|{count} belum dibaca
+223|Kamu: {text}
+224|Pembayaran dibuka saat peluncuran
+225|Lencana Founder, selamanya
+226|Tantangan bulanan
+227|Riwayat lengkapmu
+228|Tangga skill yang tercentang sendiri
+229|Catat sesi
+230|Peringkat terverifikasi video
+231|hari lagi
+232|hari lagi
+233|Uji coba tinggal {count} hari
+234|Uji coba tinggal {count} hari
+235|Seluruh riwayatmu masih ada. Upgrade ke Pro untuk terus mencatat.
+236|Founder
+237|Founder Pass
+238|Founder · Pro
+239|Gratis
+240|Uji coba gratis
+241|Riwayatmu selalu bisa dilihat, Pro atau tidak.
+242|Dukung kami lebih awal dan kunci harga peluncuran selama setahun penuh.
+243|Founder Pass · harga peluncuran
+244|{count} hari
+245|{count} hari
+246|sekitar ₹42 per bulan
+247|kurang dari $1 per bulan
+248|per tahun
+249|Harganya tetap selama kamu memperpanjang.
+250|Pro, tanpa batas
+251|India
+252|Seluruh dunia
+253|Lihat Founder Pass
+254|Lihat Founder Pass
+255|Terima kasih sudah mendukung kami sejak awal.
+256|Latihan tanpa\nbatas.
+257|Uji coba berakhir
+258|Semua terbuka sampai saat itu. Riwayatmu tetap milikmu setelahnya.
+259|Pencatatan tanpa batas
+260|Kamu seorang Founder
+261|Selamat siang
+262|Jendela siang
+263|Siang
+264|Dua puluh menit cukup. Ayo.
+265|Selamat malam
+266|Siap kapan pun kamu siap
+267|Malam
+268|Ayo selesaikan sesi hari ini
+269|Selamat pagi
+270|Awal yang segar
+271|Pagi
+272|Latihan dulu sebelum hari dimulai
+273|Masih bangun?
+274|Sesi malam?
+275|Larut malam
+276|15 menit cepat, lalu tidur
+277|Poster contoh
+278|Akun
+279|Sudah dicadangkan
+280|Dicadangkan pukul {time}
+281|Berat badan
+282|Hapus akunku
+283|Ketuk lagi untuk menghapus akunku
+284|Menghapus akun dan semua yang tersimpan di dalamnya. Tidak bisa dibatalkan.
+285|Hapus semua dataku
+286|Ketuk lagi untuk menghapus semuanya
+287|Semua tersimpan di ponsel ini sampai kamu masuk.
+288|Nama
+289|Ditampilkan di papan peringkat
+290|Pengaturan
+291|Masuk untuk mencadangkan
+292|Simpan sesi, uji coba, dan peringkatmu di ponsel mana pun.
+293|Keluar
+294|Sudah masuk
+295|Sejak {date}
+296|Sinkronkan sekarang
+297|Masalah sinkronisasi. Akan dicoba lagi.
+298|Menyinkronkan…
+299|Kamu
+300|Datamu
+301|Belum ada skor terverifikasi di papan ini. Orang pertama yang mengirim langsung jadi nomor satu.
+302|Dunia · skor terverifikasi
+303|Catat skill ini untuk melihat skor terbaikmu di sini
+304|Belum berperingkat
+305|Hanya skor terverifikasi video yang dihitung. Pengiriman dengan klip dibuka bersama tantangan bulanan pertama.
+306|Kosong
+307|Lihat tantangan bulan ini →
+308|Terbaikmu: {value}
+309|Posisimu
+310|Lihat perbandingannya di Peringkat →
+311|Catat satu sesi dan rekormu mulai terisi di sini, latihan demi latihan.
+312|Hapus sesi
+313|Ketuk lagi untuk menghapus
+314|Sesi ini sudah tidak ada.
+315|Naik level.
+316|Kerja bagus.
+317|Sesi disimpan
+318|dtk ditahan
+319|Lihat tanggamu
+320|Sesi
+321|Tahap skill terbuka
+322|{count} tahap skill terbuka
+323|Belum ada Shorts
+324|Posting yang pertama. Maksimal 3 menit.
+325|Bisukan
+326|Audio asli
+327|Jeda
+328|Putar
+329|Posting Short
+330|Nyalakan suara
+331|Ketuk untuk suara
+332|Alamat email itu sepertinya salah.
+333|Cek emailmu
+334|Kode 6 digit
+335|Masukkan kode dari email.
+336|Cadangkan sesimu, bawa uji cobamu ke ponsel lain, dan masuk papan peringkat.
+337|Tanpa kata sandi. Baru di sini? Ini akan membuat akunmu.
+338|Pakai email lain
+339|Kirimi aku kode
+340|Mengirim…
+341|Kami mengirim kode 6 digit ke {email}.
+342|Masuk
+343|Akun tidak tersedia di versi ini.
+344|Semua tahap selesai. Skill ini milikmu.
+345|Dari catatanmu
+346|Tahap tercentang sendiri saat kamu mencatatnya.
+347|Uji coba berakhir. Progresmu tetap; upgrade ke Pro untuk mencentang tahap baru.
+348|Catat
+349|Tandai selesai
+350|Tercentang
+351|Hapus centang {step}
+352|Tambah komentar…
+353|Tutup panel
+354|Komentar
+355|Komentar
+356|{count} komentar
+357|{count} komentar
+358|Ketuk dua kali untuk menyukai
+359|Suka
+360|{n} suka
+361|{n} suka
+362|Opsi lainnya
+363|Belum ada komentar. Mulai obrolannya.
+364|Tidak tertarik
+365|Opsi
+366|Kirim komentar
+367|Laporkan
+368|Terima kasih. Kami akan meninjau postingan ini.
+369|Contoh
+370|Simpan
+371|Dilihat di Cali
+372|Kirim lewat Pesan
+373|Kirim ke {name}
+374|Terkirim
+375|Terkirim ke {name}
+376|Bagikan
+377|Berbagi ke luar Cali bisa dilakukan di aplikasi ponsel.
+378|Bagikan ke luar Cali
+379|Dibagikan
+380|{count} kali dibagikan
+381|{count} kali dibagikan
+382|seseorang
+383|Batal suka
+384|Batal simpan
+385|Lihat 1 komentar
+386|Lihat semua {count} komentar
+387|Lihat komentar
+388|Postinganmu
+389|Cek teknik
+390|Posting satu repetisi, dapatkan masukan jujur.
+391|Meme
+392|Humor gym, tetap sopan.
+393|Progres
+394|Sebelum dan sesudah, catatan mingguan.
+395|Pertanyaan
+396|Tidak ada pertanyaan yang terlalu dasar.
+397|Pencapaian
+398|Pull-up pertama? Kasih tahu semua.
+399|Feed
+400|Beranda
+401|Belajar
+402|Pesan
+403|Shorts
+404|latihan
+405|latihan
+406|bulan
+407|bulan
+408|repetisi
+409|repetisi
+410|sesi
+411|sesi
+412|set
+413|set
+414|tahap skill
+415|tahap skill
+416|{n} kg
+417|~{n} kg 1RM
+418|+{n} kg
+419|{n} dtk
+420|Akses kamera mati. Nyalakan di Pengaturan untuk merekam.
+421|Tulis keterangan… sedang latihan apa?
+422|Pilih video lain
+423|Ganti
+424|Memeriksa…
+425|Pilih video
+426|Dari galerimu
+427|Durasi
+428|Short baru
+429|{len} dari 3:00
+430|Tidak bisa membuka fotomu. Coba lagi.
+431|Posting Short
+432|Rekam
+433|Latihan, progres, cek teknik, dan seru-seruan. Tanpa kebencian, ketelanjangan, atau aksi berbahaya. Siapa pun bisa melaporkan postingan.
+434|Jaga tetap positif
+435|Berhenti di 3:00
+436|Vertikal paling bagus. Maksimal 3 menit.
+437|Posting klip
+438|Video ini berdurasi {len}. Shorts maksimal 3:00, jadi potong dulu.
+439|Kami tidak bisa membaca durasi video ini. Coba video lain.
+440|Tidak bisa membuka videomu. Coba lagi.
+441|Di pratinjau web ini, unggahan tersimpan sampai halaman dimuat ulang.
+442|Izinkan lokasi untuk situs ini di browser agar bisa melihat cuaca dan waktu setempat.
+443|Nyalakan lokasi untuk Cali di Pengaturan agar bisa melihat cuaca dan waktu setempat.
+444|Cerah
+445|Malam cerah
+446|Berawan
+447|Gerimis
+448|Terasa seperti {temp}°
+449|Mencari lokasimu dan mengecek langit…
+450|Kabut
+451|Lokasi mati
+452|Kami tidak bisa menemukan lokasimu. Pastikan layanan lokasi menyala.
+453|Mendung
+454|Berawan sebagian
+455|Suhu, kondisi, dan waktu setempat secara langsung, plus tips untuk sesi hari ini.
+456|Hujan
+457|Terbit {time}
+458|Terbenam {time}
+459|Hujan lokal
+460|Salju
+461|Badai petir
+462|Dingin. Pemanasan pergelangan dan bahu dua kali lebih lama sebelum latihan tahan.
+463|Kondisi bagus untuk bar.
+464|Panas. Set lebih pendek, istirahat lebih lama, siapkan air.
+465|Badai petir. Jauhi bar logam hari ini; latihan di dalam ruangan.
+466|UV tinggi. Cari tempat teduh untuk tahanan lama dan handstand.
+467|Sangat panas. Latihan pagi-pagi atau sore, di tempat teduh, dan minum lebih banyak dari yang kamu kira.
+468|Bar basah itu licin. Pakai kapur, keringkan bar, atau pindah ke dalam.
+469|Berangin. Handstand di luar bakal lebih sulit hari ini.
+470|Cuaca di tempatmu latihan
+471|Cuaca sedang tidak tersedia.
+472|Pakai lokasiku
+473|Lokasimu
+474|Gratis {days} hari. Tanpa kartu.
+475|Handstand
+476|Aku sudah punya akun
+477|Latih skill.\nRaih\nperingkatmu.
+478|Belum
+479|Di dinding, 30 dtk atau lebih
+480|Bersandar di dinding, sebentar
+481|Dari pull-up pertamamu sampai muscle-up yang bersih. Catat setiap repetisi, buka setiap tahap, dan lihat posisimu.
+482|Namamu
+483|Belum
+484|Pilih minimal satu
+485|Catat sesi dalam hitungan detik
+486|Peringkat dunia terverifikasi video
+487|Tahap skill yang tercentang sendiri
+488|Pull-up ketat dalam satu set
+489|Apa yang ingin kamu buka?
+490|Pilih sampai {n}. Beranda akan dimulai dari ini.
+491|Sekarang kamu di level mana?
+492|Jujur saja. Kami pakai ini untuk melewati tahap yang sudah kamu kuasai.
+493|Mau dipanggil apa?
+494|Nama ini muncul di papan peringkat. Bisa diganti kapan saja.
+495|Mulai
+496|Mulai latihan
+497|Mulai hari ini
+498|Semua terbuka. Riwayatmu tetap milikmu, apa pun keputusanmu nanti.
+499|Uji coba gratis {days} hari
+500|Berat badan dalam kg (opsional)

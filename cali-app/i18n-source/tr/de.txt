@@ -1,0 +1,500 @@
+1|{n} T.
+2|{n} Std.
+3|{n} Min.
+4|jetzt
+5|{n} W.
+6|Längster Handstand
+7|Handstand
+8|Max. Muscle-ups
+9|Muscle-ups
+10|Max. Klimmzüge
+11|Klimmzüge
+12|Schwerster Klimmzug
+13|Mit Zusatzgewicht
+14|Calisthenics mit Rangliste
+15|Zurück
+16|Schließen
+17|Weiter
+18|Löschen
+19|Fertig
+20|Nicht gefunden
+21|Alle ansehen
+22|Anzeigen
+23|Weniger anzeigen
+24|Mehr anzeigen
+25|Erneut versuchen
+26|{month}-Challenge
+27|Tage
+28|Noch keine Einträge. Die Rangliste ist offen.
+29|Stunden
+30|So funktioniert’s
+31|Live · {month}
+32|Min.
+33|Die Rangliste ist gerade offline.
+34|Ein Versuch, auf Video. Endet um Mitternacht am letzten Tag im {month}.
+35|Sek.
+36|Einreichungen starten bald
+37|Aktueller Stand
+38|Film einen Versuch
+39|Ein durchgehender Clip, ganzer Körper im Bild, vom Start bis zur letzten Wiederholung.
+40|Reich ihn in der App ein
+41|Dein Ergebnis ist erst ausstehend. Niemand sieht es, bevor es geprüft ist.
+42|Lass dich verifizieren
+43|Nur saubere Wiederholungen zählen. Verifizierte Ergebnisse landen direkt in der Rangliste.
+44|Gewinner behalten eine Trophäe
+45|Die Top drei jedes Monats bekommen eine dauerhafte Trophäe im Profil.
+46|{count} Übung
+47|{count} Übungen
+48|{count} Wiederholung
+49|{count} Wiederholungen
+50|{count} Einheit
+51|{count} Einheiten
+52|{count} Satz
+53|{count} Sätze
+54|{count} Stufe
+55|{count} Stufen
+56|Core
+57|Beine
+58|Lifts
+59|Ziehen
+60|Drücken
+61|Skills
+62|Foto hinzufügen
+63|Sei der Erste, der hier postet.
+64|Community
+65|Teil einen Erfolg, eine Frage, einen Form-Check…
+66|Neuer Beitrag
+67|Noch keine Kommentare. Sag was Nettes.
+68|Was ist heute passiert?
+69|Worauf sollen die Leute achten?
+70|Frag die Community…
+71|Posten
+72|Posten in
+73|{count} Beitrag
+74|{count} Beiträge
+75|Noch ruhig hier
+76|Foto entfernen
+77|Beitrag entfernt
+78|Antworte {handle}…
+79|Teilen
+80|Teil etwas
+81|Dieser Beitrag ist nicht mehr verfügbar.
+82|In dieser Web-Vorschau bleiben Fotos nur bis zum Neuladen der Seite.
+83|Noch nichts erfasst
+84|Jede abgeschlossene Einheit landet hier, nach Monat sortiert.
+85|Dein Verlauf ist sicher. Hol dir Pro, um weiter zu loggen.
+86|Als Nächstes: {step}
+87|Nächster Skill
+88|Noch keine Einheiten. Die erste startet deine Rekorde und die Wochenleiste oben.
+89|Zuletzt
+90|Einheit starten
+91|Diese Woche
+92|Tipp des Tages
+93|Deine Testphase ist abgelaufen
+94|Dein Fokus
+95|{count} Sprache
+96|Alle {count} Sprachen
+97|Englisch ist voreingestellt. Wähl eine andere Sprache für Menüs und Buttons; Guides und Beiträge bleiben in ihrer Originalsprache.
+98|Keine Sprache passt zu „{query}“.
+99|Die Übersetzungen macht Cali. Fehler entdeckt? Sag uns Bescheid, wir korrigieren ihn.
+100|Starte Cali neu, um die Layout-Richtung zu ändern.
+101|Sprachen suchen
+102|Sprache deines Handys
+103|Sprache
+104|Artikel
+105|Alle
+106|Balance
+107|Grundlagen
+108|Core
+109|Beine
+110|Mobilität
+111|Ziehen
+112|Regeneration
+113|Statik
+114|{guides} Guides · {videos} Videos
+115|Jeder Guide verlinkt aufs Original. Videos öffnen auf YouTube. Die Zusammenfassungen schreibt Cali; Fotos sind in jedem Guide angegeben.
+116|Dieser Guide ist nicht mehr in der Bibliothek.
+117|Guide auf Englisch
+118|Die besten Guides und Videos, die wir finden konnten – Schritt für Schritt für deine Leitern aufbereitet.
+119|{skill}-Leiter
+120|Leiter geschafft. Bleib dran.
+121|{count} Min. Lesezeit
+122|{count} Min. Lesezeit
+123|{count} Min.
+124|{count} Min.
+125|Fehler, die du vermeiden solltest
+126|Mehr davon
+127|Als Nächstes: {step}
+128|In dieser Kategorie gibt es noch keine Artikel.
+129|In dieser Kategorie gibt es noch keine Videos.
+130|Passt zu diesen Guides
+131|Foto: {credit}. Das Bild des Originalartikels ist nicht mehr online.
+132|Für deinen {skill} ausgewählt
+133|Läuft auf YouTube
+134|Lesen
+135|Als Nächstes lesen
+136|Original auf {source} lesen
+137|Gut zu wissen
+138|Short
+139|Die Kurzfassung
+140|Schritt für Schritt
+141|In Cali ausprobieren
+142|Unter einer Minute
+143|aktualisiert am {date}
+144|Video von {channel}. Cali verlinkt es nur; wir hosten oder bearbeiten es nicht.
+145|Dieses Video ist nicht mehr in der Bibliothek.
+146|Videos
+147|{n} Aufrufe
+148|Ansehen
+149|Als Nächstes ansehen
+150|15 Sekunden mehr
+151|Satz hinzufügen
+152|Satz {name} hinzufügen
+153|Satz {n} abschließen
+154|Einheit verwerfen
+155|Verwerfen?
+156|Füg Übungen nach und nach hinzu. Hak einen Satz ab und der Pausen-Timer startet von selbst.
+157|Was trainieren\nwir heute?
+158|Fertig
+159|Einheit beenden
+160|erstes Mal
+161|Los
+162|kg
+163|Halten
+164|Wdh.
+165|Wdh. · kg
+166|letztes Mal {sets}
+167|Loggen ist gesperrt
+168|Deine Testphase ist abgelaufen. Jede erfasste Einheit ist sicher und weiter einsehbar.
+169|Nächster Satz
+170|Keine Übung passt zu „{query}“.
+171|+kg
+172|Vorherige
+173|{name} entfernen
+174|Wdh.
+175|Pause
+176|Übungen suchen
+177|Sek.
+178|Satz
+179|Satz {n}, lange drücken zum Entfernen
+180|Satz {n} {unit}
+181|Gewicht Satz {n}
+182|Überspringen
+183|Pause überspringen
+184|Satz {n} rückgängig
+185|Deine Klassiker
+186|Menü schließen
+187|Wettkampf
+188|Die Challenge des Monats
+189|Verlauf
+190|Jede Einheit, die du erfasst hast
+191|Sprache
+192|Englisch und 44 weitere
+193|Menü öffnen
+194|Profil
+195|Du, Konto und Daten
+196|Rangliste
+197|Weltranglisten
+198|Rekorde
+199|Persönliche Bestleistungen
+200|Angemeldet als {name}
+201|Skills
+202|Deine Leitern
+203|Alles gelesen
+204|Chat nicht gefunden
+205|Er wurde vielleicht entfernt.
+206|Chat mit {name}
+207|Chats
+208|Deine Crew
+209|Beispiel-Chats bis zum Launch. Deine Nachrichten bleiben auf diesem Handy.
+210|Nachricht an {name}
+211|Kein Chat passt zu „{query}“.
+212|Beitrag öffnen
+213|Short öffnen
+214|Nachricht…
+215|Sag Hallo
+216|Personen suchen
+217|Nachricht senden
+218|Hat einen Beitrag gesendet
+219|Hat einen Short gesendet
+220|Dieser Short ist nicht mehr verfügbar.
+221|{count} ungelesen
+222|{count} ungelesen
+223|Du: {text}
+224|Bezahlen ist ab dem Launch möglich
+225|Gründer-Abzeichen, für immer
+226|Monatliche Challenges
+227|Dein kompletter Verlauf
+228|Skill-Leitern, die sich selbst abhaken
+229|Einheiten loggen
+230|Per Video verifizierte Ranglisten
+231|Tag übrig
+232|Tage übrig
+233|Noch {count} Tag Testphase
+234|Noch {count} Tage Testphase
+235|Dein ganzer Verlauf ist noch da. Hol dir Pro, um weiter zu loggen.
+236|Gründer
+237|Gründer-Pass
+238|Gründer · Pro
+239|Kostenlos
+240|Kostenlose Testphase
+241|Dein Verlauf bleibt immer sichtbar, ob mit Pro oder ohne.
+242|Unterstütz uns früh und sichere dir den Launch-Preis für das ganze Jahr.
+243|Gründer-Pass · Launch-Preis
+244|{count} Tag
+245|{count} Tage
+246|ca. 42 ₹ im Monat
+247|unter 1 $ im Monat
+248|pro Jahr
+249|Der Preis bleibt, solange du verlängerst.
+250|Pro, unbegrenzt
+251|Indien
+252|Weltweit
+253|Gründer-Pass ansehen
+254|Den Gründer-Pass ansehen
+255|Danke, dass du uns früh unterstützt.
+256|Trainier ohne\nGrenzen.
+257|Testphase vorbei
+258|Bis dahin ist alles freigeschaltet. Dein Verlauf bleibt danach deiner.
+259|Unbegrenztes Loggen
+260|Du bist Gründer
+261|Guten Tag
+262|Mittagsfenster
+263|Nachmittag
+264|Zwanzig Minuten reichen. Los.
+265|Guten Abend
+266|Bereit, wenn du es bist
+267|Abend
+268|Lass uns die Einheit heute machen
+269|Guten Morgen
+270|Frischer Start
+271|Morgen
+272|Trainier, bevor der Tag loslegt
+273|Noch wach?
+274|Nacht-Einheit?
+275|Spätabends
+276|Schnell 15 Minuten, dann schlafen
+277|Beispielposter
+278|Konto
+279|Gesichert
+280|Gesichert um {time}
+281|Körpergewicht
+282|Mein Konto löschen
+283|Nochmal tippen, um das Konto zu löschen
+284|Löscht das Konto und alles, was dazu gespeichert ist. Kann nicht rückgängig gemacht werden.
+285|Alle meine Daten löschen
+286|Nochmal tippen, um alles zu löschen
+287|Bis du dich anmeldest, bleibt alles auf diesem Handy.
+288|Name
+289|Wird in Ranglisten angezeigt
+290|Einstellungen
+291|Zum Sichern anmelden
+292|Behalte deine Einheiten, Testphase und Ränge auf allen Handys.
+293|Abmelden
+294|Angemeldet
+295|Seit {date}
+296|Jetzt synchronisieren
+297|Sync-Problem. Wird erneut versucht.
+298|Wird synchronisiert…
+299|Du
+300|Deine Daten
+301|Noch keine verifizierten Ergebnisse in dieser Rangliste. Wer zuerst einreicht, steht ganz oben.
+302|Welt · verifizierte Ergebnisse
+303|Logge diesen Skill, um hier deine Bestleistung zu sehen
+304|Ohne Rang
+305|Nur per Video verifizierte Ergebnisse zählen. Einreichen mit Clip startet mit der ersten Monats-Challenge.
+306|Frei
+307|Challenge des Monats ansehen →
+308|Deine Bestleistung: {value}
+309|Dein Platz
+310|So schneiden sie in der Rangliste ab →
+311|Logg eine Einheit und deine Rekorde füllen sich hier, Übung für Übung.
+312|Einheit löschen
+313|Nochmal tippen zum Löschen
+314|Diese Einheit gibt es nicht mehr.
+315|Level up.
+316|Stark.
+317|Einheit gespeichert
+318|Sek. gehalten
+319|Deine Leiter ansehen
+320|Einheit
+321|Skill-Stufe freigeschaltet
+322|{count} Skill-Stufen freigeschaltet
+323|Noch keine Shorts
+324|Poste den ersten. Bis zu 3 Minuten.
+325|Stumm
+326|Originalton
+327|Pause
+328|Abspielen
+329|Short posten
+330|Ton einschalten
+331|Tippen für Ton
+332|Die E-Mail-Adresse sieht falsch aus.
+333|Schau in deine E-Mails
+334|6-stelliger Code
+335|Gib den Code aus der E-Mail ein.
+336|Sichere deine Einheiten, nimm deine Testphase aufs nächste Handy mit und komm in die Ranglisten.
+337|Kein Passwort. Neu hier? Damit wird dein Konto erstellt.
+338|Andere E-Mail verwenden
+339|Code senden
+340|Wird gesendet…
+341|Wir haben einen 6-stelligen Code an {email} gesendet.
+342|Anmelden
+343|Konten sind in diesem Build nicht verfügbar.
+344|Alle Stufen geschafft. Dieser Skill gehört dir.
+345|Aus deinen Logs
+346|Stufen haken sich selbst ab, wenn du sie loggst.
+347|Testphase vorbei. Dein Fortschritt bleibt; hol dir Pro, um neue Stufen abzuhaken.
+348|Loggen
+349|Als erledigt markieren
+350|Abgehakt
+351|{step} nicht mehr abhaken
+352|Kommentar hinzufügen…
+353|Fenster schließen
+354|Kommentieren
+355|Kommentare
+356|{count} Kommentar
+357|{count} Kommentare
+358|Zum Liken doppelt tippen
+359|Gefällt mir
+360|{n} Like
+361|{n} Likes
+362|Weitere Optionen
+363|Noch keine Kommentare. Fang die Unterhaltung an.
+364|Kein Interesse
+365|Optionen
+366|Kommentar posten
+367|Melden
+368|Danke. Wir prüfen diesen Beitrag.
+369|Beispiel
+370|Speichern
+371|Gesehen auf Cali
+372|Per Nachricht senden
+373|An {name} senden
+374|Gesendet
+375|An {name} gesendet
+376|Teilen
+377|Teilen außerhalb von Cali klappt in der Handy-App.
+378|Außerhalb von Cali teilen
+379|Geteilt
+380|{count}-mal geteilt
+381|{count}-mal geteilt
+382|jemand
+383|Gefällt mir nicht mehr
+384|Nicht mehr speichern
+385|1 Kommentar ansehen
+386|Alle {count} Kommentare ansehen
+387|Kommentare ansehen
+388|Dein Beitrag
+389|Form-Check
+390|Poste eine Wiederholung, bekomm ehrliches Feedback.
+391|Memes
+392|Gym-Humor, aber nett.
+393|Fortschritt
+394|Vorher-nachher, Woche für Woche.
+395|Fragen
+396|Keine Frage ist zu simpel.
+397|Erfolge
+398|Erster Klimmzug? Erzähl’s allen.
+399|Feed
+400|Start
+401|Lernen
+402|Nachrichten
+403|Shorts
+404|Übung
+405|Übungen
+406|Monat
+407|Monate
+408|Wiederholung
+409|Wiederholungen
+410|Einheit
+411|Einheiten
+412|Satz
+413|Sätze
+414|Skill-Stufe
+415|Skill-Stufen
+416|{n} kg
+417|~{n} kg 1RM
+418|+{n} kg
+419|{n} s
+420|Kamerazugriff ist aus. Schalt ihn in den Einstellungen ein, um aufzunehmen.
+421|Schreib eine Bildunterschrift… woran arbeitest du?
+422|Anderes Video wählen
+423|Ändern
+424|Wird geprüft…
+425|Video wählen
+426|Aus deiner Galerie
+427|Länge
+428|Neuer Short
+429|{len} von 3:00
+430|Deine Fotos konnten nicht geöffnet werden. Versuch es noch mal.
+431|Short posten
+432|Aufnehmen
+433|Training, Fortschritt, Form-Checks und Spaß. Kein Hass, keine Nacktheit, keine gefährlichen Stunts. Jeder kann einen Beitrag melden.
+434|Bleib fair
+435|Stoppt bei 3:00
+436|Hochformat klappt am besten. Bis zu 3 Minuten.
+437|Clip posten
+438|Dieses Video ist {len} lang. Shorts dürfen bis zu 3:00 lang sein, also schneid es vorher.
+439|Wir konnten die Länge dieses Videos nicht lesen. Versuch ein anderes.
+440|Deine Videos konnten nicht geöffnet werden. Versuch es noch mal.
+441|In dieser Web-Vorschau bleiben Uploads nur bis zum Neuladen der Seite.
+442|Erlaube dieser Seite im Browser den Standort, um lokales Wetter und Uhrzeit zu sehen.
+443|Schalt in den Einstellungen den Standort für Cali ein, um lokales Wetter und Uhrzeit zu sehen.
+444|Klar
+445|Klare Nacht
+446|Bewölkt
+447|Nieselregen
+448|Gefühlt {temp}°
+449|Wir suchen dich und schauen zum Himmel…
+450|Nebel
+451|Standort ist aus
+452|Wir konnten deinen Standort nicht finden. Prüf, ob die Ortungsdienste an sind.
+453|Bedeckt
+454|Teilweise bewölkt
+455|Live-Temperatur, Wetterlage und Ortszeit, mit einem Tipp für die heutige Einheit.
+456|Regen
+457|Aufgang {time}
+458|Untergang {time}
+459|Schauer
+460|Schnee
+461|Gewitter
+462|Kalt. Wärm Handgelenke und Schultern doppelt so lange auf, bevor du hältst.
+463|Gute Bedingungen für die Stangen.
+464|Heiß draußen. Kürzere Sätze, längere Pausen, Wasser in Reichweite.
+465|Gewitter. Heute weg von Metallstangen; trainier drinnen.
+466|Hoher UV-Index. Such Schatten für lange Halteübungen und Handstände.
+467|Sehr heiß. Trainier früh oder spät, im Schatten, und trink mehr, als du denkst.
+468|Nasse Stangen sind rutschig. Magnesia drauf, Stange abtrocknen oder rein.
+469|Windig. Handstände draußen sind heute schwerer.
+470|Wetter, wo du trainierst
+471|Wetter ist gerade nicht verfügbar.
+472|Meinen Standort verwenden
+473|Dein Standort
+474|{days} Tage gratis. Keine Karte nötig.
+475|Handstand
+476|Ich habe ein Konto
+477|Skills trainieren.\nDeinen Rang\nverdienen.
+478|Noch nicht
+479|An der Wand, 30 s oder mehr
+480|An der Wand, kurz
+481|Vom ersten Klimmzug bis zum sauberen Muscle-up. Erfass jede Wiederholung, schalte jede Stufe frei und sieh, wo du stehst.
+482|Dein Name
+483|Noch nicht
+484|Wähl mindestens eins
+485|Einheiten in Sekunden loggen
+486|Per Video verifizierte Weltranglisten
+487|Skill-Stufen, die sich selbst abhaken
+488|Saubere Klimmzüge in einem Satz
+489|Was willst du freischalten?
+490|Wähl bis zu {n}. Der Start zeigt diese zuerst.
+491|Wo stehst du gerade?
+492|Sei ehrlich. So überspringen wir die Stufen, die du schon draufhast.
+493|Wie sollen wir dich nennen?
+494|Dieser Name erscheint in den Ranglisten. Du kannst ihn jederzeit ändern.
+495|Los geht’s
+496|Training starten
+497|Ab heute
+498|Alles freigeschaltet. Dein Verlauf bleibt deiner, egal wie du dich danach entscheidest.
+499|{days} Tage kostenlos testen
+500|Körpergewicht in kg (optional)

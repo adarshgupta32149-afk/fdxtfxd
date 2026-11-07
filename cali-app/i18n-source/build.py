@@ -2,7 +2,7 @@
 Checks every line: known number, same {placeholders} as English, nothing missing. Usage: build.py <code>..."""
 import json, pathlib, re, sys
 HERE = pathlib.Path(__file__).parent
-OUT = pathlib.Path('/home/user/fdxtfxd/cali-app/src/i18n/locales')
+OUT = pathlib.Path(__file__).resolve().parent.parent / 'src' / 'i18n' / 'locales'
 rows = [l.rstrip('\n').split('\t') for l in open(HERE / 'manifest.tsv', encoding='utf-8')]
 num = {int(r[0]): r[1] for r in rows}
 en = json.load(open(HERE / 'keys.json', encoding='utf-8'))

@@ -1,0 +1,500 @@
+1|{n} d
+2|{n} u
+3|{n} min
+4|nou
+5|{n} w
+6|Langste handstand
+7|Handstand
+8|Meeste muscle-ups
+9|Muscle-ups
+10|Meeste optrekke
+11|Optrekke
+12|Swaarste optrek
+13|Met gewig
+14|Kalistenika, met ranglys
+15|Terug
+16|Maak toe
+17|Gaan voort
+18|Vee uit
+19|Klaar
+20|Nie gevind nie
+21|Sien almal
+22|Wys
+23|Wys minder
+24|Wys meer
+25|Probeer weer
+26|{month}-uitdaging
+27|dae
+28|Nog geen inskrywings nie. Die bord is wawyd oop.
+29|uur
+30|Hoe dit werk
+31|Regstreeks · {month}
+32|min
+33|Die stand is nou vanlyn.
+34|Een poging, op video. Eindig middernag op die laaste dag van {month}.
+35|s
+36|Inskrywings maak binnekort oop
+37|Huidige stand
+38|Verfilm een poging
+39|Een aaneenlopende snit, hele lyf in die raam, van begin tot die laaste herhaling.
+40|Dien dit in die toep in
+41|Jou telling gaan in as hangend. Niemand sien dit voordat dit nagegaan is nie.
+42|Word geverifieer
+43|Net skoon herhalings tel. Geverifieerde tellings gaan reguit op die bord.
+44|Wenners hou 'n trofee
+45|Die top drie elke maand kry 'n permanente trofee op hul profiel.
+46|{count} oefening
+47|{count} oefeninge
+48|{count} herhaling
+49|{count} herhalings
+50|{count} sessie
+51|{count} sessies
+52|{count} stel
+53|{count} stelle
+54|{count} stap
+55|{count} stappe
+56|Kern
+57|Bene
+58|Optel
+59|Trek
+60|Druk
+61|Vaardighede
+62|Voeg 'n foto by
+63|Wees die eerste om hier te plaas.
+64|Gemeenskap
+65|Deel 'n wen, 'n vraag, 'n vormtoets…
+66|Nuwe plasing
+67|Nog geen kommentaar nie. Sê iets gaafs.
+68|Wat het vandag gebeur?
+69|Waarna moet mense kyk?
+70|Vra die gemeenskap…
+71|Plaas
+72|Plaas in
+73|{count} plasing
+74|{count} plasings
+75|Dis nog stil hier
+76|Verwyder foto
+77|Plasing verwyder
+78|Antwoord {handle}…
+79|Deel dit
+80|Deel iets
+81|Hierdie plasing is nie meer beskikbaar nie.
+82|In hierdie webvoorskou bly foto's tot jy die bladsy herlaai.
+83|Nog niks aangeteken nie
+84|Elke sessie wat jy voltooi, kom hier, per maand gegroepeer.
+85|Jou geskiedenis is veilig. Gaan Pro om aan te hou aanteken.
+86|Volgende: {step}
+87|Volgende vaardigheid
+88|Nog geen sessies nie. Jou eerste een begin jou rekords en die weekstrook hierbo.
+89|Onlangs
+90|Begin sessie
+91|Hierdie week
+92|Vandag se keuse
+93|Jou gratis proeftyd het verstryk
+94|Jou fokus
+95|{count} taal
+96|Al {count} tale
+97|Engels is die verstek. Kies 'n ander taal vir kieslyste en knoppies; gidse en plasings bly in die taal waarin hulle geskryf is.
+98|Geen taal pas by “{query}” nie.
+99|Vertalings is deur Cali gemaak. Sien jy 'n fout? Laat weet ons, dan maak ons dit reg.
+100|Herbegin Cali om die uitlegrigting te verander.
+101|Soek tale
+102|Jou foon se taal
+103|Taal
+104|Artikels
+105|Alles
+106|Balans
+107|Basiese beginsels
+108|Kern
+109|Bene
+110|Beweeglikheid
+111|Trek
+112|Herstel
+113|Staties
+114|{guides} gidse · {videos} video's
+115|Elke gids skakel na die oorspronklike. Video's maak op YouTube oop. Die uiteensettings is deur Cali geskryf; fotokrediete staan by elke gids.
+116|Hierdie gids is nie meer in die biblioteek nie.
+117|Gids in Engels
+118|Die beste gidse en video's wat ons kon kry, stap vir stap uiteengesit vir jou lere.
+119|{skill}-leer
+120|Leer voltooi. Bly skerp.
+121|{count} min lees
+122|{count} min lees
+123|{count} min
+124|{count} min
+125|Foute om te vermy
+126|Meer soos dit
+127|Volgende: {step}
+128|Nog geen artikels in hierdie kategorie nie.
+129|Nog geen video's in hierdie kategorie nie.
+130|Pas by hierdie gidse
+131|Foto: {credit}. Die oorspronklike artikel se prent is nie meer aanlyn nie.
+132|Gekies vir jou {skill}
+133|Speel op YouTube
+134|Lees
+135|Lees volgende
+136|Lees die oorspronklike op {source}
+137|Die moeite werd om te onthou
+138|Short
+139|Die kort weergawe
+140|Stap vir stap
+141|Probeer dit in Cali
+142|Minder as 'n minuut
+143|bygewerk {date}
+144|Video deur {channel}. Cali skakel net daarna; ons huisves of redigeer dit nie.
+145|Hierdie video is nie meer in die biblioteek nie.
+146|Video's
+147|{n} kyke
+148|Kyk
+149|Kyk volgende
+150|Voeg 15 sekondes by
+151|Voeg stel by
+152|Voeg 'n stel {name} by
+153|Voltooi stel {n}
+154|Gooi sessie weg
+155|Weggooi?
+156|Voeg oefeninge by soos jy gaan. Merk 'n stel en die rustydhouer begin vanself.
+157|Wat oefen\nons vandag?
+158|Klaar
+159|Voltooi sessie
+160|eerste keer
+161|Gaan
+162|kg
+163|Hou
+164|Herhalings
+165|Herh. · kg
+166|laas keer {sets}
+167|Aanteken is gesluit
+168|Jou gratis proeftyd het verstryk. Elke sessie wat jy aangeteken het, is veilig en steeds sigbaar.
+169|Volgende stel
+170|Geen oefening pas by “{query}” nie.
+171|+kg
+172|Vorige
+173|Verwyder {name}
+174|herh.
+175|Rus
+176|Soek oefeninge
+177|s
+178|Stel
+179|Stel {n}, druk lank om te verwyder
+180|Stel {n} {unit}
+181|Gewig van stel {n}
+182|Slaan oor
+183|Slaan rus oor
+184|Ontdoen stel {n}
+185|Jou gewone oefeninge
+186|Maak kieslys toe
+187|Meeding
+188|Hierdie maand se uitdaging
+189|Geskiedenis
+190|Elke sessie wat jy aangeteken het
+191|Taal
+192|Engels en 44 meer
+193|Maak kieslys oop
+194|Profiel
+195|Jy, rekening en data
+196|Ranglys
+197|Wêreldborde
+198|Rekords
+199|Persoonlike beste
+200|Aangemeld as {name}
+201|Vaardighede
+202|Jou lere
+203|Alles gelees
+204|Klets nie gevind nie
+205|Dit is dalk verwyder.
+206|Klets met {name}
+207|Kletse
+208|Jou span
+209|Voorbeeldkletse tot die bekendstelling. Boodskappe wat jy stuur, bly op hierdie foon.
+210|Stuur 'n boodskap aan {name}
+211|Geen kletse pas by “{query}” nie.
+212|Maak plasing oop
+213|Maak Short oop
+214|Boodskap…
+215|Sê hallo
+216|Soek mense
+217|Stuur boodskap
+218|Het 'n plasing gestuur
+219|Het 'n Short gestuur
+220|Hierdie Short is nie meer beskikbaar nie.
+221|{count} ongelees
+222|{count} ongelees
+223|Jy: {text}
+224|Betaling maak oop by die bekendstelling
+225|Stigterkenteken, vir altyd
+226|Maandelikse uitdagings
+227|Jou volle geskiedenis
+228|Vaardigheidslere wat hulself afmerk
+229|Teken sessies aan
+230|Videogeverifieerde ranglyste
+231|dag oor
+232|dae oor
+233|{count} dag proeftyd oor
+234|{count} dae proeftyd oor
+235|Jou hele geskiedenis is nog hier. Gaan Pro om aan te hou aanteken.
+236|Stigter
+237|Stigterpas
+238|Stigter · Pro
+239|Gratis
+240|Gratis proeftyd
+241|Jou geskiedenis bly altyd sigbaar, Pro of nie.
+242|Steun ons vroeg en sluit die bekendstellingsprys vir die hele jaar in.
+243|Stigterpas · bekendstellingsprys
+244|{count} dag
+245|{count} dae
+246|ongeveer ₹42 per maand
+247|minder as $1 per maand
+248|per jaar
+249|Die prys bly joune solank jy hernu.
+250|Pro, onbeperk
+251|Indië
+252|Wêreldwyd
+253|Sien die Stigterpas
+254|Sien die Stigterpas
+255|Dankie dat jy ons vroeg steun.
+256|Oefen sonder\ngrense.
+257|Proeftyd verby
+258|Alles is tot dan oopgesluit. Daarna bly jou geskiedenis joune.
+259|Onbeperkte aantekening
+260|Jy is 'n Stigter
+261|Goeiemiddag
+262|Middagvenster
+263|Middag
+264|Twintig minute is genoeg. Gaan.
+265|Goeienaand
+266|Gereed wanneer jy is
+267|Aand
+268|Kom ons doen vandag se sessie
+269|Goeiemôre
+270|Vars begin
+271|Oggend
+272|Oefen voordat die dag begin
+273|Nog wakker?
+274|Nagsessie?
+275|Laataand
+276|Vinnige 15 minute, dan slaap
+277|Voorbeeldplakkaat
+278|Rekening
+279|Rugsteun gemaak
+280|Rugsteun om {time}
+281|Liggaamsgewig
+282|Vee my rekening uit
+283|Tik weer om my rekening uit te vee
+284|Verwyder die rekening en alles wat daarmee gestoor is. Kan nie ontdoen word nie.
+285|Vee al my data uit
+286|Tik weer om alles uit te vee
+287|Alles bly op hierdie foon totdat jy aanmeld.
+288|Naam
+289|Gewys op ranglyste
+290|Instellings
+291|Meld aan om te rugsteun
+292|Hou jou sessies, proeftyd en posisies op enige foon.
+293|Meld af
+294|Aangemeld
+295|Sedert {date}
+296|Sinkroniseer nou
+297|Sinkroniseringsprobleem. Sal weer probeer.
+298|Sinkroniseer tans…
+299|Jy
+300|Jou data
+301|Nog geen geverifieerde tellings op hierdie bord nie. Die eerste persoon wat indien, kry die boonste plek.
+302|Wêreld · geverifieerde tellings
+303|Teken hierdie vaardigheid aan om jou beste hier te sien
+304|Nie geplaas nie
+305|Net videogeverifieerde tellings tel. Indien met 'n snit maak oop met die eerste maandelikse uitdaging.
+306|Oop
+307|Sien hierdie maand se uitdaging →
+308|Jou beste: {value}
+309|Jou plek
+310|Sien hoe hulle vergelyk in Ranglys →
+311|Teken 'n sessie aan en jou rekords begin hier vul, oefening vir oefening.
+312|Vee sessie uit
+313|Tik weer om uit te vee
+314|Hierdie sessie bestaan nie meer nie.
+315|Vlak op.
+316|Mooi werk.
+317|Sessie gestoor
+318|s gehou
+319|Sien jou leer
+320|Sessie
+321|Vaardigheidstap oopgesluit
+322|{count} vaardigheidstappe oopgesluit
+323|Nog geen Shorts nie
+324|Plaas die eerste een. Tot 3 minute.
+325|Demp
+326|Oorspronklike klank
+327|Pouse
+328|Speel
+329|Plaas 'n Short
+330|Skakel klank aan
+331|Tik vir klank
+332|Daardie e-posadres lyk verkeerd.
+333|Gaan jou e-pos na
+334|6-syferkode
+335|Voer die kode uit die e-pos in.
+336|Rugsteun jou sessies, neem jou proeftyd na ander fone en kom op die borde.
+337|Geen wagwoord nie. Nuut hier? Dit skep jou rekening.
+338|Gebruik 'n ander e-pos
+339|Stuur vir my 'n kode
+340|Stuur tans…
+341|Ons het 'n 6-syferkode na {email} gestuur.
+342|Meld aan
+343|Rekeninge is nie in hierdie weergawe beskikbaar nie.
+344|Elke stap klaar. Hierdie vaardigheid is joune.
+345|Uit jou aantekeninge
+346|Stappe merk hulself af wanneer jy hulle aanteken.
+347|Proeftyd verby. Jou vordering bly; gaan Pro om nuwe stappe af te merk.
+348|Teken dit aan
+349|Merk as klaar
+350|Afgemerk
+351|Ontmerk {step}
+352|Voeg 'n opmerking by…
+353|Maak paneel toe
+354|Lewer kommentaar
+355|Kommentaar
+356|{count} opmerking
+357|{count} opmerkings
+358|Dubbeltik om te hou van
+359|Hou van
+360|{n} like
+361|{n} likes
+362|Meer opsies
+363|Nog geen kommentaar nie. Begin die gesprek.
+364|Nie belangstel nie
+365|Opsies
+366|Plaas opmerking
+367|Rapporteer
+368|Dankie. Ons sal hierdie plasing nagaan.
+369|Voorbeeld
+370|Stoor
+371|Gesien op Cali
+372|Stuur in Boodskappe
+373|Stuur aan {name}
+374|Gestuur
+375|Gestuur aan {name}
+376|Deel
+377|Deel buite Cali werk in die foontoep.
+378|Deel buite Cali
+379|Gedeel
+380|{count} deling
+381|{count} delings
+382|iemand
+383|Hou nie meer van nie
+384|Verwyder uit gestoor
+385|Sien 1 opmerking
+386|Sien al {count} opmerkings
+387|Sien opmerkings
+388|Jou plasing
+389|Vormtoets
+390|Plaas 'n herhaling, kry eerlike terugvoer.
+391|Memes
+392|Gimhumor, maar vriendelik.
+393|Vordering
+394|Voor en na, week-vir-week-aantekeninge.
+395|Vrae
+396|Geen vraag is te basies nie.
+397|Wenne
+398|Eerste optrek? Vertel almal.
+399|Voer
+400|Tuis
+401|Leer
+402|Boodskappe
+403|Shorts
+404|oefening
+405|oefeninge
+406|maand
+407|maande
+408|herhaling
+409|herhalings
+410|sessie
+411|sessies
+412|stel
+413|stelle
+414|vaardigheidstap
+415|vaardigheidstappe
+416|{n} kg
+417|~{n} kg 1RM
+418|+{n} kg
+419|{n} s
+420|Kameratoegang is af. Skakel dit aan in Instellings om op te neem.
+421|Skryf 'n onderskrif… waaraan werk jy?
+422|Kies 'n ander video
+423|Verander
+424|Gaan tans na…
+425|Kies 'n video
+426|Uit jou galery
+427|Lengte
+428|Nuwe Short
+429|{len} van 3:00
+430|Kon nie jou foto's oopmaak nie. Probeer weer.
+431|Plaas Short
+432|Neem op
+433|Oefening, vordering, vormtoetse en pret. Geen haat, naaktheid of gevaarlike toertjies nie. Enigiemand kan 'n plasing rapporteer.
+434|Hou dit lekker
+435|Stop by 3:00
+436|Vertikaal werk die beste. Tot 3 minute.
+437|Plaas 'n snit
+438|Hierdie video is {len}. Shorts kan tot 3:00 wees, so sny dit eers korter.
+439|Ons kon nie lees hoe lank hierdie video is nie. Probeer 'n ander een.
+440|Kon nie jou video's oopmaak nie. Probeer weer.
+441|In hierdie webvoorskou bly oplaaie tot jy die bladsy herlaai.
+442|Laat ligging vir hierdie werf in jou blaaier toe om plaaslike weer en tyd te sien.
+443|Skakel ligging vir Cali aan in Instellings om plaaslike weer en tyd te sien.
+444|Helder
+445|Helder nag
+446|Bewolk
+447|Motreën
+448|Voel soos {temp}°
+449|Soek jou en kyk na die lug…
+450|Mis
+451|Ligging is af
+452|Ons kon nie jou ligging kry nie. Maak seker liggingsdienste is aan.
+453|Oortrokke
+454|Gedeeltelik bewolk
+455|Regstreekse temperatuur, toestande en plaaslike tyd, met 'n wenk vir vandag se sessie.
+456|Reën
+457|Op {time}
+458|Onder {time}
+459|Buie
+460|Sneeu
+461|Donderstorm
+462|Koud. Warm polse en skouers twee keer so lank op voor houe.
+463|Goeie toestande vir die stawe.
+464|Warm buite. Korter stelle, langer rus, hou water naby.
+465|Donderstorm. Bly vandag weg van metaalstawe; oefen binne.
+466|UV is hoog. Soek skaduwee vir lang houe en handstande.
+467|Baie warm. Oefen vroeg of laat, in die skadu, en drink meer as wat jy dink.
+468|Nat stawe is glad. Kryt aan, droog die staaf of gaan binne.
+469|Winderig. Handstande buite sal vandag moeiliker wees.
+470|Weer waar jy oefen
+471|Weer is nie nou beskikbaar nie.
+472|Gebruik my ligging
+473|Jou ligging
+474|{days} dae gratis. Geen kaart nodig nie.
+475|Handstand
+476|Ek het 'n rekening
+477|Oefen vaardighede.\nVerdien jou\nplek.
+478|Nog nie
+479|Teen die muur, 30 s of meer
+480|Teen 'n muur, kortliks
+481|Van jou eerste optrek tot 'n skoon muscle-up. Volg elke herhaling, sluit elke stap oop en sien waar jy staan.
+482|Jou naam
+483|Nog nie
+484|Kies minstens een
+485|Teken sessies in sekondes aan
+486|Videogeverifieerde wêreldranglyste
+487|Vaardigheidstappe wat hulself afmerk
+488|Streng optrekke in een stel
+489|Wat wil jy oopsluit?
+490|Kies tot {n}. Tuis sal hiermee begin.
+491|Waar is jy nou?
+492|Wees eerlik. Ons gebruik dit om die stappe oor te slaan wat jy reeds baasraak.
+493|Wat moet ons jou noem?
+494|Hierdie naam wys op ranglyste. Jy kan dit enige tyd verander.
+495|Begin
+496|Begin oefen
+497|Begin vandag
+498|Alles oopgesluit. Jou geskiedenis bly joune, wat jy ook al daarna besluit.
+499|{days} dae gratis proeftyd
+500|Liggaamsgewig in kg (opsioneel)

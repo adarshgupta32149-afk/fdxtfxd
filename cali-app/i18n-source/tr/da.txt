@@ -1,0 +1,500 @@
+1|{n} d
+2|{n} t
+3|{n} min
+4|nu
+5|{n} u
+6|Længste håndstand
+7|Håndstand
+8|Maks. muscle-ups
+9|Muscle-ups
+10|Maks. pull-ups
+11|Pull-ups
+12|Tungeste pull-up
+13|Med vægt
+14|Calisthenics med rangliste
+15|Tilbage
+16|Luk
+17|Fortsæt
+18|Slet
+19|Færdig
+20|Ikke fundet
+21|Se alle
+22|Vis
+23|Vis mindre
+24|Vis mere
+25|Prøv igen
+26|Udfordring i {month}
+27|dage
+28|Ingen deltagere endnu. Tavlen står åben.
+29|timer
+30|Sådan fungerer det
+31|Live · {month}
+32|min
+33|Stillingen er offline lige nu.
+34|Ét forsøg, på video. Slutter ved midnat på sidste dag i {month}.
+35|sek
+36|Indsendelse åbner snart
+37|Aktuel stilling
+38|Film ét forsøg
+39|Ét sammenhængende klip, hele kroppen i billedet, fra start til sidste gentagelse.
+40|Indsend det i appen
+41|Din score står som afventende. Ingen ser den, før den er tjekket.
+42|Bliv verificeret
+43|Kun rene gentagelser tæller. Verificerede scores ryger direkte på tavlen.
+44|Vinderne får et trofæ
+45|Top tre hver måned får et permanent trofæ på deres profil.
+46|{count} øvelse
+47|{count} øvelser
+48|{count} gentagelse
+49|{count} gentagelser
+50|{count} træning
+51|{count} træninger
+52|{count} sæt
+53|{count} sæt
+54|{count} trin
+55|{count} trin
+56|Core
+57|Ben
+58|Løft
+59|Træk
+60|Pres
+61|Færdigheder
+62|Tilføj et billede
+63|Vær den første til at poste her.
+64|Fællesskab
+65|Del en sejr, et spørgsmål, et formtjek…
+66|Nyt opslag
+67|Ingen kommentarer endnu. Skriv noget pænt.
+68|Hvad skete der i dag?
+69|Hvad skal folk kigge på?
+70|Spørg fællesskabet…
+71|Slå op
+72|Slå op i
+73|{count} opslag
+74|{count} opslag
+75|Stille herinde endnu
+76|Fjern billede
+77|Opslag fjernet
+78|Svar {handle}…
+79|Del det
+80|Del noget
+81|Dette opslag er ikke længere tilgængeligt.
+82|I denne webforhåndsvisning bliver billeder, indtil du genindlæser siden.
+83|Intet logget endnu
+84|Hver træning, du afslutter, havner her, grupperet efter måned.
+85|Din historik er sikker. Gå Pro for at blive ved med at logge.
+86|Næste: {step}
+87|Næste færdighed
+88|Ingen træninger endnu. Din første starter dine rekorder og ugebåndet ovenfor.
+89|Seneste
+90|Start træning
+91|Denne uge
+92|Dagens valg
+93|Din gratis prøveperiode er slut
+94|Dit fokus
+95|{count} sprog
+96|Alle {count} sprog
+97|Engelsk er standard. Vælg et andet sprog til menuer og knapper; guides og opslag forbliver på det sprog, de er skrevet på.
+98|Intet sprog matcher “{query}”.
+99|Oversættelserne er lavet af Cali. Fundet en fejl? Sig til, så retter vi den.
+100|Genstart Cali for at skifte layoutretning.
+101|Søg efter sprog
+102|Din telefons sprog
+103|Sprog
+104|Artikler
+105|Alle
+106|Balance
+107|Grundlæggende
+108|Core
+109|Ben
+110|Mobilitet
+111|Træk
+112|Restitution
+113|Statik
+114|{guides} guides · {videos} videoer
+115|Hver guide linker til originalen. Videoer åbner på YouTube. Gennemgangene er skrevet af Cali; billedkreditering står på hver guide.
+116|Denne guide er ikke længere i biblioteket.
+117|Guide på engelsk
+118|De bedste guides og videoer, vi kunne finde, brudt ned trin for trin til dine stiger.
+119|{skill}-stige
+120|Stigen er klaret. Hold formen.
+121|{count} min læsning
+122|{count} min læsning
+123|{count} min
+124|{count} min
+125|Fejl, du skal undgå
+126|Mere som dette
+127|Herefter: {step}
+128|Ingen artikler i denne kategori endnu.
+129|Ingen videoer i denne kategori endnu.
+130|Passer med disse guides
+131|Foto: {credit}. Billedet fra den oprindelige artikel er ikke længere online.
+132|Valgt til din {skill}
+133|Afspilles på YouTube
+134|Læs
+135|Læs herefter
+136|Læs originalen på {source}
+137|Værd at huske
+138|Short
+139|Den korte version
+140|Trin for trin
+141|Prøv det i Cali
+142|Under et minut
+143|opdateret {date}
+144|Video af {channel}. Cali linker kun til den; vi hoster eller redigerer den ikke.
+145|Denne video er ikke længere i biblioteket.
+146|Videoer
+147|{n} visninger
+148|Se
+149|Se herefter
+150|Tilføj 15 sekunder
+151|Tilføj sæt
+152|Tilføj et sæt {name}
+153|Fuldfør sæt {n}
+154|Kassér træning
+155|Kassér?
+156|Tilføj øvelser undervejs. Afkryds et sæt, så starter pausetimeren af sig selv.
+157|Hvad træner\nvi i dag?
+158|Afslut
+159|Afslut træning
+160|første gang
+161|Kør
+162|kg
+163|Hold
+164|Gent.
+165|Gent. · kg
+166|sidste gang {sets}
+167|Logning er låst
+168|Din gratis prøveperiode er slut. Hver træning, du har logget, er sikker og kan stadig ses.
+169|Næste sæt
+170|Ingen øvelse matcher “{query}”.
+171|+kg
+172|Forrige
+173|Fjern {name}
+174|gent.
+175|Pause
+176|Søg efter øvelser
+177|sek
+178|Sæt
+179|Sæt {n}, hold nede for at fjerne
+180|Sæt {n} {unit}
+181|Vægt sæt {n}
+182|Spring over
+183|Spring pausen over
+184|Fortryd sæt {n}
+185|Dine faste
+186|Luk menu
+187|Konkurrér
+188|Månedens udfordring
+189|Historik
+190|Hver træning, du har logget
+191|Sprog
+192|Engelsk og 44 mere
+193|Åbn menu
+194|Profil
+195|Dig, konto og data
+196|Rangliste
+197|Verdenslister
+198|Rekorder
+199|Personlige rekorder
+200|Logget ind som {name}
+201|Færdigheder
+202|Dine stiger
+203|Alt læst
+204|Chat ikke fundet
+205|Den er måske blevet fjernet.
+206|Chat med {name}
+207|Chats
+208|Din crew
+209|Eksempelchats indtil lanceringen. Beskeder, du sender, gemmes på denne telefon.
+210|Skriv til {name}
+211|Ingen chats matcher “{query}”.
+212|Åbn opslag
+213|Åbn Short
+214|Besked…
+215|Sig hej
+216|Søg efter personer
+217|Send besked
+218|Sendte et opslag
+219|Sendte en Short
+220|Denne Short er ikke længere tilgængelig.
+221|{count} ulæst
+222|{count} ulæste
+223|Dig: {text}
+224|Betaling åbner ved lanceringen
+225|Grundlægger-badge, for altid
+226|Månedlige udfordringer
+227|Hele din historik
+228|Færdighedsstiger, der krydser sig selv af
+229|Log træninger
+230|Videoverificerede ranglister
+231|dag tilbage
+232|dage tilbage
+233|{count} dag tilbage af prøveperioden
+234|{count} dage tilbage af prøveperioden
+235|Hele din historik er her stadig. Gå Pro for at blive ved med at logge.
+236|Grundlægger
+237|Grundlæggerpas
+238|Grundlægger · Pro
+239|Gratis
+240|Gratis prøveperiode
+241|Din historik kan altid ses, med eller uden Pro.
+242|Støt os tidligt, og lås lanceringsprisen fast hele året.
+243|Grundlæggerpas · lanceringspris
+244|{count} dag
+245|{count} dage
+246|ca. 42 ₹ om måneden
+247|under 1 $ om måneden
+248|om året
+249|Prisen er din, så længe du fornyer.
+250|Pro, ubegrænset
+251|Indien
+252|Hele verden
+253|Se Grundlæggerpasset
+254|Se Grundlæggerpasset
+255|Tak, fordi du støtter os tidligt.
+256|Træn uden\ngrænser.
+257|Prøveperioden er slut
+258|Alt er låst op indtil da. Historikken er stadig din bagefter.
+259|Ubegrænset logning
+260|Du er Grundlægger
+261|God eftermiddag
+262|Middagsvindue
+263|Eftermiddag
+264|Tyve minutter er nok. Kør.
+265|God aften
+266|Klar, når du er
+267|Aften
+268|Lad os få dagens træning klaret
+269|Godmorgen
+270|Frisk start
+271|Morgen
+272|Træn, før dagen går i gang
+273|Stadig vågen?
+274|Nattetræning?
+275|Sent om aftenen
+276|Hurtige 15 minutter, så sove
+277|Eksempelplakat
+278|Konto
+279|Sikkerhedskopieret
+280|Sikkerhedskopieret kl. {time}
+281|Kropsvægt
+282|Slet min konto
+283|Tryk igen for at slette min konto
+284|Fjerner kontoen og alt, der er gemt med den. Kan ikke fortrydes.
+285|Slet alle mine data
+286|Tryk igen for at slette alt
+287|Alt ligger på denne telefon, indtil du logger ind.
+288|Navn
+289|Vises på ranglister
+290|Indstillinger
+291|Log ind for at sikkerhedskopiere
+292|Behold dine træninger, prøveperiode og placeringer på alle telefoner.
+293|Log ud
+294|Logget ind
+295|Siden {date}
+296|Synkroniser nu
+297|Synkroniseringsproblem. Prøver igen.
+298|Synkroniserer…
+299|Dig
+300|Dine data
+301|Ingen verificerede scores på denne tavle endnu. Den første, der indsender, tager førstepladsen.
+302|Verden · verificerede scores
+303|Log denne færdighed for at se dit bedste her
+304|Ikke placeret
+305|Kun videoverificerede scores tæller. Indsendelse med klip åbner med den første månedlige udfordring.
+306|Ledig
+307|Se månedens udfordring →
+308|Dit bedste: {value}
+309|Din plads
+310|Se, hvordan de klarer sig i Ranglisten →
+311|Log en træning, så begynder dine rekorder at fylde op her, øvelse for øvelse.
+312|Slet træning
+313|Tryk igen for at slette
+314|Denne træning findes ikke længere.
+315|Level up.
+316|Flot arbejde.
+317|Træning gemt
+318|sek holdt
+319|Se din stige
+320|Træning
+321|Færdighedstrin låst op
+322|{count} færdighedstrin låst op
+323|Ingen Shorts endnu
+324|Læg den første op. Op til 3 minutter.
+325|Slå lyd fra
+326|Original lyd
+327|Pause
+328|Afspil
+329|Læg en Short op
+330|Slå lyd til
+331|Tryk for lyd
+332|Den e-mailadresse ser forkert ud.
+333|Tjek din e-mail
+334|6-cifret kode
+335|Indtast koden fra e-mailen.
+336|Sikkerhedskopiér dine træninger, tag din prøveperiode med til andre telefoner, og kom på tavlerne.
+337|Ingen adgangskode. Ny her? Det her opretter din konto.
+338|Brug en anden e-mail
+339|Send mig en kode
+340|Sender…
+341|Vi har sendt en 6-cifret kode til {email}.
+342|Log ind
+343|Konti er ikke tilgængelige i denne version.
+344|Alle trin klaret. Denne færdighed er din.
+345|Fra dine logs
+346|Trin krydser sig selv af, når du logger dem.
+347|Prøveperioden er slut. Dine fremskridt bliver; gå Pro for at krydse nye trin af.
+348|Log det
+349|Markér som færdig
+350|Afkrydset
+351|Fjern kryds ved {step}
+352|Tilføj en kommentar…
+353|Luk panel
+354|Kommentér
+355|Kommentarer
+356|{count} kommentar
+357|{count} kommentarer
+358|Dobbelttryk for at synes godt om
+359|Synes godt om
+360|{n} like
+361|{n} likes
+362|Flere muligheder
+363|Ingen kommentarer endnu. Start samtalen.
+364|Ikke interesseret
+365|Muligheder
+366|Slå kommentar op
+367|Anmeld
+368|Tak. Vi gennemgår dette opslag.
+369|Eksempel
+370|Gem
+371|Set på Cali
+372|Send i Beskeder
+373|Send til {name}
+374|Sendt
+375|Sendt til {name}
+376|Del
+377|Deling uden for Cali virker i telefonappen.
+378|Del uden for Cali
+379|Delt
+380|{count} deling
+381|{count} delinger
+382|nogen
+383|Synes ikke længere godt om
+384|Fjern fra gemte
+385|Se 1 kommentar
+386|Se alle {count} kommentarer
+387|Se kommentarer
+388|Dit opslag
+389|Formtjek
+390|Læg en gentagelse op, og få ærlig feedback.
+391|Memes
+392|Fitnesshumor, men venligt.
+393|Fremskridt
+394|Før og efter, logs uge for uge.
+395|Spørgsmål
+396|Intet spørgsmål er for basalt.
+397|Sejre
+398|Første pull-up? Fortæl det til alle.
+399|Feed
+400|Hjem
+401|Lær
+402|Beskeder
+403|Shorts
+404|øvelse
+405|øvelser
+406|måned
+407|måneder
+408|gentagelse
+409|gentagelser
+410|træning
+411|træninger
+412|sæt
+413|sæt
+414|færdighedstrin
+415|færdighedstrin
+416|{n} kg
+417|~{n} kg 1RM
+418|+{n} kg
+419|{n} s
+420|Kameraadgang er slået fra. Slå den til i Indstillinger for at optage.
+421|Skriv en billedtekst… hvad arbejder du på?
+422|Vælg en anden video
+423|Skift
+424|Tjekker…
+425|Vælg en video
+426|Fra dit galleri
+427|Længde
+428|Ny Short
+429|{len} af 3:00
+430|Kunne ikke åbne dine billeder. Prøv igen.
+431|Læg Short op
+432|Optag
+433|Træning, fremskridt, formtjek og sjov. Intet had, ingen nøgenhed eller farlige stunts. Alle kan anmelde et opslag.
+434|Hold en god tone
+435|Stopper ved 3:00
+436|Lodret virker bedst. Op til 3 minutter.
+437|Læg et klip op
+438|Denne video er {len}. Shorts må være op til 3:00, så klip den først.
+439|Vi kunne ikke læse, hvor lang videoen er. Prøv en anden.
+440|Kunne ikke åbne dine videoer. Prøv igen.
+441|I denne webforhåndsvisning bliver uploads, indtil du genindlæser siden.
+442|Tillad placering for dette websted i din browser for at se lokalt vejr og tid.
+443|Slå placering til for Cali i Indstillinger for at se lokalt vejr og tid.
+444|Klart
+445|Klar nat
+446|Skyet
+447|Støvregn
+448|Føles som {temp}°
+449|Finder dig og tjekker himlen…
+450|Tåge
+451|Placering er slået fra
+452|Vi kunne ikke finde din placering. Tjek, at placeringstjenester er slået til.
+453|Overskyet
+454|Delvist skyet
+455|Live temperatur, vejr og lokal tid, med et tip til dagens træning.
+456|Regn
+457|Op {time}
+458|Ned {time}
+459|Byger
+460|Sne
+461|Torden
+462|Koldt. Varm håndled og skuldre op dobbelt så længe før hold.
+463|Gode forhold til stængerne.
+464|Varmt. Kortere sæt, længere pauser, vand inden for rækkevidde.
+465|Torden. Hold dig fra metalstænger i dag; træn indenfor.
+466|Højt UV. Find skygge til lange hold og håndstand.
+467|Meget varmt. Træn tidligt eller sent, i skygge, og drik mere, end du tror.
+468|Våde stænger er glatte. Kridt, tør stangen eller gå indenfor.
+469|Blæsende. Håndstand udendørs er sværere i dag.
+470|Vejret, hvor du træner
+471|Vejret er ikke tilgængeligt lige nu.
+472|Brug min placering
+473|Din placering
+474|{days} dage gratis. Intet kort nødvendigt.
+475|Håndstand
+476|Jeg har en konto
+477|Træn færdigheder.\nGør dig fortjent\ntil din plads.
+478|Ikke endnu
+479|Mod væg, 30 s eller mere
+480|Mod en væg, kort
+481|Fra din første pull-up til en ren muscle-up. Følg hver gentagelse, lås hvert trin op, og se, hvor du står.
+482|Dit navn
+483|Ikke endnu
+484|Vælg mindst én
+485|Log træninger på sekunder
+486|Videoverificerede verdensranglister
+487|Færdighedstrin, der krydser sig selv af
+488|Strikse pull-ups i ét sæt
+489|Hvad vil du låse op?
+490|Vælg op til {n}. Hjem starter med dem.
+491|Hvor er du nu?
+492|Vær ærlig. Vi bruger det til at springe de trin over, du allerede mestrer.
+493|Hvad skal vi kalde dig?
+494|Navnet vises på ranglister. Du kan altid ændre det.
+495|Kom i gang
+496|Begynd at træne
+497|Starter i dag
+498|Alt låst op. Din historik er din, uanset hvad du beslutter bagefter.
+499|{days} dages gratis prøveperiode
+500|Kropsvægt i kg (valgfrit)

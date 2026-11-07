@@ -1,6 +1,6 @@
 """Writes src/i18n/en.ts from keys.json, and src/i18n/locales/index.ts from the locale files present."""
 import json, pathlib, re
-root = pathlib.Path('/home/user/fdxtfxd/cali-app/src/i18n')
+root = pathlib.Path(__file__).resolve().parent.parent / 'src' / 'i18n'
 store = json.loads(pathlib.Path(__file__).with_name('keys.json').read_text())
 keys = dict(sorted(store.items()))
 base = sorted({re.sub(r'_(zero|one|two|few|many|other)$', '', k) for k in keys})

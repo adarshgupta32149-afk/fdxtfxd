@@ -1,0 +1,507 @@
+1|{n} d
+2|{n} h
+3|{n} min
+4|sada
+5|{n} tj.
+6|Najduži stoj na rukama
+7|Stoj na rukama
+8|Maks. muscle-upova
+9|Muscle-upovi
+10|Maks. zgibova
+11|Zgibovi
+12|Najteži zgib
+13|S opterećenjem
+14|Kalistenika s ljestvicom
+15|Natrag
+16|Zatvori
+17|Nastavi
+18|Izbriši
+19|Gotovo
+20|Nije pronađeno
+21|Prikaži sve
+22|Prikaži
+23|Prikaži manje
+24|Prikaži više
+25|Pokušaj ponovno
+26|Izazov: {month}
+27|dana
+28|Još nema prijava. Ploča je širom otvorena.
+29|sati
+30|Kako funkcionira
+31|Uživo · {month}
+32|min
+33|Poredak trenutačno nije dostupan.
+34|Jedan pokušaj, na videu. Završava u ponoć zadnjeg dana mjeseca ({month}).
+35|s
+36|Prijave se otvaraju uskoro
+37|Trenutačni poredak
+38|Snimi jedan pokušaj
+39|Jedan neprekinuti isječak, cijelo tijelo u kadru, od početka do zadnjeg ponavljanja.
+40|Pošalji ga u aplikaciji
+41|Tvoj rezultat čeka provjeru. Nitko ga ne vidi dok ne bude provjeren.
+42|Potvrdi rezultat
+43|Broje se samo čista ponavljanja. Potvrđeni rezultati idu ravno na ploču.
+44|Pobjednici dobivaju trofej
+45|Prva tri svakog mjeseca dobivaju trajni trofej na profilu.
+46|{count} vježba
+47|{count} vježbi
+47.few|{count} vježbe
+48|{count} ponavljanje
+49|{count} ponavljanja
+50|{count} trening
+51|{count} treninga
+52|{count} serija
+53|{count} serija
+53.few|{count} serije
+54|{count} korak
+55|{count} koraka
+56|Trup
+57|Noge
+58|Dizanja
+59|Povlačenje
+60|Potisak
+61|Vještine
+62|Dodaj fotografiju
+63|Budi prvi koji će ovdje objaviti.
+64|Zajednica
+65|Podijeli uspjeh, pitanje ili provjeru tehnike…
+66|Nova objava
+67|Još nema komentara. Reci nešto lijepo.
+68|Što se danas dogodilo?
+69|Na što bi ljudi trebali obratiti pažnju?
+70|Pitaj zajednicu…
+71|Objavi
+72|Objavi u
+73|{count} objava
+74|{count} objava
+74.few|{count} objave
+75|Ovdje je još tiho
+76|Ukloni fotografiju
+77|Objava uklonjena
+78|Odgovori korisniku {handle}…
+79|Podijeli
+80|Podijeli nešto
+81|Ova objava više nije dostupna.
+82|U ovom web pregledu fotografije ostaju dok ne osvježiš stranicu.
+83|Još ništa nije zabilježeno
+84|Svaki trening koji završiš pojavit će se ovdje, grupiran po mjesecima.
+85|Tvoja povijest je na sigurnom. Prijeđi na Pro da nastaviš bilježiti.
+86|Sljedeće: {step}
+87|Sljedeća vještina
+88|Još nema treninga. Prvi pokreće tvoje rekorde i tjednu traku gore.
+89|Nedavno
+90|Započni trening
+91|Ovaj tjedan
+92|Današnji odabir
+93|Tvoje besplatno probno razdoblje je isteklo
+94|Tvoj fokus
+95|{count} jezik
+96|Svi jezici ({count})
+97|Engleski je zadani jezik. Odaberi drugi jezik za izbornike i gumbe; vodiči i objave ostaju na jeziku na kojem su napisani.
+98|Nijedan jezik ne odgovara „{query}”.
+99|Prijevode je izradila Cali. Vidiš pogrešku? Javi nam i ispravit ćemo je.
+100|Ponovno pokreni Cali za promjenu smjera izgleda.
+101|Pretraži jezike
+102|Jezik tvog telefona
+103|Jezik
+104|Članci
+105|Sve
+106|Ravnoteža
+107|Osnove
+108|Trup
+109|Noge
+110|Mobilnost
+111|Povlačenje
+112|Oporavak
+113|Statika
+114|Vodiči: {guides} · videozapisi: {videos}
+115|Svaki vodič upućuje na izvornik. Videozapisi se otvaraju na YouTubeu. Raščlambe piše Cali; izvori fotografija navedeni su uz svaki vodič.
+116|Ovaj vodič više nije u knjižnici.
+117|Vodič na engleskom
+118|Najbolji vodiči i videozapisi koje smo pronašli, raščlanjeni korak po korak za tvoje ljestve.
+119|Ljestve: {skill}
+120|Ljestve završene. Ostani u formi.
+121|{count} min čitanja
+122|{count} min čitanja
+123|{count} min
+124|{count} min
+125|Pogreške koje treba izbjeći
+126|Slično ovome
+127|Slijedi: {step}
+128|U ovoj kategoriji još nema članaka.
+129|U ovoj kategoriji još nema videozapisa.
+130|Ide uz ove vodiče
+131|Fotografija: {credit}. Slika iz izvornog članka više nije na mreži.
+132|Odabrano za vještinu {skill}
+133|Reproducira se na YouTubeu
+134|Čitaj
+135|Čitaj dalje
+136|Pročitaj izvornik na {source}
+137|Vrijedi zapamtiti
+138|Short
+139|Ukratko
+140|Korak po korak
+141|Isprobaj u Cali
+142|Manje od minute
+143|ažurirano {date}
+144|Videozapis kanala {channel}. Cali samo upućuje na njega; ne hostamo ga niti uređujemo.
+145|Ovaj videozapis više nije u knjižnici.
+146|Videozapisi
+147|{n} pregleda
+148|Gledaj
+149|Gledaj dalje
+150|Dodaj 15 sekundi
+151|Dodaj seriju
+152|Dodaj seriju: {name}
+153|Dovrši seriju {n}
+154|Odbaci trening
+155|Odbaciti?
+156|Dodaj vježbe usput. Označi seriju i mjerač odmora pokreće se sam.
+157|Što danas\ntreniramo?
+158|Završi
+159|Završi trening
+160|prvi put
+161|Kreni
+162|kg
+163|Izdržaj
+164|Ponavljanja
+165|Pon. · kg
+166|prošli put {sets}
+167|Bilježenje je zaključano
+168|Tvoje besplatno probno razdoblje je isteklo. Svaki zabilježeni trening je na sigurnom i još ga možeš vidjeti.
+169|Sljedeća serija
+170|Nijedna vježba ne odgovara „{query}”.
+171|+kg
+172|Prethodna
+173|Ukloni {name}
+174|pon.
+175|Odmor
+176|Pretraži vježbe
+177|s
+178|Serija
+179|Serija {n}, dugo pritisni za uklanjanje
+180|Serija {n} {unit}
+181|Težina serije {n}
+182|Preskoči
+183|Preskoči odmor
+184|Poništi seriju {n}
+185|Tvoje uobičajene
+186|Zatvori izbornik
+187|Natječi se
+188|Izazov ovog mjeseca
+189|Povijest
+190|Svaki zabilježeni trening
+191|Jezik
+192|Engleski i još 44
+193|Otvori izbornik
+194|Profil
+195|Ti, račun i podaci
+196|Ljestvica
+197|Svjetske ploče
+198|Rekordi
+199|Osobni rekordi
+200|Prijavljen kao {name}
+201|Vještine
+202|Tvoje ljestve
+203|Sve pročitano
+204|Razgovor nije pronađen
+205|Možda je uklonjen.
+206|Razgovor s {name}
+207|Razgovori
+208|Tvoja ekipa
+209|Ogledni razgovori do lansiranja. Poslane poruke ostaju na ovom telefonu.
+210|Pošalji poruku: {name}
+211|Nijedan razgovor ne odgovara „{query}”.
+212|Otvori objavu
+213|Otvori Short
+214|Poruka…
+215|Pozdravi
+216|Pretraži ljude
+217|Pošalji poruku
+218|Poslao/la objavu
+219|Poslao/la Short
+220|Ovaj Short više nije dostupan.
+221|{count} nepročitana
+222|{count} nepročitanih
+222.few|{count} nepročitane
+223|Ti: {text}
+224|Plaćanje se otvara pri lansiranju
+225|Značka osnivača, zauvijek
+226|Mjesečni izazovi
+227|Tvoja cijela povijest
+228|Ljestve vještina koje se same označavaju
+229|Bilježi treninge
+230|Ljestvice potvrđene videom
+231|dan preostao
+232|dana preostalo
+233|Preostao je {count} dan probnog razdoblja
+234|Preostalo je {count} dana probnog razdoblja
+235|Cijela tvoja povijest još je ovdje. Prijeđi na Pro da nastaviš bilježiti.
+236|Osnivač
+237|Propusnica osnivača
+238|Osnivač · Pro
+239|Besplatno
+240|Besplatno probno razdoblje
+241|Tvoja povijest uvijek je vidljiva, s Pro ili bez.
+242|Podrži nas rano i zaključaj cijenu lansiranja za cijelu godinu.
+243|Propusnica osnivača · cijena lansiranja
+244|{count} dan
+245|{count} dana
+246|oko 42 ₹ mjesečno
+247|manje od 1 $ mjesečno
+248|godišnje
+249|Cijena ostaje tvoja dok god obnavljaš.
+250|Pro, neograničeno
+251|Indija
+252|Cijeli svijet
+253|Pogledaj propusnicu osnivača
+254|Pogledaj propusnicu osnivača
+255|Hvala što nas podržavaš od početka.
+256|Treniraj bez\ngranica.
+257|Probno razdoblje je isteklo
+258|Do tada je sve otključano. Poslije povijest ostaje tvoja.
+259|Neograničeno bilježenje
+260|Ti si osnivač
+261|Dobar dan
+262|Podnevni prozor
+263|Poslijepodne
+264|Dvadeset minuta je dovoljno. Kreni.
+265|Dobra večer
+266|Spremni kad si ti
+267|Večer
+268|Odradimo današnji trening
+269|Dobro jutro
+270|Svjež početak
+271|Jutro
+272|Odradi trening prije nego što dan krene
+273|Još si budan?
+274|Noćni trening?
+275|Kasno navečer
+276|Brzih 15 minuta, pa spavanje
+277|Ogledni plakat
+278|Račun
+279|Sigurnosna kopija spremljena
+280|Sigurnosna kopija u {time}
+281|Tjelesna masa
+282|Izbriši moj račun
+283|Dodirni ponovno za brisanje računa
+284|Uklanja račun i sve što je u njemu spremljeno. Ne može se poništiti.
+285|Izbriši sve moje podatke
+286|Dodirni ponovno za brisanje svega
+287|Dok se ne prijaviš, sve ostaje na ovom telefonu.
+288|Ime
+289|Prikazuje se na ljestvicama
+290|Postavke
+291|Prijavi se za sigurnosnu kopiju
+292|Zadrži treninge, probno razdoblje i plasmane na svim telefonima.
+293|Odjavi se
+294|Prijavljen
+295|Od {date}
+296|Sinkroniziraj sada
+297|Problem sa sinkronizacijom. Pokušat ćemo ponovno.
+298|Sinkronizacija…
+299|Ti
+300|Tvoji podaci
+301|Na ovoj ploči još nema potvrđenih rezultata. Prvi koji pošalje zauzima vrh.
+302|Svijet · potvrđeni rezultati
+303|Zabilježi ovu vještinu da ovdje vidiš svoj najbolji rezultat
+304|Bez plasmana
+305|Broje se samo rezultati potvrđeni videom. Slanje s isječkom otvara se s prvim mjesečnim izazovom.
+306|Slobodno
+307|Pogledaj izazov mjeseca →
+308|Tvoj najbolji: {value}
+309|Tvoje mjesto
+310|Usporedi ih na Ljestvici →
+311|Zabilježi trening i tvoji rekordi počet će se ovdje puniti, vježbu po vježbu.
+312|Izbriši trening
+313|Dodirni ponovno za brisanje
+314|Ovaj trening više ne postoji.
+315|Nova razina.
+316|Bravo.
+317|Trening spremljen
+318|s izdržaja
+319|Pogledaj svoje ljestve
+320|Trening
+321|Korak vještine otključan
+322|Otključani koraci vještina: {count}
+323|Još nema Shortsa
+324|Objavi prvi. Do 3 minute.
+325|Isključi zvuk
+326|Izvorni zvuk
+327|Pauziraj
+328|Reproduciraj
+329|Objavi Short
+330|Uključi zvuk
+331|Dodirni za zvuk
+332|Ta adresa e-pošte izgleda pogrešno.
+333|Provjeri e-poštu
+334|Šesteroznamenkasti kôd
+335|Unesi kôd iz e-pošte.
+336|Napravi sigurnosnu kopiju treninga, prenesi probno razdoblje na druge telefone i uđi na ploče.
+337|Bez lozinke. Novi si ovdje? Ovo izrađuje tvoj račun.
+338|Koristi drugu e-poštu
+339|Pošalji mi kôd
+340|Slanje…
+341|Poslali smo šesteroznamenkasti kôd na {email}.
+342|Prijavi se
+343|Računi nisu dostupni u ovoj verziji.
+344|Svi koraci gotovi. Ova vještina je tvoja.
+345|Iz tvojih zapisa
+346|Koraci se sami označe kad ih zabilježiš.
+347|Probno razdoblje je isteklo. Napredak ostaje; prijeđi na Pro da označavaš nove korake.
+348|Zabilježi
+349|Označi kao gotovo
+350|Označeno
+351|Poništi oznaku: {step}
+352|Dodaj komentar…
+353|Zatvori ploču
+354|Komentiraj
+355|Komentari
+356|{count} komentar
+357|{count} komentara
+358|Dvaput dodirni za sviđanje
+359|Sviđa mi se
+360|{n} sviđanje
+361|{n} sviđanja
+362|Više mogućnosti
+363|Još nema komentara. Započni razgovor.
+364|Ne zanima me
+365|Mogućnosti
+366|Objavi komentar
+367|Prijavi
+368|Hvala. Pregledat ćemo ovu objavu.
+369|Primjer
+370|Spremi
+371|Viđeno na Cali
+372|Pošalji u Porukama
+373|Pošalji: {name}
+374|Poslano
+375|Poslano: {name}
+376|Podijeli
+377|Dijeljenje izvan Calija radi u mobilnoj aplikaciji.
+378|Podijeli izvan Calija
+379|Podijeljeno
+380|{count} dijeljenje
+381|{count} dijeljenja
+382|netko
+383|Više mi se ne sviđa
+384|Ukloni iz spremljenih
+385|Prikaži 1 komentar
+386|Prikaži sve komentare ({count})
+387|Prikaži komentare
+388|Tvoja objava
+389|Provjera tehnike
+390|Objavi ponavljanje, dobij iskrenu povratnu informaciju.
+391|Memovi
+392|Teretanski humor, ali ljubazno.
+393|Napredak
+394|Prije i poslije, zapisi tjedan po tjedan.
+395|Pitanja
+396|Nijedno pitanje nije preosnovno.
+397|Uspjesi
+398|Prvi zgib? Reci svima.
+399|Feed
+400|Početna
+401|Uči
+402|Poruke
+403|Shorts
+404|vježba
+405|vježbi
+405.few|vježbe
+406|mjesec
+407|mjeseci
+407.few|mjeseca
+408|ponavljanje
+409|ponavljanja
+410|trening
+411|treninga
+412|serija
+413|serija
+413.few|serije
+414|korak vještine
+415|koraka vještina
+416|{n} kg
+417|~{n} kg 1RM
+418|+{n} kg
+419|{n} s
+420|Pristup kameri je isključen. Uključi ga u Postavkama za snimanje.
+421|Napiši opis… na čemu radiš?
+422|Odaberi drugi videozapis
+423|Promijeni
+424|Provjera…
+425|Odaberi videozapis
+426|Iz tvoje galerije
+427|Trajanje
+428|Novi Short
+429|{len} od 3:00
+430|Nije moguće otvoriti tvoje fotografije. Pokušaj ponovno.
+431|Objavi Short
+432|Snimi
+433|Trening, napredak, provjere tehnike i zabava. Bez mržnje, golotinje ili opasnih vratolomija. Svatko može prijaviti objavu.
+434|Neka bude ugodno
+435|Zaustavlja se na 3:00
+436|Okomito je najbolje. Do 3 minute.
+437|Objavi isječak
+438|Ovaj videozapis traje {len}. Shortsi mogu trajati do 3:00, pa ga prvo skrati.
+439|Nismo mogli očitati trajanje ovog videozapisa. Pokušaj s drugim.
+440|Nije moguće otvoriti tvoje videozapise. Pokušaj ponovno.
+441|U ovom web pregledu prijenosi ostaju dok ne osvježiš stranicu.
+442|Dopusti lokaciju za ovu stranicu u pregledniku da vidiš lokalno vrijeme i sat.
+443|Uključi lokaciju za Cali u Postavkama da vidiš lokalno vrijeme i sat.
+444|Vedro
+445|Vedra noć
+446|Oblačno
+447|Rosulja
+448|Osjeća se kao {temp}°
+449|Tražimo te i gledamo nebo…
+450|Magla
+451|Lokacija je isključena
+452|Nismo mogli pronaći tvoju lokaciju. Provjeri jesu li usluge lokacije uključene.
+453|Naoblaka
+454|Djelomično oblačno
+455|Temperatura, vrijeme i lokalno vrijeme uživo, sa savjetom za današnji trening.
+456|Kiša
+457|Izlazak {time}
+458|Zalazak {time}
+459|Pljuskovi
+460|Snijeg
+461|Grmljavina
+462|Hladno je. Zagrij zapešća i ramena dvostruko dulje prije izdržaja.
+463|Dobri uvjeti za šipke.
+464|Vruće je. Kraće serije, dulji odmori, voda pri ruci.
+465|Grmljavina. Danas se kloni metalnih šipki; treniraj unutra.
+466|Visok UV. Nađi hlad za duge izdržaje i stojeve na rukama.
+467|Jako vruće. Treniraj rano ili kasno, u hladu, i pij više nego što misliš.
+468|Mokre šipke kližu. Magnezij, osuši šipku ili idi unutra.
+469|Vjetrovito. Stojevi na rukama vani danas će biti teži.
+470|Vrijeme ondje gdje treniraš
+471|Vrijeme trenutačno nije dostupno.
+472|Koristi moju lokaciju
+473|Tvoja lokacija
+474|{days} dana besplatno. Bez kartice.
+475|Stoj na rukama
+476|Imam račun
+477|Treniraj vještine.\nZasluži svoje\nmjesto.
+478|Još ne
+479|Uza zid, 30 s ili više
+480|Uza zid, kratko
+481|Od prvog zgiba do čistog muscle-upa. Prati svako ponavljanje, otključaj svaki korak i vidi gdje si.
+482|Tvoje ime
+483|Još ne
+484|Odaberi barem jedno
+485|Bilježi treninge u nekoliko sekundi
+486|Svjetske ljestvice potvrđene videom
+487|Koraci vještina koji se sami označavaju
+488|Strogi zgibovi u jednoj seriji
+489|Što želiš otključati?
+490|Odaberi do {n}. Početna će krenuti s njima.
+491|Gdje si sada?
+492|Budi iskren. Tako preskačemo korake koje već svladavaš.
+493|Kako da te zovemo?
+494|Ovo se ime prikazuje na ljestvicama. Možeš ga promijeniti bilo kada.
+495|Započni
+496|Počni trenirati
+497|Počinje danas
+498|Sve otključano. Tvoja povijest ostaje tvoja, što god kasnije odlučiš.
+499|{days} dana besplatne probe
+500|Tjelesna masa u kg (neobavezno)

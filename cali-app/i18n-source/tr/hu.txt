@@ -1,0 +1,500 @@
+1|{n} n
+2|{n} ó
+3|{n} p
+4|most
+5|{n} h
+6|Leghosszabb kézállás
+7|Kézállás
+8|Max. muscle-up
+9|Muscle-up
+10|Max. húzódzkodás
+11|Húzódzkodás
+12|Legnehezebb húzódzkodás
+13|Súllyal
+14|Kalisztenika, rangsorral
+15|Vissza
+16|Bezárás
+17|Tovább
+18|Törlés
+19|Kész
+20|Nem található
+21|Összes
+22|Mutasd
+23|Kevesebb
+24|Több
+25|Újra
+26|{month} kihívás
+27|nap
+28|Még nincs nevező. A tábla tárva-nyitva.
+29|óra
+30|Hogyan működik
+31|Élő · {month}
+32|perc
+33|Az állás most nem érhető el.
+34|Egy próbálkozás, videón. A hónap ({month}) utolsó napján éjfélkor zárul.
+35|mp
+36|A nevezés hamarosan indul
+37|Jelenlegi állás
+38|Vegyél fel egy próbálkozást
+39|Egyetlen folyamatos klip, teljes test a képen, az elejétől az utolsó ismétlésig.
+40|Küldd be az appban
+41|Az eredményed függőben marad. Senki sem látja, amíg nem ellenőrizték.
+42|Legyél hitelesítve
+43|Csak a tiszta ismétlések számítanak. A hitelesített eredmények egyből a táblára kerülnek.
+44|A győztesek trófeát kapnak
+45|Minden hónap első három helyezettje állandó trófeát kap a profiljára.
+46|{count} gyakorlat
+47|{count} gyakorlat
+48|{count} ismétlés
+49|{count} ismétlés
+50|{count} edzés
+51|{count} edzés
+52|{count} sorozat
+53|{count} sorozat
+54|{count} lépés
+55|{count} lépés
+56|Törzs
+57|Láb
+58|Emelések
+59|Húzás
+60|Nyomás
+61|Képességek
+62|Fotó hozzáadása
+63|Posztolj ide elsőként.
+64|Közösség
+65|Ossz meg egy sikert, kérdést, technika-ellenőrzést…
+66|Új bejegyzés
+67|Még nincs hozzászólás. Írj valami kedveset.
+68|Mi történt ma?
+69|Mire figyeljenek a többiek?
+70|Kérdezd a közösséget…
+71|Közzététel
+72|Közzététel itt:
+73|{count} bejegyzés
+74|{count} bejegyzés
+75|Még csend van itt
+76|Fotó eltávolítása
+77|Bejegyzés eltávolítva
+78|Válasz neki: {handle}…
+79|Oszd meg
+80|Ossz meg valamit
+81|Ez a bejegyzés már nem érhető el.
+82|Ebben a webes előnézetben a fotók az oldal újratöltéséig maradnak meg.
+83|Még nincs rögzítve semmi
+84|Minden befejezett edzésed ide kerül, hónapok szerint csoportosítva.
+85|Az előzményeid biztonságban vannak. Válts Pro-ra a további rögzítéshez.
+86|Következő: {step}
+87|Következő képesség
+88|Még nincs edzés. Az első elindítja a rekordjaidat és a fenti heti sávot.
+89|Legutóbbiak
+90|Edzés indítása
+91|Ezen a héten
+92|A nap ajánlata
+93|Az ingyenes próbaidőszakod lejárt
+94|A fókuszod
+95|{count} nyelv
+96|Mind a(z) {count} nyelv
+97|Az angol az alapértelmezett. Válassz másik nyelvet a menükhöz és gombokhoz; az útmutatók és bejegyzések az eredeti nyelvükön maradnak.
+98|Nincs „{query}” keresésnek megfelelő nyelv.
+99|A fordításokat a Cali készítette. Hibát találtál? Szólj, és kijavítjuk.
+100|Indítsd újra a Calit az elrendezés irányának váltásához.
+101|Nyelvek keresése
+102|A telefonod nyelve
+103|Nyelv
+104|Cikkek
+105|Összes
+106|Egyensúly
+107|Alapok
+108|Törzs
+109|Láb
+110|Mobilitás
+111|Húzás
+112|Regeneráció
+113|Statikus
+114|{guides} útmutató · {videos} videó
+115|Minden útmutató az eredetire hivatkozik. A videók a YouTube-on nyílnak meg. Az összefoglalókat a Cali írta; a fotók forrása minden útmutatónál fel van tüntetve.
+116|Ez az útmutató már nincs a könyvtárban.
+117|Angol nyelvű útmutató
+118|A legjobb útmutatók és videók, amiket találtunk, lépésről lépésre lebontva a létráidhoz.
+119|{skill}-létra
+120|Létra teljesítve. Tartsd szinten.
+121|{count} perc olvasás
+122|{count} perc olvasás
+123|{count} perc
+124|{count} perc
+125|Elkerülendő hibák
+126|Hasonlók
+127|Következik: {step}
+128|Ebben a kategóriában még nincsenek cikkek.
+129|Ebben a kategóriában még nincsenek videók.
+130|Ezekhez az útmutatókhoz illik
+131|Fotó: {credit}. Az eredeti cikk képe már nem érhető el.
+132|Neked válogatva: {skill}
+133|A YouTube-on játszható le
+134|Olvasás
+135|Olvasd tovább
+136|Az eredeti olvasása itt: {source}
+137|Érdemes megjegyezni
+138|Short
+139|Röviden
+140|Lépésről lépésre
+141|Próbáld ki a Caliban
+142|Egy percen belül
+143|frissítve: {date}
+144|Videó: {channel}. A Cali csak hivatkozik rá; nem tároljuk és nem szerkesztjük.
+145|Ez a videó már nincs a könyvtárban.
+146|Videók
+147|{n} megtekintés
+148|Megnézem
+149|Nézd tovább
+150|+15 másodperc
+151|Sorozat hozzáadása
+152|{name} sorozat hozzáadása
+153|{n}. sorozat teljesítése
+154|Edzés elvetése
+155|Elveted?
+156|Menet közben add hozzá a gyakorlatokat. Pipálj ki egy sorozatot, és a pihenőidőzítő magától indul.
+157|Mit edzünk\nma?
+158|Befejezés
+159|Edzés befejezése
+160|először
+161|Mehet
+162|kg
+163|Tartás
+164|Ism.
+165|Ism. · kg
+166|legutóbb {sets}
+167|A rögzítés zárolva
+168|Az ingyenes próbaidőszakod lejárt. Minden rögzített edzésed biztonságban van és továbbra is megtekinthető.
+169|Következő sorozat
+170|Nincs „{query}” keresésnek megfelelő gyakorlat.
+171|+kg
+172|Előző
+173|{name} eltávolítása
+174|ism.
+175|Pihenő
+176|Gyakorlatok keresése
+177|mp
+178|Sorozat
+179|{n}. sorozat, eltávolításhoz nyomd hosszan
+180|{n}. sorozat {unit}
+181|{n}. sorozat súlya
+182|Kihagyás
+183|Pihenő kihagyása
+184|{n}. sorozat visszavonása
+185|A szokásos gyakorlataid
+186|Menü bezárása
+187|Verseny
+188|A hónap kihívása
+189|Előzmények
+190|Minden rögzített edzésed
+191|Nyelv
+192|Angol és még 44
+193|Menü megnyitása
+194|Profil
+195|Te, fiók és adatok
+196|Rangsor
+197|Világranglisták
+198|Rekordok
+199|Egyéni csúcsok
+200|Bejelentkezve: {name}
+201|Képességek
+202|A létráid
+203|Mindent elolvastál
+204|A csevegés nem található
+205|Lehet, hogy törölték.
+206|Csevegés vele: {name}
+207|Csevegések
+208|A csapatod
+209|Minta csevegések az indulásig. Az elküldött üzenetek ezen a telefonon maradnak.
+210|Üzenet neki: {name}
+211|Nincs „{query}” keresésnek megfelelő csevegés.
+212|Bejegyzés megnyitása
+213|Short megnyitása
+214|Üzenet…
+215|Köszönj
+216|Emberek keresése
+217|Üzenet küldése
+218|Bejegyzést küldött
+219|Shortot küldött
+220|Ez a Short már nem érhető el.
+221|{count} olvasatlan
+222|{count} olvasatlan
+223|Te: {text}
+224|A fizetés az indulással nyílik
+225|Alapító jelvény, örökre
+226|Havi kihívások
+227|A teljes előzményed
+228|Magukat kipipáló képességlétrák
+229|Edzések rögzítése
+230|Videóval hitelesített rangsorok
+231|nap van hátra
+232|nap van hátra
+233|{count} nap van hátra a próbaidőből
+234|{count} nap van hátra a próbaidőből
+235|Az összes előzményed itt van még. Válts Pro-ra a további rögzítéshez.
+236|Alapító
+237|Alapító bérlet
+238|Alapító · Pro
+239|Ingyenes
+240|Ingyenes próbaidőszak
+241|Az előzményeid mindig megtekinthetők, Pro-val vagy anélkül.
+242|Támogass minket korán, és rögzítsd az induló árat egész évre.
+243|Alapító bérlet · induló ár
+244|{count} nap
+245|{count} nap
+246|kb. ₹42 havonta
+247|havi 1 $ alatt
+248|évente
+249|Az ár a tiéd marad, amíg megújítod.
+250|Pro, korlátlanul
+251|India
+252|Világszerte
+253|Alapító bérlet megtekintése
+254|Az Alapító bérlet megtekintése
+255|Köszönjük, hogy korán támogatsz minket.
+256|Eddz határok\nnélkül.
+257|A próbaidő lejárt
+258|Addig minden fel van oldva. Utána is a tiéd marad az előzmény.
+259|Korlátlan rögzítés
+260|Alapító vagy
+261|Szép délutánt
+262|Déli ablak
+263|Délután
+264|Húsz perc elég. Hajrá.
+265|Jó estét
+266|Indulhatunk, amikor te is
+267|Este
+268|Tudjuk le a mai edzést
+269|Jó reggelt
+270|Friss kezdet
+271|Reggel
+272|Eddz, mielőtt beindul a nap
+273|Még ébren?
+274|Éjszakai edzés?
+275|Késő este
+276|Gyors 15 perc, aztán alvás
+277|Minta plakát
+278|Fiók
+279|Biztonsági mentés kész
+280|Mentve: {time}
+281|Testsúly
+282|Fiókom törlése
+283|Koppints újra a fiók törléséhez
+284|Törli a fiókot és minden benne tárolt adatot. Nem vonható vissza.
+285|Minden adatom törlése
+286|Koppints újra mindennek a törléséhez
+287|Bejelentkezésig minden ezen a telefonon marad.
+288|Név
+289|A ranglistákon látszik
+290|Beállítások
+291|Jelentkezz be a mentéshez
+292|Tartsd meg az edzéseidet, a próbaidőt és a helyezéseidet minden telefonon.
+293|Kijelentkezés
+294|Bejelentkezve
+295|{date} óta
+296|Szinkronizálás most
+297|Szinkronizálási hiba. Újrapróbáljuk.
+298|Szinkronizálás…
+299|Te
+300|Az adataid
+301|Ezen a táblán még nincs hitelesített eredmény. Aki elsőként beküld, az első helyre kerül.
+302|Világ · hitelesített eredmények
+303|Rögzítsd ezt a képességet, hogy itt lásd a legjobbadat
+304|Nincs helyezés
+305|Csak a videóval hitelesített eredmények számítanak. A klippel való beküldés az első havi kihívással nyílik.
+306|Szabad
+307|A hónap kihívása →
+308|A legjobbad: {value}
+309|A helyed
+310|Hasonlítsd össze a Rangsorban →
+311|Rögzíts egy edzést, és a rekordjaid gyakorlatonként itt kezdenek gyűlni.
+312|Edzés törlése
+313|Koppints újra a törléshez
+314|Ez az edzés már nem létezik.
+315|Szintlépés.
+316|Szép munka.
+317|Edzés mentve
+318|mp tartás
+319|A létrád megtekintése
+320|Edzés
+321|Képességlépés feloldva
+322|{count} képességlépés feloldva
+323|Még nincs Short
+324|Posztold az elsőt. Legfeljebb 3 perc.
+325|Némítás
+326|Eredeti hang
+327|Szünet
+328|Lejátszás
+329|Short posztolása
+330|Hang bekapcsolása
+331|Koppints a hangért
+332|Ez az e-mail-cím hibásnak tűnik.
+333|Nézd meg az e-mailjeidet
+334|6 jegyű kód
+335|Írd be az e-mailben kapott kódot.
+336|Mentsd az edzéseidet, vidd át a próbaidőt más telefonra, és kerülj fel a táblákra.
+337|Nincs jelszó. Új vagy itt? Ezzel létrejön a fiókod.
+338|Másik e-mail használata
+339|Kérek kódot
+340|Küldés…
+341|6 jegyű kódot küldtünk ide: {email}.
+342|Bejelentkezés
+343|Ebben a buildben nem érhetők el fiókok.
+344|Minden lépés kész. Ez a képesség a tiéd.
+345|A naplóidból
+346|A lépések maguktól kipipálódnak, amikor rögzíted őket.
+347|A próbaidő lejárt. A haladásod megmarad; válts Pro-ra az új lépések kipipálásához.
+348|Rögzítés
+349|Késznek jelölés
+350|Kipipálva
+351|Pipa levétele: {step}
+352|Hozzászólás írása…
+353|Panel bezárása
+354|Hozzászólás
+355|Hozzászólások
+356|{count} hozzászólás
+357|{count} hozzászólás
+358|Koppints duplán a kedveléshez
+359|Tetszik
+360|{n} kedvelés
+361|{n} kedvelés
+362|További lehetőségek
+363|Még nincs hozzászólás. Kezdd el a beszélgetést.
+364|Nem érdekel
+365|Lehetőségek
+366|Hozzászólás közzététele
+367|Jelentés
+368|Köszönjük. Átnézzük ezt a bejegyzést.
+369|Minta
+370|Mentés
+371|Láttam a Caliban
+372|Küldés üzenetben
+373|Küldés neki: {name}
+374|Elküldve
+375|Elküldve neki: {name}
+376|Megosztás
+377|A Calin kívüli megosztás a telefonos appban működik.
+378|Megosztás a Calin kívül
+379|Megosztva
+380|{count} megosztás
+381|{count} megosztás
+382|valaki
+383|Nem tetszik már
+384|Eltávolítás a mentettekből
+385|1 hozzászólás megtekintése
+386|Mind a(z) {count} hozzászólás megtekintése
+387|Hozzászólások megtekintése
+388|A bejegyzésed
+389|Technika-ellenőrzés
+390|Posztolj egy ismétlést, és kapj őszinte visszajelzést.
+391|Mémek
+392|Edzőtermi humor, kedvesen.
+393|Fejlődés
+394|Előtte-utána, heti naplók.
+395|Kérdések
+396|Nincs túl alapvető kérdés.
+397|Sikerek
+398|Első húzódzkodás? Mondd el mindenkinek.
+399|Hírfolyam
+400|Főoldal
+401|Tanulás
+402|Üzenetek
+403|Shorts
+404|gyakorlat
+405|gyakorlat
+406|hónap
+407|hónap
+408|ismétlés
+409|ismétlés
+410|edzés
+411|edzés
+412|sorozat
+413|sorozat
+414|képességlépés
+415|képességlépés
+416|{n} kg
+417|~{n} kg 1RM
+418|+{n} kg
+419|{n} mp
+420|A kamera-hozzáférés ki van kapcsolva. A felvételhez kapcsold be a Beállításokban.
+421|Írj leírást… min dolgozol?
+422|Másik videó választása
+423|Csere
+424|Ellenőrzés…
+425|Videó választása
+426|A galériádból
+427|Hossz
+428|Új Short
+429|{len} / 3:00
+430|Nem sikerült megnyitni a fotóidat. Próbáld újra.
+431|Short posztolása
+432|Felvétel
+433|Edzés, fejlődés, technika-ellenőrzés és szórakozás. Gyűlölet, meztelenség és veszélyes mutatványok nélkül. Bárki jelenthet egy bejegyzést.
+434|Maradjon jó a hangulat
+435|3:00-nál megáll
+436|Állóban a legjobb. Legfeljebb 3 perc.
+437|Klip posztolása
+438|Ez a videó {len} hosszú. A Shorts legfeljebb 3:00 lehet, előbb vágd meg.
+439|Nem tudtuk kiolvasni a videó hosszát. Próbálj egy másikat.
+440|Nem sikerült megnyitni a videóidat. Próbáld újra.
+441|Ebben a webes előnézetben a feltöltések az oldal újratöltéséig maradnak meg.
+442|Engedélyezd a helyadatokat ennek az oldalnak a böngészőben a helyi időjárás és idő megjelenítéséhez.
+443|Kapcsold be a helyadatokat a Calihoz a Beállításokban a helyi időjárás és idő megjelenítéséhez.
+444|Derült
+445|Derült éjszaka
+446|Felhős
+447|Szitálás
+448|Hőérzet {temp}°
+449|Megkeresünk és figyeljük az eget…
+450|Köd
+451|A helyadatok ki vannak kapcsolva
+452|Nem találtuk a helyzetedet. Ellenőrizd, hogy be vannak-e kapcsolva a helymeghatározási szolgáltatások.
+453|Borult
+454|Részben felhős
+455|Élő hőmérséklet, időjárás és helyi idő, tippel a mai edzéshez.
+456|Eső
+457|Napkelte {time}
+458|Napnyugta {time}
+459|Zápor
+460|Hó
+461|Zivatar
+462|Hideg van. Tartások előtt kétszer olyan sokáig melegítsd be a csuklódat és a vállad.
+463|Jó idő a rudakhoz.
+464|Meleg van. Rövidebb sorozatok, hosszabb pihenők, víz kéznél.
+465|Zivatar. Ma maradj távol a fém rudaktól; eddz bent.
+466|Magas UV. Keress árnyékot a hosszú tartásokhoz és kézállásokhoz.
+467|Nagyon meleg van. Eddz korán vagy későn, árnyékban, és igyál többet, mint gondolnád.
+468|A nedves rúd csúszik. Magnézia, töröld szárazra a rudat, vagy menj be.
+469|Szeles idő. A kinti kézállás ma nehezebb lesz.
+470|Időjárás ott, ahol edzel
+471|Az időjárás most nem érhető el.
+472|Saját helyzetem használata
+473|A helyzeted
+474|{days} nap ingyen. Kártya nem kell.
+475|Kézállás
+476|Van fiókom
+477|Edzd a képességeidet.\nSzerezd meg a\nhelyezésed.
+478|Még nem
+479|Falnál, 30 mp vagy több
+480|Falnak dőlve, röviden
+481|Az első húzódzkodástól a tiszta muscle-upig. Kövess minden ismétlést, oldj fel minden lépést, és nézd meg, hol tartasz.
+482|A neved
+483|Még nem
+484|Válassz legalább egyet
+485|Edzésrögzítés másodpercek alatt
+486|Videóval hitelesített világranglisták
+487|Magukat kipipáló képességlépések
+488|Szigorú húzódzkodás egy sorozatban
+489|Mit szeretnél feloldani?
+490|Válassz legfeljebb {n}-t. A főoldal ezekkel kezdődik.
+491|Hol tartasz most?
+492|Légy őszinte. Ezzel átugorjuk azokat a lépéseket, amelyek már mennek.
+493|Hogyan szólítsunk?
+494|Ez a név megjelenik a ranglistákon. Bármikor megváltoztathatod.
+495|Kezdjük
+496|Edzés indítása
+497|Már ma indul
+498|Minden feloldva. Az előzményeid a tieid maradnak, bárhogy döntesz utána.
+499|{days} napos ingyenes próba
+500|Testsúly kg-ban (nem kötelező)

@@ -1,0 +1,519 @@
+1|{n} d
+2|{n} h
+3|{n} min
+4|teraz
+5|{n} t
+6|Najdlhší stoj na rukách
+7|Stoj na rukách
+8|Max. muscle-upov
+9|Muscle-upy
+10|Max. zhybov
+11|Zhyby
+12|Najťažší zhyb
+13|So záťažou
+14|Kalistenika s rebríčkom
+15|Späť
+16|Zavrieť
+17|Pokračovať
+18|Odstrániť
+19|Hotovo
+20|Nenašlo sa
+21|Zobraziť všetko
+22|Zobraziť
+23|Zobraziť menej
+24|Zobraziť viac
+25|Skúsiť znova
+26|Výzva: {month}
+27|dní
+28|Zatiaľ žiadni účastníci. Tabuľka je dokorán.
+29|hodín
+30|Ako to funguje
+31|Naživo · {month}
+32|min
+33|Poradie je teraz offline.
+34|Jeden pokus na video. Končí o polnoci posledného dňa mesiaca ({month}).
+35|s
+36|Prihlášky sa čoskoro otvoria
+37|Aktuálne poradie
+38|Natoč jeden pokus
+39|Jeden súvislý klip, celé telo v zábere, od štartu po posledné opakovanie.
+40|Odošli ho v aplikácii
+41|Tvoj výsledok čaká na kontrolu. Nikto ho neuvidí, kým nebude overený.
+42|Daj sa overiť
+43|Počítajú sa len čisté opakovania. Overené výsledky idú rovno do tabuľky.
+44|Víťazi si nechajú trofej
+45|Najlepší traja každý mesiac získajú trvalú trofej na profile.
+46|{count} cvik
+47|{count} cvikov
+47.few|{count} cviky
+48|{count} opakovanie
+49|{count} opakovaní
+49.few|{count} opakovania
+50|{count} tréning
+51|{count} tréningov
+51.few|{count} tréningy
+52|{count} séria
+53|{count} sérií
+53.few|{count} série
+54|{count} krok
+55|{count} krokov
+55.few|{count} kroky
+56|Stred tela
+57|Nohy
+58|Zdvihy
+59|Ťah
+60|Tlak
+61|Zručnosti
+62|Pridať fotku
+63|Buď prvý, kto sem niečo pridá.
+64|Komunita
+65|Zdieľaj úspech, otázku alebo kontrolu techniky…
+66|Nový príspevok
+67|Zatiaľ žiadne komentáre. Napíš niečo pekné.
+68|Čo sa dnes stalo?
+69|Na čo sa majú ostatní pozrieť?
+70|Opýtaj sa komunity…
+71|Zverejniť
+72|Zverejniť v
+73|{count} príspevok
+74|{count} príspevkov
+74.few|{count} príspevky
+75|Zatiaľ je tu ticho
+76|Odstrániť fotku
+77|Príspevok odstránený
+78|Odpovedať {handle}…
+79|Zdieľaj to
+80|Zdieľaj niečo
+81|Tento príspevok už nie je dostupný.
+82|V tomto webovom náhľade zostanú fotky len do obnovenia stránky.
+83|Zatiaľ nič zapísané
+84|Každý dokončený tréning sa objaví tu, zoskupený podľa mesiacov.
+85|Tvoja história je v bezpečí. Prejdi na Pro a zapisuj ďalej.
+86|Ďalej: {step}
+87|Ďalšia zručnosť
+88|Zatiaľ žiadne tréningy. Prvý spustí tvoje rekordy a týždenný pruh hore.
+89|Nedávne
+90|Začať tréning
+91|Tento týždeň
+92|Tip dňa
+93|Tvoja bezplatná skúšobná verzia skončila
+94|Tvoj cieľ
+95|{count} jazyk
+96|Všetky jazyky ({count})
+97|Predvolená je angličtina. Vyber iný jazyk pre ponuky a tlačidlá; návody a príspevky zostávajú v jazyku, v ktorom boli napísané.
+98|Žiadny jazyk nezodpovedá „{query}“.
+99|Preklady vytvorila Cali. Našiel si chybu? Napíš nám a opravíme ju.
+100|Reštartuj Cali, aby sa zmenil smer rozloženia.
+101|Hľadať jazyky
+102|Jazyk telefónu
+103|Jazyk
+104|Články
+105|Všetko
+106|Rovnováha
+107|Základy
+108|Stred tela
+109|Nohy
+110|Mobilita
+111|Ťah
+112|Regenerácia
+113|Statika
+114|Návody: {guides} · videá: {videos}
+115|Každý návod odkazuje na originál. Videá sa otvárajú na YouTube. Rozbory píše Cali; zdroje fotiek sú uvedené pri každom návode.
+116|Tento návod už v knižnici nie je.
+117|Návod v angličtine
+118|Najlepšie návody a videá, ktoré sme našli, rozobraté krok za krokom pre tvoje rebríky.
+119|Rebrík: {skill}
+120|Rebrík dokončený. Udrž si formu.
+121|{count} min čítania
+122|{count} min čítania
+123|{count} min
+124|{count} min
+125|Chyby, ktorým sa vyhnúť
+126|Podobné
+127|Nasleduje: {step}
+128|V tejto kategórii zatiaľ nie sú články.
+129|V tejto kategórii zatiaľ nie sú videá.
+130|Hodí sa k týmto návodom
+131|Foto: {credit}. Obrázok z pôvodného článku už nie je online.
+132|Vybrané pre zručnosť {skill}
+133|Prehráva sa na YouTube
+134|Čítať
+135|Čítať ďalej
+136|Prečítaj si originál na {source}
+137|Stojí za zapamätanie
+138|Short
+139|V skratke
+140|Krok za krokom
+141|Vyskúšaj v Cali
+142|Pod minútu
+143|aktualizované {date}
+144|Video od {channel}. Cali naň len odkazuje; nehostujeme ho ani neupravujeme.
+145|Toto video už v knižnici nie je.
+146|Videá
+147|{n} zhliadnutí
+148|Pozerať
+149|Pozerať ďalej
+150|Pridať 15 sekúnd
+151|Pridať sériu
+152|Pridať sériu: {name}
+153|Dokončiť sériu {n}
+154|Zahodiť tréning
+155|Zahodiť?
+156|Pridávaj cviky priebežne. Odškrtni sériu a časovač odpočinku sa spustí sám.
+157|Čo dnes\ntrénujeme?
+158|Dokončiť
+159|Dokončiť tréning
+160|prvýkrát
+161|Ideme na to
+162|kg
+163|Výdrž
+164|Opak.
+165|Opak. · kg
+166|minule {sets}
+167|Zapisovanie je zamknuté
+168|Tvoja bezplatná skúšobná verzia skončila. Každý zapísaný tréning je v bezpečí a stále na pozretie.
+169|Ďalšia séria
+170|Žiadny cvik nezodpovedá „{query}“.
+171|+kg
+172|Predchádzajúca
+173|Odstrániť {name}
+174|opak.
+175|Odpočinok
+176|Hľadať cviky
+177|s
+178|Séria
+179|Séria {n}, podržaním odstrániš
+180|Séria {n} {unit}
+181|Váha série {n}
+182|Preskočiť
+183|Preskočiť odpočinok
+184|Vrátiť sériu {n}
+185|Tvoje obvyklé
+186|Zavrieť ponuku
+187|Súťažiť
+188|Výzva tohto mesiaca
+189|História
+190|Každý zapísaný tréning
+191|Jazyk
+192|Angličtina a ďalších 44
+193|Otvoriť ponuku
+194|Profil
+195|Ty, účet a dáta
+196|Rebríček
+197|Svetové tabuľky
+198|Rekordy
+199|Osobné rekordy
+200|Prihlásený ako {name}
+201|Zručnosti
+202|Tvoje rebríky
+203|Všetko prečítané
+204|Chat sa nenašiel
+205|Možno bol odstránený.
+206|Chat s {name}
+207|Chaty
+208|Tvoja partia
+209|Ukážkové chaty do spustenia. Odoslané správy zostávajú v tomto telefóne.
+210|Napísať {name}
+211|Žiadny chat nezodpovedá „{query}“.
+212|Otvoriť príspevok
+213|Otvoriť Short
+214|Správa…
+215|Pozdrav
+216|Hľadať ľudí
+217|Odoslať správu
+218|Poslal(a) príspevok
+219|Poslal(a) Short
+220|Tento Short už nie je dostupný.
+221|{count} neprečítaná
+222|{count} neprečítaných
+222.few|{count} neprečítané
+223|Ty: {text}
+224|Platby sa otvoria pri spustení
+225|Odznak zakladateľa, navždy
+226|Mesačné výzvy
+227|Celá tvoja história
+228|Rebríky zručností, ktoré sa odškrtávajú samy
+229|Zapisuj tréningy
+230|Rebríčky overené videom
+231|deň zostáva
+232|dní zostáva
+232.few|dni zostávajú
+233|Zostáva {count} deň skúšobnej verzie
+234|Zostáva {count} dní skúšobnej verzie
+234.few|Zostávajú {count} dni skúšobnej verzie
+235|Celá tvoja história je stále tu. Prejdi na Pro a zapisuj ďalej.
+236|Zakladateľ
+237|Zakladateľská permanentka
+238|Zakladateľ · Pro
+239|Zadarmo
+240|Bezplatná skúšobná verzia
+241|Tvoja história je vždy na pozretie, s Pro aj bez.
+242|Podpor nás skoro a zamkni si zavádzaciu cenu na celý rok.
+243|Zakladateľská permanentka · zavádzacia cena
+244|{count} deň
+245|{count} dní
+245.few|{count} dni
+246|asi 42 ₹ mesačne
+247|menej ako 1 $ mesačne
+248|ročne
+249|Cena ti zostane, kým budeš predlžovať.
+250|Pro bez obmedzení
+251|India
+252|Celý svet
+253|Zobraziť zakladateľskú permanentku
+254|Zobraziť zakladateľskú permanentku
+255|Vďaka, že nás podporuješ od začiatku.
+256|Trénuj bez\nhraníc.
+257|Skúšobná verzia skončila
+258|Dovtedy je všetko odomknuté. Potom ti história zostane.
+259|Neobmedzené zapisovanie
+260|Si zakladateľ
+261|Dobré popoludnie
+262|Poludňajšie okno
+263|Popoludnie
+264|Dvadsať minút stačí. Ideme.
+265|Dobrý večer
+266|Pripravené, keď budeš ty
+267|Večer
+268|Dáme dnešný tréning
+269|Dobré ráno
+270|Nový začiatok
+271|Ráno
+272|Odtrénuj to, kým sa deň rozbehne
+273|Ešte hore?
+274|Nočný tréning?
+275|Neskoro večer
+276|Rýchlych 15 minút a spať
+277|Ukážkový plagát
+278|Účet
+279|Zálohované
+280|Zálohované o {time}
+281|Telesná hmotnosť
+282|Odstrániť môj účet
+283|Ťukni znova na odstránenie účtu
+284|Odstráni účet a všetko, čo je v ňom uložené. Nedá sa vrátiť späť.
+285|Vymazať všetky moje dáta
+286|Ťukni znova na vymazanie všetkého
+287|Kým sa neprihlásiš, všetko zostáva v tomto telefóne.
+288|Meno
+289|Zobrazuje sa v rebríčkoch
+290|Nastavenia
+291|Prihlás sa pre zálohu
+292|Uchovaj si tréningy, skúšobnú verziu a pozície na všetkých telefónoch.
+293|Odhlásiť sa
+294|Prihlásený
+295|Od {date}
+296|Synchronizovať teraz
+297|Problém so synchronizáciou. Skúsime to znova.
+298|Synchronizácia…
+299|Ty
+300|Tvoje dáta
+301|V tejto tabuľke zatiaľ nie sú overené výsledky. Kto pošle prvý, berie prvé miesto.
+302|Svet · overené výsledky
+303|Zapíš túto zručnosť a uvidíš tu svoj rekord
+304|Bez umiestnenia
+305|Počítajú sa len výsledky overené videom. Odosielanie s klipom sa otvorí s prvou mesačnou výzvou.
+306|Voľné
+307|Zobraziť výzvu mesiaca →
+308|Tvoj rekord: {value}
+309|Tvoje miesto
+310|Porovnaj ich v rebríčku →
+311|Zapíš tréning a tvoje rekordy sa tu začnú plniť, cvik po cviku.
+312|Odstrániť tréning
+313|Ťukni znova na odstránenie
+314|Tento tréning už neexistuje.
+315|Nová úroveň.
+316|Skvelá práca.
+317|Tréning uložený
+318|s výdrže
+319|Zobraziť rebrík
+320|Tréning
+321|Krok zručnosti odomknutý
+322|Odomknuté kroky zručností: {count}
+323|Zatiaľ žiadne Shorts
+324|Pridaj prvý. Až 3 minúty.
+325|Stlmiť
+326|Pôvodný zvuk
+327|Pozastaviť
+328|Prehrať
+329|Pridať Short
+330|Zapnúť zvuk
+331|Ťukni pre zvuk
+332|Táto e-mailová adresa vyzerá nesprávne.
+333|Skontroluj e-mail
+334|6-miestny kód
+335|Zadaj kód z e-mailu.
+336|Zálohuj tréningy, prenes si skúšobnú verziu do iných telefónov a dostaň sa do rebríčkov.
+337|Bez hesla. Si tu nový? Tým si vytvoríš účet.
+338|Použiť iný e-mail
+339|Pošli mi kód
+340|Odosiela sa…
+341|Poslali sme 6-miestny kód na {email}.
+342|Prihlásiť sa
+343|Účty nie sú v tejto verzii dostupné.
+344|Všetky kroky hotové. Táto zručnosť je tvoja.
+345|Z tvojich zápisov
+346|Kroky sa odškrtnú samy, keď ich zapíšeš.
+347|Skúšobná verzia skončila. Pokrok zostáva; prejdi na Pro a odškrtávaj nové kroky.
+348|Zapísať
+349|Označiť ako hotové
+350|Odškrtnuté
+351|Zrušiť odškrtnutie: {step}
+352|Pridať komentár…
+353|Zavrieť panel
+354|Komentovať
+355|Komentáre
+356|{count} komentár
+357|{count} komentárov
+357.few|{count} komentáre
+358|Dvojitým ťuknutím dáš like
+359|Páči sa mi to
+360|{n} like
+361|{n} likov
+361.few|{n} liky
+362|Ďalšie možnosti
+363|Zatiaľ žiadne komentáre. Začni konverzáciu.
+364|Nezaujíma ma to
+365|Možnosti
+366|Zverejniť komentár
+367|Nahlásiť
+368|Vďaka. Príspevok preveríme.
+369|Ukážka
+370|Uložiť
+371|Videné na Cali
+372|Poslať v Správach
+373|Poslať {name}
+374|Odoslané
+375|Odoslané: {name}
+376|Zdieľať
+377|Zdieľanie mimo Cali funguje v mobilnej aplikácii.
+378|Zdieľať mimo Cali
+379|Zdieľané
+380|{count} zdieľanie
+381|{count} zdieľaní
+381.few|{count} zdieľania
+382|niekto
+383|Zrušiť like
+384|Odstrániť z uložených
+385|Zobraziť 1 komentár
+386|Zobraziť všetky komentáre ({count})
+387|Zobraziť komentáre
+388|Tvoj príspevok
+389|Kontrola techniky
+390|Pridaj opakovanie a získaj úprimnú spätnú väzbu.
+391|Memy
+392|Posilňovňový humor, ale láskavo.
+393|Pokrok
+394|Pred a po, záznamy týždeň po týždni.
+395|Otázky
+396|Žiadna otázka nie je príliš základná.
+397|Úspechy
+398|Prvý zhyb? Povedz to všetkým.
+399|Kanál
+400|Domov
+401|Učiť sa
+402|Správy
+403|Shorts
+404|cvik
+405|cvikov
+405.few|cviky
+406|mesiac
+407|mesiacov
+407.few|mesiace
+408|opakovanie
+409|opakovaní
+409.few|opakovania
+410|tréning
+411|tréningov
+411.few|tréningy
+412|séria
+413|sérií
+413.few|série
+414|krok zručnosti
+415|krokov zručností
+415.few|kroky zručností
+416|{n} kg
+417|~{n} kg 1RM
+418|+{n} kg
+419|{n} s
+420|Prístup ku kamere je vypnutý. Zapni ho v Nastaveniach, aby si mohol natáčať.
+421|Napíš popis… na čom pracuješ?
+422|Vybrať iné video
+423|Zmeniť
+424|Kontroluje sa…
+425|Vybrať video
+426|Z galérie
+427|Dĺžka
+428|Nový Short
+429|{len} z 3:00
+430|Fotky sa nepodarilo otvoriť. Skús to znova.
+431|Pridať Short
+432|Natočiť
+433|Tréning, pokrok, kontroly techniky a zábava. Žiadna nenávisť, nahota ani nebezpečné kúsky. Ktokoľvek môže príspevok nahlásiť.
+434|Nech je to fajn
+435|Zastaví sa na 3:00
+436|Najlepšie na výšku. Až 3 minúty.
+437|Pridaj klip
+438|Toto video má {len}. Shorts môžu mať až 3:00, tak ho najprv skráť.
+439|Nepodarilo sa zistiť dĺžku videa. Skús iné.
+440|Videá sa nepodarilo otvoriť. Skús to znova.
+441|V tomto webovom náhľade zostanú nahrávky len do obnovenia stránky.
+442|Povoľ v prehliadači tejto stránke polohu, aby si videl miestne počasie a čas.
+443|Zapni pre Cali polohu v Nastaveniach, aby si videl miestne počasie a čas.
+444|Jasno
+445|Jasná noc
+446|Oblačno
+447|Mrholenie
+448|Pocitovo {temp}°
+449|Hľadáme ťa a pozeráme na oblohu…
+450|Hmla
+451|Poloha je vypnutá
+452|Nepodarilo sa zistiť tvoju polohu. Skontroluj, či máš zapnuté lokalizačné služby.
+453|Zamračené
+454|Polojasno
+455|Teplota, počasie a miestny čas naživo, s tipom na dnešný tréning.
+456|Dážď
+457|Východ {time}
+458|Západ {time}
+459|Prehánky
+460|Sneh
+461|Búrka
+462|Zima. Zahrej zápästia a ramená dvakrát dlhšie pred výdržami.
+463|Dobré podmienky na hrazdy.
+464|Horúco. Kratšie série, dlhšie odpočinky, voda po ruke.
+465|Búrka. Dnes sa drž ďalej od kovových hrazd; trénuj vnútri.
+466|Vysoké UV. Nájdi tieň na dlhé výdrže a stoje na rukách.
+467|Veľká horúčava. Trénuj skoro ráno alebo večer, v tieni, a pi viac, než si myslíš.
+468|Mokrá hrazda kĺže. Magnézium, vysuš hrazdu, alebo choď dnu.
+469|Fúka. Stoje na rukách vonku budú dnes ťažšie.
+470|Počasie tam, kde trénuješ
+471|Počasie teraz nie je dostupné.
+472|Použiť moju polohu
+473|Tvoja poloha
+474|{days} dní zadarmo. Bez karty.
+475|Stoj na rukách
+476|Už mám účet
+477|Trénuj zručnosti.\nZaslúž si svoje\nmiesto.
+478|Ešte nie
+479|Pri stene, 30 s alebo viac
+480|Pri stene, krátko
+481|Od prvého zhybu po čistý muscle-up. Sleduj každé opakovanie, odomkni každý krok a zisti, kde stojíš.
+482|Tvoje meno
+483|Ešte nie
+484|Vyber aspoň jeden
+485|Zapisuj tréningy za pár sekúnd
+486|Svetové rebríčky overené videom
+487|Kroky, ktoré sa odškrtávajú samy
+488|Prísne zhyby v jednej sérii
+489|Čo chceš odomknúť?
+490|Vyber až {n}. Domovská stránka začne týmito.
+491|Kde si teraz?
+492|Buď úprimný. Vďaka tomu preskočíme kroky, ktoré už zvládaš.
+493|Ako ti máme hovoriť?
+494|Toto meno sa zobrazuje v rebríčkoch. Môžeš ho kedykoľvek zmeniť.
+495|Začať
+496|Začať trénovať
+497|Začína dnes
+498|Všetko odomknuté. Tvoja história zostane tvoja, nech sa potom rozhodneš akokoľvek.
+499|{days} dní zadarmo na skúšku
+500|Telesná hmotnosť v kg (voliteľné)

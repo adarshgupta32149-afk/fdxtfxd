@@ -1,0 +1,500 @@
+1|{n} pv
+2|{n} t
+3|{n} min
+4|nyt
+5|{n} vk
+6|Pisin käsilläseisonta
+7|Käsilläseisonta
+8|Eniten muscle-uppeja
+9|Muscle-upit
+10|Eniten leuanvetoja
+11|Leuanvedot
+12|Raskain leuanveto
+13|Lisäpainolla
+14|Kalisteniikkaa, rankattuna
+15|Takaisin
+16|Sulje
+17|Jatka
+18|Poista
+19|Valmis
+20|Ei löytynyt
+21|Näytä kaikki
+22|Näytä
+23|Näytä vähemmän
+24|Näytä lisää
+25|Yritä uudelleen
+26|Haaste: {month}
+27|päivää
+28|Ei vielä osallistujia. Taulu on täysin auki.
+29|tuntia
+30|Näin se toimii
+31|Livenä · {month}
+32|min
+33|Tulostaulu ei ole juuri nyt saatavilla.
+34|Yksi yritys videolla. Päättyy keskiyöllä kuukauden viimeisenä päivänä ({month}).
+35|s
+36|Ilmoittautuminen aukeaa pian
+37|Nykyinen tilanne
+38|Kuvaa yksi yritys
+39|Yksi yhtenäinen klippi, koko vartalo kuvassa, alusta viimeiseen toistoon.
+40|Lähetä sovelluksessa
+41|Tuloksesi menee odottamaan. Kukaan ei näe sitä ennen tarkistusta.
+42|Hanki vahvistus
+43|Vain puhtaat toistot lasketaan. Vahvistetut tulokset menevät suoraan tauluun.
+44|Voittajat saavat pokaalin
+45|Jokaisen kuukauden kolme parasta saa pysyvän pokaalin profiiliinsa.
+46|{count} liike
+47|{count} liikettä
+48|{count} toisto
+49|{count} toistoa
+50|{count} treeni
+51|{count} treeniä
+52|{count} sarja
+53|{count} sarjaa
+54|{count} vaihe
+55|{count} vaihetta
+56|Keskivartalo
+57|Jalat
+58|Nostot
+59|Veto
+60|Työntö
+61|Taidot
+62|Lisää kuva
+63|Julkaise täällä ensimmäisenä.
+64|Yhteisö
+65|Jaa onnistuminen, kysymys tai tekniikkatarkistus…
+66|Uusi julkaisu
+67|Ei vielä kommentteja. Sano jotain mukavaa.
+68|Mitä tänään tapahtui?
+69|Mihin muiden kannattaa kiinnittää huomiota?
+70|Kysy yhteisöltä…
+71|Julkaise
+72|Julkaise kohteeseen
+73|{count} julkaisu
+74|{count} julkaisua
+75|Täällä on vielä hiljaista
+76|Poista kuva
+77|Julkaisu poistettu
+78|Vastaa käyttäjälle {handle}…
+79|Jaa se
+80|Jaa jotain
+81|Tämä julkaisu ei ole enää saatavilla.
+82|Tässä verkkoesikatselussa kuvat säilyvät, kunnes lataat sivun uudelleen.
+83|Ei vielä merkintöjä
+84|Jokainen päättämäsi treeni näkyy täällä kuukausittain ryhmiteltynä.
+85|Historiasi on tallessa. Siirry Prohon jatkaaksesi kirjaamista.
+86|Seuraava: {step}
+87|Seuraava taito
+88|Ei vielä treenejä. Ensimmäinen treeni käynnistää ennätyksesi ja yllä olevan viikkopalkin.
+89|Viimeisimmät
+90|Aloita treeni
+91|Tällä viikolla
+92|Päivän valinta
+93|Ilmainen kokeilusi on päättynyt
+94|Painopisteesi
+95|{count} kieli
+96|Kaikki {count} kieltä
+97|Oletuskieli on englanti. Valitse valikoille ja painikkeille toinen kieli; oppaat ja julkaisut pysyvät alkuperäisellä kielellään.
+98|Mikään kieli ei vastaa hakua ”{query}”.
+99|Käännökset on tehnyt Cali. Löysitkö virheen? Kerro meille, niin korjaamme.
+100|Käynnistä Cali uudelleen vaihtaaksesi asettelun suuntaa.
+101|Hae kieliä
+102|Puhelimesi kieli
+103|Kieli
+104|Artikkelit
+105|Kaikki
+106|Tasapaino
+107|Perusteet
+108|Keskivartalo
+109|Jalat
+110|Liikkuvuus
+111|Veto
+112|Palautuminen
+113|Staattiset
+114|{guides} opasta · {videos} videota
+115|Jokainen opas linkittää alkuperäiseen. Videot avautuvat YouTubessa. Läpikäynnit on kirjoittanut Cali; kuvien lähteet on mainittu jokaisessa oppaassa.
+116|Tämä opas ei ole enää kirjastossa.
+117|Opas englanniksi
+118|Parhaat löytämämme oppaat ja videot, pilkottuna vaihe vaiheelta tikapuitasi varten.
+119|Tikapuut: {skill}
+120|Tikapuut suoritettu. Pidä taito terävänä.
+121|{count} min lukuaika
+122|{count} min lukuaika
+123|{count} min
+124|{count} min
+125|Vältettävät virheet
+126|Lisää samanlaisia
+127|Seuraavaksi: {step}
+128|Tässä kategoriassa ei vielä ole artikkeleita.
+129|Tässä kategoriassa ei vielä ole videoita.
+130|Sopii näiden oppaiden kanssa
+131|Kuva: {credit}. Alkuperäisen artikkelin kuva ei ole enää verkossa.
+132|Valittu taitoosi {skill}
+133|Toistetaan YouTubessa
+134|Lue
+135|Lue seuraavaksi
+136|Lue alkuperäinen: {source}
+137|Muistamisen arvoista
+138|Short
+139|Lyhyesti
+140|Vaihe vaiheelta
+141|Kokeile Calissa
+142|Alle minuutti
+143|päivitetty {date}
+144|Video: {channel}. Cali vain linkittää siihen; emme isännöi tai muokkaa sitä.
+145|Tämä video ei ole enää kirjastossa.
+146|Videot
+147|{n} katselukertaa
+148|Katso
+149|Katso seuraavaksi
+150|Lisää 15 sekuntia
+151|Lisää sarja
+152|Lisää sarja: {name}
+153|Suorita sarja {n}
+154|Hylkää treeni
+155|Hylätäänkö?
+156|Lisää liikkeitä sitä mukaa kuin treenaat. Merkitse sarja, niin palautusajastin käynnistyy itsestään.
+157|Mitä tänään\ntreenataan?
+158|Lopeta
+159|Lopeta treeni
+160|ensimmäinen kerta
+161|Menoksi
+162|kg
+163|Pito
+164|Toistot
+165|Toistot · kg
+166|viime kerralla {sets}
+167|Kirjaaminen on lukittu
+168|Ilmainen kokeilusi on päättynyt. Jokainen kirjaamasi treeni on tallessa ja edelleen nähtävissä.
+169|Seuraava sarja
+170|Mikään liike ei vastaa hakua ”{query}”.
+171|+kg
+172|Edellinen
+173|Poista {name}
+174|toistoa
+175|Palautus
+176|Hae liikkeitä
+177|s
+178|Sarja
+179|Sarja {n}, poista pitkällä painalluksella
+180|Sarja {n} {unit}
+181|Sarjan {n} paino
+182|Ohita
+183|Ohita palautus
+184|Kumoa sarja {n}
+185|Vakioliikkeesi
+186|Sulje valikko
+187|Kilpaile
+188|Kuukauden haaste
+189|Historia
+190|Jokainen kirjaamasi treeni
+191|Kieli
+192|Englanti ja 44 muuta
+193|Avaa valikko
+194|Profiili
+195|Sinä, tili ja tiedot
+196|Ranking
+197|Maailman taulut
+198|Ennätykset
+199|Henkilökohtaiset ennätykset
+200|Kirjautunut: {name}
+201|Taidot
+202|Tikapuusi
+203|Kaikki luettu
+204|Keskustelua ei löytynyt
+205|Se on ehkä poistettu.
+206|Keskustelu: {name}
+207|Keskustelut
+208|Porukkasi
+209|Esimerkkikeskusteluja julkaisuun asti. Lähettämäsi viestit tallentuvat tähän puhelimeen.
+210|Lähetä viesti: {name}
+211|Mikään keskustelu ei vastaa hakua ”{query}”.
+212|Avaa julkaisu
+213|Avaa Short
+214|Viesti…
+215|Sano moi
+216|Hae ihmisiä
+217|Lähetä viesti
+218|Lähetti julkaisun
+219|Lähetti Shortin
+220|Tämä Short ei ole enää saatavilla.
+221|{count} lukematon
+222|{count} lukematonta
+223|Sinä: {text}
+224|Maksaminen aukeaa julkaisussa
+225|Perustajamerkki, ikuisesti
+226|Kuukausihaasteet
+227|Koko historiasi
+228|Taitotikapuut, jotka merkitsevät itsensä
+229|Kirjaa treenejä
+230|Videolla vahvistetut rankingit
+231|päivä jäljellä
+232|päivää jäljellä
+233|Kokeilua jäljellä {count} päivä
+234|Kokeilua jäljellä {count} päivää
+235|Koko historiasi on yhä täällä. Siirry Prohon jatkaaksesi kirjaamista.
+236|Perustaja
+237|Perustajapassi
+238|Perustaja · Pro
+239|Ilmainen
+240|Ilmainen kokeilu
+241|Historiasi on aina nähtävissä, Pro tai ei.
+242|Tue meitä ajoissa ja lukitse julkaisuhinta koko vuodeksi.
+243|Perustajapassi · julkaisuhinta
+244|{count} päivä
+245|{count} päivää
+246|noin 42 ₹ kuussa
+247|alle 1 $ kuussa
+248|vuodessa
+249|Hinta pysyy sinulla niin kauan kuin uusit.
+250|Pro, rajaton
+251|Intia
+252|Muu maailma
+253|Katso Perustajapassi
+254|Katso Perustajapassi
+255|Kiitos, että tuet meitä alusta asti.
+256|Treenaa ilman\nrajoja.
+257|Kokeilu päättyi
+258|Kaikki on auki siihen asti. Historia pysyy sinun myös sen jälkeen.
+259|Rajaton kirjaaminen
+260|Olet Perustaja
+261|Hyvää iltapäivää
+262|Keskipäivän ikkuna
+263|Iltapäivä
+264|Kaksikymmentä minuuttia riittää. Menoksi.
+265|Hyvää iltaa
+266|Valmiina, kun sinä olet
+267|Ilta
+268|Tehdään tämän päivän treeni
+269|Huomenta
+270|Uusi alku
+271|Aamu
+272|Treenaa ennen kuin päivä alkaa
+273|Vielä hereillä?
+274|Yötreeni?
+275|Myöhäisilta
+276|Nopeat 15 minuuttia ja nukkumaan
+277|Esimerkkijuliste
+278|Tili
+279|Varmuuskopioitu
+280|Varmuuskopioitu klo {time}
+281|Kehonpaino
+282|Poista tilini
+283|Napauta uudelleen poistaaksesi tilisi
+284|Poistaa tilin ja kaiken siihen tallennetun. Toimintoa ei voi kumota.
+285|Poista kaikki tietoni
+286|Napauta uudelleen poistaaksesi kaiken
+287|Kaikki pysyy tässä puhelimessa, kunnes kirjaudut sisään.
+288|Nimi
+289|Näkyy tulostauluilla
+290|Asetukset
+291|Kirjaudu sisään varmuuskopioidaksesi
+292|Säilytä treenisi, kokeilusi ja sijoituksesi kaikilla puhelimilla.
+293|Kirjaudu ulos
+294|Kirjautunut
+295|{date} alkaen
+296|Synkronoi nyt
+297|Synkronointiongelma. Yritetään uudelleen.
+298|Synkronoidaan…
+299|Sinä
+300|Tietosi
+301|Tällä taululla ei vielä ole vahvistettuja tuloksia. Ensimmäinen lähettäjä vie kärkipaikan.
+302|Maailma · vahvistetut tulokset
+303|Kirjaa tämä taito nähdäksesi parhaasi täällä
+304|Ei sijoitusta
+305|Vain videolla vahvistetut tulokset lasketaan. Lähettäminen klipin kanssa aukeaa ensimmäisen kuukausihaasteen myötä.
+306|Vapaana
+307|Katso kuukauden haaste →
+308|Paras tuloksesi: {value}
+309|Sijoituksesi
+310|Vertaa niitä Rankingissa →
+311|Kirjaa treeni, niin ennätyksesi alkavat täyttyä tänne liike liikkeeltä.
+312|Poista treeni
+313|Napauta uudelleen poistaaksesi
+314|Tätä treeniä ei enää ole.
+315|Taso nousi.
+316|Hienoa työtä.
+317|Treeni tallennettu
+318|s pito
+319|Katso tikapuusi
+320|Treeni
+321|Taitovaihe avattu
+322|{count} taitovaihetta avattu
+323|Ei vielä Shortseja
+324|Julkaise ensimmäinen. Enintään 3 minuuttia.
+325|Mykistä
+326|Alkuperäinen ääni
+327|Tauko
+328|Toista
+329|Julkaise Short
+330|Laita äänet päälle
+331|Napauta äänelle
+332|Sähköpostiosoite näyttää virheelliseltä.
+333|Tarkista sähköpostisi
+334|6-numeroinen koodi
+335|Syötä sähköpostin koodi.
+336|Varmuuskopioi treenisi, vie kokeilusi muille puhelimille ja pääse tauluille.
+337|Ei salasanaa. Uusi täällä? Tämä luo tilisi.
+338|Käytä toista sähköpostia
+339|Lähetä minulle koodi
+340|Lähetetään…
+341|Lähetimme 6-numeroisen koodin osoitteeseen {email}.
+342|Kirjaudu sisään
+343|Tilit eivät ole käytettävissä tässä versiossa.
+344|Kaikki vaiheet tehty. Tämä taito on sinun.
+345|Kirjauksistasi
+346|Vaiheet merkitsevät itsensä, kun kirjaat ne.
+347|Kokeilu päättyi. Edistymisesi säilyy; siirry Prohon merkitäksesi uusia vaiheita.
+348|Kirjaa se
+349|Merkitse tehdyksi
+350|Merkitty
+351|Poista merkintä: {step}
+352|Lisää kommentti…
+353|Sulje paneeli
+354|Kommentoi
+355|Kommentit
+356|{count} kommentti
+357|{count} kommenttia
+358|Tykkää kaksoisnapautuksella
+359|Tykkää
+360|{n} tykkäys
+361|{n} tykkäystä
+362|Lisää vaihtoehtoja
+363|Ei vielä kommentteja. Aloita keskustelu.
+364|Ei kiinnosta
+365|Vaihtoehdot
+366|Julkaise kommentti
+367|Ilmoita
+368|Kiitos. Tarkistamme tämän julkaisun.
+369|Esimerkki
+370|Tallenna
+371|Nähty Calissa
+372|Lähetä Viesteissä
+373|Lähetä: {name}
+374|Lähetetty
+375|Lähetetty: {name}
+376|Jaa
+377|Jakaminen Calin ulkopuolelle toimii puhelinsovelluksessa.
+378|Jaa Calin ulkopuolelle
+379|Jaettu
+380|{count} jako
+381|{count} jakoa
+382|joku
+383|Peru tykkäys
+384|Poista tallennetuista
+385|Näytä 1 kommentti
+386|Näytä kaikki {count} kommenttia
+387|Näytä kommentit
+388|Julkaisusi
+389|Tekniikkatarkistus
+390|Julkaise toisto ja saa rehellistä palautetta.
+391|Meemit
+392|Salihuumoria, mutta ystävällisesti.
+393|Edistyminen
+394|Ennen ja jälkeen, viikkokirjaukset.
+395|Kysymykset
+396|Mikään kysymys ei ole liian perus.
+397|Onnistumiset
+398|Ensimmäinen leuanveto? Kerro kaikille.
+399|Syöte
+400|Koti
+401|Opi
+402|Viestit
+403|Shorts
+404|liike
+405|liikettä
+406|kuukausi
+407|kuukautta
+408|toisto
+409|toistoa
+410|treeni
+411|treeniä
+412|sarja
+413|sarjaa
+414|taitovaihe
+415|taitovaihetta
+416|{n} kg
+417|~{n} kg 1RM
+418|+{n} kg
+419|{n} s
+420|Kameran käyttöoikeus on pois päältä. Ota se käyttöön Asetuksissa tallentaaksesi.
+421|Kirjoita kuvateksti… mitä treenaat?
+422|Valitse toinen video
+423|Vaihda
+424|Tarkistetaan…
+425|Valitse video
+426|Galleriastasi
+427|Pituus
+428|Uusi Short
+429|{len} / 3:00
+430|Kuviasi ei voitu avata. Yritä uudelleen.
+431|Julkaise Short
+432|Tallenna video
+433|Treeniä, edistymistä, tekniikkatarkistuksia ja hauskaa. Ei vihaa, alastomuutta tai vaarallisia temppuja. Kuka tahansa voi ilmoittaa julkaisusta.
+434|Pidetään meininki hyvänä
+435|Pysähtyy kohdassa 3:00
+436|Pystykuva toimii parhaiten. Enintään 3 minuuttia.
+437|Julkaise klippi
+438|Tämä video on {len}. Shortsit voivat olla enintään 3:00, joten lyhennä se ensin.
+439|Emme saaneet luettua videon pituutta. Kokeile toista.
+440|Videoitasi ei voitu avata. Yritä uudelleen.
+441|Tässä verkkoesikatselussa lataukset säilyvät, kunnes lataat sivun uudelleen.
+442|Salli sijainti tälle sivustolle selaimessa nähdäksesi paikallisen sään ja ajan.
+443|Ota sijainti käyttöön Calille Asetuksissa nähdäksesi paikallisen sään ja ajan.
+444|Selkeää
+445|Selkeä yö
+446|Pilvistä
+447|Tihkusadetta
+448|Tuntuu kuin {temp}°
+449|Etsitään sinua ja katsotaan taivasta…
+450|Sumua
+451|Sijainti on pois päältä
+452|Emme löytäneet sijaintiasi. Tarkista, että sijaintipalvelut ovat päällä.
+453|Pilvipeitteistä
+454|Puolipilvistä
+455|Lämpötila, sää ja paikallinen aika livenä, ja vinkki tämän päivän treeniin.
+456|Sadetta
+457|Nousee {time}
+458|Laskee {time}
+459|Sadekuuroja
+460|Lunta
+461|Ukkosta
+462|Kylmää. Lämmittele ranteet ja olkapäät kaksi kertaa pidempään ennen pitoja.
+463|Hyvät olosuhteet tangoille.
+464|Kuumaa. Lyhyemmät sarjat, pidemmät palautukset, vettä lähelle.
+465|Ukkosta. Pysy tänään kaukana metallitangoista; treenaa sisällä.
+466|Korkea UV. Etsi varjoa pitkille pidoille ja käsilläseisonnoille.
+467|Tosi kuumaa. Treenaa aikaisin tai myöhään, varjossa, ja juo enemmän kuin luulet.
+468|Märkä tanko on liukas. Magnesiumia, kuivaa tanko tai mene sisälle.
+469|Tuulista. Käsilläseisonta ulkona on tänään vaikeampaa.
+470|Sää treenipaikallasi
+471|Säätietoja ei juuri nyt saatavilla.
+472|Käytä sijaintiani
+473|Sijaintisi
+474|{days} päivää ilmaiseksi. Ei korttia.
+475|Käsilläseisonta
+476|Minulla on tili
+477|Treenaa taitoja.\nAnsaitse\nsijoituksesi.
+478|Ei vielä
+479|Seinää vasten, 30 s tai yli
+480|Seinää vasten, hetken
+481|Ensimmäisestä leuanvedosta puhtaaseen muscle-uppiin. Seuraa jokaista toistoa, avaa jokainen vaihe ja näe missä mennään.
+482|Nimesi
+483|Ei vielä
+484|Valitse vähintään yksi
+485|Kirjaa treenit sekunneissa
+486|Videolla vahvistetut maailmanrankingit
+487|Taitovaiheet, jotka merkitsevät itsensä
+488|Tiukat leuanvedot yhdessä sarjassa
+489|Mitä haluat avata?
+490|Valitse enintään {n}. Koti alkaa näistä.
+491|Missä olet nyt?
+492|Ole rehellinen. Tämän avulla ohitamme vaiheet, jotka jo hallitset.
+493|Miksi sinua kutsutaan?
+494|Tämä nimi näkyy tulostauluilla. Voit vaihtaa sen milloin tahansa.
+495|Aloita
+496|Aloita treenaaminen
+497|Alkaa tänään
+498|Kaikki auki. Historiasi on sinun, päätitpä myöhemmin mitä tahansa.
+499|{days} päivän ilmainen kokeilu
+500|Kehonpaino kg (valinnainen)

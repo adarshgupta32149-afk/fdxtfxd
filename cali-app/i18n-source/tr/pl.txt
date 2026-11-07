@@ -1,0 +1,518 @@
+1|{n} d.
+2|{n} godz.
+3|{n} min
+4|teraz
+5|{n} tydz.
+6|Najdłuższy stanie na rękach
+7|Stanie na rękach
+8|Maks. muscle-upów
+9|Muscle-upy
+10|Maks. podciągnięć
+11|Podciąganie
+12|Najcięższe podciągnięcie
+13|Z obciążeniem
+14|Kalistenika z rankingiem
+15|Wstecz
+16|Zamknij
+17|Dalej
+18|Usuń
+19|Gotowe
+20|Nie znaleziono
+21|Zobacz wszystko
+22|Pokaż
+23|Pokaż mniej
+24|Pokaż więcej
+25|Spróbuj ponownie
+26|Wyzwanie: {month}
+27|dni
+28|Jeszcze nikt się nie zgłosił. Tablica stoi otworem.
+29|godz.
+30|Jak to działa
+31|Na żywo · {month}
+32|min
+33|Ranking jest teraz niedostępny.
+34|Jedna próba, na wideo. Kończy się o północy ostatniego dnia miesiąca ({month}).
+35|s
+36|Zgłoszenia ruszają wkrótce
+37|Aktualna klasyfikacja
+38|Nagraj jedną próbę
+39|Jeden ciągły klip, cała sylwetka w kadrze, od startu do ostatniego powtórzenia.
+40|Wyślij w aplikacji
+41|Twój wynik trafia do weryfikacji. Nikt go nie zobaczy, dopóki nie zostanie sprawdzony.
+42|Zdobądź weryfikację
+43|Liczą się tylko czyste powtórzenia. Zweryfikowane wyniki trafiają prosto na tablicę.
+44|Zwycięzcy dostają trofeum
+45|Najlepsza trójka każdego miesiąca dostaje stałe trofeum na profilu.
+46|{count} ćwiczenie
+47|{count} ćwiczeń
+47.few|{count} ćwiczenia
+48|{count} powtórzenie
+49|{count} powtórzeń
+49.few|{count} powtórzenia
+50|{count} trening
+51|{count} treningów
+51.few|{count} treningi
+52|{count} seria
+53|{count} serii
+53.few|{count} serie
+54|{count} krok
+55|{count} kroków
+55.few|{count} kroki
+56|Core
+57|Nogi
+58|Podnoszenia
+59|Ciąganie
+60|Pchanie
+61|Umiejętności
+62|Dodaj zdjęcie
+63|Opublikuj tu jako pierwszy.
+64|Społeczność
+65|Podziel się sukcesem, pytaniem albo prośbą o ocenę techniki…
+66|Nowy post
+67|Brak komentarzy. Napisz coś miłego.
+68|Co się dziś wydarzyło?
+69|Na co inni mają zwrócić uwagę?
+70|Zapytaj społeczność…
+71|Opublikuj
+72|Opublikuj w
+73|{count} post
+74|{count} postów
+74.few|{count} posty
+75|Tu jeszcze cicho
+76|Usuń zdjęcie
+77|Post usunięty
+78|Odpowiedz {handle}…
+79|Udostępnij
+80|Udostępnij coś
+81|Ten post nie jest już dostępny.
+82|W tym podglądzie web zdjęcia zostają do przeładowania strony.
+83|Nic jeszcze nie zapisano
+84|Każdy ukończony trening trafi tutaj, pogrupowany według miesięcy.
+85|Twoja historia jest bezpieczna. Przejdź na Pro, by dalej zapisywać.
+86|Dalej: {step}
+87|Następna umiejętność
+88|Brak treningów. Pierwszy uruchomi Twoje rekordy i pasek tygodnia powyżej.
+89|Ostatnie
+90|Zacznij trening
+91|Ten tydzień
+92|Wybór dnia
+93|Twój darmowy okres próbny się skończył
+94|Twój cel
+95|{count} język
+96|Wszystkie języki ({count})
+97|Domyślny jest angielski. Wybierz inny język dla menu i przycisków; poradniki i posty zostają w języku oryginału.
+98|Brak języka pasującego do „{query}”.
+99|Tłumaczenia przygotowało Cali. Widzisz błąd? Daj znać, poprawimy.
+100|Uruchom Cali ponownie, by zmienić kierunek układu.
+101|Szukaj języków
+102|Język telefonu
+103|Język
+104|Artykuły
+105|Wszystko
+106|Równowaga
+107|Podstawy
+108|Core
+109|Nogi
+110|Mobilność
+111|Ciąganie
+112|Regeneracja
+113|Statyka
+114|Poradniki: {guides} · wideo: {videos}
+115|Każdy poradnik prowadzi do oryginału. Filmy otwierają się w YouTube. Omówienia pisze Cali; autorzy zdjęć są podani przy każdym poradniku.
+116|Tego poradnika nie ma już w bibliotece.
+117|Poradnik po angielsku
+118|Najlepsze poradniki i filmy, jakie znaleźliśmy, rozpisane krok po kroku pod Twoje drabinki.
+119|Drabinka: {skill}
+120|Drabinka ukończona. Trzymaj formę.
+121|{count} min czytania
+122|{count} min czytania
+123|{count} min
+124|{count} min
+125|Błędy, których unikać
+126|Więcej podobnych
+127|Następnie: {step}
+128|W tej kategorii nie ma jeszcze artykułów.
+129|W tej kategorii nie ma jeszcze filmów.
+130|Pasuje do tych poradników
+131|Zdjęcie: {credit}. Obraz z oryginalnego artykułu nie jest już dostępny online.
+132|Wybrane dla umiejętności {skill}
+133|Odtwarzane w YouTube
+134|Czytaj
+135|Czytaj dalej
+136|Przeczytaj oryginał w {source}
+137|Warto zapamiętać
+138|Short
+139|W skrócie
+140|Krok po kroku
+141|Wypróbuj w Cali
+142|Poniżej minuty
+143|zaktualizowano {date}
+144|Wideo: {channel}. Cali tylko do niego linkuje; nie hostujemy go ani nie edytujemy.
+145|Tego filmu nie ma już w bibliotece.
+146|Wideo
+147|{n} wyświetleń
+148|Oglądaj
+149|Oglądaj dalej
+150|Dodaj 15 sekund
+151|Dodaj serię
+152|Dodaj serię: {name}
+153|Ukończ serię {n}
+154|Odrzuć trening
+155|Odrzucić?
+156|Dodawaj ćwiczenia na bieżąco. Zaznacz serię, a minutnik przerwy ruszy sam.
+157|Co dziś\ntrenujemy?
+158|Zakończ
+159|Zakończ trening
+160|pierwszy raz
+161|Start
+162|kg
+163|Utrzymanie
+164|Powt.
+165|Powt. · kg
+166|ostatnio {sets}
+167|Zapisywanie zablokowane
+168|Twój darmowy okres próbny się skończył. Każdy zapisany trening jest bezpieczny i wciąż dostępny do podglądu.
+169|Następna seria
+170|Brak ćwiczenia pasującego do „{query}”.
+171|+kg
+172|Poprzednia
+173|Usuń {name}
+174|powt.
+175|Przerwa
+176|Szukaj ćwiczeń
+177|s
+178|Seria
+179|Seria {n}, przytrzymaj, by usunąć
+180|Seria {n} {unit}
+181|Ciężar w serii {n}
+182|Pomiń
+183|Pomiń przerwę
+184|Cofnij serię {n}
+185|Twoje stałe
+186|Zamknij menu
+187|Rywalizuj
+188|Wyzwanie tego miesiąca
+189|Historia
+190|Każdy zapisany trening
+191|Język
+192|Angielski i 44 inne
+193|Otwórz menu
+194|Profil
+195|Ty, konto i dane
+196|Ranking
+197|Tablice światowe
+198|Rekordy
+199|Rekordy osobiste
+200|Zalogowano jako {name}
+201|Umiejętności
+202|Twoje drabinki
+203|Wszystko przeczytane
+204|Nie znaleziono czatu
+205|Mógł zostać usunięty.
+206|Czat z {name}
+207|Czaty
+208|Twoja ekipa
+209|Przykładowe czaty do premiery. Wysłane wiadomości zostają na tym telefonie.
+210|Napisz do {name}
+211|Brak czatów pasujących do „{query}”.
+212|Otwórz post
+213|Otwórz Short
+214|Wiadomość…
+215|Przywitaj się
+216|Szukaj osób
+217|Wyślij wiadomość
+218|Wysłał(a) post
+219|Wysłał(a) Short
+220|Ten Short nie jest już dostępny.
+221|{count} nieprzeczytana
+222|{count} nieprzeczytanych
+222.few|{count} nieprzeczytane
+223|Ty: {text}
+224|Płatności ruszą w dniu premiery
+225|Odznaka Założyciela, na zawsze
+226|Comiesięczne wyzwania
+227|Cała Twoja historia
+228|Drabinki, które odhaczają się same
+229|Zapisuj treningi
+230|Rankingi weryfikowane wideo
+231|dzień został
+232|dni zostało
+232.few|dni zostały
+233|Został {count} dzień próbny
+234|Zostało {count} dni próbnych
+234.few|Zostały {count} dni próbne
+235|Cała Twoja historia wciąż tu jest. Przejdź na Pro, by dalej zapisywać.
+236|Założyciel
+237|Karnet Założyciela
+238|Założyciel · Pro
+239|Za darmo
+240|Darmowy okres próbny
+241|Twoja historia jest zawsze dostępna, z Pro czy bez.
+242|Wesprzyj nas wcześnie i zablokuj cenę premierową na cały rok.
+243|Karnet Założyciela · cena premierowa
+244|{count} dzień
+245|{count} dni
+246|ok. 42 ₹ miesięcznie
+247|poniżej 1 $ miesięcznie
+248|rocznie
+249|Cena zostaje Twoja, dopóki przedłużasz.
+250|Pro bez limitów
+251|Indie
+252|Cały świat
+253|Zobacz Karnet Założyciela
+254|Zobacz Karnet Założyciela
+255|Dzięki, że wspierasz nas od początku.
+256|Trenuj bez\ngranic.
+257|Okres próbny zakończony
+258|Do tego czasu wszystko jest odblokowane. Potem historia nadal należy do Ciebie.
+259|Zapisywanie bez limitu
+260|Jesteś Założycielem
+261|Dzień dobry
+262|Okienko w południe
+263|Popołudnie
+264|Dwadzieścia minut wystarczy. Jazda.
+265|Dobry wieczór
+266|Gotowy, kiedy Ty
+267|Wieczór
+268|Zróbmy dzisiejszy trening
+269|Dzień dobry
+270|Świeży start
+271|Rano
+272|Zrób trening, zanim dzień się rozkręci
+273|Jeszcze nie śpisz?
+274|Nocny trening?
+275|Późna noc
+276|Szybkie 15 minut i spać
+277|Przykładowy plakat
+278|Konto
+279|Kopia zapisana
+280|Kopia o {time}
+281|Masa ciała
+282|Usuń moje konto
+283|Stuknij ponownie, aby usunąć konto
+284|Usuwa konto i wszystko, co w nim zapisano. Tego nie da się cofnąć.
+285|Wymaż wszystkie moje dane
+286|Stuknij ponownie, aby wymazać wszystko
+287|Do czasu zalogowania wszystko zostaje na tym telefonie.
+288|Imię
+289|Widoczne w rankingach
+290|Ustawienia
+291|Zaloguj się, by zrobić kopię
+292|Zachowaj treningi, okres próbny i miejsca w rankingach na każdym telefonie.
+293|Wyloguj się
+294|Zalogowano
+295|Od {date}
+296|Synchronizuj teraz
+297|Problem z synchronizacją. Spróbujemy ponownie.
+298|Synchronizacja…
+299|Ty
+300|Twoje dane
+301|Na tej tablicy nie ma jeszcze zweryfikowanych wyników. Pierwsza osoba, która wyśle, zajmie pierwsze miejsce.
+302|Świat · zweryfikowane wyniki
+303|Zapisz tę umiejętność, by zobaczyć tu swój rekord
+304|Bez miejsca
+305|Liczą się tylko wyniki zweryfikowane wideo. Wysyłanie z klipem ruszy z pierwszym comiesięcznym wyzwaniem.
+306|Wolne
+307|Zobacz wyzwanie miesiąca →
+308|Twój rekord: {value}
+309|Twoje miejsce
+310|Porównaj w Rankingu →
+311|Zapisz trening, a Twoje rekordy zaczną się tu pojawiać, ćwiczenie po ćwiczeniu.
+312|Usuń trening
+313|Stuknij ponownie, aby usunąć
+314|Ten trening już nie istnieje.
+315|Poziom wyżej.
+316|Dobra robota.
+317|Trening zapisany
+318|s utrzymania
+319|Zobacz swoją drabinkę
+320|Trening
+321|Odblokowano krok umiejętności
+322|Odblokowano kroki umiejętności: {count}
+323|Brak Shortsów
+324|Opublikuj pierwszy. Do 3 minut.
+325|Wycisz
+326|Oryginalny dźwięk
+327|Pauza
+328|Odtwórz
+329|Opublikuj Short
+330|Włącz dźwięk
+331|Stuknij, by włączyć dźwięk
+332|Ten adres e-mail wygląda na błędny.
+333|Sprawdź pocztę
+334|6-cyfrowy kod
+335|Wpisz kod z e-maila.
+336|Zrób kopię treningów, przenieś okres próbny na inne telefony i wejdź do rankingów.
+337|Bez hasła. Jesteś tu nowy? To utworzy Twoje konto.
+338|Użyj innego e-maila
+339|Wyślij mi kod
+340|Wysyłanie…
+341|Wysłaliśmy 6-cyfrowy kod na {email}.
+342|Zaloguj się
+343|Konta nie są dostępne w tej wersji.
+344|Wszystkie kroki zaliczone. Ta umiejętność jest Twoja.
+345|Z Twoich zapisów
+346|Kroki odhaczają się same, gdy je zapisujesz.
+347|Okres próbny zakończony. Postępy zostają; przejdź na Pro, by odhaczać nowe kroki.
+348|Zapisz
+349|Oznacz jako zrobione
+350|Odhaczone
+351|Odznacz {step}
+352|Dodaj komentarz…
+353|Zamknij panel
+354|Skomentuj
+355|Komentarze
+356|{count} komentarz
+357|{count} komentarzy
+357.few|{count} komentarze
+358|Stuknij dwa razy, by polubić
+359|Lubię to
+360|{n} polubienie
+361|{n} polubień
+361.few|{n} polubienia
+362|Więcej opcji
+363|Brak komentarzy. Rozpocznij rozmowę.
+364|Nie interesuje mnie to
+365|Opcje
+366|Opublikuj komentarz
+367|Zgłoś
+368|Dziękujemy. Sprawdzimy ten post.
+369|Przykład
+370|Zapisz
+371|Widziane w Cali
+372|Wyślij w Wiadomościach
+373|Wyślij do {name}
+374|Wysłano
+375|Wysłano do {name}
+376|Udostępnij
+377|Udostępnianie poza Cali działa w aplikacji na telefon.
+378|Udostępnij poza Cali
+379|Udostępniono
+380|{count} udostępnienie
+381|{count} udostępnień
+381.few|{count} udostępnienia
+382|ktoś
+383|Nie lubię
+384|Usuń z zapisanych
+385|Zobacz 1 komentarz
+386|Zobacz wszystkie komentarze ({count})
+387|Zobacz komentarze
+388|Twój post
+389|Ocena techniki
+390|Wrzuć powtórzenie, dostań szczerą opinię.
+391|Memy
+392|Siłowniany humor, ale życzliwie.
+393|Postępy
+394|Przed i po, dzienniki tydzień po tygodniu.
+395|Pytania
+396|Żadne pytanie nie jest za proste.
+397|Sukcesy
+398|Pierwsze podciągnięcie? Pochwal się.
+399|Feed
+400|Start
+401|Nauka
+402|Wiadomości
+403|Shorts
+404|ćwiczenie
+405|ćwiczeń
+405.few|ćwiczenia
+406|miesiąc
+407|miesięcy
+407.few|miesiące
+408|powtórzenie
+409|powtórzeń
+409.few|powtórzenia
+410|trening
+411|treningów
+411.few|treningi
+412|seria
+413|serii
+413.few|serie
+414|krok umiejętności
+415|kroków umiejętności
+415.few|kroki umiejętności
+416|{n} kg
+417|~{n} kg 1RM
+418|+{n} kg
+419|{n} s
+420|Dostęp do aparatu jest wyłączony. Włącz go w Ustawieniach, by nagrywać.
+421|Napisz opis… nad czym pracujesz?
+422|Wybierz inny film
+423|Zmień
+424|Sprawdzanie…
+425|Wybierz film
+426|Z galerii
+427|Długość
+428|Nowy Short
+429|{len} z 3:00
+430|Nie udało się otworzyć zdjęć. Spróbuj ponownie.
+431|Opublikuj Short
+432|Nagraj
+433|Trening, postępy, ocena techniki i zabawa. Bez nienawiści, nagości i niebezpiecznych wyczynów. Każdy może zgłosić post.
+434|Trzymajmy poziom
+435|Zatrzymuje się na 3:00
+436|Najlepiej w pionie. Do 3 minut.
+437|Opublikuj klip
+438|Ten film trwa {len}. Shorts mogą mieć do 3:00, więc najpierw go przytnij.
+439|Nie udało się odczytać długości tego filmu. Spróbuj innego.
+440|Nie udało się otworzyć filmów. Spróbuj ponownie.
+441|W tym podglądzie web przesłane pliki zostają do przeładowania strony.
+442|Zezwól tej stronie na dostęp do lokalizacji w przeglądarce, by zobaczyć lokalną pogodę i godzinę.
+443|Włącz lokalizację dla Cali w Ustawieniach, by zobaczyć lokalną pogodę i godzinę.
+444|Bezchmurnie
+445|Pogodna noc
+446|Pochmurno
+447|Mżawka
+448|Odczuwalna {temp}°
+449|Szukamy Cię i sprawdzamy niebo…
+450|Mgła
+451|Lokalizacja wyłączona
+452|Nie udało się ustalić lokalizacji. Sprawdź, czy usługi lokalizacji są włączone.
+453|Całkowite zachmurzenie
+454|Częściowe zachmurzenie
+455|Temperatura, warunki i lokalny czas na żywo, z poradą na dzisiejszy trening.
+456|Deszcz
+457|Wschód {time}
+458|Zachód {time}
+459|Przelotne opady
+460|Śnieg
+461|Burza
+462|Zimno. Rozgrzewaj nadgarstki i barki dwa razy dłużej przed utrzymaniami.
+463|Dobre warunki na drążki.
+464|Gorąco. Krótsze serie, dłuższe przerwy, woda pod ręką.
+465|Burza. Dziś trzymaj się z dala od metalowych drążków; trenuj w środku.
+466|Wysoki indeks UV. Szukaj cienia do długich utrzymań i stania na rękach.
+467|Upał. Trenuj wcześnie rano lub wieczorem, w cieniu, i pij więcej, niż Ci się wydaje.
+468|Mokry drążek jest śliski. Magnezja, wytrzyj drążek albo wejdź do środka.
+469|Wietrznie. Stanie na rękach na zewnątrz będzie dziś trudniejsze.
+470|Pogoda tam, gdzie trenujesz
+471|Pogoda jest teraz niedostępna.
+472|Użyj mojej lokalizacji
+473|Twoja lokalizacja
+474|{days} dni za darmo. Bez karty.
+475|Stanie na rękach
+476|Mam konto
+477|Trenuj umiejętności.\nZapracuj na\nswoje miejsce.
+478|Jeszcze nie
+479|Przy ścianie, 30 s lub dłużej
+480|Przy ścianie, krótko
+481|Od pierwszego podciągnięcia do czystego muscle-upa. Zapisuj każde powtórzenie, odblokowuj każdy krok i sprawdzaj, gdzie jesteś.
+482|Twoje imię
+483|Jeszcze nie
+484|Wybierz co najmniej jedno
+485|Zapisuj treningi w kilka sekund
+486|Światowe rankingi weryfikowane wideo
+487|Kroki, które odhaczają się same
+488|Ścisłe podciągnięcia w jednej serii
+489|Co chcesz odblokować?
+490|Wybierz do {n}. Ekran startowy zacznie od nich.
+491|Gdzie jesteś teraz?
+492|Bądź szczery. Dzięki temu pominiemy kroki, które już masz opanowane.
+493|Jak mamy się do Ciebie zwracać?
+494|To imię będzie widoczne w rankingach. Możesz je zmienić w każdej chwili.
+495|Zaczynamy
+496|Zacznij trenować
+497|Start od dziś
+498|Wszystko odblokowane. Twoja historia należy do Ciebie, cokolwiek potem zdecydujesz.
+499|{days} dni za darmo na próbę
+500|Masa ciała w kg (opcjonalnie)
