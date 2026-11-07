@@ -4,6 +4,7 @@ import type { Dict } from '../core';
 import l_af from './af';
 import l_ar from './ar';
 import l_bn from './bn';
+import l_cs from './cs';
 import l_da from './da';
 import l_de from './de';
 import l_el from './el';
@@ -15,6 +16,8 @@ import l_fr from './fr';
 import l_gu from './gu';
 import l_he from './he';
 import l_hi from './hi';
+import l_hr from './hr';
+import l_hu from './hu';
 import l_id from './id';
 import l_it from './it';
 import l_ja from './ja';
@@ -31,6 +34,7 @@ import l_pt_BR from './pt-BR';
 import l_pt_PT from './pt-PT';
 import l_ro from './ro';
 import l_ru from './ru';
+import l_sk from './sk';
 import l_sv from './sv';
 import l_ta from './ta';
 import l_te from './te';
@@ -46,6 +50,7 @@ export const LOCALES: Record<string, Dict> = {
   "af": l_af,
   "ar": l_ar,
   "bn": l_bn,
+  "cs": l_cs,
   "da": l_da,
   "de": l_de,
   "el": l_el,
@@ -57,6 +62,8 @@ export const LOCALES: Record<string, Dict> = {
   "gu": l_gu,
   "he": l_he,
   "hi": l_hi,
+  "hr": l_hr,
+  "hu": l_hu,
   "id": l_id,
   "it": l_it,
   "ja": l_ja,
@@ -73,6 +80,7 @@ export const LOCALES: Record<string, Dict> = {
   "pt-PT": l_pt_PT,
   "ro": l_ro,
   "ru": l_ru,
+  "sk": l_sk,
   "sv": l_sv,
   "ta": l_ta,
   "te": l_te,
