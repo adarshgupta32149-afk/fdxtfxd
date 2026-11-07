@@ -15,6 +15,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useT } from '@/i18n';
+import { FitText } from './FitText';
 import { headingLineHeight } from '@/i18n/languages';
 import { colors, display, font, frostGradient, radius, space, TAB_BAR_SPACE } from '@/theme';
 import { PressScale, Sheen, useAnimatedProgress } from './motion';
@@ -100,8 +101,16 @@ type TextProps = { children: ReactNode; style?: StyleProp<TextStyle>; numberOfLi
 /** Big condensed display title. */
 export function H1({ children, style, numberOfLines }: TextProps) {
   const { lang } = useT();
+  const textStyle = [styles.h1, { lineHeight: headingLineHeight(lang, 42, 44) }, style];
+  if (typeof children === 'string' && numberOfLines === undefined) {
+    return (
+      <FitText style={textStyle} accessibilityRole="header" minScale={0.6}>
+        {children}
+      </FitText>
+    );
+  }
   return (
-    <Text style={[styles.h1, { lineHeight: headingLineHeight(lang, 42, 44) }, style]} numberOfLines={numberOfLines} accessibilityRole="header">
+    <Text style={textStyle} numberOfLines={numberOfLines} accessibilityRole="header">
       {children}
     </Text>
   );

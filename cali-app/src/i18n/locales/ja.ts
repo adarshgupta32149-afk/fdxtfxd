@@ -478,7 +478,7 @@ const dict: Dict = {
   "welcome.free": "{days}日間無料。カード不要。",
   "welcome.handstand": "ハンドスタンド",
   "welcome.haveAccount": "アカウントを持っています",
-  "welcome.hero": "スキルを鍛えて、\nランクを\n勝ち取れ。",
+  "welcome.hero": "技を磨け。\nランクを\nつかめ。",
   "welcome.hs.none": "まだ",
   "welcome.hs.wall-30": "壁倒立で30秒以上",
   "welcome.hs.wall-short": "壁で少しだけ",
@@ -500,7 +500,7 @@ const dict: Dict = {
   "welcome.startTraining": "トレーニングを始める",
   "welcome.startsToday": "今日から",
   "welcome.trialSub": "すべて解放。その後どう決めても、履歴はあなたのものです。",
-  "welcome.trialTitle": "{days}日間の無料トライアル",
+  "welcome.trialTitle": "{days}日間無料体験",
   "welcome.weightPh": "体重(kg・任意)",
 };
 
