@@ -1,0 +1,1037 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daybook</title>
+<meta name="description" content="A simple sales and purchases day book. Type the item and the price; the date and time are stamped for you.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2323408f'/%3E%3Cpath d='M9 8h14M9 13h14M9 18h14M9 23h8' stroke='%23fff' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a shelf of month folders on the left; on the right the entry bar,
+   the month's totals, a 1-to-31 day strip, then the day sheets stacked. */
+:root {
+  --paper: #f1f5f2;
+  --sheet: #ffffff;
+  --ink: #15201b;
+  --muted: #5a6a62;
+  --line: #d2dbd5;
+  --line-soft: #e5ebe7;
+  --accent: #23408f;
+  --accent-ink: #ffffff;
+  --accent-soft: #e5eaf8;
+  --sale: #14734a;
+  --sale-soft: #dff2e7;
+  --buy: #b3261e;
+  --buy-soft: #fbe6e3;
+  --warn-soft: #fdf1cf;
+  --warn-ink: #6b4e00;
+  --font: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --radius: 8px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #101613;
+    --sheet: #171f1b;
+    --ink: #e5ece8;
+    --muted: #93a39a;
+    --line: #2b3731;
+    --line-soft: #222c27;
+    --accent: #9db2ff;
+    --accent-ink: #0d1533;
+    --accent-soft: #1d2748;
+    --sale: #62d39b;
+    --sale-soft: #143324;
+    --buy: #ff9086;
+    --buy-soft: #3d1b18;
+    --warn-soft: #3a3010;
+    --warn-ink: #f1d98a;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font: 15px/1.45 var(--font);
+  -webkit-text-size-adjust: 100%;
+}
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.wrap {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- controls ---------- */
+.field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.field > span { font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+.input {
+  width: 100%;
+  min-width: 0;
+  height: 42px;
+  padding: 0 12px;
+  background: var(--sheet);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.input:focus { outline: 2px solid var(--accent); outline-offset: -1px; border-color: var(--accent); }
+.btn {
+  height: 42px;
+  padding: 0 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--sheet);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.btn:hover { border-color: var(--muted); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.small { height: 32px; padding: 0 10px; font-size: 13px; }
+.btn.danger { color: var(--buy); }
+.btn:disabled { opacity: .55; cursor: default; }
+.link { background: none; border: 0; padding: 0; color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+/* ---------- sign in ---------- */
+.auth { min-height: 100vh; display: grid; place-items: center; padding-block: 32px; }
+.auth-card {
+  width: min(400px, 100%);
+  background: var(--sheet);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px 24px 24px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; letter-spacing: -.01em; }
+.brand svg { flex: none; }
+.auth-card p { margin: 0; color: var(--muted); }
+.tabs { display: grid; grid-template-columns: 1fr 1fr; background: var(--paper); border-radius: var(--radius); padding: 3px; gap: 3px; }
+.tabs button { height: 36px; border: 0; border-radius: 6px; background: transparent; font-weight: 600; color: var(--muted); }
+.tabs button[aria-selected="true"] { background: var(--sheet); color: var(--ink); box-shadow: 0 0 0 1px var(--line); }
+.auth form { display: flex; flex-direction: column; gap: 12px; }
+.msg { margin: 0; padding: 9px 12px; border-radius: var(--radius); background: var(--buy-soft); color: var(--buy); font-size: 14px; }
+.hint { font-size: 13px; color: var(--muted); margin: 0; }
+
+/* ---------- top bar ---------- */
+.top { background: var(--sheet); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 56px; }
+.acct { position: relative; }
+.acct summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; gap: 8px;
+  height: 36px; padding: 0 12px; border: 1px solid var(--line); border-radius: 999px; font-weight: 600;
+  max-width: 60vw;
+}
+.acct summary::-webkit-details-marker { display: none; }
+.acct summary span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.acct summary::after { content: ""; width: 7px; height: 7px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg) translateY(-2px); flex: none; }
+.menu {
+  position: absolute; right: 0; top: 44px; z-index: 20; width: min(300px, calc(100vw - 32px));
+  background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 14px;
+  display: flex; flex-direction: column; gap: 12px; box-shadow: 0 12px 32px rgba(0,0,0,.18);
+}
+.menu .who { font-size: 13px; color: var(--muted); }
+.menu .inline { display: flex; gap: 8px; align-items: end; }
+.menu .inline .field { flex: 1; }
+.menu hr { border: 0; border-top: 1px solid var(--line-soft); margin: 0; width: 100%; }
+
+/* ---------- page layout ---------- */
+.layout { display: grid; grid-template-columns: 216px minmax(0, 1fr); gap: 28px; padding-block: 24px 64px; align-items: start; }
+.main { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+
+/* shelf of month folders */
+.shelf { display: flex; flex-direction: column; gap: 6px; position: sticky; top: 16px; }
+.shelf h2, .shelf h3 { margin: 0; }
+.shelf h2 { font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; padding: 0 10px 4px; }
+.shelf h3 { font-size: 12px; font-weight: 600; color: var(--muted); padding: 10px 10px 2px; }
+.folder {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px; text-align: left;
+  padding: 8px 10px; border: 1px solid transparent; border-radius: var(--radius); background: transparent;
+}
+.folder:hover { background: var(--line-soft); }
+.folder[aria-current="true"] { background: var(--sheet); border-color: var(--line); }
+.folder b { font-weight: 600; }
+.folder small { font-family: var(--mono); font-size: 11.5px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.folder small i { font-style: normal; }
+.folder small .s { color: var(--sale); }
+.folder small .b { color: var(--buy); }
+
+/* add bar */
+.add { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.add-row { display: grid; grid-template-columns: auto minmax(0, 1fr) 130px 84px auto; gap: 10px; align-items: end; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; height: 42px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--paper); }
+.seg label { display: grid; place-items: center; padding: 0 14px; font-weight: 600; color: var(--muted); cursor: pointer; position: relative; }
+.seg input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.seg label:has(input:checked).sale { background: var(--sale-soft); color: var(--sale); }
+.seg label:has(input:checked).buy { background: var(--buy-soft); color: var(--buy); }
+.seg label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: -2px; }
+.add-sub { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: 13px; color: var(--muted); }
+.stamp { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: var(--paper); }
+.stamp.custom { background: var(--warn-soft); color: var(--warn-ink); font-weight: 600; }
+.stamp::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--sale); }
+.stamp.custom::before { background: currentColor; }
+.add-more { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 10px; }
+
+/* month head */
+.mhead { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.mnav { display: flex; align-items: center; gap: 8px; }
+.mnav h1 { margin: 0 4px; font-size: 24px; font-weight: 700; letter-spacing: -.02em; text-wrap: balance; }
+.icon-btn { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: var(--radius); background: var(--sheet); }
+.icon-btn:hover { border-color: var(--muted); }
+.mtools { display: flex; flex-wrap: wrap; gap: 8px; }
+.totals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 12px; background: var(--sheet); overflow: hidden; }
+.totals > div { padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.totals > div + div { border-left: 1px solid var(--line-soft); }
+.totals span { font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+.totals b { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: clamp(16px, 2.4vw, 22px); font-weight: 600; overflow-wrap: anywhere; }
+.totals small { font-size: 12px; color: var(--muted); }
+.totals .sale b { color: var(--sale); }
+.totals .buy b { color: var(--buy); }
+
+/* 1..31 strip */
+.strip { display: grid; grid-template-columns: repeat(auto-fill, minmax(30px, 1fr)); gap: 4px; }
+.cell {
+  height: 34px; border: 1px solid var(--line); border-radius: 6px; background: transparent; padding: 0;
+  font-family: var(--mono); font-size: 12px; color: var(--muted); position: relative;
+}
+.cell.has { background: var(--sheet); color: var(--ink); font-weight: 600; border-color: var(--muted); }
+.cell.has::after { content: ""; position: absolute; left: 50%; bottom: 3px; width: 12px; height: 3px; margin-left: -6px; border-radius: 2px; background: var(--accent); }
+.cell.today { box-shadow: 0 0 0 2px var(--accent); border-color: transparent; }
+.cell.future { opacity: .45; }
+.strip-note { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; font-size: 13px; color: var(--muted); }
+
+/* day sheets */
+.days { display: flex; flex-direction: column; gap: 10px; }
+.day { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; scroll-margin-top: 12px; }
+.day-head {
+  width: 100%; display: grid; grid-template-columns: 52px minmax(0, 1fr) auto 16px; gap: 14px; align-items: center;
+  padding: 12px 16px; background: transparent; border: 0; text-align: left;
+}
+.day-head:hover { background: var(--line-soft); }
+.day-num { font-family: var(--mono); font-size: 28px; font-weight: 600; line-height: 1; letter-spacing: -.03em; }
+.day-meta { display: flex; flex-direction: column; min-width: 0; }
+.day-meta b { font-weight: 600; }
+.day-meta span { font-size: 13px; color: var(--muted); }
+.fig { display: flex; flex-direction: column; align-items: flex-end; font-family: var(--mono); font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+.fig small { font-family: var(--font); font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+.fig.sale { color: var(--sale); }
+.fig.buy { color: var(--buy); }
+.chev { width: 8px; height: 8px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform .15s; justify-self: center; }
+.day-head[aria-expanded="true"] .chev { transform: rotate(225deg); }
+.day-body { border-top: 1px solid var(--line-soft); }
+.row {
+  display: grid; grid-template-columns: 68px minmax(0, 1fr) 84px minmax(0, 150px) minmax(0, 124px) auto;
+  gap: 12px; align-items: center; padding: 9px 16px;
+}
+.row + .row { border-top: 1px solid var(--line-soft); }
+.row time { font-family: var(--mono); font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+.row .item { min-width: 0; display: flex; flex-direction: column; }
+.row .name { font-weight: 500; overflow-wrap: anywhere; }
+.row .note { font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+.pill { justify-self: start; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; }
+.pill.sale { background: var(--sale-soft); color: var(--sale); }
+.pill.buy { background: var(--buy-soft); color: var(--buy); }
+.row .calc { font-family: var(--mono); font-size: 12.5px; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.row .amt { font-family: var(--mono); font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.row .acts { display: flex; gap: 6px; justify-content: flex-end; }
+.row.confirm { background: var(--buy-soft); }
+.row.confirm .ask { grid-column: 3 / -1; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: flex-end; font-weight: 600; }
+.row.fresh { animation: fresh 1.6s ease-out; }
+@keyframes fresh { from { background: var(--accent-soft); } to { background: transparent; } }
+.edit { display: grid; grid-template-columns: 130px minmax(0, 1fr) 120px 84px; gap: 10px; padding: 14px 16px; background: var(--paper); align-items: end; }
+.edit + .row, .row + .edit { border-top: 1px solid var(--line-soft); }
+.edit .wide { grid-column: span 2; }
+.edit .btns { grid-column: 1 / -1; display: flex; gap: 8px; justify-content: flex-end; }
+.empty { border: 1px dashed var(--line); border-radius: 12px; padding: 36px 20px; text-align: center; color: var(--muted); }
+.empty b { display: block; color: var(--ink); font-size: 16px; margin-bottom: 4px; }
+.foot { font-size: 13px; color: var(--muted); }
+
+.toast {
+  position: fixed; left: 50%; bottom: max(20px, env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 50;
+  max-width: calc(100vw - 32px); padding: 10px 16px; border-radius: 999px;
+  background: var(--ink); color: var(--paper); font-weight: 500; font-size: 14px; box-shadow: 0 8px 24px rgba(0,0,0,.25);
+}
+.toast.bad { background: var(--buy); color: #fff; }
+
+@media (max-width: 860px) {
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 16px; padding-block: 16px 56px; }
+  .shelf { position: static; flex-direction: row; overflow-x: auto; gap: 6px; padding-bottom: 4px; align-items: stretch; }
+  .shelf h2 { display: none; }
+  .shelf h3 { align-self: center; padding: 0 4px 0 8px; }
+  .folder { flex: none; min-width: 124px; border-color: var(--line); }
+  .add-row { grid-template-columns: 1fr 1fr; }
+  .add-row .seg, .add-row .f-item, .add-row .btn { grid-column: 1 / -1; }
+  .add-more { grid-template-columns: minmax(0, 1fr); }
+  .edit { grid-template-columns: 1fr 1fr; }
+  .edit .wide { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .mnav h1 { font-size: 20px; }
+  .totals > div { padding: 10px 12px; }
+  .day-head { grid-template-columns: 40px minmax(0, 1fr) 14px; gap: 4px 10px; padding: 12px; }
+  .day-num { font-size: 24px; grid-row: span 2; }
+  .day-head .chev { grid-column: 3; grid-row: 1; }
+  .day-head .figs { grid-column: 2 / -1; }
+  .row { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; padding: 10px 12px; }
+  .row time { grid-column: 1; grid-row: 1; }
+  .row .pill { grid-column: 2; grid-row: 1; justify-self: end; }
+  .row .item { grid-column: 1; grid-row: 2; }
+  .row .amt { grid-column: 2; grid-row: 2; align-self: start; }
+  .row .calc { grid-column: 1; grid-row: 3; text-align: left; }
+  .row .calc:empty { display: none; }
+  .row .acts { grid-column: 1 / -1; justify-content: flex-start; padding-top: 4px; }
+  .row.confirm .ask { grid-column: 1 / -1; justify-content: flex-start; }
+}
+.figs { display: flex; gap: 18px; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- ================= sign in / create account ================= -->
+<div id="auth" class="auth wrap" hidden>
+  <div class="auth-card">
+    <div class="brand">
+      <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="var(--accent)"/><path d="M9 8h14M9 13h14M9 18h14M9 23h8" stroke="var(--accent-ink)" stroke-width="2.2" stroke-linecap="round"/></svg>
+      Daybook
+    </div>
+    <p>Sales and purchases, written down as they happen. Type the item and the price. The date and time are stamped for you.</p>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" id="tab-in" aria-selected="true">Sign in</button>
+      <button type="button" role="tab" id="tab-up" aria-selected="false">Create account</button>
+    </div>
+    <form id="auth-form" novalidate>
+      <label class="field" id="f-name" hidden><span>Your name or shop name</span>
+        <input class="input" id="au-name" autocomplete="name" maxlength="60"></label>
+      <label class="field"><span>Username</span>
+        <input class="input" id="au-user" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="30" required></label>
+      <label class="field"><span>Password</span>
+        <input class="input" id="au-pass" type="password" autocomplete="current-password" maxlength="72" required></label>
+      <p class="msg" id="au-msg" role="alert" hidden></p>
+      <button class="btn primary" id="au-go" type="submit">Sign in</button>
+      <p class="hint" id="au-hint" hidden>Each account has its own separate book. Nobody else can see your entries. Keep your password safe: there is no email reset.</p>
+    </form>
+  </div>
+</div>
+
+<!-- ================= the book ================= -->
+<div id="app" hidden>
+  <header class="top">
+    <div class="wrap">
+      <div class="brand">
+        <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="var(--accent)"/><path d="M9 8h14M9 13h14M9 18h14M9 23h8" stroke="var(--accent-ink)" stroke-width="2.2" stroke-linecap="round"/></svg>
+        Daybook
+      </div>
+      <details class="acct" id="acct">
+        <summary><span id="who-name">Account</span></summary>
+        <div class="menu">
+          <div class="who">Signed in as <b id="who-user"></b>. Only this account can see this book.</div>
+          <div class="inline">
+            <label class="field"><span>Currency symbol</span>
+              <input class="input" id="set-cur" maxlength="4"></label>
+            <button class="btn" type="button" id="set-cur-save">Save</button>
+          </div>
+          <hr>
+          <form class="inline" id="pw-form">
+            <label class="field"><span>New password</span>
+              <input class="input" id="set-pw" type="password" autocomplete="new-password" minlength="6" maxlength="72"></label>
+            <button class="btn" type="submit">Change</button>
+          </form>
+          <hr>
+          <button class="btn" type="button" id="signout">Sign out</button>
+        </div>
+      </details>
+    </div>
+  </header>
+
+  <div class="wrap layout">
+    <nav class="shelf" id="shelf" aria-label="Months"></nav>
+
+    <main class="main">
+      <form class="add" id="add" autocomplete="off">
+        <div class="add-row">
+          <div class="seg" role="radiogroup" aria-label="Entry type">
+            <label class="sale"><input type="radio" name="kind" id="k-sale" value="sale" checked>Sale</label>
+            <label class="buy"><input type="radio" name="kind" id="k-buy" value="purchase">Purchase</label>
+          </div>
+          <label class="field f-item"><span>Item</span>
+            <input class="input" id="in-item" list="known" maxlength="200" placeholder="What was sold or bought" required></label>
+          <label class="field"><span>Price (each)</span>
+            <input class="input num" id="in-price" type="number" inputmode="decimal" min="0" step="any" placeholder="0.00" required></label>
+          <label class="field"><span>Qty</span>
+            <input class="input num" id="in-qty" type="number" inputmode="decimal" min="0" step="any" value="1" required></label>
+          <button class="btn primary" id="add-go" type="submit">Add sale</button>
+        </div>
+        <div class="add-sub">
+          <span class="stamp" id="stamp"></span>
+          <button class="link" type="button" id="more-toggle" aria-expanded="false" aria-controls="add-more">Change date or add a note</button>
+          <button class="link" type="button" id="when-clear" hidden>Back to now</button>
+        </div>
+        <div class="add-more" id="add-more" hidden>
+          <label class="field"><span>Date and time</span>
+            <input class="input" id="in-when" type="datetime-local"></label>
+          <label class="field"><span>Note (optional)</span>
+            <input class="input" id="in-note" maxlength="500" placeholder="Customer, supplier, bill number"></label>
+        </div>
+        <datalist id="known"></datalist>
+      </form>
+
+      <div class="mhead">
+        <div class="mnav">
+          <button class="icon-btn" type="button" id="m-prev" aria-label="Previous month">&#8592;</button>
+          <h1 id="m-title"></h1>
+          <button class="icon-btn" type="button" id="m-next" aria-label="Next month">&#8594;</button>
+          <button class="btn small" type="button" id="m-today" hidden>This month</button>
+        </div>
+        <div class="mtools">
+          <button class="btn small" type="button" id="order"></button>
+          <button class="btn small" type="button" id="dl-xlsx">Download Excel file</button>
+          <button class="btn small" type="button" id="dl-csv">Download CSV</button>
+        </div>
+      </div>
+
+      <div class="totals" id="totals"></div>
+
+      <div>
+        <div class="strip" id="strip" aria-label="Days of the month"></div>
+      </div>
+      <div class="strip-note" id="strip-note"></div>
+
+      <div class="days" id="days"></div>
+      <p class="foot">Each day is one sheet. The sheets stack into the month, and the month downloads as one file with a row for every day.</p>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  // Public connection details for the "ledger-tracker" Supabase project.
+  // This key is safe to ship: row-level security limits every account to its own rows.
+  var SB_URL = 'https://vkzykysabyrxygdgqseq.supabase.co';
+  var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZrenlreXNhYnlyeHlnZGdxc2VxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQzMDMwODEsImV4cCI6MjEwOTg3OTA4MX0.h9zXqabKGRkKLgLlQROdiZ_i0Zp6pFKI8PCzRWQbgAo';
+  var EMAIL_DOMAIN = '@daybook.local';
+  var COLS = 'id,kind,item_name,price,quantity,note,entry_date';
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  if (!window.supabase) {
+    document.body.innerHTML = '<p style="padding:24px">Daybook could not load. Check your internet connection and reload the page.</p>';
+    return;
+  }
+  var sb = window.supabase.createClient(SB_URL, SB_KEY);
+
+  var now = new Date();
+  var state = {
+    user: null, profile: null,
+    y: now.getFullYear(), m: now.getMonth(),
+    entries: [], months: [],
+    open: new Set(), editing: null, deleting: null, fresh: null,
+    order: 'desc', cur: '₹', when: '', known: new Map(), mode: 'in', loadSeq: 0, monthsSeq: 0
+  };
+
+  // ---------- small helpers ----------
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function dayKey(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function toLocalInput(d) { return dayKey(d) + 'T' + pad(d.getHours()) + ':' + pad(d.getMinutes()); }
+  function cents(e) { return Math.round(Number(e.price) * Number(e.quantity) * 100); }
+  function plain(c) { return (Math.abs(c) / 100).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function money(c) { return (c < 0 ? '−' : '') + state.cur + plain(c); }
+  function qtyText(q) { return Number(q).toLocaleString(undefined, { maximumFractionDigits: 2 }); }
+  function fmt(d, opts) { return new Intl.DateTimeFormat(undefined, opts).format(d); }
+  function monthTitle(y, m) { return fmt(new Date(y, m, 1), { month: 'long', year: 'numeric' }); }
+  function daysIn(y, m) { return new Date(y, m + 1, 0).getDate(); }
+  function isThisMonth() { var n = new Date(); return state.y === n.getFullYear() && state.m === n.getMonth(); }
+  function store(key, val) {
+    try {
+      if (val === undefined) return localStorage.getItem(key);
+      localStorage.setItem(key, val);
+    } catch (e) { /* storage unavailable: settings just do not persist */ }
+    return null;
+  }
+
+  var toastTimer;
+  function toast(text, bad) {
+    var t = $('toast');
+    t.textContent = text;
+    t.className = 'toast' + (bad ? ' bad' : '');
+    t.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.hidden = true; }, bad ? 5000 : 2600);
+  }
+  function fail(what, error) {
+    console.error(what, error);
+    toast(what + ' Check your connection and try again.', true);
+  }
+
+  // ---------- sign in / create account ----------
+  function setMode(mode) {
+    state.mode = mode;
+    var up = mode === 'up';
+    $('tab-in').setAttribute('aria-selected', String(!up));
+    $('tab-up').setAttribute('aria-selected', String(up));
+    $('f-name').hidden = !up;
+    $('au-hint').hidden = !up;
+    $('au-go').textContent = up ? 'Create account' : 'Sign in';
+    $('au-pass').autocomplete = up ? 'new-password' : 'current-password';
+    $('au-msg').hidden = true;
+  }
+  function authMsg(text) { var m = $('au-msg'); m.textContent = text; m.hidden = false; }
+
+  async function submitAuth(ev) {
+    ev.preventDefault();
+    var username = $('au-user').value.trim().toLowerCase();
+    var password = $('au-pass').value;
+    $('au-msg').hidden = true;
+    if (!/^[a-z0-9][a-z0-9._-]{2,29}$/.test(username)) {
+      return authMsg('Username must be 3 to 30 characters: letters, numbers, dot, dash or underscore.');
+    }
+    if (password.length < 6) return authMsg('Password must be at least 6 characters.');
+    var btn = $('au-go');
+    btn.disabled = true;
+    try {
+      if (state.mode === 'up') {
+        var res = await fetch(SB_URL + '/functions/v1/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY },
+          body: JSON.stringify({ username: username, password: password, display_name: $('au-name').value.trim() })
+        });
+        var body = await res.json().catch(function () { return {}; });
+        if (!res.ok) return authMsg(body.error || 'Could not create the account. Try again.');
+      }
+      var out = await sb.auth.signInWithPassword({ email: username + EMAIL_DOMAIN, password: password });
+      if (out.error) {
+        authMsg(out.error.status === 400 ? 'Wrong username or password.' : 'Could not sign in. Check your connection and try again.');
+      } else {
+        $('au-pass').value = '';
+      }
+    } catch (e) {
+      authMsg('Could not reach the server. Check your connection and try again.');
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  async function onSession(session) {
+    var user = session ? session.user : null;
+    if (user && state.user && user.id === state.user.id) return; // token refresh
+    state.user = user;
+    if (!user) {
+      $('app').hidden = true;
+      $('auth').hidden = false;
+      state.entries = []; state.months = []; state.profile = null; state.known = new Map();
+      return;
+    }
+    $('auth').hidden = true;
+    $('app').hidden = false;
+    state.cur = store('daybook.cur.' + user.id) || '₹';
+    state.order = store('daybook.order') === 'asc' ? 'asc' : 'desc';
+    $('set-cur').value = state.cur;
+    var n = new Date();
+    state.y = n.getFullYear(); state.m = n.getMonth();
+    state.open = new Set([dayKey(n)]);
+    render();
+    var p = await sb.from('profiles').select('display_name,username').eq('id', user.id).maybeSingle();
+    state.profile = p.data || { display_name: 'Account', username: '' };
+    $('who-name').textContent = state.profile.display_name || state.profile.username || 'Account';
+    $('who-user').textContent = state.profile.username || '';
+    await Promise.all([loadMonth(), loadMonths(), loadKnown()]);
+  }
+
+  // ---------- data ----------
+  async function loadMonth() {
+    var seq = ++state.loadSeq;
+    var start = new Date(state.y, state.m, 1).toISOString();
+    var end = new Date(state.y, state.m + 1, 1).toISOString();
+    var all = [], from = 0, size = 1000;
+    for (;;) {
+      var r = await sb.from('entries').select(COLS)
+        .gte('entry_date', start).lt('entry_date', end)
+        .order('entry_date', { ascending: true }).order('id', { ascending: true })
+        .range(from, from + size - 1);
+      if (seq !== state.loadSeq) return;
+      if (r.error) return fail('Could not load this month.', r.error);
+      all = all.concat(r.data);
+      if (r.data.length < size) break;
+      from += size;
+    }
+    state.entries = all;
+    if (!state.open.size) {
+      var groups = groupDays();
+      if (groups.length) state.open.add(groups[groups.length - 1].key);
+    }
+    render();
+  }
+
+  async function loadMonths() {
+    var tz = 'UTC';
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'; } catch (e) { /* keep UTC */ }
+    var seq = ++state.monthsSeq;
+    var r = await sb.rpc('month_totals', { tz: tz });
+    if (r.error) r = await sb.rpc('month_totals', { tz: 'UTC' });
+    if (seq !== state.monthsSeq) return;
+    if (r.error) return console.error('month_totals', r.error);
+    state.months = r.data.map(function (row) {
+      var p = row.month.split('-');
+      return {
+        y: Number(p[0]), m: Number(p[1]) - 1,
+        sale: Math.round(Number(row.sales) * 100), buy: Math.round(Number(row.purchases) * 100)
+      };
+    });
+    renderShelf();
+  }
+
+  async function loadKnown() {
+    var r = await sb.from('entries').select('item_name,price,kind').order('entry_date', { ascending: false }).limit(1000);
+    if (r.error) return;
+    state.known = new Map();
+    r.data.slice().reverse().forEach(remember);
+    renderKnown();
+  }
+  function remember(e) {
+    var k = e.item_name.trim().toLowerCase();
+    var rec = state.known.get(k) || { name: e.item_name.trim() };
+    rec.name = e.item_name.trim();
+    rec[e.kind] = Number(e.price);
+    state.known.delete(k);
+    state.known.set(k, rec); // most recent last
+  }
+  function renderKnown() {
+    var names = Array.from(state.known.values()).reverse().slice(0, 300);
+    $('known').innerHTML = names.map(function (r) { return '<option value="' + esc(r.name) + '"></option>'; }).join('');
+  }
+
+  function groupDays() {
+    var map = new Map();
+    state.entries.forEach(function (e) {
+      var d = new Date(e.entry_date), k = dayKey(d);
+      var g = map.get(k);
+      if (!g) { g = { key: k, date: new Date(d.getFullYear(), d.getMonth(), d.getDate()), items: [], sale: 0, buy: 0 }; map.set(k, g); }
+      g.items.push(e);
+      if (e.kind === 'sale') g.sale += cents(e); else g.buy += cents(e);
+    });
+    return Array.from(map.values()).sort(function (a, b) { return a.key < b.key ? -1 : 1; });
+  }
+
+  // ---------- rendering ----------
+  function render() {
+    var groups = groupDays();
+    renderHead(groups);
+    renderStrip(groups);
+    renderDays(groups);
+    renderShelf();
+    renderStamp();
+  }
+
+  function renderHead(groups) {
+    $('m-title').textContent = monthTitle(state.y, state.m);
+    $('m-today').hidden = isThisMonth();
+    $('order').textContent = state.order === 'desc' ? 'Showing newest first' : 'Showing day 1 first';
+    var sale = 0, buy = 0, ns = 0, nb = 0;
+    state.entries.forEach(function (e) {
+      if (e.kind === 'sale') { sale += cents(e); ns++; } else { buy += cents(e); nb++; }
+    });
+    $('totals').innerHTML =
+      '<div class="sale"><span>Sales</span><b>' + esc(money(sale)) + '</b><small>' + ns + (ns === 1 ? ' entry' : ' entries') + '</small></div>' +
+      '<div class="buy"><span>Purchases</span><b>' + esc(money(buy)) + '</b><small>' + nb + (nb === 1 ? ' entry' : ' entries') + '</small></div>' +
+      '<div><span>Sales minus purchases</span><b>' + esc(money(sale - buy)) + '</b><small>' + groups.length + ' of ' + daysIn(state.y, state.m) + ' days have entries</small></div>';
+    var has = state.entries.length > 0;
+    $('dl-xlsx').disabled = !has;
+    $('dl-csv').disabled = !has;
+  }
+
+  function renderStrip(groups) {
+    var byDay = new Map(groups.map(function (g) { return [g.date.getDate(), g]; }));
+    var n = new Date(), todayKey = dayKey(n), html = '';
+    for (var d = 1; d <= daysIn(state.y, state.m); d++) {
+      var date = new Date(state.y, state.m, d), g = byDay.get(d);
+      var cls = 'cell' + (g ? ' has' : '') + (dayKey(date) === todayKey ? ' today' : '') + (date > n && dayKey(date) !== todayKey ? ' future' : '');
+      var label = fmt(date, { day: 'numeric', month: 'short' }) + ': ' + (g ? g.items.length + (g.items.length === 1 ? ' entry' : ' entries') : 'no entries');
+      html += '<button type="button" class="' + cls + '" data-day="' + d + '" title="' + esc(label) + '" aria-label="' + esc(label) + '">' + d + '</button>';
+    }
+    $('strip').innerHTML = html;
+    $('strip-note').innerHTML = '<span>Tap a day to open its sheet. Tap an empty day to date your next entry there.</span>';
+  }
+
+  function rowHtml(e) {
+    var d = new Date(e.entry_date);
+    var kindCls = e.kind === 'sale' ? 'sale' : 'buy';
+    var time = '<time datetime="' + esc(e.entry_date) + '">' + esc(fmt(d, { hour: 'numeric', minute: '2-digit' })) + '</time>';
+    var item = '<div class="item"><span class="name">' + esc(e.item_name) + '</span>' + (e.note ? '<span class="note">' + esc(e.note) + '</span>' : '') + '</div>';
+    if (state.editing === e.id) {
+      return '<form class="edit" data-id="' + e.id + '">' +
+        '<label class="field"><span>Type</span><select class="input" name="kind"><option value="sale"' + (e.kind === 'sale' ? ' selected' : '') + '>Sale</option><option value="purchase"' + (e.kind === 'purchase' ? ' selected' : '') + '>Purchase</option></select></label>' +
+        '<label class="field"><span>Item</span><input class="input" name="iname" maxlength="200" required value="' + esc(e.item_name) + '"></label>' +
+        '<label class="field"><span>Price (each)</span><input class="input num" name="price" type="number" inputmode="decimal" min="0" step="any" required value="' + Number(e.price) + '"></label>' +
+        '<label class="field"><span>Qty</span><input class="input num" name="qty" type="number" inputmode="decimal" min="0" step="any" required value="' + Number(e.quantity) + '"></label>' +
+        '<label class="field wide"><span>Date and time</span><input class="input" name="when" type="datetime-local" required value="' + toLocalInput(d) + '"></label>' +
+        '<label class="field wide"><span>Note</span><input class="input" name="note" maxlength="500" value="' + esc(e.note || '') + '"></label>' +
+        '<div class="btns"><button class="btn small" type="button" data-cancel>Cancel</button><button class="btn small primary" type="submit">Save changes</button></div>' +
+        '</form>';
+    }
+    if (state.deleting === e.id) {
+      return '<div class="row confirm" data-id="' + e.id + '">' + time + item +
+        '<div class="ask">Delete this entry?<button class="btn small danger" type="button" data-del-yes>Delete</button><button class="btn small" type="button" data-cancel>Keep</button></div></div>';
+    }
+    var calc = Number(e.quantity) !== 1 ? esc(qtyText(e.quantity)) + ' × ' + esc(money(Math.round(Number(e.price) * 100))) : '';
+    return '<div class="row' + (state.fresh === e.id ? ' fresh' : '') + '" data-id="' + e.id + '">' + time + item +
+      '<span class="pill ' + kindCls + '">' + (e.kind === 'sale' ? 'Sale' : 'Purchase') + '</span>' +
+      '<span class="calc">' + calc + '</span>' +
+      '<span class="amt">' + esc(money(cents(e))) + '</span>' +
+      '<span class="acts"><button class="btn small" type="button" data-edit>Edit</button><button class="btn small" type="button" data-del>Delete</button></span>' +
+      '</div>';
+  }
+
+  function renderDays(groups) {
+    var box = $('days');
+    if (!groups.length) {
+      box.innerHTML = '<div class="empty"><b>No entries in ' + esc(monthTitle(state.y, state.m)) + ' yet</b>' +
+        (isThisMonth() ? 'Add your first sale or purchase above. It lands on today’s sheet.' : 'Pick a day above to date an entry in this month.') + '</div>';
+      return;
+    }
+    var desc = state.order === 'desc';
+    var list = desc ? groups.slice().reverse() : groups;
+    box.innerHTML = list.map(function (g) {
+      var open = state.open.has(g.key);
+      var items = desc ? g.items.slice().reverse() : g.items;
+      var n = g.items.length;
+      return '<section class="day" id="day-' + g.key + '">' +
+        '<button type="button" class="day-head" data-toggle="' + g.key + '" aria-expanded="' + open + '">' +
+        '<span class="day-num">' + pad(g.date.getDate()) + '</span>' +
+        '<span class="day-meta"><b>' + esc(fmt(g.date, { weekday: 'long' })) + '</b><span>' + esc(fmt(g.date, { day: 'numeric', month: 'short' })) + ' · ' + n + (n === 1 ? ' entry' : ' entries') + '</span></span>' +
+        '<span class="figs"><span class="fig sale"><small>Sales</small>' + esc(money(g.sale)) + '</span><span class="fig buy"><small>Purchases</small>' + esc(money(g.buy)) + '</span></span>' +
+        '<span class="chev" aria-hidden="true"></span></button>' +
+        (open ? '<div class="day-body">' + items.map(rowHtml).join('') + '</div>' : '') +
+        '</section>';
+    }).join('');
+    state.fresh = null;
+  }
+
+  function renderShelf() {
+    var n = new Date();
+    var map = new Map();
+    state.months.forEach(function (x) { map.set(x.y * 12 + x.m, x); });
+    [[n.getFullYear(), n.getMonth()], [state.y, state.m]].forEach(function (p) {
+      var k = p[0] * 12 + p[1];
+      if (!map.has(k)) map.set(k, { y: p[0], m: p[1], sale: 0, buy: 0 });
+    });
+    var list = Array.from(map.values()).sort(function (a, b) { return (b.y * 12 + b.m) - (a.y * 12 + a.m); });
+    var html = '<h2>Months</h2>', year = null;
+    list.forEach(function (x) {
+      if (x.y !== year) { year = x.y; html += '<h3>' + year + '</h3>'; }
+      var current = x.y === state.y && x.m === state.m;
+      html += '<button type="button" class="folder" data-y="' + x.y + '" data-m="' + x.m + '"' + (current ? ' aria-current="true"' : '') + '>' +
+        '<b>' + esc(fmt(new Date(x.y, x.m, 1), { month: 'long' })) + '</b>' +
+        '<small><i class="s">+' + esc(plain(x.sale)) + '</i> <i class="b">−' + esc(plain(x.buy)) + '</i></small></button>';
+    });
+    $('shelf').innerHTML = html;
+  }
+
+  function renderStamp() {
+    var s = $('stamp'), custom = !!state.when;
+    var d = custom ? new Date(state.when) : new Date();
+    var text = fmt(d, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: '2-digit' });
+    s.textContent = custom ? 'Dated ' + text : 'Stamped now: ' + text;
+    s.className = 'stamp' + (custom ? ' custom' : '');
+    $('when-clear').hidden = !custom;
+  }
+
+  // ---------- actions ----------
+  function goMonth(y, m) {
+    var d = new Date(y, m, 1);
+    state.y = d.getFullYear(); state.m = d.getMonth();
+    state.entries = []; state.editing = null; state.deleting = null;
+    state.open = new Set(isThisMonth() ? [dayKey(new Date())] : []);
+    render();
+    loadMonth();
+  }
+
+  function readNumber(el, allowZero) {
+    var v = Number(el.value);
+    if (el.value.trim() === '' || !isFinite(v) || v < 0 || (!allowZero && v === 0)) return null;
+    return v;
+  }
+
+  async function addEntry(ev) {
+    ev.preventDefault();
+    var kind = $('k-buy').checked ? 'purchase' : 'sale';
+    var name = $('in-item').value.trim();
+    var price = readNumber($('in-price'), true);
+    var qty = readNumber($('in-qty'), false);
+    if (!name) { $('in-item').focus(); return toast('Type the item name.', true); }
+    if (price === null) { $('in-price').focus(); return toast('Type the price.', true); }
+    if (qty === null) { $('in-qty').focus(); return toast('Quantity must be more than 0.', true); }
+    var row = { kind: kind, item_name: name, price: price, quantity: qty, note: $('in-note').value.trim() || null };
+    if (state.when) row.entry_date = new Date(state.when).toISOString();
+    var btn = $('add-go');
+    btn.disabled = true;
+    var r = await sb.from('entries').insert(row).select(COLS).single();
+    btn.disabled = false;
+    if (r.error) return fail('Could not save the entry.', r.error);
+    var e = r.data, d = new Date(e.entry_date);
+    remember(e); renderKnown();
+    $('in-item').value = ''; $('in-price').value = ''; $('in-qty').value = '1'; $('in-note').value = '';
+    $('in-item').focus();
+    state.fresh = e.id;
+    if (d.getFullYear() !== state.y || d.getMonth() !== state.m) {
+      state.y = d.getFullYear(); state.m = d.getMonth();
+      state.open = new Set([dayKey(d)]);
+      state.entries = [];
+      await loadMonth();
+    } else {
+      state.entries.push(e);
+      state.entries.sort(function (a, b) { return a.entry_date < b.entry_date ? -1 : a.entry_date > b.entry_date ? 1 : 0; });
+      state.open.add(dayKey(d));
+      render();
+    }
+    toast((kind === 'sale' ? 'Sale' : 'Purchase') + ' added to ' + fmt(d, { day: 'numeric', month: 'short' }) + '.');
+    loadMonths();
+  }
+
+  async function saveEdit(form) {
+    var id = form.dataset.id, f = form.elements;
+    var price = readNumber(f.price, true), qty = readNumber(f.qty, false);
+    var name = f.iname.value.trim(), when = f.when.value;
+    if (!name || price === null || qty === null || !when) return toast('Fill in the item, price, quantity and date.', true);
+    var patch = { kind: f.kind.value, item_name: name, price: price, quantity: qty, note: f.note.value.trim() || null, entry_date: new Date(when).toISOString() };
+    var r = await sb.from('entries').update(patch).eq('id', id).select(COLS).single();
+    if (r.error) return fail('Could not save the changes.', r.error);
+    state.editing = null;
+    var d = new Date(r.data.entry_date);
+    state.open.add(dayKey(d));
+    toast('Changes saved.');
+    await loadMonth();
+    loadMonths();
+  }
+
+  async function removeEntry(id) {
+    var r = await sb.from('entries').delete().eq('id', id);
+    if (r.error) return fail('Could not delete the entry.', r.error);
+    state.entries = state.entries.filter(function (e) { return e.id !== id; });
+    state.deleting = null;
+    render();
+    toast('Entry deleted.');
+    loadMonths();
+  }
+
+  // ---------- turning the month into a file ----------
+  function fileBase() {
+    var who = (state.profile && state.profile.username) || 'book';
+    return 'daybook-' + state.y + '-' + pad(state.m + 1) + '-' + who;
+  }
+  function entryRows(list) {
+    return list.map(function (e) {
+      var d = new Date(e.entry_date);
+      return [dayKey(d), pad(d.getHours()) + ':' + pad(d.getMinutes()), e.kind === 'sale' ? 'Sale' : 'Purchase',
+        e.item_name, Number(e.quantity), Number(e.price), cents(e) / 100, e.note || ''];
+    });
+  }
+  var HEAD = ['Date', 'Time', 'Type', 'Item', 'Qty', 'Price', 'Amount', 'Note'];
+
+  function daySummary() {
+    var byDay = new Map(groupDays().map(function (g) { return [g.date.getDate(), g]; }));
+    var rows = [], ts = 0, tb = 0, tn = 0;
+    for (var d = 1; d <= daysIn(state.y, state.m); d++) {
+      var g = byDay.get(d) || { sale: 0, buy: 0, items: [] };
+      ts += g.sale; tb += g.buy; tn += g.items.length;
+      rows.push([d, dayKey(new Date(state.y, state.m, d)), g.sale / 100, g.buy / 100, (g.sale - g.buy) / 100, g.items.length]);
+    }
+    return { rows: rows, sale: ts, buy: tb, count: tn };
+  }
+
+  function downloadXlsx() {
+    if (!window.XLSX) return toast('The Excel exporter did not load. Reload the page, or use CSV.', true);
+    var X = window.XLSX, s = daySummary();
+    var name = (state.profile && (state.profile.display_name || state.profile.username)) || '';
+    var summary = [
+      ['Daybook', monthTitle(state.y, state.m)],
+      ['Account', name],
+      ['Currency', state.cur],
+      [],
+      ['Total sales', s.sale / 100],
+      ['Total purchases', s.buy / 100],
+      ['Sales minus purchases', (s.sale - s.buy) / 100],
+      [],
+      ['Day', 'Date', 'Sales', 'Purchases', 'Sales minus purchases', 'Entries']
+    ].concat(s.rows, [['Total', '', s.sale / 100, s.buy / 100, (s.sale - s.buy) / 100, s.count]]);
+    var wb = X.utils.book_new();
+    function sheet(title, aoa, widths) {
+      var ws = X.utils.aoa_to_sheet(aoa);
+      ws['!cols'] = widths.map(function (w) { return { wch: w }; });
+      X.utils.book_append_sheet(wb, ws, title);
+    }
+    var w = [12, 8, 10, 34, 8, 12, 14, 30];
+    sheet('Summary', summary, [22, 16, 14, 14, 22, 10]);
+    sheet('All entries', [HEAD].concat(entryRows(state.entries)), w);
+    sheet('Sales', [HEAD].concat(entryRows(state.entries.filter(function (e) { return e.kind === 'sale'; }))), w);
+    sheet('Purchases', [HEAD].concat(entryRows(state.entries.filter(function (e) { return e.kind === 'purchase'; }))), w);
+    X.writeFile(wb, fileBase() + '.xlsx');
+    toast('Downloaded ' + fileBase() + '.xlsx');
+  }
+
+  function downloadCsv() {
+    var cell = function (v) {
+      var s = String(v);
+      if (/^[=+\-@\t\r]/.test(s) && typeof v !== 'number') s = "'" + s; // keep spreadsheets from running it as a formula
+      return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+    };
+    var lines = [HEAD].concat(entryRows(state.entries)).map(function (r) { return r.map(cell).join(','); });
+    var blob = new Blob(['﻿' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = fileBase() + '.csv';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+    toast('Downloaded ' + fileBase() + '.csv');
+  }
+
+  // ---------- wiring ----------
+  $('tab-in').addEventListener('click', function () { setMode('in'); });
+  $('tab-up').addEventListener('click', function () { setMode('up'); });
+  $('auth-form').addEventListener('submit', submitAuth);
+  $('add').addEventListener('submit', addEntry);
+
+  ['k-sale', 'k-buy'].forEach(function (id) {
+    $(id).addEventListener('change', function () {
+      $('add-go').textContent = $('k-buy').checked ? 'Add purchase' : 'Add sale';
+    });
+  });
+  $('in-item').addEventListener('change', function () {
+    var rec = state.known.get(this.value.trim().toLowerCase());
+    var kind = $('k-buy').checked ? 'purchase' : 'sale';
+    if (rec && rec[kind] != null && $('in-price').value === '') $('in-price').value = rec[kind];
+  });
+  $('more-toggle').addEventListener('click', function () {
+    var box = $('add-more'), open = box.hidden;
+    box.hidden = !open;
+    this.setAttribute('aria-expanded', String(open));
+    if (open && !$('in-when').value) $('in-when').value = toLocalInput(new Date());
+  });
+  $('in-when').addEventListener('change', function () { state.when = this.value; renderStamp(); });
+  $('when-clear').addEventListener('click', function () { state.when = ''; $('in-when').value = ''; renderStamp(); });
+
+  $('m-prev').addEventListener('click', function () { goMonth(state.y, state.m - 1); });
+  $('m-next').addEventListener('click', function () { goMonth(state.y, state.m + 1); });
+  $('m-today').addEventListener('click', function () { var n = new Date(); goMonth(n.getFullYear(), n.getMonth()); });
+  $('order').addEventListener('click', function () {
+    state.order = state.order === 'desc' ? 'asc' : 'desc';
+    store('daybook.order', state.order);
+    render();
+  });
+  $('dl-xlsx').addEventListener('click', downloadXlsx);
+  $('dl-csv').addEventListener('click', downloadCsv);
+
+  $('shelf').addEventListener('click', function (ev) {
+    var b = ev.target.closest('.folder');
+    if (b) goMonth(Number(b.dataset.y), Number(b.dataset.m));
+  });
+
+  $('strip').addEventListener('click', function (ev) {
+    var b = ev.target.closest('.cell');
+    if (!b) return;
+    var date = new Date(state.y, state.m, Number(b.dataset.day)), key = dayKey(date);
+    if (b.classList.contains('has')) {
+      state.open.add(key);
+      render();
+      var el = document.getElementById('day-' + key);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      var n = new Date();
+      if (key === dayKey(n)) { state.when = ''; $('in-when').value = ''; }
+      else {
+        date.setHours(12, 0, 0, 0);
+        state.when = toLocalInput(date);
+        $('in-when').value = state.when;
+        $('add-more').hidden = false;
+        $('more-toggle').setAttribute('aria-expanded', 'true');
+      }
+      renderStamp();
+      $('in-item').focus();
+    }
+  });
+
+  $('days').addEventListener('click', function (ev) {
+    var t = ev.target;
+    var head = t.closest('[data-toggle]');
+    if (head) {
+      var k = head.dataset.toggle;
+      if (state.open.has(k)) state.open.delete(k); else state.open.add(k);
+      return render();
+    }
+    var holder = t.closest('[data-id]');
+    if (!holder) return;
+    var id = holder.dataset.id;
+    if (t.closest('[data-edit]')) { state.editing = id; state.deleting = null; render(); }
+    else if (t.closest('[data-del]')) { state.deleting = id; state.editing = null; render(); }
+    else if (t.closest('[data-cancel]')) { state.editing = null; state.deleting = null; render(); }
+    else if (t.closest('[data-del-yes]')) { removeEntry(id); }
+  });
+  $('days').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    if (ev.target.classList.contains('edit')) saveEdit(ev.target);
+  });
+
+  $('set-cur-save').addEventListener('click', function () {
+    state.cur = $('set-cur').value.trim();
+    if (state.user) store('daybook.cur.' + state.user.id, state.cur);
+    render();
+    toast('Currency symbol saved.');
+  });
+  $('pw-form').addEventListener('submit', async function (ev) {
+    ev.preventDefault();
+    var pw = $('set-pw').value;
+    if (pw.length < 6) return toast('Password must be at least 6 characters.', true);
+    var r = await sb.auth.updateUser({ password: pw });
+    if (r.error) return toast(r.error.message || 'Could not change the password.', true);
+    $('set-pw').value = '';
+    toast('Password changed.');
+  });
+  $('signout').addEventListener('click', async function () {
+    $('acct').open = false;
+    await sb.auth.signOut();
+  });
+  document.addEventListener('click', function (ev) {
+    var a = $('acct');
+    if (a.open && !a.contains(ev.target)) a.open = false;
+  });
+
+  // keep the "stamped now" line current, and pick up entries made on another device
+  setInterval(function () { if (state.user && !state.when) renderStamp(); }, 20000);
+  var lastSync = Date.now();
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden || !state.user || state.editing || state.deleting) return;
+    if (Date.now() - lastSync < 30000) return;
+    lastSync = Date.now();
+    loadMonth(); loadMonths();
+  });
+
+  setMode('in');
+  sb.auth.onAuthStateChange(function (event, session) {
+    setTimeout(function () { onSession(session); }, 0);
+  });
+})();
+</script>
+</body>
+</html>
