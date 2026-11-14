@@ -24,8 +24,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    /* One section on screen at a time. Choose the first one from the address (#cylinders, #contact, …). */
+    (function () {
+      var views = ['top', 'range', 'cylinders', 'build', 'process', 'industries', 'contact'];
+      var want = location.hash.slice(1), root = document.documentElement;
+      root.classList.add('slides');
+      root.setAttribute('data-view', views.indexOf(want) > -1 ? want : 'top');
+    })();
+  </script>
   <script type="module" crossorigin src="assets/index-DVjhlEjO.js"></script>
   <link rel="stylesheet" crossorigin href="assets/index-BBK6I-5j.css">
+  <link rel="stylesheet" href="assets/slides.css">
   <style>
     /* Full-bleed hero slideshow override — stack the hero, break the slider out
        to full viewport width, remove the frame/bezel (border, radius, shadow,
@@ -94,6 +104,107 @@
     <textarea name="message"></textarea>
     <input type="text" name="bot-field" />
   </form>
+
+  <!-- ============================================================
+       HYDRAULIC CYLINDERS — its own page in the slide navigation.
+       assets/slides.js moves this block into the page once it loads.
+       Stroke range and step are set by the min / max / step numbers
+       on the two "stroke" inputs below.
+       ============================================================ -->
+  <section class="section" id="cylinders" aria-labelledby="cyl-title">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-idx">02</span>
+        <div>
+          <p class="sec-kicker">Cylinders</p>
+          <h2 class="sec-title" id="cyl-title">Hydraulic cylinders, cut to your stroke.</h2>
+          <p class="sec-sub">Pick any stroke from 0 to 300 mm and order the quantity you need. We deliver all over India.</p>
+        </div>
+      </div>
+
+      <div class="cyl-grid">
+        <div class="cyl-gallery reveal">
+          <div class="cyl-lead">
+            <img src="images/hero-cylinders.jpg" alt="Precision-machined hydraulic cylinder bodies" width="1500" height="1500" loading="lazy" />
+            <i class="frame-corner tl"></i><i class="frame-corner tr"></i><i class="frame-corner bl"></i><i class="frame-corner br"></i>
+          </div>
+          <div class="cyl-slots">
+          <!-- PHOTO SLOT 1: to show a photo here, replace the two lines inside this div
+               with  <img src="images/cylinder-1.jpg" alt="describe the photo" />  -->
+          <div class="cyl-slot">
+            <i class="frame-corner tl"></i><i class="frame-corner tr"></i><i class="frame-corner bl"></i><i class="frame-corner br"></i>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.6-2.2h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"></path><circle cx="12" cy="13.2" r="3.4"></circle></svg>
+            <span>Photo 01</span>
+          </div>
+          <!-- PHOTO SLOT 2: to show a photo here, replace the two lines inside this div
+               with  <img src="images/cylinder-2.jpg" alt="describe the photo" />  -->
+          <div class="cyl-slot">
+            <i class="frame-corner tl"></i><i class="frame-corner tr"></i><i class="frame-corner bl"></i><i class="frame-corner br"></i>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.6-2.2h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"></path><circle cx="12" cy="13.2" r="3.4"></circle></svg>
+            <span>Photo 02</span>
+          </div>
+          <!-- PHOTO SLOT 3: to show a photo here, replace the two lines inside this div
+               with  <img src="images/cylinder-3.jpg" alt="describe the photo" />  -->
+          <div class="cyl-slot">
+            <i class="frame-corner tl"></i><i class="frame-corner tr"></i><i class="frame-corner bl"></i><i class="frame-corner br"></i>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.6-2.2h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"></path><circle cx="12" cy="13.2" r="3.4"></circle></svg>
+            <span>Photo 03</span>
+          </div>
+          </div>
+          <dl class="specs cyl-facts">
+            <div class="spec-cell"><dt>Stroke</dt><dd>0 – 300 mm</dd></div>
+            <div class="spec-cell"><dt>Quantity</dt><dd>As you need</dd></div>
+            <div class="spec-cell"><dt>Delivery</dt><dd>All over India</dd></div>
+          </dl>
+        </div>
+
+        <form class="form-card cyl-form reveal" id="cyl-form" style="transition-delay:120ms" novalidate>
+          <h3 class="form-title">Order to your size</h3>
+          <p class="form-sub">Set the stroke and quantity. We reply with the price and delivery time, usually the same day.</p>
+
+          <div class="cyl-stroke">
+            <div class="cyl-stroke-top">
+              <label class="cyl-label" for="cyl-stroke-num">Stroke length</label>
+              <div class="cyl-read">
+                <button type="button" class="cyl-step" data-step="-1" data-for="cyl-stroke-num" aria-label="Stroke 1 mm shorter">&minus;</button>
+                <span class="cyl-read-val"><input id="cyl-stroke-num" class="cyl-num" type="number" inputmode="numeric" min="0" max="300" step="1" value="150" /><span class="cyl-unit">mm</span></span>
+                <button type="button" class="cyl-step" data-step="1" data-for="cyl-stroke-num" aria-label="Stroke 1 mm longer">+</button>
+              </div>
+            </div>
+            <input id="cyl-stroke" class="cyl-range" type="range" min="0" max="300" step="5" value="150" aria-label="Stroke length in millimetres" />
+            <div class="cyl-ticks" aria-hidden="true"><span style="--p:0">0</span><span style="--p:0.1667">50</span><span style="--p:0.3333">100</span><span style="--p:0.5">150</span><span style="--p:0.6667">200</span><span style="--p:0.8333">250</span><span style="--p:1">300</span></div>
+          </div>
+
+          <div class="f-grid2">
+            <div class="f-field">
+              <label class="cyl-flabel" for="cyl-qty">Quantity</label>
+              <div class="cyl-qty">
+                <button type="button" class="cyl-step" data-step="-1" data-for="cyl-qty" aria-label="One fewer">&minus;</button>
+                <input id="cyl-qty" name="qty" type="number" inputmode="numeric" min="1" step="1" value="1" required />
+                <button type="button" class="cyl-step" data-step="1" data-for="cyl-qty" aria-label="One more">+</button>
+              </div>
+            </div>
+            <label class="f-field"><span>Deliver to</span><input id="cyl-city" name="city" placeholder="City or PIN code" autocomplete="postal-code" /></label>
+          </div>
+          <div class="f-grid2">
+            <label class="f-field"><span>Your name</span><input id="cyl-name" name="name" required autocomplete="name" /></label>
+            <label class="f-field"><span>Phone</span><input id="cyl-phone" name="phone" type="tel" required autocomplete="tel" placeholder="+91" /></label>
+          </div>
+          <label class="f-field"><span>Notes (optional)</span><textarea id="cyl-notes" name="notes" rows="2" placeholder="Bore, mounting, working pressure…"></textarea></label>
+          <p hidden aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+          <div class="cyl-ctas">
+            <button class="btn btn-primary" type="submit" id="cyl-send"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg> <span>Request quote</span></button>
+            <a class="btn btn-ghost" id="cyl-wa" href="https://wa.me/918090688246" target="_blank" rel="noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg> Order on WhatsApp</a>
+          </div>
+          <p class="cyl-hint" id="cyl-hint" role="status" hidden></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- If this file ever fails to load, the page falls back to one long scrolling page. -->
+  <script defer src="assets/slides.js" onerror="document.documentElement.classList.remove('slides')"></script>
 
 </body>
 </html>

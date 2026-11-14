@@ -1,0 +1,338 @@
+/* Slide navigation and the hydraulic cylinders page.
+   Loaded after the main stylesheet and built from its tokens (--orange, --line, --display …). */
+
+/* ------------------------------------------------------------------
+   1. One section on screen at a time
+   ------------------------------------------------------------------ */
+html.slides { scroll-behavior: auto; }
+html.slides main { display: flex; flex-direction: column; min-height: calc(100vh - 71px); }
+html.slides main > * { flex: none; }
+html.slides .site-foot { margin-top: 0; }
+html.slides .section { padding: 72px 0 64px; }
+html.slides main > section:focus { outline: none; }
+
+/* The cylinders block waits outside the app until slides.js moves it in. */
+html.slides body > #cylinders { display: none; }
+
+html.slides[data-view="top"] main > :not(#top):not(#top + .hazard):not(.ticker):not(.pager) { display: none !important; }
+html.slides[data-view="range"] main > :not(#range):not(.pager) { display: none !important; }
+html.slides[data-view="cylinders"] main > :not(#cylinders):not(.pager) { display: none !important; }
+html.slides[data-view="build"] main > :not(#build):not(.pager) { display: none !important; }
+html.slides[data-view="process"] main > :not(#process):not(.pager) { display: none !important; }
+html.slides[data-view="industries"] main > :not(#industries):not(.pager) { display: none !important; }
+html.slides[data-view="contact"] main > :not(#contact):not(.pager) { display: none !important; }
+
+/* The menu marks the page you are on (the old scroll position no longer decides it). */
+html.slides .nav a.active { color: var(--muted); }
+html.slides .nav a.active::after { transform: scaleX(0); }
+html.slides .nav a:hover { color: var(--ink); }
+html.slides .nav a:hover::after { transform: scaleX(1); }
+html.slides[data-view="range"] .nav a[href="#range"],
+html.slides[data-view="cylinders"] .nav a[href="#cylinders"],
+html.slides[data-view="build"] .nav a[href="#build"],
+html.slides[data-view="process"] .nav a[href="#process"],
+html.slides[data-view="industries"] .nav a[href="#industries"],
+html.slides[data-view="contact"] .nav a[href="#contact"] { color: var(--orange); }
+html.slides[data-view="range"] .nav a[href="#range"]::after,
+html.slides[data-view="cylinders"] .nav a[href="#cylinders"]::after,
+html.slides[data-view="build"] .nav a[href="#build"]::after,
+html.slides[data-view="process"] .nav a[href="#process"]::after,
+html.slides[data-view="industries"] .nav a[href="#industries"]::after,
+html.slides[data-view="contact"] .nav a[href="#contact"]::after { transform: scaleX(1); }
+html.slides[data-view="range"] .mnav a[href="#range"],
+html.slides[data-view="cylinders"] .mnav a[href="#cylinders"],
+html.slides[data-view="build"] .mnav a[href="#build"],
+html.slides[data-view="process"] .mnav a[href="#process"],
+html.slides[data-view="industries"] .mnav a[href="#industries"],
+html.slides[data-view="contact"] .mnav a[href="#contact"] { color: var(--orange); }
+
+/* Six menu links need a little less air than five did. */
+.nav a { white-space: nowrap; }
+@media (max-width: 1240px) {
+  .head-in { gap: 18px; }
+  .nav { gap: 0; }
+  .nav a { padding: 10px 10px; }
+  .nav a::after { left: 10px; right: 10px; }
+}
+@media (max-width: 1060px) {
+  .head-in { gap: 14px; }
+  .nav a { padding: 10px 7px; font-size: 12px; letter-spacing: .04em; }
+  .nav a::after { left: 7px; right: 7px; }
+}
+
+/* ------------------------------------------------------------------
+   2. Previous / next at the foot of every page
+   ------------------------------------------------------------------ */
+.pager {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0 26px;
+  border-top: 1px solid var(--line-soft);
+}
+.pager a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  min-height: 48px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.pager a span {
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.pager a strong {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  transition: color .2s ease, transform .28s cubic-bezier(.2, .7, .3, 1);
+}
+.pager-next { grid-column: 3; align-items: flex-end; text-align: right; }
+.pager-prev { grid-column: 1; align-items: flex-start; }
+.pager a:hover strong, .pager a:focus-visible strong { color: var(--orange); }
+.pager-next:hover strong { transform: translateX(4px); }
+.pager-prev:hover strong { transform: translateX(-4px); }
+.pager a:active strong { transform: scale(.98); }
+.pager a:focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; border-radius: 4px; }
+.pager-count {
+  grid-column: 2;
+  font-family: var(--display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.pager-count b { color: var(--orange); font-weight: 600; }
+
+/* ------------------------------------------------------------------
+   3. Hydraulic cylinders
+   ------------------------------------------------------------------ */
+.cyl-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 26px; align-items: start; }
+
+.cyl-lead {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--bg-2);
+  box-shadow: var(--shadow);
+}
+.cyl-lead img, .cyl-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s cubic-bezier(.2, .7, .3, 1);
+}
+.cyl-lead:hover img, .cyl-slot:hover img { transform: scale(1.03); }
+
+.cyl-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+.cyl-slot {
+  position: relative;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+  color: #6f89a6;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(62, 124, 177, .14), transparent 68%),
+    #0d1b30;
+  border: 1px solid var(--line-soft);
+  border-radius: 6px;
+}
+.cyl-slot span {
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.cyl-slot .frame-corner { width: 16px; height: 16px; border-color: rgba(255, 107, 43, .75); }
+
+.cyl-facts { margin-top: 12px; }
+
+/* --- the order card --- */
+.cyl-stroke {
+  margin-bottom: 18px;
+  padding: 18px 18px 14px;
+  background: #0d1b30;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.cyl-stroke-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.cyl-label, .cyl-flabel {
+  display: block;
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cyl-flabel { margin-bottom: 7px; }
+.cyl-read { display: flex; align-items: center; gap: 10px; }
+.cyl-read-val { display: inline-flex; align-items: baseline; gap: 6px; }
+.cyl-num {
+  width: 3.3ch;
+  box-sizing: content-box;
+  padding: 0 2px;
+  font-family: var(--display);
+  font-size: clamp(2rem, 3.4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1;
+  text-align: right;
+  color: var(--orange);
+  font-variant-numeric: tabular-nums;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  transition: border-color .2s ease;
+}
+.cyl-num::-webkit-outer-spin-button, .cyl-num::-webkit-inner-spin-button,
+.cyl-qty input::-webkit-outer-spin-button, .cyl-qty input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.cyl-num:hover { border-bottom-color: var(--line); }
+.cyl-num:focus { outline: none; border-bottom-color: var(--orange); }
+.cyl-unit { font-family: var(--display); font-size: 15px; font-weight: 600; color: var(--muted); }
+
+.cyl-step {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ink);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: border-color .2s ease, color .2s ease, transform .15s ease, background .2s ease;
+}
+.cyl-step:hover { border-color: var(--orange); color: var(--orange); transform: translateY(-1px); }
+.cyl-step:active { transform: scale(.94); background: #0f2038; }
+.cyl-step:focus-visible { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px #ff6b2b2e; }
+.cyl-step:disabled { opacity: .4; cursor: default; transform: none; border-color: var(--line); color: var(--ink); }
+
+.cyl-range {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 44px;
+  margin: 4px 0 0;
+  background: transparent;
+  cursor: pointer;
+  --pct: 50%;
+}
+.cyl-range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--orange) var(--pct), #213858 var(--pct));
+}
+.cyl-range::-moz-range-track { height: 6px; border-radius: 3px; background: #213858; }
+.cyl-range::-moz-range-progress { height: 6px; border-radius: 3px; background: var(--orange); }
+.cyl-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 26px;
+  height: 26px;
+  margin-top: -10px;
+  background: var(--orange);
+  border: 3px solid #0d1b30;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px var(--orange), 0 8px 18px -6px rgba(255, 107, 43, .7);
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+.cyl-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--orange);
+  border: 3px solid #0d1b30;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px var(--orange), 0 8px 18px -6px rgba(255, 107, 43, .7);
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+.cyl-range:hover::-webkit-slider-thumb { transform: scale(1.08); }
+.cyl-range:active::-webkit-slider-thumb { transform: scale(1.16); }
+.cyl-range:hover::-moz-range-thumb { transform: scale(1.08); }
+.cyl-range:active::-moz-range-thumb { transform: scale(1.16); }
+.cyl-range:focus-visible { outline: none; }
+.cyl-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 1px var(--orange), 0 0 0 5px #ff6b2b40; }
+.cyl-range:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 1px var(--orange), 0 0 0 5px #ff6b2b40; }
+
+.cyl-ticks {
+  position: relative;
+  height: 16px;
+  font-family: var(--display);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #6f89a6;
+  font-variant-numeric: tabular-nums;
+}
+/* Each number sits under the spot the handle reaches for that value (the handle is 26px wide). */
+.cyl-ticks span { position: absolute; left: calc(13px + (100% - 26px) * var(--p)); transform: translateX(-50%); }
+
+.cyl-qty { display: grid; grid-template-columns: 44px 1fr 44px; gap: 8px; }
+.f-field .cyl-qty input { text-align: center; font-family: var(--display); font-weight: 600; font-size: 16px; -moz-appearance: textfield; appearance: textfield; }
+
+.cyl-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.cyl-ctas .btn { flex: 1 1 200px; }
+.cyl-ctas .btn[aria-disabled="true"], .cyl-ctas .btn:disabled { opacity: .45; pointer-events: none; }
+
+.cyl-hint {
+  margin-top: 14px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #ffd9c7;
+  background: #ff6b2b1a;
+  border: 1px solid rgba(255, 107, 43, .4);
+  border-radius: 6px;
+}
+.cyl-hint.ok { color: #b8f3c9; background: #2ea05a24; border-color: rgba(46, 160, 90, .4); }
+
+@media (max-width: 900px) {
+  /* One column: picture, then the order card, then the remaining photos and facts. */
+  .cyl-grid { grid-template-columns: 1fr; gap: 14px; }
+  .cyl-gallery { display: contents; }
+  .cyl-lead { order: 1; aspect-ratio: 16 / 10; }
+  .cyl-form { order: 2; }
+  .cyl-slots { order: 3; margin-top: 0; }
+  .cyl-facts { order: 4; margin-top: 0; }
+  html.slides .section { padding: 52px 0 48px; }
+}
+@media (max-width: 640px) {
+  html.slides main { min-height: calc(100vh - 62px); }
+  .cyl-facts.specs { grid-template-columns: 1fr; }
+  .cyl-facts .spec-cell { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .cyl-facts .spec-cell dt { margin: 0; }
+  .cyl-stroke { padding: 16px 14px 12px; }
+  .cyl-stroke-top { flex-direction: column; align-items: stretch; gap: 10px; }
+  .cyl-read { justify-content: space-between; }
+  .pager a strong { font-size: 16px; }
+  .pager { gap: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cyl-lead img, .cyl-slot img, .cyl-step, .pager a strong,
+  .cyl-range::-webkit-slider-thumb, .cyl-range::-moz-range-thumb { transition-duration: .01ms !important; }
+  .cyl-lead:hover img, .cyl-slot:hover img, .cyl-step:hover, .pager a:hover strong { transform: none; }
+}
