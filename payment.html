@@ -170,9 +170,8 @@
         <span>Automech<small>Hydraulic Solutions</small></span>
       </a>
       <nav class="nav">
-        <a href="index.html">Home</a>
+        <a href="index.html#order">← Back to site</a>
         <a href="orders.html">My Orders</a>
-        <a class="cta" href="#order">Order Now</a>
       </nav>
     </div>
   </header>
@@ -389,6 +388,12 @@
     }
     list.addEventListener("input", refreshUpiWa);
     list.addEventListener("click", refreshUpiWa);
+
+    // Cart handed over from the home page's Order section: payment.html?cart=AHS-015:2,AHS-060:1
+    (new URLSearchParams(location.search).get("cart") || "").split(",").forEach(pair => {
+      const [code, n] = pair.split(":");
+      if (code in qty) setQty(code, n);
+    });
     refreshUpiWa();
 
     // place order
