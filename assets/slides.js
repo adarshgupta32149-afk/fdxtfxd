@@ -13,12 +13,15 @@
     ['top', 'Home'],
     ['range', 'Jacks'],
     ['cylinders', 'Cylinders'],
+    ['order', 'Order'],
     ['build', 'Built Different'],
     ['process', 'Process'],
     ['industries', 'Industries'],
     ['contact', 'Contact']
   ];
-  var IDS = VIEWS.map(function (v) { return v[0]; });
+  // Pages reached from another page rather than from Previous / Next: id -> the page they belong to.
+  var ASIDE = { orders: 'order' };
+  var IDS = VIEWS.map(function (v) { return v[0]; }).concat(Object.keys(ASIDE));
   var WHATSAPP = '918090688246';
   var EMAIL = 'automechhydraulic@gmail.com';
 
@@ -35,7 +38,9 @@
   /* ---------------- pages ---------------- */
 
   function renderPager() {
-    var i = IDS.indexOf(current), prev = VIEWS[i - 1], next = VIEWS[i + 1];
+    var home = ASIDE[current] || current;
+    var i = VIEWS.map(function (v) { return v[0]; }).indexOf(home), prev = VIEWS[i - 1], next = VIEWS[i + 1];
+    if (ASIDE[current]) { prev = VIEWS[i]; }
     pager.innerHTML =
       (prev ? '<a class="pager-prev" href="#' + prev[0] + '"><span>Previous</span><strong>← ' + prev[1] + '</strong></a>' : '') +
       '<span class="pager-count" aria-label="Page ' + (i + 1) + ' of ' + VIEWS.length + '"><b>' + two(i + 1) + '</b> / ' + two(VIEWS.length) + '</span>' +
@@ -45,7 +50,7 @@
   function markMenu() {
     var links = document.querySelectorAll('.nav a, .mnav a');
     for (var i = 0; i < links.length; i++) {
-      if (links[i].getAttribute('href') === '#' + current) links[i].setAttribute('aria-current', 'page');
+      if (links[i].getAttribute('href') === '#' + (ASIDE[current] || current)) links[i].setAttribute('aria-current', 'page');
       else links[i].removeAttribute('aria-current');
     }
   }
@@ -56,6 +61,7 @@
     window.scrollTo(0, 0);
     renderPager();
     markMenu();
+    document.dispatchEvent(new CustomEvent('automech:view', { detail: id }));
     if (focus) {
       var sec = document.getElementById(id);
       if (sec) { sec.setAttribute('tabindex', '-1'); sec.focus({ preventScroll: true }); }
@@ -110,6 +116,10 @@
       }
       if (!isView(id)) return;
       e.preventDefault();
+      // A link can carry something for the page it opens (the jack to put in the order).
+      if (a.hasAttribute('data-order')) {
+        document.dispatchEvent(new CustomEvent('automech:order', { detail: a.getAttribute('data-order') }));
+      }
       go(id);
     }, true);
 
@@ -249,19 +259,19 @@
   function start(mainEl) {
     main = mainEl;
 
+    // Pages written in index.html (cylinders, order, my orders) wait outside the app; bring them in.
+    var extra = document.querySelectorAll('body > section.section');
+    for (var n = 0; n < extra.length; n++) main.appendChild(extra[n]);
     var cyl = document.getElementById('cylinders');
-    if (cyl) {
-      main.appendChild(cyl);
-      wireCylinders(cyl);
-      // Same entrance as the app's own sections, in case its observer missed this block.
-      if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-        }, { threshold: 0.12 });
-        var items = cyl.querySelectorAll('.reveal');
+    if (cyl) wireCylinders(cyl);
+    // Same entrance as the app's own sections, in case its observer missed these blocks.
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, { threshold: 0.05 });
+      for (var k = 0; k < extra.length; k++) {
+        var items = extra[k].querySelectorAll('.reveal');
         for (var i = 0; i < items.length; i++) io.observe(items[i]);
-      } else {
-        cyl.classList.add('in');
       }
     }
 
@@ -273,6 +283,7 @@
     wireNavigation();
     renderPager();
     markMenu();
+    document.dispatchEvent(new CustomEvent('automech:view', { detail: current }));
   }
 
   function waitForApp() {

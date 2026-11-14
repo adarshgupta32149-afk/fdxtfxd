@@ -12,11 +12,13 @@ html.slides .section { padding: 72px 0 64px; }
 html.slides main > section:focus { outline: none; }
 
 /* The cylinders block waits outside the app until slides.js moves it in. */
-html.slides body > #cylinders { display: none; }
+html.slides body > section.section { display: none; }
 
 html.slides[data-view="top"] main > :not(#top):not(#top + .hazard):not(.ticker):not(.pager) { display: none !important; }
 html.slides[data-view="range"] main > :not(#range):not(.pager) { display: none !important; }
 html.slides[data-view="cylinders"] main > :not(#cylinders):not(.pager) { display: none !important; }
+html.slides[data-view="order"] main > :not(#order):not(.pager) { display: none !important; }
+html.slides[data-view="orders"] main > :not(#orders):not(.pager) { display: none !important; }
 html.slides[data-view="build"] main > :not(#build):not(.pager) { display: none !important; }
 html.slides[data-view="process"] main > :not(#process):not(.pager) { display: none !important; }
 html.slides[data-view="industries"] main > :not(#industries):not(.pager) { display: none !important; }
@@ -29,18 +31,24 @@ html.slides .nav a:hover { color: var(--ink); }
 html.slides .nav a:hover::after { transform: scaleX(1); }
 html.slides[data-view="range"] .nav a[href="#range"],
 html.slides[data-view="cylinders"] .nav a[href="#cylinders"],
+html.slides[data-view="order"] .nav a[href="#order"],
+html.slides[data-view="orders"] .nav a[href="#order"],
 html.slides[data-view="build"] .nav a[href="#build"],
 html.slides[data-view="process"] .nav a[href="#process"],
 html.slides[data-view="industries"] .nav a[href="#industries"],
 html.slides[data-view="contact"] .nav a[href="#contact"] { color: var(--orange); }
 html.slides[data-view="range"] .nav a[href="#range"]::after,
 html.slides[data-view="cylinders"] .nav a[href="#cylinders"]::after,
+html.slides[data-view="order"] .nav a[href="#order"]::after,
+html.slides[data-view="orders"] .nav a[href="#order"]::after,
 html.slides[data-view="build"] .nav a[href="#build"]::after,
 html.slides[data-view="process"] .nav a[href="#process"]::after,
 html.slides[data-view="industries"] .nav a[href="#industries"]::after,
 html.slides[data-view="contact"] .nav a[href="#contact"]::after { transform: scaleX(1); }
 html.slides[data-view="range"] .mnav a[href="#range"],
 html.slides[data-view="cylinders"] .mnav a[href="#cylinders"],
+html.slides[data-view="order"] .mnav a[href="#order"],
+html.slides[data-view="orders"] .mnav a[href="#order"],
 html.slides[data-view="build"] .mnav a[href="#build"],
 html.slides[data-view="process"] .mnav a[href="#process"],
 html.slides[data-view="industries"] .mnav a[href="#industries"],
@@ -54,10 +62,15 @@ html.slides[data-view="contact"] .mnav a[href="#contact"] { color: var(--orange)
   .nav a { padding: 10px 10px; }
   .nav a::after { left: 10px; right: 10px; }
 }
-@media (max-width: 1060px) {
+@media (max-width: 1100px) {
   .head-in { gap: 14px; }
   .nav a { padding: 10px 7px; font-size: 12px; letter-spacing: .04em; }
   .nav a::after { left: 7px; right: 7px; }
+}
+/* Seven links stop fitting here, so the menu button takes over a little earlier than before. */
+@media (max-width: 1000px) {
+  .nav, .head-cta { display: none; }
+  .burger { display: flex; }
 }
 
 /* ------------------------------------------------------------------

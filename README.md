@@ -25,3 +25,15 @@ The enquiry form posts to Netlify Forms (no backend/database required).
   `images/` and replace the slot's contents with an `<img>` as the comment there shows.
 - **Quotes:** "Request quote" posts to the same Netlify form as the contact page (`enquiry`), with the
   stroke in the `model` field. "Order on WhatsApp" opens a chat with the details filled in.
+
+## Order online and My orders
+- **Order page** (`#order`): buyers pick jacks (prices are read from the datasheet on the Jacks page),
+  add delivery details and choose NEFT, IMPS or RTGS. RTGS unlocks at ₹2,00,000; IMPS stops at ₹5,00,000.
+  UPI buyers are pointed to WhatsApp.
+- Orders go to the workshop through the same Netlify form (`enquiry`), marked `ONLINE ORDER AM-…`.
+  Payment references (UTR) arrive as `PAYMENT REPORTED AM-…`.
+- **Bank details:** type them into the four empty `data-bank` fields in `index.html` (search for
+  `BANK DETAILS`). Until then, buyers are asked to get them on WhatsApp.
+- **My orders** (`#orders`) lists orders placed from that browser, with totals and payment status.
+  It is stored in the buyer's browser, not on a server.
+- Logic and styles: `assets/order.js`, `assets/order.css`.
