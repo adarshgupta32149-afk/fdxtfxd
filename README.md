@@ -12,19 +12,19 @@ It is a single-page site; deploy by serving the repository root as a static site
 - `index.html` — entry page; also holds the Hydraulic Cylinders page (the `<section id="cylinders">` block)
 - `assets/index-*.js`, `assets/index-*.css` — the bundled site (pre-built, no source in this repo)
 - `assets/slides.js`, `assets/slides.css` — slide navigation (one section on screen at a time, animated
-  change, Previous / Next) and the cylinder stroke selector and quote form
+  change, Previous / Next) and the cylinder diameter selector, photo gallery and quote form
 - `images/` — hero slides, product photos (transparent PNGs) and logo
 - `automech-brochure.pdf` — downloadable product brochure
 
 The enquiry form posts to Netlify Forms (no backend/database required).
 
 ## Hydraulic cylinders page
-- **Stroke range:** set by `min`, `max` and `step` on the two stroke inputs in `index.html`
-  (`#cyl-stroke` and `#cyl-stroke-num`), plus the numbers printed under the slider.
-- **Photos:** three empty slots are marked `PHOTO SLOT 1–3` in `index.html`. Put the picture in
-  `images/` and replace the slot's contents with an `<img>` as the comment there shows.
+- **Diameter range:** set by `min`, `max` and `step` on the two diameter inputs in `index.html`
+  (`#cyl-stroke` and `#cyl-stroke-num`; the ids kept their old name), plus the numbers under the slider.
+- **Photos:** `images/cylinder-1.jpg` to `cylinder-4.jpg`, shown in a swipeable gallery with
+  thumbnails. The comment above the gallery in `index.html` says how to add or swap one.
 - **Quotes:** "Request quote" posts to the same Netlify form as the contact page (`enquiry`), with the
-  stroke in the `model` field. "Order on WhatsApp" opens a chat with the details filled in.
+  diameter in the `model` field. "Order on WhatsApp" opens a chat with the details filled in.
 
 ## Order online and My orders
 - **Order page** (`#order`): buyers pick jacks (prices are read from the datasheet on the Jacks page),
@@ -37,3 +37,7 @@ The enquiry form posts to Netlify Forms (no backend/database required).
 - **My orders** (`#orders`) lists orders placed from that browser, with totals and payment status.
   It is stored in the buyer's browser, not on a server.
 - Logic and styles: `assets/order.js`, `assets/order.css`.
+
+## Home slider
+Swipe on a phone or drag with the mouse; it also moves on by itself every 3 seconds. The pictures
+are listed in the bundle (`Fn` in `assets/index-*.js`); the logo slide uses `images/logo-automech.png`.

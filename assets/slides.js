@@ -3,7 +3,7 @@
  * The site itself is a pre-built React bundle (assets/index-*.js). This file sits on top of it:
  *   1. shows one section at a time and animates the change when a menu link is clicked,
  *   2. adds Previous / Next at the foot of every page,
- *   3. runs the stroke selector and quote form on the cylinders page.
+ *   3. runs the diameter selector, photo gallery and quote form on the cylinders page.
  * Which section is showing lives in <html data-view="…">; assets/slides.css does the hiding.
  */
 (function () {
@@ -164,7 +164,7 @@
     function pieces() { return Math.max(1, clamp(qty.value, 1, 99999)); }
 
     function summary() {
-      var lines = ['Stroke: ' + stroke() + ' ' + unit, 'Quantity: ' + pieces()];
+      var lines = ['Diameter: ' + stroke() + ' ' + unit, 'Quantity: ' + pieces()];
       if (city.value.trim()) lines.push('Deliver to: ' + city.value.trim());
       if (notes.value.trim()) lines.push('Notes: ' + notes.value.trim());
       return lines;
@@ -195,7 +195,7 @@
       send.disabled = none || send.getAttribute('data-busy') === '1';
       wa.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(
         "Hi Automech, I'd like a quote for hydraulic cylinders.\n" + summary().join('\n'));
-      if (none) say('Choose a stroke above 0 ' + unit + ' to ask for a quote.');
+      if (none) say('Choose a diameter above 0 ' + unit + ' to ask for a quote.');
       else if (!hint.classList.contains('ok')) say('');
     }
 
@@ -222,7 +222,7 @@
       if (!name.value.trim()) { say('Add your name so we know who to reply to.'); name.focus(); return; }
       if (phone.value.replace(/\D/g, '').length < 10) { say('Add a phone number with at least 10 digits.'); phone.focus(); return; }
 
-      var model = 'Hydraulic cylinder — ' + stroke() + ' ' + unit + ' stroke';
+      var model = 'Hydraulic cylinder — ' + stroke() + ' ' + unit + ' diameter';
       var message = summary().slice(2).join('\n');
       var body = new URLSearchParams();
       body.append('form-name', 'enquiry');
@@ -254,6 +254,68 @@
     paint();
   }
 
+  /* ---------------- cylinder photo gallery: swipe, drag or tap a thumbnail ---------------- */
+
+  function wireGallery(section) {
+    var lead = section.querySelector('#cyl-lead'), track = section.querySelector('#cyl-track');
+    var thumbs = section.querySelectorAll('.cyl-thumb');
+    if (!lead || !track) return;
+    var count = track.children.length, at = 0, drag = null;
+
+    function place(dx, animate) {
+      track.style.transition = animate && !reduce.matches ? 'transform .5s cubic-bezier(.2, .7, .3, 1)' : 'none';
+      track.style.transform = 'translateX(calc(' + (-at * 100) + '% + ' + (dx || 0) + 'px))';
+    }
+    function show(i) {
+      at = Math.max(0, Math.min(count - 1, i));
+      place(0, true);
+      for (var n = 0; n < thumbs.length; n++) {
+        var on = n === at;
+        thumbs[n].classList.toggle('on', on);
+        if (on) thumbs[n].setAttribute('aria-current', 'true'); else thumbs[n].removeAttribute('aria-current');
+      }
+      for (var c = 0; c < count; c++) track.children[c].setAttribute('aria-hidden', c === at ? 'false' : 'true');
+    }
+
+    section.addEventListener('click', function (e) {
+      var t = e.target.closest('.cyl-thumb');
+      if (t) show(+t.getAttribute('data-i'));
+    });
+    lead.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      drag = { x: e.clientX, y: e.clientY, id: e.pointerId, w: lead.offsetWidth, axis: null };
+    });
+    lead.addEventListener('pointermove', function (e) {
+      if (!drag || drag.id !== e.pointerId) return;
+      var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      if (!drag.axis) {
+        if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+        drag.axis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+        if (drag.axis === 'x') { try { lead.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ } lead.classList.add('dragging'); }
+      }
+      if (drag.axis !== 'x') return;
+      // Pulling past the first or last photo only gives a little.
+      if ((at === 0 && dx > 0) || (at === count - 1 && dx < 0)) dx = dx / 3;
+      place(dx, false);
+    });
+    function end(e) {
+      var d = drag; drag = null;
+      if (!d || d.axis !== 'x') return;
+      lead.classList.remove('dragging');
+      var dx = e.type === 'pointercancel' ? 0 : e.clientX - d.x;
+      if (Math.abs(dx) > Math.min(70, d.w * 0.18)) show(at + (dx < 0 ? 1 : -1)); else place(0, true);
+    }
+    lead.addEventListener('pointerup', end);
+    lead.addEventListener('pointercancel', end);
+    lead.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    lead.setAttribute('tabindex', '0');
+    lead.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(at + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(at - 1); }
+    });
+    show(0);
+  }
+
   /* ---------------- start ---------------- */
 
   function start(mainEl) {
@@ -263,7 +325,7 @@
     var extra = document.querySelectorAll('body > section.section');
     for (var n = 0; n < extra.length; n++) main.appendChild(extra[n]);
     var cyl = document.getElementById('cylinders');
-    if (cyl) wireCylinders(cyl);
+    if (cyl) { wireCylinders(cyl); wireGallery(cyl); }
     // Same entrance as the app's own sections, in case its observer missed these blocks.
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (entries) {

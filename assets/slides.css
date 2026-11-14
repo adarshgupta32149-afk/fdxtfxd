@@ -138,42 +138,48 @@ html.slides[data-view="contact"] .mnav a[href="#contact"] { color: var(--orange)
   border: 1px solid var(--line);
   border-radius: 10px;
   overflow: hidden;
-  background: var(--bg-2);
+  background: #0d1b30;
   box-shadow: var(--shadow);
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
 }
-.cyl-lead img, .cyl-slot img {
+.cyl-lead.dragging { cursor: grabbing; }
+.cyl-lead:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+.cyl-track { display: flex; height: 100%; will-change: transform; }
+.cyl-shot { position: relative; flex: 0 0 100%; height: 100%; overflow: hidden; }
+/* The same photo, blurred and dimmed, fills the frame so every photo shows whole. */
+.cyl-blur { position: absolute; inset: -24px; background-size: cover; background-position: center; filter: blur(22px) brightness(.5) saturate(1.1); }
+.cyl-shot img {
+  position: relative;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform .6s cubic-bezier(.2, .7, .3, 1);
+  object-fit: contain;
+  pointer-events: none;
+  -webkit-user-drag: none;
 }
-.cyl-lead:hover img, .cyl-slot:hover img { transform: scale(1.03); }
+.cyl-lead .frame-corner { z-index: 2; }
 
-.cyl-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
-.cyl-slot {
+.cyl-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
+.cyl-thumb {
   position: relative;
-  aspect-ratio: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  aspect-ratio: 4 / 3;
+  padding: 0;
   overflow: hidden;
-  color: #6f89a6;
-  background:
-    radial-gradient(circle at 50% 35%, rgba(62, 124, 177, .14), transparent 68%),
-    #0d1b30;
+  background: #0d1b30;
   border: 1px solid var(--line-soft);
   border-radius: 6px;
+  cursor: pointer;
+  opacity: .62;
+  transition: opacity .2s ease, border-color .2s ease, transform .2s ease;
 }
-.cyl-slot span {
-  font-family: var(--display);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-}
-.cyl-slot .frame-corner { width: 16px; height: 16px; border-color: rgba(255, 107, 43, .75); }
+.cyl-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s cubic-bezier(.2, .7, .3, 1); }
+.cyl-thumb:hover { opacity: 1; transform: translateY(-2px); }
+.cyl-thumb:hover img { transform: scale(1.03); }
+.cyl-thumb:active { transform: scale(.98); }
+.cyl-thumb.on { opacity: 1; border-color: var(--orange); box-shadow: 0 0 0 1px var(--orange); }
+.cyl-thumb:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; opacity: 1; }
 
 .cyl-facts { margin-top: 12px; }
 
@@ -327,9 +333,9 @@ html.slides[data-view="contact"] .mnav a[href="#contact"] { color: var(--orange)
   /* One column: picture, then the order card, then the remaining photos and facts. */
   .cyl-grid { grid-template-columns: 1fr; gap: 14px; }
   .cyl-gallery { display: contents; }
-  .cyl-lead { order: 1; aspect-ratio: 16 / 10; }
-  .cyl-form { order: 2; }
-  .cyl-slots { order: 3; margin-top: 0; }
+  .cyl-lead { order: 1; }
+  .cyl-thumbs { order: 2; margin-top: -4px; }
+  .cyl-form { order: 3; }
   .cyl-facts { order: 4; margin-top: 0; }
   html.slides .section { padding: 52px 0 48px; }
 }
@@ -345,7 +351,15 @@ html.slides[data-view="contact"] .mnav a[href="#contact"] { color: var(--orange)
   .pager { gap: 10px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .cyl-lead img, .cyl-slot img, .cyl-step, .pager a strong,
+  .cyl-thumb, .cyl-thumb img, .cyl-step, .pager a strong,
   .cyl-range::-webkit-slider-thumb, .cyl-range::-moz-range-thumb { transition-duration: .01ms !important; }
-  .cyl-lead:hover img, .cyl-slot:hover img, .cyl-step:hover, .pager a:hover strong { transform: none; }
+  .cyl-thumb:hover, .cyl-thumb:hover img, .cyl-step:hover, .pager a:hover strong { transform: none; }
 }
+
+/* ------------------------------------------------------------------
+   4. Home slider: drag or swipe sideways; it still moves on by itself every 3 s
+   ------------------------------------------------------------------ */
+.slides.swipe { touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+.slides.swipe.dragging { cursor: grabbing; }
+.slides.swipe .slide { will-change: transform; overflow: hidden; }
+.slides.swipe img { -webkit-user-drag: none; pointer-events: none; }

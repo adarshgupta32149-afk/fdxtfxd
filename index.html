@@ -109,8 +109,8 @@
   <!-- ============================================================
        HYDRAULIC CYLINDERS — its own page in the slide navigation.
        assets/slides.js moves this block into the page once it loads.
-       Stroke range and step are set by the min / max / step numbers
-       on the two "stroke" inputs below.
+       Diameter range and step are set by the min / max / step numbers
+       on the two diameter inputs below (#cyl-stroke and #cyl-stroke-num).
        ============================================================ -->
   <section class="section" id="cylinders" aria-labelledby="cyl-title">
     <div class="wrap">
@@ -118,42 +118,32 @@
         <span class="sec-idx">02</span>
         <div>
           <p class="sec-kicker">Cylinders</p>
-          <h2 class="sec-title" id="cyl-title">Hydraulic cylinders, cut to your stroke.</h2>
-          <p class="sec-sub">Pick any stroke from 0 to 300 mm and order the quantity you need. We deliver all over India.</p>
+          <h2 class="sec-title" id="cyl-title">Hydraulic cylinders, made to your diameter.</h2>
+          <p class="sec-sub">Pick any diameter from 0 to 300 mm and order the quantity you need. We deliver all over India.</p>
         </div>
       </div>
 
       <div class="cyl-grid">
         <div class="cyl-gallery reveal">
-          <div class="cyl-lead">
-            <img src="images/hero-cylinders.jpg" alt="Precision-machined hydraulic cylinder bodies" width="1500" height="1500" loading="lazy" />
+          <!-- PHOTOS: to add or swap a photo, copy one "cyl-shot" line and one "cyl-thumb" button
+               and change the file name in all three places (and the data-i number on the button). -->
+          <div class="cyl-lead" id="cyl-lead" role="region" aria-roledescription="carousel" aria-label="Cylinder photos">
+            <div class="cyl-track" id="cyl-track">
+              <div class="cyl-shot"><div class="cyl-blur" style="background-image:url(images/cylinder-1.jpg)"></div><img src="images/cylinder-1.jpg" alt="Red Automech hydraulic cylinder standing on a workshop bench" width="1600" height="900" draggable="false" /></div>
+              <div class="cyl-shot"><div class="cyl-blur" style="background-image:url(images/cylinder-2.jpg)"></div><img src="images/cylinder-2.jpg" alt="Automech hydraulic cylinder lying on a polished steel surface" width="888" height="408" draggable="false" loading="lazy" /></div>
+              <div class="cyl-shot"><div class="cyl-blur" style="background-image:url(images/cylinder-3.jpg)"></div><img src="images/cylinder-3.jpg" alt="Automech hydraulic cylinder on a steel chequer plate" width="888" height="483" draggable="false" loading="lazy" /></div>
+              <div class="cyl-shot"><div class="cyl-blur" style="background-image:url(images/cylinder-4.jpg)"></div><img src="images/cylinder-4.jpg" alt="Automech hydraulic cylinder: rugged construction, zero-leak seals, long service life" width="1400" height="1185" draggable="false" loading="lazy" /></div>
+            </div>
             <i class="frame-corner tl"></i><i class="frame-corner tr"></i><i class="frame-corner bl"></i><i class="frame-corner br"></i>
           </div>
-          <div class="cyl-slots">
-          <!-- PHOTO SLOT 1: to show a photo here, replace the two lines inside this div
-               with  <img src="images/cylinder-1.jpg" alt="describe the photo" />  -->
-          <div class="cyl-slot">
-            <i class="frame-corner tl"></i><i class="frame-corner tr"></i><i class="frame-corner bl"></i><i class="frame-corner br"></i>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.6-2.2h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"></path><circle cx="12" cy="13.2" r="3.4"></circle></svg>
-            <span>Photo 01</span>
-          </div>
-          <!-- PHOTO SLOT 2: to show a photo here, replace the two lines inside this div
-               with  <img src="images/cylinder-2.jpg" alt="describe the photo" />  -->
-          <div class="cyl-slot">
-            <i class="frame-corner tl"></i><i class="frame-corner tr"></i><i class="frame-corner bl"></i><i class="frame-corner br"></i>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.6-2.2h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"></path><circle cx="12" cy="13.2" r="3.4"></circle></svg>
-            <span>Photo 02</span>
-          </div>
-          <!-- PHOTO SLOT 3: to show a photo here, replace the two lines inside this div
-               with  <img src="images/cylinder-3.jpg" alt="describe the photo" />  -->
-          <div class="cyl-slot">
-            <i class="frame-corner tl"></i><i class="frame-corner tr"></i><i class="frame-corner bl"></i><i class="frame-corner br"></i>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.6-2.2h6.8L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"></path><circle cx="12" cy="13.2" r="3.4"></circle></svg>
-            <span>Photo 03</span>
-          </div>
+          <div class="cyl-thumbs" role="group" aria-label="Choose a photo">
+            <button type="button" class="cyl-thumb on" data-i="0" aria-label="Show photo 1" aria-current="true"><img src="images/cylinder-1.jpg" alt="" loading="lazy" /></button>
+            <button type="button" class="cyl-thumb" data-i="1" aria-label="Show photo 2"><img src="images/cylinder-2.jpg" alt="" loading="lazy" /></button>
+            <button type="button" class="cyl-thumb" data-i="2" aria-label="Show photo 3"><img src="images/cylinder-3.jpg" alt="" loading="lazy" /></button>
+            <button type="button" class="cyl-thumb" data-i="3" aria-label="Show photo 4"><img src="images/cylinder-4.jpg" alt="" loading="lazy" /></button>
           </div>
           <dl class="specs cyl-facts">
-            <div class="spec-cell"><dt>Stroke</dt><dd>0 – 300 mm</dd></div>
+            <div class="spec-cell"><dt>Diameter</dt><dd>0 – 300 mm</dd></div>
             <div class="spec-cell"><dt>Quantity</dt><dd>As you need</dd></div>
             <div class="spec-cell"><dt>Delivery</dt><dd>All over India</dd></div>
           </dl>
@@ -161,18 +151,18 @@
 
         <form class="form-card cyl-form reveal" id="cyl-form" style="transition-delay:120ms" novalidate>
           <h3 class="form-title">Order to your size</h3>
-          <p class="form-sub">Set the stroke and quantity. We reply with the price and delivery time, usually the same day.</p>
+          <p class="form-sub">Set the diameter and quantity. We reply with the price and delivery time, usually the same day.</p>
 
           <div class="cyl-stroke">
             <div class="cyl-stroke-top">
-              <label class="cyl-label" for="cyl-stroke-num">Stroke length</label>
+              <label class="cyl-label" for="cyl-stroke-num">Diameter</label>
               <div class="cyl-read">
-                <button type="button" class="cyl-step" data-step="-1" data-for="cyl-stroke-num" aria-label="Stroke 1 mm shorter">&minus;</button>
+                <button type="button" class="cyl-step" data-step="-1" data-for="cyl-stroke-num" aria-label="Diameter 1 mm smaller">&minus;</button>
                 <span class="cyl-read-val"><input id="cyl-stroke-num" class="cyl-num" type="number" inputmode="numeric" min="0" max="300" step="1" value="150" /><span class="cyl-unit">mm</span></span>
-                <button type="button" class="cyl-step" data-step="1" data-for="cyl-stroke-num" aria-label="Stroke 1 mm longer">+</button>
+                <button type="button" class="cyl-step" data-step="1" data-for="cyl-stroke-num" aria-label="Diameter 1 mm larger">+</button>
               </div>
             </div>
-            <input id="cyl-stroke" class="cyl-range" type="range" min="0" max="300" step="5" value="150" aria-label="Stroke length in millimetres" />
+            <input id="cyl-stroke" class="cyl-range" type="range" min="0" max="300" step="5" value="150" aria-label="Diameter in millimetres" />
             <div class="cyl-ticks" aria-hidden="true"><span style="--p:0">0</span><span style="--p:0.1667">50</span><span style="--p:0.3333">100</span><span style="--p:0.5">150</span><span style="--p:0.6667">200</span><span style="--p:0.8333">250</span><span style="--p:1">300</span></div>
           </div>
 
@@ -191,7 +181,7 @@
             <label class="f-field"><span>Your name</span><input id="cyl-name" name="name" required autocomplete="name" /></label>
             <label class="f-field"><span>Phone</span><input id="cyl-phone" name="phone" type="tel" required autocomplete="tel" placeholder="+91" /></label>
           </div>
-          <label class="f-field"><span>Notes (optional)</span><textarea id="cyl-notes" name="notes" rows="2" placeholder="Bore, mounting, working pressure…"></textarea></label>
+          <label class="f-field"><span>Notes (optional)</span><textarea id="cyl-notes" name="notes" rows="2" placeholder="Stroke length, mounting, working pressure…"></textarea></label>
           <p hidden aria-hidden="true"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
 
           <div class="cyl-ctas">
@@ -230,7 +220,7 @@
           <div class="form-card ord-card">
             <div class="ord-step-h"><span class="ord-step-n">1</span><h3 class="form-title">Choose jacks</h3></div>
             <div class="ord-items" id="ord-items" aria-live="polite"></div>
-            <p class="ord-foot">Need hydraulic cylinders? They are priced on quote. <a href="#cylinders">Set your stroke</a></p>
+            <p class="ord-foot">Need hydraulic cylinders? They are priced on quote. <a href="#cylinders">Choose your diameter</a></p>
           </div>
 
           <div class="form-card ord-card">
