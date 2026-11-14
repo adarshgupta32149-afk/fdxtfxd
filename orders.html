@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0C1829" />
+  <meta name="description" content="View all your Automech hydraulic jack orders, totals and payment status." />
+  <title>My Orders — Automech Hydraulic Solutions</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0a1626; --panel:#0f2038; --panel-2:#0d1b30;
+      --line:#1b3050; --line-soft:#132542;
+      --ink:#e9f0f7; --muted:#93a7bc; --muted-2:#66809c;
+      --accent:#ff6b2b; --accent-hi:#ff8a55;
+      --green:#2ea05a; --green-hi:#b8f3c9; --amber:#ffb454;
+      --radius:16px; --shadow:0 24px 60px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:Inter,system-ui,sans-serif;color:var(--ink);min-height:100vh;line-height:1.5;
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(255,107,43,.10), transparent 60%),
+        radial-gradient(900px 500px at 0% 0%, rgba(62,124,177,.12), transparent 55%),
+        var(--bg);
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit}
+    h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;letter-spacing:-.01em;margin:0}
+    .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+    header.top{position:sticky;top:0;z-index:40;backdrop-filter:blur(10px);
+      background:linear-gradient(180deg, rgba(10,22,38,.92), rgba(10,22,38,.72));border-bottom:1px solid var(--line-soft)}
+    .top-in{display:flex;align-items:center;gap:14px;height:66px}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:700;font-family:"Space Grotesk",sans-serif}
+    .brand img{height:34px;width:auto;display:block;filter:drop-shadow(0 6px 14px rgba(0,0,0,.5))}
+    .brand span{font-size:16px}
+    .brand small{display:block;font-size:10.5px;color:var(--muted-2);font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-family:Inter}
+    .nav{margin-left:auto;display:flex;gap:6px;align-items:center}
+    .nav a{text-decoration:none;color:var(--muted);font-weight:600;font-size:14px;padding:9px 14px;border-radius:10px;transition:.15s;white-space:nowrap}
+    .nav a:hover{color:var(--ink);background:rgba(255,255,255,.05)}
+    .nav a.cta{color:#1a0f07;background:linear-gradient(180deg,var(--accent-hi),var(--accent));box-shadow:0 10px 22px rgba(255,107,43,.3)}
+
+    .lead{padding:42px 0 6px;display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;justify-content:space-between}
+    .lead h1{font-size:clamp(26px,4vw,38px)}
+    .lead p{color:var(--muted);margin:8px 0 0;font-size:15px}
+
+    /* stat cards */
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:22px 0}
+    @media(max-width:720px){.stats{grid-template-columns:1fr 1fr}}
+    .stat{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:14px;padding:18px 18px}
+    .stat .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+    .stat .v{font-family:"Space Grotesk";font-weight:700;font-size:28px;margin-top:6px}
+    .stat .v.accent{color:var(--accent)}
+    .stat .v.green{color:var(--green-hi)}
+
+    .bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:4px 0 18px}
+    .bar .l{color:var(--muted);font-size:13.5px}
+    .bar .r{display:flex;gap:10px}
+    .mini{display:inline-flex;align-items:center;gap:7px;text-decoration:none;cursor:pointer;font-weight:600;font-size:13.5px;padding:9px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink);transition:.15s}
+    .mini:hover{background:rgba(255,255,255,.07)}
+    .mini.danger{color:#ff9a7a;border-color:rgba(255,107,43,.3)}
+    .mini.primary{color:#1a0f07;background:linear-gradient(180deg,var(--accent-hi),var(--accent));border:0}
+
+    /* order list */
+    #orders{display:flex;flex-direction:column;gap:14px;padding-bottom:50px}
+    .order{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .order .ohd{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line-soft)}
+    .order .oid{font-family:"Space Grotesk";font-weight:700;font-size:16px}
+    .order .date{color:var(--muted-2);font-size:13px}
+    .badge{font-size:11.5px;font-weight:700;letter-spacing:.04em;padding:5px 11px;border-radius:999px;text-transform:uppercase}
+    .badge.pending{color:var(--amber);background:rgba(255,180,84,.12);border:1px solid rgba(255,180,84,.3)}
+    .badge.paid{color:var(--green-hi);background:rgba(46,160,90,.14);border:1px solid rgba(46,160,90,.4)}
+    .order .pay{color:var(--muted);font-size:13px;font-weight:600;margin-left:auto}
+    .order .obd{padding:16px 20px;display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+    @media(max-width:640px){.order .obd{grid-template-columns:1fr}}
+    .items .it{display:flex;justify-content:space-between;font-size:13.5px;padding:6px 0;border-bottom:1px dashed var(--line-soft)}
+    .items .it:last-child{border-bottom:0}
+    .items .it .q{color:var(--muted)}
+    .cust{font-size:13.5px;color:var(--muted);line-height:1.7}
+    .cust b{color:var(--ink);font-weight:600}
+    .otot{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-top:1px solid var(--line-soft);background:rgba(255,255,255,.015)}
+    .otot .lbl{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+    .otot .amt{font-family:"Space Grotesk";font-weight:700;font-size:22px}
+    .oacts{display:flex;gap:8px;margin-left:auto}
+
+    .empty{text-align:center;padding:70px 20px;border:1px dashed var(--line);border-radius:var(--radius);background:rgba(255,255,255,.015)}
+    .empty .ic{width:66px;height:66px;margin:0 auto 18px;border-radius:16px;display:grid;place-items:center;background:rgba(255,107,43,.1);border:1px solid rgba(255,107,43,.25)}
+    .empty h2{font-size:20px;margin-bottom:8px}
+    .empty p{color:var(--muted);margin:0 0 20px;font-size:14.5px}
+
+    footer{border-top:1px solid var(--line-soft);padding:26px 0;color:var(--muted-2);font-size:13px}
+    .footer-in{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+    footer a{color:var(--muted);text-decoration:none}
+    footer a:hover{color:var(--ink)}
+    .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:#0f2038;border:1px solid var(--line);color:var(--ink);padding:11px 18px;border-radius:10px;font-size:13.5px;font-weight:600;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.25s;z-index:90}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    .note{font-size:12px;color:var(--muted-2);padding:0 0 30px;max-width:620px}
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-in">
+      <a class="brand" href="index.html">
+        <img src="images/logo.png" alt="Automech" />
+        <span>Automech<small>Hydraulic Solutions</small></span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="payment.html">Order &amp; Pay</a>
+        <a class="cta" href="payment.html#order">New Order</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="wrap lead">
+    <div>
+      <h1>My orders</h1>
+      <p>Every order you've placed from this device, with totals and payment status.</p>
+    </div>
+  </section>
+
+  <section class="wrap stats">
+    <div class="stat"><div class="k">Total orders</div><div class="v" id="s_count">0</div></div>
+    <div class="stat"><div class="k">Total value</div><div class="v accent" id="s_value">₹0</div></div>
+    <div class="stat"><div class="k">Pending</div><div class="v" id="s_pending">0</div></div>
+    <div class="stat"><div class="k">Paid</div><div class="v green" id="s_paid">0</div></div>
+  </section>
+
+  <div class="wrap bar">
+    <div class="l" id="bar_l">—</div>
+    <div class="r">
+      <a class="mini primary" href="payment.html#order">+ New order</a>
+      <button class="mini danger" id="clearAll">Clear all</button>
+    </div>
+  </div>
+
+  <section class="wrap" id="orders"></section>
+  <div class="wrap note" id="note" hidden>
+    Orders are stored privately in this browser on this device (no account needed). Clearing your browser data, or opening the site on another device, will show a different list. For your official order record, confirm with us on WhatsApp.
+  </div>
+
+  <footer>
+    <div class="wrap footer-in">
+      <span>© <span id="yr"></span> Automech Hydraulic Solutions, Lucknow</span>
+      <span>Sales: <a href="tel:+918009995855">+91 80099 95855</a> · WhatsApp: <a href="https://wa.me/918090688246" target="_blank" rel="noopener">+91 80906 88246</a></span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">Done</div>
+
+  <script>
+    const STORE = "automech_orders";
+    const WHATSAPP = "918090688246";
+    const INR = n => "₹" + (n||0).toLocaleString("en-IN");
+    const load = () => JSON.parse(localStorage.getItem(STORE) || "[]");
+    const save = a => { try{ localStorage.setItem(STORE, JSON.stringify(a)); }catch(e){} };
+    document.getElementById("yr").textContent = new Date().getFullYear();
+
+    const toast = document.getElementById("toast");
+    const showToast = m => { toast.textContent = m; toast.classList.add("show"); setTimeout(()=>toast.classList.remove("show"),1500); };
+    const fmtDate = iso => { const d = new Date(iso); return d.toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"}) + " · " + d.toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit"}); };
+    const esc = s => (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+    function waLink(o){
+      const lines = o.items.map(i => `• ${i.code} (${i.ton}t) × ${i.qty} = ${INR(i.line)}`).join("\n");
+      const txt = `*Order ${o.id}*\n${o.customer.name}\n📱 ${o.customer.phone}\n\n${lines}\n\n*Total: ${INR(o.total)}* · ${o.payment}\nShip to: ${o.customer.address}`;
+      return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(txt)}`;
+    }
+
+    function render(){
+      const orders = load();
+      const count = orders.length;
+      const value = orders.reduce((s,o)=>s+(o.total||0),0);
+      const paid = orders.filter(o=>o.status==="Paid").length;
+      const pending = count - paid;
+
+      document.getElementById("s_count").textContent = count;
+      document.getElementById("s_value").textContent = INR(value);
+      document.getElementById("s_pending").textContent = pending;
+      document.getElementById("s_paid").textContent = paid;
+      document.getElementById("note").hidden = count === 0;
+
+      const wrap = document.getElementById("orders");
+      const bar = document.getElementById("bar_l");
+
+      if(!count){
+        bar.textContent = "";
+        document.getElementById("clearAll").style.display = "none";
+        wrap.innerHTML = `<div class="empty">
+          <div class="ic"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#ff6b2b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+          <h2>No orders yet</h2>
+          <p>When you place an order it'll appear here with its total and status.</p>
+          <a class="mini primary" href="payment.html#order">Place your first order →</a>
+        </div>`;
+        return;
+      }
+      document.getElementById("clearAll").style.display = "";
+      bar.textContent = `Showing ${count} order${count>1?"s":""} · ${INR(value)} total`;
+
+      wrap.innerHTML = orders.map(o => {
+        const items = o.items.map(i => `<div class="it"><span class="q">${i.code} · ${i.ton}t × ${i.qty}</span><span>${INR(i.line)}</span></div>`).join("");
+        const paidCls = o.status==="Paid" ? "paid" : "pending";
+        return `<div class="order" data-id="${o.id}">
+          <div class="ohd">
+            <span class="oid">${o.id}</span>
+            <span class="date">${fmtDate(o.date)}</span>
+            <span class="badge ${paidCls}">${o.status}</span>
+            <span class="pay">${o.payment}</span>
+          </div>
+          <div class="obd">
+            <div class="items">${items}</div>
+            <div class="cust">
+              <b>${esc(o.customer.name)}</b>${o.customer.company ? " · "+esc(o.customer.company) : ""}<br>
+              📱 ${esc(o.customer.phone)}${o.customer.gst ? "<br>GST "+esc(o.customer.gst) : ""}<br>
+              📍 ${esc(o.customer.address)}${o.customer.notes ? "<br><i>“"+esc(o.customer.notes)+"”</i>" : ""}
+            </div>
+          </div>
+          <div class="otot">
+            <div><span class="lbl">Order total</span> &nbsp; <span class="amt">${INR(o.total)}</span></div>
+            <div class="oacts">
+              <a class="mini" href="${waLink(o)}" target="_blank" rel="noopener">WhatsApp</a>
+              <button class="mini" data-act="toggle">${o.status==="Paid"?"Mark pending":"Mark paid"}</button>
+              <button class="mini danger" data-act="del">Remove</button>
+            </div>
+          </div>
+        </div>`;
+      }).join("");
+    }
+
+    document.getElementById("orders").addEventListener("click", e => {
+      const btn = e.target.closest("button[data-act]"); if(!btn) return;
+      const id = btn.closest(".order").dataset.id;
+      const orders = load();
+      const o = orders.find(x => x.id === id); if(!o) return;
+      if(btn.dataset.act === "toggle"){ o.status = o.status==="Paid" ? "Pending" : "Paid"; save(orders); showToast("Status updated"); render(); }
+      if(btn.dataset.act === "del"){ if(confirm(`Remove order ${id}? This can't be undone.`)){ save(orders.filter(x=>x.id!==id)); showToast("Order removed"); render(); } }
+    });
+
+    document.getElementById("clearAll").addEventListener("click", () => {
+      if(confirm("Remove ALL saved orders from this browser? This can't be undone.")){ save([]); showToast("All orders cleared"); render(); }
+    });
+
+    render();
+  </script>
+</body>
+</html>

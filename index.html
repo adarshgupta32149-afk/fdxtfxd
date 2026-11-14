@@ -83,6 +83,16 @@
 <body>
   <div id="root"></div>
 
+  <!-- Order & Pay Online — floating entry to the order/payment pages (independent of the React app) -->
+  <a href="payment.html" id="order-fab" aria-label="Order and pay online"
+     style="position:fixed;right:18px;bottom:18px;z-index:9999;display:inline-flex;align-items:center;gap:9px;
+            text-decoration:none;font-family:'Space Grotesk',Inter,sans-serif;font-weight:700;font-size:15px;
+            color:#1a0f07;background:linear-gradient(180deg,#ff8a55,#ff6b2b);
+            padding:14px 20px;border-radius:999px;box-shadow:0 14px 34px rgba(255,107,43,.42);">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    Order &amp; Pay Online
+  </a>
+
   <!-- Netlify Forms: static copy so the build-time bot registers the "enquiry" form.
        The live form is rendered by React and posts to this. -->
   <form name="enquiry" data-netlify="true" netlify-honeypot="bot-field" hidden>
