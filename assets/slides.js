@@ -72,7 +72,8 @@
     var from = IDS.indexOf(running ? running.to : current);
     var dir = IDS.indexOf(id) >= from ? 1 : -1;
     if (opts.push !== false) {
-      history.pushState({ view: id }, '', id === 'top' ? location.pathname + location.search : '#' + id);
+      // Some embedded previews do not allow changing the address; the page still changes.
+      try { history.pushState({ view: id }, '', id === 'top' ? location.pathname + location.search : '#' + id); } catch (err) { /* keep going */ }
     }
     if (running) { running.anim.cancel(); running = null; }
     if (reduce.matches || !main.animate) { show(id, true); return; }
