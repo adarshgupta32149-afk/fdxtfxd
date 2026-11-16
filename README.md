@@ -1,43 +1,45 @@
 # Automech Hydraulic Solutions — Website
 
-Static marketing site for Automech Hydraulic Solutions (hydraulic bottle jacks, 15–120 ton).
+Static site for Automech Hydraulic Solutions: hydraulic bottle jacks (15–120 ton) and hydraulic
+cylinders. Live: https://automech-workshop.netlify.app
 
-Live: https://automech-workshop.netlify.app
+There is no build step. Netlify serves this folder as it is (publish directory = project root).
 
-## Contents
-This is the built/static output (HTML + bundled JS/CSS + images + product brochure).
-It is a single-page site; deploy by serving the repository root as a static site
-(e.g. Netlify publish directory = project root, no build step required).
+## Files
+- `index.html` — the page. It also holds three pages written in plain HTML: Cylinders (`#cylinders`),
+  Order online (`#order`) and My orders (`#orders`).
+- `assets/index-*.js`, `assets/index-*.css` — the original site, pre-built (no source in this repo).
+- `assets/boot.js` — picks the first page from the address before anything paints.
+- `assets/site.js`, `assets/site.css` — everything added on top: slide navigation, the cylinder
+  diameter selector and photo gallery, and online orders.
+- `images/` — photos (WebP / JPEG). `automech-brochure.pdf` — the brochure download.
+- `_headers` — security headers Netlify sends with every file (see Security).
 
-- `index.html` — entry page; also holds the Hydraulic Cylinders page (the `<section id="cylinders">` block)
-- `assets/index-*.js`, `assets/index-*.css` — the bundled site (pre-built, no source in this repo)
-- `assets/slides.js`, `assets/slides.css` — slide navigation (one section on screen at a time, animated
-  change, Previous / Next) and the cylinder diameter selector, photo gallery and quote form
-- `images/` — hero slides, product photos (transparent PNGs) and logo
-- `automech-brochure.pdf` — downloadable product brochure
+## How an order works
+1. The buyer picks jacks (prices are read from the datasheet on the Jacks page), adds delivery
+   details and chooses NEFT, IMPS or RTGS. RTGS unlocks at ₹2,00,000; IMPS stops at ₹5,00,000.
+2. **Place order** opens WhatsApp to the workshop number with the whole order written out; the buyer
+   presses send. A copy also goes to the Netlify form inbox (`enquiry`, marked `ONLINE ORDER AM-…`).
+3. The buyer pays from their bank app, then sends **payment proof**: the UTR number and a screenshot.
+   It goes to WhatsApp and to the inbox (`PAYMENT PROOF AM-…`, screenshot in the `proof` field).
+4. The workshop sends the invoice on WhatsApp. The buyer confirms it from My orders, which sends
+   "I confirm … Please ship" on WhatsApp.
 
-The enquiry form posts to Netlify Forms (no backend/database required).
+My orders is kept in the buyer's own browser, so it shows orders from that phone or computer only,
+and the site cannot show "shipped" by itself: that is told on WhatsApp.
 
-## Hydraulic cylinders page
-- **Diameter range:** set by `min`, `max` and `step` on the two diameter inputs in `index.html`
-  (`#cyl-stroke` and `#cyl-stroke-num`; the ids kept their old name), plus the numbers under the slider.
-- **Photos:** `images/cylinder-1.jpg` to `cylinder-4.jpg`, shown in a swipeable gallery with
-  thumbnails. The comment above the gallery in `index.html` says how to add or swap one.
-- **Quotes:** "Request quote" posts to the same Netlify form as the contact page (`enquiry`), with the
-  diameter in the `model` field. "Order on WhatsApp" opens a chat with the details filled in.
+## Things to edit
+- **Bank details:** search `index.html` for `BANK DETAILS` and type the four values. Until then the
+  order message asks for them on WhatsApp.
+- **WhatsApp number:** `WHATSAPP` at the top of `assets/site.js` (and `whatsapp:` in the bundle).
+- **Cylinder diameter range:** `min`, `max`, `step` on `#cyl-dia` and `#cyl-dia-num` in `index.html`.
+- **Cylinder photos:** `images/cylinder-1.jpg` … `-4.jpg`; the comment above the gallery in
+  `index.html` says how to add or swap one.
+- **Home slider pictures:** the `Fn` list in `assets/index-*.js`. It swipes and also moves by itself.
 
-## Order online and My orders
-- **Order page** (`#order`): buyers pick jacks (prices are read from the datasheet on the Jacks page),
-  add delivery details and choose NEFT, IMPS or RTGS. RTGS unlocks at ₹2,00,000; IMPS stops at ₹5,00,000.
-  UPI buyers are pointed to WhatsApp.
-- Orders go to the workshop through the same Netlify form (`enquiry`), marked `ONLINE ORDER AM-…`.
-  Payment references (UTR) arrive as `PAYMENT REPORTED AM-…`.
-- **Bank details:** type them into the four empty `data-bank` fields in `index.html` (search for
-  `BANK DETAILS`). Until then, buyers are asked to get them on WhatsApp.
-- **My orders** (`#orders`) lists orders placed from that browser, with totals and payment status.
-  It is stored in the buyer's browser, not on a server.
-- Logic and styles: `assets/order.js`, `assets/order.css`.
-
-## Home slider
-Swipe on a phone or drag with the mouse; it also moves on by itself every 3 seconds. The pictures
-are listed in the bundle (`Fn` in `assets/index-*.js`); the logo slide uses `images/logo-automech.png`.
+## Security
+- No keys, passwords or tokens are in this repository; the site calls no outside service except
+  Google Fonts. Forms post only to the site itself (Netlify Forms).
+- `_headers` sets a Content-Security-Policy that allows only the site's own scripts and styles, so
+  `index.html` must not contain inline `<script>`, `<style>`, `style="…"` or `onclick="…"`.
+- Everything a buyer types is escaped before it is shown.
