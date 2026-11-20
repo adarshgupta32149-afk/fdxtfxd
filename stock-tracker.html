@@ -91,6 +91,18 @@
   .backup-note b{color:var(--txt)}
   .kbd{background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12px;font-family:ui-monospace,monospace}
 
+  /* storage bar */
+  .storagebar{position:sticky;top:0;z-index:15;display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--panel);border-bottom:1px solid var(--line);padding:8px 16px;font-size:13px;font-weight:600;transition:box-shadow .3s}
+  .storagebar.flash{box-shadow:inset 0 0 0 2px var(--accent2)}
+  .storagebar .msg{color:var(--muted)} .storagebar .msg b{color:var(--txt)}
+  .storagebar .spacer{flex:1}
+  .storagebar button{font-size:13px;padding:6px 12px;border-radius:8px;font-weight:700;border:1px solid var(--line);background:var(--panel2);color:var(--txt);cursor:pointer}
+  .storagebar button.primary{background:var(--accent);color:#fff;border-color:transparent}
+  .storagebar button:hover{filter:brightness(1.06)}
+  .hiddenx{display:none!important}
+  .banner{background:rgba(255,176,32,.14);border:1px solid var(--warn);color:var(--txt);padding:11px 16px;margin:0;display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-weight:600;font-size:14px}
+  .banner button{margin-left:auto;background:var(--warn);color:#2a1d00;border:none;padding:7px 14px;border-radius:8px;font-weight:700;cursor:pointer}
+
   /* print / PDF document */
   #doc{display:none}
   @media print{
@@ -128,6 +140,17 @@
   <button class="topbtn" id="restoreBtn" title="Load data from a backup file">⬆ Restore</button>
   <input type="file" id="restoreFile" accept="application/json" hidden>
 </header>
+
+<div class="storagebar off" id="storageBar">
+  <span class="msg" id="storageMsg">Checking storage…</span>
+  <span class="spacer"></span>
+  <button class="primary" id="connectFileBtn">🔗 Connect a permanent data file</button>
+  <button id="openFileBtn">Open existing file…</button>
+</div>
+<div class="banner hiddenx" id="reconnectBanner">
+  <span>🔒 Your saved data file needs permission to reconnect (this happens each time you reopen the app).</span>
+  <button id="reconnectBtn">Reconnect my data file</button>
+</div>
 
 <main>
   <!-- DASHBOARD -->
@@ -284,11 +307,10 @@
     <div class="panel">
       <h2>Your data &amp; backups</h2>
       <p class="backup-note">
-        Everything you type is saved <b>on this computer only</b>, inside this browser — no internet, no account.<br><br>
-        • Click <b>⬇ Backup</b> (top right) regularly to save a <span class="kbd">.json</span> file somewhere safe (USB drive, Documents folder).<br>
-        • Use <b>⬆ Restore</b> to load that file back, or to move your data to another computer.<br>
-        • Keep the <span class="kbd">stock-tracker.html</span> file itself anywhere; double-click to open it any time.<br><br>
-        <b>Important:</b> clearing your browser data, or using private/incognito mode, can erase everything — so keep backups.
+        <b>Permanent storage (recommended):</b> click <b>🔗 Connect a permanent data file</b> in the bar at the top and pick a spot like your <b>Documents</b> folder. From then on every change saves straight into that real file on your disk — <b>clearing your browser cannot erase it</b>. When you reopen the app, click <b>Reconnect my data file</b> once and you're back.<br><br>
+        <b>Extra safety copy:</b> now and then click <b>⬇ Backup</b> (top right) to save a dated <span class="kbd">.json</span> copy on a USB drive or another folder. Use <b>⬆ Restore</b> to load it back or move to another computer.<br><br>
+        Keep the <span class="kbd">stock-tracker.html</span> file anywhere and double-click to open it any time. For the permanent-file feature, open it in <b>Chrome</b> or <b>Edge</b>.<br><br>
+        <b>Note:</b> if you haven't connected a data file, your data sits in browser storage, which clearing browser data or incognito mode can wipe — so connect a file or keep backups.
       </p>
       <div class="toolbar" style="margin-top:8px">
         <button class="btn ghost" id="backupBtn2">⬇ Download backup now</button>
@@ -334,7 +356,83 @@
   function save(){
     try{ localStorage.setItem(KEY, JSON.stringify(state)); }
     catch(e){ toast("⚠ Could not save — storage may be full or blocked"); }
+    scheduleFileWrite();
   }
+
+  /* ---------- permanent file storage (File System Access API) ---------- */
+  var fsaSupported = ('showSaveFilePicker' in window) && ('showOpenFilePicker' in window);
+  var fileHandle = null, fileReady = false, fileTimer = null, flashT = null;
+
+  function idbOpen(){ return new Promise(function(res,rej){ var r=indexedDB.open('stockTrackerFS',1);
+    r.onupgradeneeded=function(){ r.result.createObjectStore('kv'); };
+    r.onsuccess=function(){res(r.result);}; r.onerror=function(){rej(r.error);}; }); }
+  function idbGet(k){ return idbOpen().then(function(db){ return new Promise(function(res,rej){
+    var t=db.transaction('kv').objectStore('kv').get(k); t.onsuccess=function(){res(t.result);}; t.onerror=function(){rej(t.error);}; }); }); }
+  function idbSet(k,v){ return idbOpen().then(function(db){ return new Promise(function(res,rej){
+    var tx=db.transaction('kv','readwrite'); tx.objectStore('kv').put(v,k); tx.oncomplete=function(){res();}; tx.onerror=function(){rej(tx.error);}; }); }); }
+
+  function applyData(d){
+    state.settings=Object.assign({name:"My Business",addr:"",currency:"$"}, d.settings||{});
+    state.materials=d.materials||[]; state.sales=d.sales||[]; state.seq=d.seq||(state.sales.length+1);
+  }
+
+  function scheduleFileWrite(){ if(!fileHandle||!fileReady) return; clearTimeout(fileTimer); fileTimer=setTimeout(writeFile,400); }
+  function writeFile(){
+    if(!fileHandle||!fileReady) return Promise.resolve();
+    return fileHandle.createWritable().then(function(w){ return w.write(JSON.stringify(state,null,2)).then(function(){return w.close();}); })
+      .then(flashSaved)
+      .catch(function(e){ console.warn('file write failed',e); toast('⚠ Could not save to your file'); });
+  }
+  function loadFromFile(){
+    return fileHandle.getFile().then(function(f){ return f.text(); }).then(function(txt){
+      fileReady=true;
+      if(txt && txt.trim()){ try{ applyData(JSON.parse(txt)); }catch(e){ toast('⚠ Data file was unreadable'); } }
+      save(); loadSettingsForm(); renderAll();
+    });
+  }
+  function connectNewFile(){
+    window.showSaveFilePicker({suggestedName:'stock-data.json',types:[{description:'Stock Tracker data',accept:{'application/json':['.json']}}]})
+      .then(function(h){ fileHandle=h; fileReady=true; return idbSet('handle',h).then(writeFile); })
+      .then(function(){ updateStorageUI(); toast('✓ Connected — every change now saves to your file'); })
+      .catch(function(e){ if(e&&e.name!=='AbortError'){ console.warn(e); toast('Could not connect a file here — try Chrome or Edge'); } });
+  }
+  function openExistingFile(){
+    window.showOpenFilePicker({types:[{description:'Stock Tracker data',accept:{'application/json':['.json']}}]})
+      .then(function(arr){ fileHandle=arr[0]; return idbSet('handle',fileHandle).then(loadFromFile); })
+      .then(function(){ updateStorageUI(); toast('✓ Loaded from your file'); })
+      .catch(function(e){ if(e&&e.name!=='AbortError'){ console.warn(e); toast('Could not open that file'); } });
+  }
+  function restoreHandle(){
+    if(!fsaSupported){ updateStorageUI(); return; }
+    idbGet('handle').then(function(h){
+      if(!h){ updateStorageUI(); return; }
+      fileHandle=h;
+      h.queryPermission({mode:'readwrite'}).then(function(p){
+        if(p==='granted'){ loadFromFile().then(updateStorageUI); }
+        else { $('#reconnectBanner').classList.remove('hiddenx'); updateStorageUI(); }
+      });
+    }).catch(function(){ updateStorageUI(); });
+  }
+  function reconnect(){
+    if(!fileHandle) return;
+    fileHandle.requestPermission({mode:'readwrite'}).then(function(p){
+      if(p==='granted'){ $('#reconnectBanner').classList.add('hiddenx'); loadFromFile().then(function(){ updateStorageUI(); toast('✓ Reconnected to your data file'); }); }
+      else toast('Permission not granted');
+    }).catch(function(){ toast('Could not reconnect'); });
+  }
+  function flashSaved(){ var b=$('#storageBar'); if(!b||!b.classList.contains('on'))return; b.classList.add('flash'); clearTimeout(flashT); flashT=setTimeout(function(){b.classList.remove('flash');},600); }
+
+  function updateStorageUI(){
+    var bar=$('#storageBar'), msg=$('#storageMsg'), c=$('#connectFileBtn'), o=$('#openFileBtn');
+    if(!bar) return;
+    if(!fsaSupported){ bar.className='storagebar off'; msg.innerHTML='Saved in this browser only. Open in <b>Chrome</b> or <b>Edge</b> to link a permanent file — otherwise use ⬇ Backup regularly.'; c.classList.add('hiddenx'); o.classList.add('hiddenx'); return; }
+    if(fileHandle && fileReady){ bar.className='storagebar on'; msg.innerHTML='🟢 Permanent file connected: <b>'+esc(fileHandle.name)+'</b> — every change is saved to it automatically.'; c.classList.add('hiddenx'); o.textContent='Switch file…'; o.classList.remove('hiddenx'); }
+    else { bar.className='storagebar off'; msg.innerHTML='🟡 <b>Browser storage only</b> — this can be erased if you clear browser data. Link a permanent file for safe long-term storage →'; c.classList.remove('hiddenx'); o.textContent='Open existing file…'; o.classList.remove('hiddenx'); }
+  }
+
+  document.getElementById('connectFileBtn').addEventListener('click', connectNewFile);
+  document.getElementById('openFileBtn').addEventListener('click', openExistingFile);
+  document.getElementById('reconnectBtn').addEventListener('click', reconnect);
 
   /* ---------- helpers ---------- */
   var $ = function(s,r){ return (r||document).querySelector(s); };
@@ -637,6 +735,7 @@
   $("#mDate").value=today(); $("#sDate").value=today();
   loadSettingsForm();
   renderAll();
+  restoreHandle();
 })();
 </script>
 </body>
